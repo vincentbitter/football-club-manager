@@ -1,0 +1,208 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Football Club Manager\n"
+"POT-Creation-Date: 2025-06-26 19:26+0200\n"
+"PO-Revision-Date: 2025-06-26 19:30+0200\n"
+"Last-Translator: \n"
+"Language-Team: Vincent Bitter\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_X;_e;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/page_dashboard.php:12
+msgid "At a Glance"
+msgstr "In een oogopslag"
+
+#: football-club-manager.php:44 football-club-manager.php:45
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: football-club-manager.php:53 football-club-manager.php:54
+#: includes/post-types/team.php:41
+msgid "Teams"
+msgstr "Teams"
+
+#: football-club-manager.php:62 football-club-manager.php:63
+#: includes/post-types/player.php:16
+msgid "Players"
+msgstr "Spelers"
+
+#: football-club-manager.php:71 football-club-manager.php:72
+#: includes/post-types/match.php:16
+msgid "Matches"
+msgstr "Wedstrijden"
+
+#: includes/post-types/match.php:17
+msgid "Match"
+msgstr "Wedstrijd"
+
+#: includes/post-types/match.php:18
+msgid "New match"
+msgstr "Nieuwe wedstrijd"
+
+#: includes/post-types/match.php:19
+msgid "Edit match"
+msgstr "Wijzig wedstrijd"
+
+#: includes/post-types/match.php:20
+msgid "No matches found"
+msgstr "Geen wedstrijden gevonden"
+
+#: includes/post-types/match.php:21
+msgid "No matches found in the trash"
+msgstr "Geen wedstrijden gevonden in de prullenbak"
+
+#: includes/post-types/match.php:22
+msgid "Search match"
+msgstr "Zoek wedstrijd"
+
+#: includes/post-types/match.php:46
+msgid "Match information"
+msgstr "Wedstrijdinformatie"
+
+#: includes/post-types/match.php:83
+msgid "Date"
+msgstr "Datum"
+
+#: includes/post-types/match.php:84
+msgid "From"
+msgstr "Vanaf"
+
+#: includes/post-types/match.php:85
+msgid "Till"
+msgstr "Tot"
+
+#: includes/post-types/match.php:102
+msgid "Home game"
+msgstr "Thuisteam"
+
+#: includes/post-types/match.php:109
+msgid "Away game"
+msgstr "Uitteam"
+
+#: includes/post-types/match.php:118 includes/post-types/player.php:85
+#: includes/post-types/player.php:147 includes/post-types/team.php:42
+msgid "Team"
+msgstr "Team"
+
+#: includes/post-types/match.php:119 includes/post-types/match.php:121
+msgid "Goals"
+msgstr "Doelpunten"
+
+#: includes/post-types/match.php:122
+msgid "Opponent"
+msgstr "Tegenstander"
+
+#: includes/post-types/match.php:140
+msgid "Final score"
+msgstr "Einduitslag"
+
+#: includes/post-types/match.php:237
+msgid "Date/time"
+msgstr "Datum/tijd"
+
+#: includes/post-types/match.php:238
+msgid "Home team"
+msgstr "Thuisteam"
+
+#: includes/post-types/match.php:239
+msgid "Away team"
+msgstr "Uitteam"
+
+#: includes/post-types/match.php:240
+msgid "Result"
+msgstr "Uitslag"
+
+#: includes/post-types/player.php:17
+msgid "Player"
+msgstr "Spelers"
+
+#: includes/post-types/player.php:18
+msgid "New player"
+msgstr "Nieuwe speler"
+
+#: includes/post-types/player.php:19
+msgid "Edit player"
+msgstr "Wijzig speler"
+
+#: includes/post-types/player.php:20
+msgid "Player photo"
+msgstr "Spelersfoto"
+
+#: includes/post-types/player.php:21
+msgid "Set player photo"
+msgstr "Spelersfoto instellen"
+
+#: includes/post-types/player.php:22
+msgid "Remove player photo"
+msgstr "Verwijder spelersfoto"
+
+#: includes/post-types/player.php:23
+msgid "Use as player photo"
+msgstr "Als spelersfoto gebruiken"
+
+#: includes/post-types/player.php:24
+msgid "No players found"
+msgstr "Geen spelers gevonden"
+
+#: includes/post-types/player.php:25
+msgid "No players found in the trash"
+msgstr "Geen spelers gevonden in de prullenbak"
+
+#: includes/post-types/player.php:26
+msgid "Search player"
+msgstr "Zoek speler"
+
+#: includes/post-types/player.php:50
+msgid "Player information"
+msgstr "Spelersinformatie"
+
+#: includes/post-types/player.php:77 includes/post-types/player.php:145
+msgid "First name"
+msgstr "Voornaam"
+
+#: includes/post-types/player.php:81 includes/post-types/player.php:146
+msgid "Last name"
+msgstr "Achternaam"
+
+#: includes/post-types/team.php:43
+msgid "New team"
+msgstr "Nieuw team"
+
+#: includes/post-types/team.php:44
+msgid "Edit team"
+msgstr "Wijzig team"
+
+#: includes/post-types/team.php:45
+msgid "Team photo"
+msgstr "Teamfoto"
+
+#: includes/post-types/team.php:46
+msgid "Set team photo"
+msgstr "Teamfoto instellen"
+
+#: includes/post-types/team.php:47
+msgid "Remove team photo"
+msgstr "Verwijder teamfoto"
+
+#: includes/post-types/team.php:48
+msgid "Use as team photo"
+msgstr "Als teamfoto gebruiken"
+
+#: includes/post-types/team.php:49
+msgid "No teams found"
+msgstr "Geen teams gevonden"
+
+#: includes/post-types/team.php:50
+msgid "No teams found in the trash"
+msgstr "Geen teams gevonden in de prullenbak"
+
+#: includes/post-types/team.php:51
+msgid "Search team"
+msgstr "Zoek team"
