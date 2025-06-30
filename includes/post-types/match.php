@@ -80,9 +80,9 @@ if (! function_exists('fcm_render_match_meta_box')) {
         <table role="presentation">
             <thead>
                 <tr>
-                    <th style="width: 150px;"><label for="fcm_match_date"><?php _e('Date', 'football-club-manager'); ?></label></th>
-                    <th style="width: 150px;"><label for="fcm_match_starttime"><?php _e('From', 'football-club-manager'); ?></label></th>
-                    <th style="width: 150px;"><label for="fcm_match_endtime"><?php _e('Till', 'football-club-manager'); ?></label></th>
+                    <th style="width: 150px;"><label for="fcm_match_date"><?php esc_attr_e('Date', 'football-club-manager'); ?></label></th>
+                    <th style="width: 150px;"><label for="fcm_match_starttime"><?php esc_attr_e('From', 'football-club-manager'); ?></label></th>
+                    <th style="width: 150px;"><label for="fcm_match_endtime"><?php esc_attr_e('Till', 'football-club-manager'); ?></label></th>
                 </tr>
             </thead>
             <tbody>
@@ -99,14 +99,14 @@ if (! function_exists('fcm_render_match_meta_box')) {
                     <td style="text-align: right;">
                         <label for="fcm_match_home">
                             <input type="radio" id="fcm_match_home" name="fcm_match_away" value="0" <?php checked($away, 0); ?>>
-                            <?php _e('Home game', 'football-club-manager'); ?>
+                            <?php esc_html_e('Home game', 'football-club-manager'); ?>
                         </label>
                     </td>
                     <td style="width: 16px"></td>
                     <td>
                         <label for="fcm_match_away">
                             <input type="radio" id="fcm_match_away" name="fcm_match_away" value="1" <?php checked($away, 1); ?>>
-                            <?php _e('Away game', 'football-club-manager'); ?>
+                            <?php esc_html_e('Away game', 'football-club-manager'); ?>
                         </label>
                     </td>
 
@@ -115,11 +115,11 @@ if (! function_exists('fcm_render_match_meta_box')) {
         <table role="presentation">
             <thead>
                 <tr>
-                    <th style="width: 150px; text-align: right;"><label for="fcm_match_team"><?php _e('Team', 'football-club-manager'); ?></label></th>
-                    <th style="width: 63px; text-align: right;"><label for="fcm_match_goals_for"><?php _e('Goals', 'football-club-manager'); ?></label></th>
+                    <th style="width: 150px; text-align: right;"><label for="fcm_match_team"><?php esc_html_e('Team', 'football-club-manager'); ?></label></th>
+                    <th style="width: 63px; text-align: right;"><label for="fcm_match_goals_for"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
                     <th style="width: 16px;"></th>
-                    <th style="width: 63px; text-align: left;"><label for="fcm_match_goals_against"><?php _e('Goals', 'football-club-manager'); ?></label></th>
-                    <th style="width: 150px; text-align: left;"><label for="fcm_match_opponent"><?php _e('Opponent', 'football-club-manager'); ?></label></th>
+                    <th style="width: 63px; text-align: left;"><label for="fcm_match_goals_against"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
+                    <th style="width: 150px; text-align: left;"><label for="fcm_match_opponent"><?php esc_html_e('Opponent', 'football-club-manager'); ?></label></th>
                 </tr>
             </thead>
             <tbody>
@@ -127,7 +127,7 @@ if (! function_exists('fcm_render_match_meta_box')) {
                     <td style="text-align: right">
                         <select style="width: 100%" id="fcm_match_team" name="fcm_match_team">
                             <?php foreach ($team_options as $team_option) : ?>
-                                <option value="<?php echo $team_option->ID; ?>" <?php selected($team, $team_option->ID); ?>><?php echo $team_option->post_title; ?></option>
+                                <option value="<?php echo esc_attr($team_option->ID); ?>" <?php selected($team, $team_option->ID); ?>><?php echo esc_html($team_option->post_title); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </td>
@@ -137,7 +137,7 @@ if (! function_exists('fcm_render_match_meta_box')) {
                     <td><input style="width: 100%" type="text" id="fcm_match_opponent" name="fcm_match_opponent" value="<?php echo esc_attr($opponent); ?>"></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;"><?php _e('Final score', 'football-club-manager'); ?></td>
+                    <td style="text-align: right;"><?php esc_html_e('Final score', 'football-club-manager'); ?></td>
                     <td style="text-align: right;"><input style="width: 100%" type="number" id="fcm_match_goals_for_final" name="fcm_match_goals_for_final" value="<?php echo esc_attr($goals_for_final); ?>"></td>
                     <td style="text-align: center;">-</td>
                     <td><input style="width: 100%;" type="number" id="fcm_match_goals_against_final" name="fcm_match_goals_against_final" value="<?php echo esc_attr($goals_against_final); ?>"></td>
@@ -158,7 +158,7 @@ if (! function_exists('fcm_save_match_meta_box')) {
             return;
 
         // Check nonce
-        if (! isset($_POST['fcm_match_meta_box_nonce']) || ! wp_verify_nonce($_POST['fcm_match_meta_box_nonce'], 'fcm_match_meta_box_nonce'))
+        if (! array_key_exists('fcm_match_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_match_meta_box_nonce'])), 'fcm_match_meta_box_nonce'))
             return;
 
         // Check permissions
@@ -168,25 +168,25 @@ if (! function_exists('fcm_save_match_meta_box')) {
 
         // Save meta values
         if (array_key_exists('fcm_match_date', $_POST))
-            update_post_meta($post_id, '_fcm_match_date', sanitize_text_field($_POST['fcm_match_date']));
+            update_post_meta($post_id, '_fcm_match_date', sanitize_text_field(wp_unslash($_POST['fcm_match_date'])));
         if (array_key_exists('fcm_match_starttime', $_POST))
-            update_post_meta($post_id, '_fcm_match_starttime', sanitize_text_field($_POST['fcm_match_starttime']));
+            update_post_meta($post_id, '_fcm_match_starttime', sanitize_text_field(wp_unslash($_POST['fcm_match_starttime'])));
         if (array_key_exists('fcm_match_endtime', $_POST))
-            update_post_meta($post_id, '_fcm_match_endtime', sanitize_text_field($_POST['fcm_match_endtime']));
+            update_post_meta($post_id, '_fcm_match_endtime', sanitize_text_field(wp_unslash($_POST['fcm_match_endtime'])));
         if (array_key_exists('fcm_match_team', $_POST))
-            update_post_meta($post_id, '_fcm_match_team', sanitize_text_field($_POST['fcm_match_team']));
+            update_post_meta($post_id, '_fcm_match_team', sanitize_text_field(wp_unslash($_POST['fcm_match_team'])));
         if (array_key_exists('fcm_match_opponent', $_POST))
-            update_post_meta($post_id, '_fcm_match_opponent', sanitize_text_field($_POST['fcm_match_opponent']));
+            update_post_meta($post_id, '_fcm_match_opponent', sanitize_text_field(wp_unslash($_POST['fcm_match_opponent'])));
         if (array_key_exists('fcm_match_away', $_POST))
-            update_post_meta($post_id, '_fcm_match_away', intval($_POST['fcm_match_away']));
+            update_post_meta($post_id, '_fcm_match_away', intval(wp_unslash($_POST['fcm_match_away'])));
         if (array_key_exists('fcm_match_goals_for', $_POST))
-            update_post_meta($post_id, '_fcm_match_goals_for', sanitize_text_field($_POST['fcm_match_goals_for']));
+            update_post_meta($post_id, '_fcm_match_goals_for', sanitize_text_field(wp_unslash($_POST['fcm_match_goals_for'])));
         if (array_key_exists('fcm_match_goals_against', $_POST))
-            update_post_meta($post_id, '_fcm_match_goals_against', sanitize_text_field($_POST['fcm_match_goals_against']));
+            update_post_meta($post_id, '_fcm_match_goals_against', sanitize_text_field(wp_unslash($_POST['fcm_match_goals_against'])));
         if (array_key_exists('fcm_match_goals_for_final', $_POST))
-            update_post_meta($post_id, '_fcm_match_goals_for_final', sanitize_text_field($_POST['fcm_match_goals_for_final']));
+            update_post_meta($post_id, '_fcm_match_goals_for_final', sanitize_text_field(wp_unslash($_POST['fcm_match_goals_for_final'])));
         if (array_key_exists('fcm_match_goals_against_final', $_POST))
-            update_post_meta($post_id, '_fcm_match_goals_against_final', sanitize_text_field($_POST['fcm_match_goals_against_final']));
+            update_post_meta($post_id, '_fcm_match_goals_against_final', sanitize_text_field(wp_unslash($_POST['fcm_match_goals_against_final'])));
 
         // Update post with new title
         $home_team = get_home_team_name($post_id);
@@ -245,21 +245,21 @@ if (! function_exists('set_custom_edit_match_columns')) {
 }
 
 if (! function_exists('custom_match_column')) {
-    // Add the data to the custom columns for the player post type:
+    // Add the data to the custom columns for the match post type:
     function custom_match_column($column, $post_id)
     {
         switch ($column) {
 
             case 'match_datetime':
-                echo get_post_meta($post_id, '_fcm_match_date', true) . ' ' . get_post_meta($post_id, '_fcm_match_starttime', true);
+                echo esc_html(get_post_meta($post_id, '_fcm_match_date', true) . ' ' . get_post_meta($post_id, '_fcm_match_starttime', true));
                 break;
 
             case 'match_home_team':
-                echo get_home_team_name($post_id);
+                echo esc_html(get_home_team_name($post_id));
                 break;
 
             case 'match_away_team':
-                echo get_away_team_name($post_id);
+                echo esc_html(get_away_team_name($post_id));
                 break;
 
             case 'match_result':
@@ -268,16 +268,16 @@ if (! function_exists('custom_match_column')) {
                 $away = get_post_meta($post_id, '_fcm_match_away', true);
 
                 if ($away)
-                    echo $goals_against . ' - ' . $goals_for;
+                    echo esc_html($goals_against . ' - ' . $goals_for);
                 else
-                    echo $goals_against . ' - ' . $goals_for;
+                    echo esc_html($goals_for . ' - ' . $goals_against);
 
                 $goals_against_final = get_post_meta($post_id, '_fcm_match_goals_against_final', true);
                 $goals_for_final = get_post_meta($post_id, '_fcm_match_goals_for_final', true);
 
                 if ($goals_against_final > 0 || $goals_for_final > 0) {
                     if ($goals_against_final > $goals_against || $goals_for_final > $goals_for) {
-                        echo ' (' . $goals_for_final . ' - ' . $goals_against_final . ')';
+                        echo esc_html(' (' . $goals_for_final . ' - ' . $goals_against_final . ')');
                     }
                 }
                 break;

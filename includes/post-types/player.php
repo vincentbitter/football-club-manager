@@ -74,19 +74,19 @@ if (! function_exists('fcm_render_player_meta_box')) {
         <table class="form-table" role="presentation">
             <tbody>
                 <tr>
-                    <th><label for="fcm_player_first_name"><?php _e('First name', 'football-club-manager'); ?></label></th>
+                    <th><label for="fcm_player_first_name"><?php esc_html_e('First name', 'football-club-manager'); ?></label></th>
                     <td><input type="text" id="fcm_player_first_name" name="fcm_player_first_name" value="<?php echo esc_attr($first_name); ?>"></td>
                 </tr>
                 <tr>
-                    <th><label for="fcm_player_last_name"><?php _e('Last name', 'football-club-manager'); ?></label></th>
+                    <th><label for="fcm_player_last_name"><?php esc_html_e('Last name', 'football-club-manager'); ?></label></th>
                     <td><input type="text" id="fcm_player_last_name" name="fcm_player_last_name" value="<?php echo esc_attr($last_name); ?>"></td>
                 </tr>
                 <tr>
-                    <th><label for="fcm_player_team"><?php _e('Team', 'football-club-manager'); ?></label></th>
+                    <th><label for="fcm_player_team"><?php esc_html_e('Team', 'football-club-manager'); ?></label></th>
                     <td>
                         <select id="fcm_player_team" name="fcm_player_team">
                             <?php foreach ($team_options as $team_option) : ?>
-                                <option value="<?php echo $team_option->ID; ?>" <?php selected($team, $team_option->ID); ?>><?php echo $team_option->post_title; ?></option>
+                                <option value="<?php echo esc_attr($team_option->ID); ?>" <?php selected($team, $team_option->ID); ?>><?php echo esc_html($team_option->post_title); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </td>
@@ -106,7 +106,7 @@ if (! function_exists('fcm_save_player_meta_box')) {
             return;
 
         // Check nonce
-        if (! isset($_POST['fcm_player_meta_box_nonce']) || ! wp_verify_nonce($_POST['fcm_player_meta_box_nonce'], 'fcm_player_meta_box_nonce'))
+        if (! array_key_exists('fcm_player_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_player_meta_box_nonce'])), 'fcm_player_meta_box_nonce'))
             return;
 
         // Check permissions
@@ -115,11 +115,11 @@ if (! function_exists('fcm_save_player_meta_box')) {
 
         // Save meta values
         if (array_key_exists('fcm_player_first_name', $_POST))
-            update_post_meta($post_id, '_fcm_player_first_name', sanitize_text_field($_POST['fcm_player_first_name']));
+            update_post_meta($post_id, '_fcm_player_first_name', sanitize_text_field(wp_unslash($_POST['fcm_player_first_name'])));
         if (array_key_exists('fcm_player_last_name', $_POST))
-            update_post_meta($post_id, '_fcm_player_last_name', sanitize_text_field($_POST['fcm_player_last_name']));
+            update_post_meta($post_id, '_fcm_player_last_name', sanitize_text_field(wp_unslash($_POST['fcm_player_last_name'])));
         if (array_key_exists('fcm_player_team', $_POST))
-            update_post_meta($post_id, '_fcm_player_team', sanitize_text_field($_POST['fcm_player_team']));
+            update_post_meta($post_id, '_fcm_player_team', sanitize_text_field(wp_unslash($_POST['fcm_player_team'])));
 
         // Update post with new title
         $name = get_post_meta($post_id, '_fcm_player_first_name', true) . ' ' . get_post_meta($post_id, '_fcm_player_last_name', true);
@@ -158,18 +158,18 @@ if (! function_exists('custom_player_column')) {
         switch ($column) {
 
             case 'player_first_name':
-                echo get_post_meta($post_id, '_fcm_player_first_name', true);
+                echo esc_html(get_post_meta($post_id, '_fcm_player_first_name', true));
                 break;
 
             case 'player_last_name':
-                echo get_post_meta($post_id, '_fcm_player_last_name', true);
+                echo esc_html(get_post_meta($post_id, '_fcm_player_last_name', true));
                 break;
 
             case 'team_name':
                 $team_id = get_post_meta($post_id, '_fcm_player_team', true);
                 $team = fcm_get_team($team_id);
                 if ($team)
-                    echo $team->post_title;
+                    echo esc_html($team->post_title);
                 break;
         }
     }
