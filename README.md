@@ -2,4 +2,6 @@
 
 # Football Club Manager
 
+![Football Club Manager](./.wordpress-org/banner-1544x500.png)
+
 With Football Club Manager it is easy to manage your amateur football club in WordPress. Create team pages, player info, and integrate match data with just a few clicks!
