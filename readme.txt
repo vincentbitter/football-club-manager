@@ -2,7 +2,7 @@
 Contributors: vincentbitter
 Tags: soccer, football, sports, teams
 Requires at least: 6.8.1
-Tested up to: 6.8.1
+Tested up to: 6.8
 Stable tag: 0.0.0
 Requires PHP: 8.2
 License: GPLv3
