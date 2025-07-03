@@ -7,4 +7,5 @@ Stable tag: 0.0.0
 Requires PHP: 8.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
 Easily manage your amateur football club. Create team pages, player info, and integrate match data!
