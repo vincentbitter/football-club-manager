@@ -41,7 +41,10 @@ jobs:
       - name: Update version in files
         run: |
           sed -i "s/ \* Version:.*/ \* Version: $GitVersion_FullSemVer/" football-club-manager.php
+          sed -i "s/define('FCMSL_VERSION', '[^\']*');/define('FCM_VERSION', '$GitVersion_FullSemVer');/" football-club-manager.php
           sed -i "s/Stable tag:.*/Stable tag: $GitVersion_FullSemVer/" readme.txt
+          sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$GitVersion_FullSemVer\"/" package.json
+          sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$GitVersion_FullSemVer\"/" blocks/*/block.json
           git commit -am "Update version to $GitVersion_FullSemVer"
 
       - name: Create new tag

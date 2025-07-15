@@ -3,304 +3,316 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Football Club Manager 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-"
-"manager\n"
-"POT-Creation-Date: 2025-07-15T19:17:31+00:00\n"
-"PO-Revision-Date: 2025-07-15 21:32+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: nl_NL\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"POT-Creation-Date: 2025-07-15T19:17:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
 msgid "Football Club Manager"
-msgstr "Football Club Manager"
+msgstr ""
 
 #. Plugin URI of the plugin
 #: football-club-manager.php
 msgid "https://github.com/vincentbitter/football-club-manager"
-msgstr "https://github.com/vincentbitter/football-club-manager"
+msgstr ""
 
 #. Description of the plugin
 #: football-club-manager.php
-msgid ""
-"Easily create a website for your football club to publish teams, players and "
-"fixtures."
+msgid "Easily create a website for your football club to publish teams, players and fixtures."
 msgstr ""
-"Maak eenvoudig een website voor je voetbalvereniging met teams, spelers en "
-"wedstrijden."
 
 #. Author of the plugin
 #: football-club-manager.php
 msgid "Vincent Bitter"
-msgstr "Vincent Bitter"
+msgstr ""
 
 #. Author URI of the plugin
 #: football-club-manager.php
 msgid "https://vincentbitter.nl"
-msgstr "https://vincentbitter.nl"
+msgstr ""
 
 #: admin/page_dashboard.php:12
 msgid "At a Glance"
-msgstr "In een oogopslag"
+msgstr ""
 
-#: blocks/team-players/render.php:29 build/team-players/render.php:29
-#: blocks/team-players/edit.js:87 build/team-players/index.js:104
+#: blocks/team-players/render.php:29
+#: build/team-players/render.php:29
+#: blocks/team-players/edit.js:87
+#: build/team-players/index.js:104
 #: build/team-players/index.js:87
-#, php-format
+#, php-format,js-format
 msgid "Players of %s"
-msgstr "Spelers van %s"
+msgstr ""
 
-#: blocks/team-players/render.php:58 build/team-players/render.php:58
-#: blocks/team-players/edit.js:96 build/team-players/index.js:106
+#: blocks/team-players/render.php:58
+#: build/team-players/render.php:58
+#: blocks/team-players/edit.js:96
+#: build/team-players/index.js:106
 #: build/team-players/index.js:96
 msgid "No players found for this team."
-msgstr "Geen spelers gevonden voor dit team."
+msgstr ""
 
-#: football-club-manager.php:46 football-club-manager.php:47
+#: football-club-manager.php:46
+#: football-club-manager.php:47
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr ""
 
-#: football-club-manager.php:55 football-club-manager.php:56
+#: football-club-manager.php:55
+#: football-club-manager.php:56
 #: includes/post-types/team.php:41
 msgid "Teams"
-msgstr "Teams"
+msgstr ""
 
-#: football-club-manager.php:64 football-club-manager.php:65
-#: includes/post-types/player.php:18 includes/post-types/team.php:91
+#: football-club-manager.php:64
+#: football-club-manager.php:65
+#: includes/post-types/player.php:18
+#: includes/post-types/team.php:91
 msgid "Players"
-msgstr "Spelers"
+msgstr ""
 
-#: football-club-manager.php:73 football-club-manager.php:74
+#: football-club-manager.php:73
+#: football-club-manager.php:74
 #: includes/post-types/match.php:16
 msgid "Matches"
-msgstr "Wedstrijden"
+msgstr ""
 
 #: includes/post-types/match.php:17
 msgid "Match"
-msgstr "Wedstrijd"
+msgstr ""
 
 #: includes/post-types/match.php:18
 msgid "New match"
-msgstr "Nieuwe wedstrijd"
+msgstr ""
 
 #: includes/post-types/match.php:19
 msgid "Edit match"
-msgstr "Wijzig wedstrijd"
+msgstr ""
 
 #: includes/post-types/match.php:20
 msgid "No matches found"
-msgstr "Geen wedstrijden gevonden"
+msgstr ""
 
 #: includes/post-types/match.php:21
 msgid "No matches found in the trash"
-msgstr "Geen wedstrijden gevonden in de prullenbak"
+msgstr ""
 
 #: includes/post-types/match.php:22
 msgid "Search match"
-msgstr "Zoek wedstrijd"
+msgstr ""
 
 #: includes/post-types/match.php:46
 msgid "Match information"
-msgstr "Wedstrijdinformatie"
+msgstr ""
 
 #: includes/post-types/match.php:83
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: includes/post-types/match.php:84
 msgid "From"
-msgstr "Van"
+msgstr ""
 
 #: includes/post-types/match.php:85
 msgid "Till"
-msgstr "Tot"
+msgstr ""
 
 #: includes/post-types/match.php:102
 msgid "Home game"
-msgstr "Thuisteam"
+msgstr ""
 
 #: includes/post-types/match.php:109
 msgid "Away game"
-msgstr "Uitteam"
+msgstr ""
 
-#: includes/post-types/match.php:118 includes/post-types/player.php:123
-#: includes/post-types/player.php:185 includes/post-types/team.php:42
-#: blocks/team-players/edit.js:91 build/team-players/index.js:104
+#: includes/post-types/match.php:118
+#: includes/post-types/player.php:123
+#: includes/post-types/player.php:185
+#: includes/post-types/team.php:42
+#: blocks/team-players/edit.js:91
+#: build/team-players/index.js:104
 #: build/team-players/index.js:91
 msgid "Team"
-msgstr "Team"
+msgstr ""
 
-#: includes/post-types/match.php:119 includes/post-types/match.php:121
+#: includes/post-types/match.php:119
+#: includes/post-types/match.php:121
 msgid "Goals"
-msgstr "Doelpunten"
+msgstr ""
 
 #: includes/post-types/match.php:122
 msgid "Opponent"
-msgstr "Tegenstander"
+msgstr ""
 
 #: includes/post-types/match.php:140
 msgid "Final score"
-msgstr "Einduitslag"
+msgstr ""
 
 #: includes/post-types/match.php:237
 msgid "Date/time"
-msgstr "Datum/tijd"
+msgstr ""
 
 #: includes/post-types/match.php:238
 msgid "Home team"
-msgstr "Thuisteam"
+msgstr ""
 
 #: includes/post-types/match.php:239
 msgid "Away team"
-msgstr "Uitteam"
+msgstr ""
 
 #: includes/post-types/match.php:240
 msgid "Result"
-msgstr "Uitslag"
+msgstr ""
 
 #: includes/post-types/player.php:19
 msgid "Player"
-msgstr "Speler"
+msgstr ""
 
 #: includes/post-types/player.php:20
 msgid "New player"
-msgstr "Nieuwe speler"
+msgstr ""
 
 #: includes/post-types/player.php:21
 msgid "Edit player"
-msgstr "Wijzig speler"
+msgstr ""
 
 #: includes/post-types/player.php:22
 msgid "Player photo"
-msgstr "Spelersfoto"
+msgstr ""
 
 #: includes/post-types/player.php:23
 msgid "Set player photo"
-msgstr "Spelersfoto instellen"
+msgstr ""
 
 #: includes/post-types/player.php:24
 msgid "Remove player photo"
-msgstr "Verwijder spelersfoto"
+msgstr ""
 
 #: includes/post-types/player.php:25
 msgid "Use as player photo"
-msgstr "Als spelersfoto gebruiken"
+msgstr ""
 
 #: includes/post-types/player.php:26
 msgid "No players found"
-msgstr "Geen spelers gevonden"
+msgstr ""
 
 #: includes/post-types/player.php:27
 msgid "No players found in the trash"
-msgstr "Geen spelers gevonden in de prullenbak"
+msgstr ""
 
 #: includes/post-types/player.php:28
 msgid "Search player"
-msgstr "Zoek speler"
+msgstr ""
 
 #: includes/post-types/player.php:88
 msgid "Player information"
-msgstr "Spelersinformatie"
+msgstr ""
 
-#: includes/post-types/player.php:115 includes/post-types/player.php:183
+#: includes/post-types/player.php:115
+#: includes/post-types/player.php:183
 msgid "First name"
-msgstr "Voornaam"
+msgstr ""
 
-#: includes/post-types/player.php:119 includes/post-types/player.php:184
+#: includes/post-types/player.php:119
+#: includes/post-types/player.php:184
 msgid "Last name"
-msgstr "Achternaam"
+msgstr ""
 
 #: includes/post-types/team.php:43
 msgid "New team"
-msgstr "Nieuw team"
+msgstr ""
 
 #: includes/post-types/team.php:44
 msgid "Edit team"
-msgstr "Wijzig team"
+msgstr ""
 
 #: includes/post-types/team.php:45
 msgid "Team photo"
-msgstr "Teamfoto"
+msgstr ""
 
 #: includes/post-types/team.php:46
 msgid "Set team photo"
-msgstr "Teamfoto instellen"
+msgstr ""
 
 #: includes/post-types/team.php:47
 msgid "Remove team photo"
-msgstr "Verwijder teamfoto"
+msgstr ""
 
 #: includes/post-types/team.php:48
 msgid "Use as team photo"
-msgstr "Als teamfoto gebruiken"
+msgstr ""
 
 #: includes/post-types/team.php:49
 msgid "No teams found"
-msgstr "Geen teams gevonden"
+msgstr ""
 
 #: includes/post-types/team.php:50
 msgid "No teams found in the trash"
-msgstr "Geen teams gevonden in de prullenbak"
+msgstr ""
 
 #: includes/post-types/team.php:51
 msgid "Search team"
-msgstr "Zoek team"
+msgstr ""
 
 #: includes/post-types/team.php:103
 msgid "Elements"
-msgstr "Elementen"
+msgstr ""
 
 #: includes/post-types/team.php:119
 msgid "Show players"
-msgstr "Toon spelers"
+msgstr ""
 
-#: blocks/team-players/edit.js:46 build/team-players/index.js:73
+#: blocks/team-players/edit.js:46
+#: build/team-players/index.js:73
 #: build/team-players/index.js:46
 msgid "Player Name"
-msgstr "Naam Speler"
+msgstr ""
 
-#: blocks/team-players/edit.js:52 build/team-players/index.js:76
+#: blocks/team-players/edit.js:52
+#: build/team-players/index.js:76
 #: build/team-players/index.js:52
 msgid "Select a team"
-msgstr "Selecteer een team"
+msgstr ""
 
-#: blocks/team-players/edit.js:64 build/team-players/index.js:85
+#: blocks/team-players/edit.js:64
+#: build/team-players/index.js:85
 #: build/team-players/index.js:64
 msgid "Team Settings"
-msgstr "Team Instellingen"
+msgstr ""
 
-#: blocks/team-players/edit.js:68 build/team-players/index.js:88
+#: blocks/team-players/edit.js:68
+#: build/team-players/index.js:88
 #: build/team-players/index.js:68
 msgid "Loading teams..."
-msgstr "Teams laden…"
+msgstr ""
 
-#: blocks/team-players/edit.js:71 build/team-players/index.js:90
+#: blocks/team-players/edit.js:71
+#: build/team-players/index.js:90
 #: build/team-players/index.js:71
 msgid "Choose a team..."
-msgstr "Kies een team…"
-
-#: blocks/team-players/edit.js:75 build/team-players/index.js:96
-#: build/team-players/index.js:75
-msgid ""
-"If you add the component to a team page, you don't need to set this field. "
-"It will automatically show the players of the current team."
 msgstr ""
-"Als het component wordt toegevoegd aan een teampagina, hoeft dit veld niet "
-"ingesteld te worden. Het wordt dan automatisch gevuld met de spelers van dat "
-"team."
 
-#: blocks/team-players/block.json build/team-players/block.json
+#: blocks/team-players/edit.js:75
+#: build/team-players/index.js:96
+#: build/team-players/index.js:75
+msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
+msgstr ""
+
+#: blocks/team-players/block.json
+#: build/team-players/block.json
 msgctxt "block title"
 msgid "Team Players"
-msgstr "Team Spelers"
+msgstr ""
 
-#: blocks/team-players/block.json build/team-players/block.json
+#: blocks/team-players/block.json
+#: build/team-players/block.json
 msgctxt "block description"
 msgid "Show an overview of the players in a team."
-msgstr "Toon een overzicht van de spelers in een team."
+msgstr ""
