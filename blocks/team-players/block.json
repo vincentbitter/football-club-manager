@@ -5,7 +5,7 @@
 	"version": "0.0.0",
 	"title": "Team Players",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "groups",
 	"description": "Show an overview of the players in a team.",
 	"example": {},
 	"supports": {
