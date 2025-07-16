@@ -158,7 +158,7 @@ if (! function_exists('fcm_save_match_meta_box')) {
             return;
 
         // Check nonce
-        if (! array_key_exists('fcm_match_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_match_meta_box_nonce'])), 'fcm_save_match_meta_box'))
+        if (! check_admin_referer('fcm_save_match_meta_box', 'fcm_match_meta_box_nonce'))
             return;
 
         // Check permissions
