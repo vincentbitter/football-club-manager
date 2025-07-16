@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Required version set to 6.8 (major) instead of 6.8.1.
 - Limit handling meta box updates to specific post types.
 - *(security)* Improve nonce validation logic in match and player meta boxes.
+- Remove .editorconfig from release.
 
 ### 🚜 Refactor
 
