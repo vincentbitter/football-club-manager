@@ -99,6 +99,10 @@ function fcmanager_save_player_meta_box($post_id)
     if (get_post_type($post_id) !== 'fcmanager_player')
         return;
 
+    // Allow skipping meta box save for import tools using wp_insert_post
+    if (apply_filters('fcmanager_skip_meta_box_save', false))
+        return;
+
     // Check nonce
     if (! check_admin_referer('fcmanager_save_player_meta_box', 'fcmanager_player_meta_box_nonce'))
         return;
