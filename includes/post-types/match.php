@@ -75,7 +75,7 @@ if (! function_exists('fcm_render_match_meta_box')) {
         $team_options = fcm_get_teams();
 
         // Show form
-        wp_nonce_field('fcm_match_meta_box_nonce', 'fcm_match_meta_box_nonce');
+        wp_nonce_field('fcm_save_match_meta_box', 'fcm_match_meta_box_nonce');
 ?>
         <table role="presentation">
             <thead>
@@ -158,13 +158,12 @@ if (! function_exists('fcm_save_match_meta_box')) {
             return;
 
         // Check nonce
-        if (! array_key_exists('fcm_match_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_match_meta_box_nonce'])), 'fcm_match_meta_box_nonce'))
+        if (! array_key_exists('fcm_match_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_match_meta_box_nonce'])), 'fcm_save_match_meta_box'))
             return;
 
         // Check permissions
         if (! current_user_can('edit_post', $post_id))
             return;
-
 
         // Save meta values
         if (array_key_exists('fcm_match_date', $_POST))
@@ -200,10 +199,10 @@ if (! function_exists('fcm_save_match_meta_box')) {
             'post_title' => $title,
             'post_name' => $slug
         );
-        remove_action('save_post', 'fcm_save_match_meta_box');
+        remove_action('save_post_fcm_match', 'fcm_save_match_meta_box');
         wp_update_post($post_update);
     }
-    add_action('save_post', 'fcm_save_match_meta_box');
+    add_action('save_post_fcm_match', 'fcm_save_match_meta_box');
 }
 
 if (! function_exists('get_home_team_name')) {

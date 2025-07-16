@@ -69,7 +69,7 @@ if (! function_exists('fcm_render_player_meta_box')) {
         $team_options = fcm_get_teams();
 
         // Show form
-        wp_nonce_field('fcm_player_meta_box_nonce', 'fcm_player_meta_box_nonce');
+        wp_nonce_field('fcm_save_player_meta_box', 'fcm_player_meta_box_nonce');
 ?>
         <table class="form-table" role="presentation">
             <tbody>
@@ -106,7 +106,7 @@ if (! function_exists('fcm_save_player_meta_box')) {
             return;
 
         // Check nonce
-        if (! array_key_exists('fcm_player_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_player_meta_box_nonce'])), 'fcm_player_meta_box_nonce'))
+        if (! array_key_exists('fcm_player_meta_box_nonce', $_POST) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcm_player_meta_box_nonce'])), 'fcm_save_player_meta_box'))
             return;
 
         // Check permissions
@@ -129,10 +129,10 @@ if (! function_exists('fcm_save_player_meta_box')) {
             'post_title' => $name,
             'post_name' => $slug
         );
-        remove_action('save_post', 'fcm_save_player_meta_box');
+        remove_action('save_post_fcm_player', 'fcm_save_player_meta_box');
         wp_update_post($post_update);
     }
-    add_action('save_post', 'fcm_save_player_meta_box');
+    add_action('save_post_fcm_player', 'fcm_save_player_meta_box');
 }
 
 // Add the custom columns to the player post type:
