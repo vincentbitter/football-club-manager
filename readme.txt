@@ -1,7 +1,7 @@
 === Football Club Manager ===
 Contributors: vincentbitter
 Tags: soccer, football, sports, teams
-Requires at least: 6.8.1
+Requires at least: 6.8
 Tested up to: 6.8
 Stable tag: 0.1.0
 Requires PHP: 8.2
