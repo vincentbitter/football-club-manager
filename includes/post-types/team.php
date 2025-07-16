@@ -63,66 +63,66 @@ function fcmanager_unregister_team_post_type()
     unregister_post_type('fcmanager_team');
 }
 
-function fcm_players_on_team_page($content)
+function fcmanager_players_on_team_page($content)
 {
-    $hide = get_post_meta(get_the_ID(), 'fcm_show_players_block', true) == '0';
-    if (get_post_type() === 'fcm_team' && get_theme_mod('fcm_show_players_block', true) && !$hide) {
-        $extra_content = do_blocks(("<!-- wp:fcm/team-players /-->"));
+    $hide = get_post_meta(get_the_ID(), 'fcmanager_show_players_block', true) == '0';
+    if (get_post_type() === 'fcmanager_team' && get_theme_mod('fcmanager_show_players_block', true) && !$hide) {
+        $extra_content = do_blocks(("<!-- wp:fcmanager/team-players /-->"));
         return $content . $extra_content;
     }
     return $content;
 }
-add_filter('the_content', 'fcm_players_on_team_page');
+add_filter('the_content', 'fcmanager_players_on_team_page');
 
-function fcm_customize_register($wp_customize)
+function fcmanager_customize_register($wp_customize)
 {
-    $wp_customize->add_setting('fcm_show_players_block', [
+    $wp_customize->add_setting('fcmanager_show_players_block', [
         'default' => true,
         'sanitize_callback' => 'rest_sanitize_boolean'
     ]);
 
 
-    $wp_customize->add_control('fcm_show_players_block', [
+    $wp_customize->add_control('fcmanager_show_players_block', [
         'label' => __('Players', 'football-club-manager'),
-        'section' => 'post_type_single_fcm_team',
+        'section' => 'post_type_single_fcmanager_team',
         'type' => 'checkbox',
         'priority' => 11
     ]);
 }
-add_action('customize_register', 'fcm_customize_register');
+add_action('customize_register', 'fcmanager_customize_register');
 
-function fcm_add_players_toggle_meta_box()
+function fcmanager_add_players_toggle_meta_box()
 {
     add_meta_box(
-        'fcm_players_toggle',
+        'fcmanager_players_toggle',
         __('Elements', 'football-club-manager'),
-        'fcm_render_players_toggle_meta_box',
-        'fcm_team',
+        'fcmanager_render_players_toggle_meta_box',
+        'fcmanager_team',
         'side',
         'default'
     );
 }
-add_action('add_meta_boxes', 'fcm_add_players_toggle_meta_box');
+add_action('add_meta_boxes', 'fcmanager_add_players_toggle_meta_box');
 
-function fcm_render_players_toggle_meta_box($post)
+function fcmanager_render_players_toggle_meta_box($post)
 {
-    $value = get_post_meta($post->ID, 'fcm_show_players_block', true) == '0' ? '0' : '1';
-    wp_nonce_field('fcm_players_toggle_nonce', 'fcm_players_toggle_nonce');
+    $value = get_post_meta($post->ID, 'fcmanager_show_players_block', true) == '0' ? '0' : '1';
+    wp_nonce_field('fcmanager_players_toggle_nonce', 'fcmanager_players_toggle_nonce');
 ?>
     <label>
-        <input type="checkbox" name="fcm_show_players_block" value="1" <?php checked($value, '1'); ?>>
+        <input type="checkbox" name="fcmanager_show_players_block" value="1" <?php checked($value, '1'); ?>>
         <?php _e('Show players', 'football-club-manager'); ?>
     </label>
 <?php
 }
 
-function fcm_save_players_toggle_meta($post_id)
+function fcmanager_save_players_toggle_meta($post_id)
 {
-    if (!isset($_POST['fcm_players_toggle_nonce']) || !wp_verify_nonce($_POST['fcm_players_toggle_nonce'], 'fcm_players_toggle_nonce')) {
+    if (!isset($_POST['fcmanager_players_toggle_nonce']) || !wp_verify_nonce($_POST['fcmanager_players_toggle_nonce'], 'fcmanager_players_toggle_nonce')) {
         return;
     }
 
-    $value = isset($_POST['fcm_show_players_block']) ? '1' : '0';
-    update_post_meta($post_id, 'fcm_show_players_block', $value);
+    $value = isset($_POST['fcmanager_show_players_block']) ? '1' : '0';
+    update_post_meta($post_id, 'fcmanager_show_players_block', $value);
 }
-add_action('save_post', 'fcm_save_players_toggle_meta');
+add_action('save_post', 'fcmanager_save_players_toggle_meta');

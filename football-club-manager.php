@@ -18,7 +18,7 @@ if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-define('FCM_VERSION', '0.0.0');
+define('FCMANAGER_VERSION', '0.0.0');
 
 // Register custom post types
 require_once('includes/post-types/team.php');
@@ -112,11 +112,11 @@ function fcmanager_init()
     wp_register_block_types_from_metadata_collection(__DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php');
 }
 
-add_action('init', 'fcm_init');
+add_action('init', 'fcmanager_init');
 
 
 // Register block editor assets
-function fcm_enqueue_block_editor_assets()
+function fcmanager_enqueue_block_editor_assets()
 {
     $plugin_url = plugin_dir_url(__FILE__);
     $manifest = require __DIR__ . '/build/blocks-manifest.php';
@@ -130,7 +130,7 @@ function fcm_enqueue_block_editor_assets()
         wp_set_script_translations($editor_script_handle, 'football-club-manager', plugin_dir_path(__FILE__) . get_plugin_data(__FILE__)['DomainPath']);
     }
 }
-add_action('enqueue_block_editor_assets', 'fcm_enqueue_block_editor_assets');
+add_action('enqueue_block_editor_assets', 'fcmanager_enqueue_block_editor_assets');
 
 // On admin menu
 function fcmanager_admin_menu()
@@ -163,7 +163,7 @@ function fcmanager_deactivated()
 register_deactivation_hook(__FILE__, 'fcmanager_deactivated');
 
 // Load blocks
-function fcm_load_all_blocks()
+function fcmanager_load_all_blocks()
 {
     $blocks_dir = __DIR__ . '/build';
     $block_folders = glob($blocks_dir . '/*', GLOB_ONLYDIR);
@@ -176,4 +176,4 @@ function fcm_load_all_blocks()
         }
     }
 }
-fcm_load_all_blocks();
+fcmanager_load_all_blocks();

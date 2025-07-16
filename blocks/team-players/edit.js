@@ -9,7 +9,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const teams = useSelect(
 		(select) =>
-			select("core").getEntityRecords("postType", "fcm_team", { per_page: -1 }),
+			select("core").getEntityRecords("postType", "fcmanager_team", { per_page: -1 }),
 		[],
 	);
 
@@ -18,7 +18,7 @@ export default function Edit({ attributes, setAttributes }) {
 			if (teamId) {
 				return teamId;
 			}
-			if (select("core/editor").getCurrentPostType() === "fcm_team") {
+			if (select("core/editor").getCurrentPostType() === "fcmanager_team") {
 				return select("core/editor").getCurrentPostId();
 			}
 			return "";
@@ -30,9 +30,9 @@ export default function Edit({ attributes, setAttributes }) {
 		(select) =>
 			preview_team_id
 				? select("core")
-						.getEntityRecords("postType", "fcm_player", {
+						.getEntityRecords("postType", "fcmanager_player", {
 							per_page: -1,
-							meta_key: "_fcm_player_team",
+							meta_key: "_fcmanager_player_team",
 							meta_value: preview_team_id,
 						})
 						?.map((player) => ({
@@ -81,7 +81,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<div class="fcm-team-players">
+				<div class="fcmanager-team-players">
 					<h2>
 						{sprintf(
 							__("Players of %s", "football-club-manager"),
@@ -96,15 +96,15 @@ export default function Edit({ attributes, setAttributes }) {
 							{__("No players found for this team.", "football-club-manager")}
 						</p>
 					) : (
-						<ul class="fcm-player-list">
+						<ul class="fcmanager-player-list">
 							{players?.map((player) => (
-								<li class="fcm-player-card" key={player.id}>
-									<figure class="fcm-player-photo">
+								<li class="fcmanager-player-card" key={player.id}>
+									<figure class="fcmanager-player-photo">
 										{player.photo ? (
 											<img src={player.photo} alt={player.name} />
 										) : (
 											<div
-												class="fcm-placeholder"
+												class="fcmanager-placeholder"
 												style={{
 													WebkitMaskImage: `url("${pluginUrl}/assets/player.svg")`,
 													maskImage: `url("${pluginUrl}/assets/player.svg")`,

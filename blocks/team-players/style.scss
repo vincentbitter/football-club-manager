@@ -1,4 +1,4 @@
-.fcm-player-list {
+.fcmanager-player-list {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -6,12 +6,12 @@
     padding: 0;
 }
 
-.fcm-player-card {
+.fcmanager-player-card {
     width: 150px;
     text-align: center;
 }
 
-.fcm-player-card .fcm-player-photo {
+.fcmanager-player-card .fcmanager-player-photo {
     width: 100px;
     height: 100px;
 	background-color: var(--wp--preset--color--palette-color-5);
@@ -27,7 +27,7 @@
         object-fit: cover;
     }
 
-    .fcm-placeholder {
+    .fcmanager-placeholder {
         width: 80px;
         height: 80px;
         border-radius: 50%;

@@ -34,7 +34,7 @@ function fcmanager_register_player_post_type()
 
 add_action('rest_api_init', function () {
     register_rest_field(
-        'fcm_player',
+        'fcmanager_player',
         'meta',
         array(
             'get_callback' => function ($post) {
@@ -43,7 +43,7 @@ add_action('rest_api_init', function () {
             'schema' => null,
         )
     );
-    register_rest_field('fcm_player', 'title', [
+    register_rest_field('fcmanager_player', 'title', [
         'get_callback' => function ($post) {
             return get_the_title($post['id']);
         },
@@ -52,7 +52,7 @@ add_action('rest_api_init', function () {
             'context' => ['view', 'edit'],
         ],
     ]);
-    register_rest_field('fcm_player', 'photo', [
+    register_rest_field('fcmanager_player', 'photo', [
         'get_callback' => function ($post) {
             $img_id = get_post_thumbnail_id($post['id']);
             if (!$img_id) return null;
@@ -211,7 +211,7 @@ add_action('manage_fcmanager_player_posts_custom_column', 'custom_player_column'
 
 
 // Allow filtering players via REST API
-add_filter('rest_fcm_player_query', function ($args, $request) {
+add_filter('rest_fcmanager_player_query', function ($args, $request) {
     if ($meta_key = $request->get_param('meta_key')) {
         $args['meta_key'] = $meta_key;
         $args['meta_value'] = $request->get_param('meta_value');
