@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2025-07-17
+
+### 🐛 Bug Fixes
+
+- Nonce validation error on creating new players or matches.
+
 ## [0.2.0] - 2025-07-16
 
 ### 🚀 Features
