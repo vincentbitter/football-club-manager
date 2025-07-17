@@ -140,7 +140,7 @@ function fcmanager_save_player_meta_box($post_id)
         return;
 
     // Check nonce
-    if (! check_admin_referer('fcmanager_save_player_meta_box', 'fcmanager_player_meta_box_nonce'))
+    if (!array_key_exists('fcmanager_player_meta_box_nonce', $_POST) || !check_admin_referer('fcmanager_save_player_meta_box', 'fcmanager_player_meta_box_nonce'))
         return;
 
     // Check permissions
