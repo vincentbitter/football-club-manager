@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Football Club Manager\n"
 "POT-Creation-Date: 2025-06-26 19:26+0200\n"
-"PO-Revision-Date: 2025-06-26 19:30+0200\n"
+"PO-Revision-Date: 2025-08-08 13:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Vincent Bitter\n"
 "Language: nl_NL\n"
@@ -80,11 +80,11 @@ msgstr "Tot"
 
 #: includes/post-types/match.php:102
 msgid "Home game"
-msgstr "Thuisteam"
+msgstr "Thuiswedstrijd"
 
 #: includes/post-types/match.php:109
 msgid "Away game"
-msgstr "Uitteam"
+msgstr "Uitwedstrijd"
 
 #: includes/post-types/match.php:118 includes/post-types/player.php:85
 #: includes/post-types/player.php:147 includes/post-types/team.php:42
