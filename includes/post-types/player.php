@@ -135,7 +135,7 @@ add_action('save_post_fcmanager_player', 'fcmanager_save_player_meta_box');
 
 
 // Add the custom columns to the player post type:
-function set_custom_edit_player_columns($columns)
+function fcmanager_set_custom_edit_player_columns($columns)
 {
     unset($columns['title']);
     unset($columns['date']);
@@ -146,11 +146,11 @@ function set_custom_edit_player_columns($columns)
     return $columns;
 }
 
-add_filter('manage_fcmanager_player_posts_columns', 'set_custom_edit_player_columns');
+add_filter('manage_fcmanager_player_posts_columns', 'fcmanager_set_custom_edit_player_columns');
 
 
 // Add the data to the custom columns for the player post type:
-function custom_player_column($column, $post_id)
+function fcmanager_custom_player_column($column, $post_id)
 {
     switch ($column) {
 
@@ -171,4 +171,4 @@ function custom_player_column($column, $post_id)
     }
 }
 
-add_action('manage_fcmanager_player_posts_custom_column', 'custom_player_column', 10, 2);
+add_action('manage_fcmanager_player_posts_custom_column', 'fcmanager_custom_player_column', 10, 2);
