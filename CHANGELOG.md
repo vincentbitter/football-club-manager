@@ -8,9 +8,14 @@ All notable changes to this project will be documented in this file.
 
 - Team Players block on team page and in Block Editor.
 
+### 🚜 Refactor
+
+- Move assets to public folder.
+
 ### ⚙️  Miscellaneous Tasks
 
 - Lower minimum PHP version requirement to 7.4.
+- Use wp-scripts plugin-zip to create release file.
 
 ## [0.5.0] - 2025-08-17
 
