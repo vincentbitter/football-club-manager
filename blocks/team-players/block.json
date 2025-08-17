@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "fcmanager/team-players",
-	"version": "0.0.0",
+	"version": "0.6.0",
 	"title": "Team Players",
 	"category": "widgets",
 	"icon": "groups",
