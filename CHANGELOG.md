@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2025-08-17
+
+### 🚀 Features
+
+- Release to Wordpress.org Plugin Directory.
+
 ## [0.4.0] - 2025-08-08
 
 ### 🐛 Bug Fixes
