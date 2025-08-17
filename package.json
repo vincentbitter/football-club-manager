@@ -1,6 +1,6 @@
 {
 	"name": "football-club-manager",
-	"version": "0.0.0",
+	"version": "0.6.0",
 	"description": "Easily create a website for your football club to publish teams, players and fixtures.",
 	"author": "Vincent Bitter",
 	"license": "GPL-3.0",
