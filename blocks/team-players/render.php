@@ -26,7 +26,9 @@ if (! function_exists('fcmanager_render_team_players_block')) {
             ob_start();
 ?>
             <div class="fcmanager-team-players">
-                <h2><?php printf(__("Players of %s", 'football-club-manager'), $team_post->post_title); ?></h2>
+                <h2><?php
+                    /* translators: %s is the team name */
+                    printf(__("Players of %s", 'football-club-manager'), $team_post->post_title); ?></h2>
 
                 <?php if ($players): ?>
                     <ul class="fcmanager-player-list">

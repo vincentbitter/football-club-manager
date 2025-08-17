@@ -179,8 +179,8 @@ function fcmanager_save_match_meta_box($post_id)
         update_post_meta($post_id, '_fcmanager_match_goals_against_final', sanitize_text_field(wp_unslash($_POST['fcmanager_match_goals_against_final'])));
 
     // Update post with new title
-    $home_team = get_home_team_name($post_id);
-    $away_team = get_away_team_name($post_id);
+    $home_team = fcmanager_get_home_team_name($post_id);
+    $away_team = fcmanager_get_away_team_name($post_id);
 
     $datetime = get_post_meta($post_id, '_fcmanager_match_date', true) . ' ' . get_post_meta($post_id, '_fcmanager_match_starttime', true);
     $title = $datetime . ' ' . $home_team . ' - ' . $away_team;
@@ -197,7 +197,7 @@ function fcmanager_save_match_meta_box($post_id)
 add_action('save_post_fcmanager_match', 'fcmanager_save_match_meta_box');
 
 
-function get_home_team_name($post_id)
+function    fcmanager_get_home_team_name($post_id)
 {
     if (!get_post_meta($post_id, '_fcmanager_match_away', true)) {
         $team = fcmanager_get_team(get_post_meta($post_id, '_fcmanager_match_team', true));
@@ -207,7 +207,7 @@ function get_home_team_name($post_id)
 }
 
 
-function get_away_team_name($post_id)
+function fcmanager_get_away_team_name($post_id)
 {
     if (get_post_meta($post_id, '_fcmanager_match_away', true)) {
         $team = fcmanager_get_team(get_post_meta($post_id, '_fcmanager_match_team', true));
@@ -218,7 +218,7 @@ function get_away_team_name($post_id)
 
 
 // Add the custom columns to the match post type:
-function set_custom_edit_match_columns($columns)
+function fcmanager_set_custom_edit_match_columns($columns)
 {
     unset($columns['title']);
     unset($columns['date']);
@@ -230,11 +230,11 @@ function set_custom_edit_match_columns($columns)
     return $columns;
 }
 
-add_filter('manage_fcmanager_match_posts_columns', 'set_custom_edit_match_columns');
+add_filter('manage_fcmanager_match_posts_columns', 'fcmanager_set_custom_edit_match_columns');
 
 
 // Add the data to the custom columns for the match post type:
-function custom_match_column($column, $post_id)
+function fcmanager_custom_match_column($column, $post_id)
 {
     switch ($column) {
 
@@ -243,11 +243,11 @@ function custom_match_column($column, $post_id)
             break;
 
         case 'match_home_team':
-            echo esc_html(get_home_team_name($post_id));
+            echo esc_html(fcmanager_get_home_team_name($post_id));
             break;
 
         case 'match_away_team':
-            echo esc_html(get_away_team_name($post_id));
+            echo esc_html(fcmanager_get_away_team_name($post_id));
             break;
 
         case 'match_result':
@@ -272,4 +272,4 @@ function custom_match_column($column, $post_id)
     }
 }
 
-add_action('manage_fcmanager_match_posts_custom_column', 'custom_match_column', 10, 2);
+add_action('manage_fcmanager_match_posts_custom_column', 'fcmanager_custom_match_column', 10, 2);
