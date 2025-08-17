@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2025-08-17
+
+### ⚙️  Miscellaneous Tasks
+
+- Lower minimum PHP version requirement to 7.4.
+
 ## [0.5.0] - 2025-08-17
 
 ### 🚀 Features
