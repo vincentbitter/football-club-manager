@@ -74,22 +74,26 @@ function fcmanager_players_on_team_page($content)
 }
 add_filter('the_content', 'fcmanager_players_on_team_page');
 
-function fcmanager_customize_register($wp_customize)
+function fcmanager_customize_register_team_page($wp_customize)
 {
+    $wp_customize->add_section('fcmanager_team_page', [
+        'title' => __('Team Page Settings', 'football-club-manager'),
+        'priority' => 10,
+        'panel' => 'fcmanager_panel',
+    ]);
+
     $wp_customize->add_setting('fcmanager_show_players_block', [
         'default' => true,
         'sanitize_callback' => 'rest_sanitize_boolean'
     ]);
 
-
     $wp_customize->add_control('fcmanager_show_players_block', [
-        'label' => __('Players', 'football-club-manager'),
-        'section' => 'post_type_single_fcmanager_team',
+        'label' => __('Show players', 'football-club-manager'),
+        'section' => 'fcmanager_team_page',
         'type' => 'checkbox',
-        'priority' => 11
+        'priority' => 10
     ]);
 }
-add_action('customize_register', 'fcmanager_customize_register');
 
 function fcmanager_add_players_toggle_meta_box()
 {

@@ -177,3 +177,17 @@ function fcmanager_load_all_blocks()
     }
 }
 fcmanager_load_all_blocks();
+
+// Add customerizer settings
+function fcmanager_customize_register($wp_customize)
+{
+    $wp_customize->add_panel('fcmanager_panel', [
+        'title'       => __('Football Club Manager', 'football-club-manager'),
+        'capability'     => 'edit_theme_options',
+        'priority'    => 30,
+    ]);
+
+    fcmanager_customize_register_team_page($wp_customize);
+}
+
+add_action('customize_register', 'fcmanager_customize_register');
