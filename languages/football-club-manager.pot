@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-17T19:03:33+00:00\n"
+"POT-Creation-Date: 2025-08-17T20:03:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
@@ -44,14 +44,20 @@ msgid "At a Glance"
 msgstr ""
 
 #. translators: %s is the team name
-#: blocks/team-players/render.php:31
+#: blocks/team-players/render.php:36
+#: build/team-players/render.php:36
 #: blocks/team-players/edit.js:87
+#: build/team-players/index.js:104
+#: build/team-players/index.js:87
 #, php-format,js-format
 msgid "Players of %s"
 msgstr ""
 
-#: blocks/team-players/render.php:60
+#: blocks/team-players/render.php:63
+#: build/team-players/render.php:63
 #: blocks/team-players/edit.js:96
+#: build/team-players/index.js:106
+#: build/team-players/index.js:96
 msgid "No players found for this team."
 msgstr ""
 
@@ -69,7 +75,7 @@ msgstr ""
 #: football-club-manager.php:63
 #: football-club-manager.php:64
 #: includes/post-types/player.php:15
-#: includes/post-types/team.php:86
+#: includes/post-types/team.php:91
 msgid "Players"
 msgstr ""
 
@@ -132,6 +138,8 @@ msgstr ""
 #: includes/post-types/player.php:180
 #: includes/post-types/team.php:39
 #: blocks/team-players/edit.js:91
+#: build/team-players/index.js:104
+#: build/team-players/index.js:91
 msgid "Team"
 msgstr ""
 
@@ -254,44 +262,62 @@ msgstr ""
 msgid "Search team"
 msgstr ""
 
-#: includes/post-types/team.php:98
+#: includes/post-types/team.php:80
+msgid "Team Page Settings"
+msgstr ""
+
+#: includes/post-types/team.php:103
 msgid "Elements"
 msgstr ""
 
-#: includes/post-types/team.php:114
+#: includes/post-types/team.php:119
 msgid "Show players"
 msgstr ""
 
 #: blocks/team-players/edit.js:46
+#: build/team-players/index.js:73
+#: build/team-players/index.js:46
 msgid "Player Name"
 msgstr ""
 
 #: blocks/team-players/edit.js:52
+#: build/team-players/index.js:76
+#: build/team-players/index.js:52
 msgid "Select a team"
 msgstr ""
 
 #: blocks/team-players/edit.js:64
+#: build/team-players/index.js:85
+#: build/team-players/index.js:64
 msgid "Team Settings"
 msgstr ""
 
 #: blocks/team-players/edit.js:68
+#: build/team-players/index.js:88
+#: build/team-players/index.js:68
 msgid "Loading teams..."
 msgstr ""
 
 #: blocks/team-players/edit.js:71
+#: build/team-players/index.js:90
+#: build/team-players/index.js:71
 msgid "Choose a team..."
 msgstr ""
 
 #: blocks/team-players/edit.js:75
+#: build/team-players/index.js:96
+#: build/team-players/index.js:75
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
 msgstr ""
 
 #: blocks/team-players/block.json
+#: build/team-players/block.json
 msgctxt "block title"
 msgid "Team Players"
 msgstr ""
 
 #: blocks/team-players/block.json
+#: build/team-players/block.json
 msgctxt "block description"
 msgid "Show an overview of the players in a team."
 msgstr ""
