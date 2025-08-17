@@ -111,16 +111,15 @@ function fcmanager_render_players_toggle_meta_box($post)
 ?>
     <label>
         <input type="checkbox" name="fcmanager_show_players_block" value="1" <?php checked($value, '1'); ?>>
-        <?php _e('Show players', 'football-club-manager'); ?>
+        <?php esc_html_e('Show players', 'football-club-manager'); ?>
     </label>
 <?php
 }
 
 function fcmanager_save_players_toggle_meta($post_id)
 {
-    if (!isset($_POST['fcmanager_players_toggle_nonce']) || !wp_verify_nonce($_POST['fcmanager_players_toggle_nonce'], 'fcmanager_players_toggle_nonce')) {
+    if (!array_key_exists('fcmanager_players_toggle_nonce', $_POST) || !check_admin_referer('fcmanager_players_toggle_nonce', 'fcmanager_players_toggle_nonce'))
         return;
-    }
 
     $value = isset($_POST['fcmanager_show_players_block']) ? '1' : '0';
     update_post_meta($post_id, 'fcmanager_show_players_block', $value);

@@ -207,13 +207,19 @@ function fcmanager_custom_player_column($column, $post_id)
     }
 }
 
-add_action('manage_fcmanager_player_posts_custom_column', 'custom_player_column', 10, 2);
+add_action('manage_fcmanager_player_posts_custom_column', 'fcmanager_custom_player_column', 10, 2);
 
 // Allow filtering players via REST API
 add_filter('rest_fcmanager_player_query', function ($args, $request) {
     if ($meta_key = $request->get_param('meta_key')) {
-        $args['meta_key'] = $meta_key;
-        $args['meta_value'] = $request->get_param('meta_value');
+        $args['meta_query'] = array(
+            [
+                'key' => $meta_key,
+                'value' => $request->get_param('meta_value'),
+                'compare' => '=',
+                'type' => 'NUMERIC',
+            ],
+        );
     }
     return $args;
 }, 10, 2);
