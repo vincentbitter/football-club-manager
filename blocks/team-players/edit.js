@@ -106,8 +106,8 @@ export default function Edit({ attributes, setAttributes }) {
 											<div
 												class="fcmanager-placeholder"
 												style={{
-													WebkitMaskImage: `url("${pluginUrl}/assets/player.svg")`,
-													maskImage: `url("${pluginUrl}/assets/player.svg")`,
+													WebkitMaskImage: `url("${pluginUrl}/public/images/player.svg")`,
+													maskImage: `url("${pluginUrl}/public/images/player.svg")`,
 												}}
 											/>
 										)}

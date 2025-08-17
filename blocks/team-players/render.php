@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 
 function fcmanager_render_team_players_block($attributes, $content)
 {
-    $player_placeholder_img =  plugin_dir_url(dirname(__DIR__, 1)) . 'assets/player.svg';
+    $player_placeholder_img =  plugin_dir_url(dirname(__DIR__, 1)) . 'public/images/player.svg';
 
     $team_id = isset($attributes['teamId']) && $attributes['teamId'] > 0
         ? intval($attributes['teamId'])
