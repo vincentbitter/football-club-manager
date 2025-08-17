@@ -1,0 +1,22 @@
+{
+	"name": "football-club-manager",
+	"version": "0.0.0",
+	"description": "Easily create a website for your football club to publish teams, players and fixtures.",
+	"author": "Vincent Bitter",
+	"license": "GPL-3.0",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --blocks-manifest --source-path=blocks",
+		"format": "wp-scripts format ./blocks",
+		"lint:css": "wp-scripts lint-style 'blocks/**/*.scss'",
+		"lint:js": "wp-scripts lint-js ./blocks",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --blocks-manifest --source-path=blocks",
+		"i18n:make-pot": "wp i18n make-pot . languages/football-club-manager.pot",
+		"i18n:make-json": "wp i18n make-json languages/football-club-manager-*.po --no-purge"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.19.0"
+	}
+}

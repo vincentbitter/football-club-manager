@@ -26,10 +26,46 @@ function fcmanager_register_player_post_type()
             ),
             'show_ui'       => true,
             'show_in_menu' => false,
+            'show_in_rest' => true,
             'supports'      => array('thumbnail'),
         )
     );
 }
+
+add_action('rest_api_init', function () {
+    register_rest_field(
+        'fcmanager_player',
+        'meta',
+        array(
+            'get_callback' => function ($post) {
+                return get_post_meta($post['id']);
+            },
+            'schema' => null,
+        )
+    );
+    register_rest_field('fcmanager_player', 'title', [
+        'get_callback' => function ($post) {
+            return get_the_title($post['id']);
+        },
+        'schema' => [
+            'type'    => 'string',
+            'context' => ['view', 'edit'],
+        ],
+    ]);
+    register_rest_field('fcmanager_player', 'photo', [
+        'get_callback' => function ($post) {
+            $img_id = get_post_thumbnail_id($post['id']);
+            if (!$img_id) return null;
+            $img_src = wp_get_attachment_image_src($img_id, 'medium');
+            return $img_src ? $img_src[0] : null;
+        },
+        'schema' => [
+            'type' => 'string',
+            'format' => 'uri',
+            'context' => ['view', 'edit'],
+        ],
+    ]);
+});
 
 // Unregister Custom Post Type: Player
 function fcmanager_unregister_player_post_type()
@@ -172,3 +208,18 @@ function fcmanager_custom_player_column($column, $post_id)
 }
 
 add_action('manage_fcmanager_player_posts_custom_column', 'fcmanager_custom_player_column', 10, 2);
+
+// Allow filtering players via REST API
+add_filter('rest_fcmanager_player_query', function ($args, $request) {
+    if ($meta_key = $request->get_param('meta_key')) {
+        $args['meta_query'] = array(
+            [
+                'key' => $meta_key,
+                'value' => $request->get_param('meta_value'),
+                'compare' => '=',
+                'type' => 'NUMERIC',
+            ],
+        );
+    }
+    return $args;
+}, 10, 2);

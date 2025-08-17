@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fcmanager/team-players",
+	"version": "0.0.0",
+	"title": "Team Players",
+	"category": "widgets",
+	"icon": "groups",
+	"description": "Show an overview of the players in a team.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"teamId": {
+			"type": "number",
+			"default": 0
+		}
+	}
+}

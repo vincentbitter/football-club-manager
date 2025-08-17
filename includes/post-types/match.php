@@ -197,7 +197,7 @@ function fcmanager_save_match_meta_box($post_id)
 add_action('save_post_fcmanager_match', 'fcmanager_save_match_meta_box');
 
 
-function    fcmanager_get_home_team_name($post_id)
+function fcmanager_get_home_team_name($post_id)
 {
     if (!get_post_meta($post_id, '_fcmanager_match_away', true)) {
         $team = fcmanager_get_team(get_post_meta($post_id, '_fcmanager_match_team', true));

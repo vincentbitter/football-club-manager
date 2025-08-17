@@ -18,6 +18,8 @@ if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
+define('FCMANAGER_VERSION', '0.0.0');
+
 // Register custom post types
 require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');
@@ -106,9 +108,29 @@ function fcmanager_init()
     fcmanager_register_team_post_type();
     fcmanager_register_player_post_type();
     fcmanager_register_match_post_type();
+
+    wp_register_block_types_from_metadata_collection(__DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php');
 }
 
 add_action('init', 'fcmanager_init');
+
+
+// Register block editor assets
+function fcmanager_enqueue_block_editor_assets()
+{
+    $plugin_url = plugin_dir_url(__FILE__);
+    $manifest = require __DIR__ . '/build/blocks-manifest.php';
+
+    foreach ($manifest as $block) {
+        $editor_script_handle = generate_block_asset_handle($block['name'], 'editorScript');
+
+        wp_localize_script($editor_script_handle, 'FootballClubManager', [
+            'pluginUrl' => $plugin_url,
+        ]);
+        wp_set_script_translations($editor_script_handle, 'football-club-manager', plugin_dir_path(__FILE__) . get_plugin_data(__FILE__)['DomainPath']);
+    }
+}
+add_action('enqueue_block_editor_assets', 'fcmanager_enqueue_block_editor_assets');
 
 // On admin menu
 function fcmanager_admin_menu()
@@ -139,3 +161,33 @@ function fcmanager_deactivated()
 }
 
 register_deactivation_hook(__FILE__, 'fcmanager_deactivated');
+
+// Load blocks
+function fcmanager_load_all_blocks()
+{
+    $blocks_dir = __DIR__ . '/build';
+    $block_folders = glob($blocks_dir . '/*', GLOB_ONLYDIR);
+
+    foreach ($block_folders as $block_path) {
+        $render_file = $block_path . '/render.php';
+
+        if (file_exists($render_file)) {
+            require_once $render_file;
+        }
+    }
+}
+fcmanager_load_all_blocks();
+
+// Add customerizer settings
+function fcmanager_customize_register($wp_customize)
+{
+    $wp_customize->add_panel('fcmanager_panel', [
+        'title'       => __('Football Club Manager', 'football-club-manager'),
+        'capability'     => 'edit_theme_options',
+        'priority'    => 30,
+    ]);
+
+    fcmanager_customize_register_team_page($wp_customize);
+}
+
+add_action('customize_register', 'fcmanager_customize_register');

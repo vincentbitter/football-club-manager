@@ -1,0 +1,323 @@
+# Copyright (C) 2025 Vincent Bitter
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Football Club Manager 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-08-17T20:03:09+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: football-club-manager\n"
+
+#. Plugin Name of the plugin
+#: football-club-manager.php
+msgid "Football Club Manager"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: football-club-manager.php
+msgid "https://github.com/vincentbitter/football-club-manager"
+msgstr ""
+
+#. Description of the plugin
+#: football-club-manager.php
+msgid "Easily create a website for your football club to publish teams, players and fixtures."
+msgstr ""
+
+#. Author of the plugin
+#: football-club-manager.php
+msgid "Vincent Bitter"
+msgstr ""
+
+#. Author URI of the plugin
+#: football-club-manager.php
+msgid "https://vincentbitter.nl"
+msgstr ""
+
+#: admin/page_dashboard.php:39
+msgid "At a Glance"
+msgstr ""
+
+#. translators: %s is the team name
+#: blocks/team-players/render.php:36
+#: build/team-players/render.php:36
+#: blocks/team-players/edit.js:87
+#: build/team-players/index.js:104
+#: build/team-players/index.js:87
+#, php-format,js-format
+msgid "Players of %s"
+msgstr ""
+
+#: blocks/team-players/render.php:63
+#: build/team-players/render.php:63
+#: blocks/team-players/edit.js:96
+#: build/team-players/index.js:106
+#: build/team-players/index.js:96
+msgid "No players found for this team."
+msgstr ""
+
+#: football-club-manager.php:45
+#: football-club-manager.php:46
+msgid "Dashboard"
+msgstr ""
+
+#: football-club-manager.php:54
+#: football-club-manager.php:55
+#: includes/post-types/team.php:38
+msgid "Teams"
+msgstr ""
+
+#: football-club-manager.php:63
+#: football-club-manager.php:64
+#: includes/post-types/player.php:15
+#: includes/post-types/team.php:91
+msgid "Players"
+msgstr ""
+
+#: football-club-manager.php:72
+#: football-club-manager.php:73
+#: includes/post-types/match.php:15
+msgid "Matches"
+msgstr ""
+
+#: includes/post-types/match.php:16
+msgid "Match"
+msgstr ""
+
+#: includes/post-types/match.php:17
+msgid "New match"
+msgstr ""
+
+#: includes/post-types/match.php:18
+msgid "Edit match"
+msgstr ""
+
+#: includes/post-types/match.php:19
+msgid "No matches found"
+msgstr ""
+
+#: includes/post-types/match.php:20
+msgid "No matches found in the trash"
+msgstr ""
+
+#: includes/post-types/match.php:21
+msgid "Search match"
+msgstr ""
+
+#: includes/post-types/match.php:41
+msgid "Match information"
+msgstr ""
+
+#: includes/post-types/match.php:76
+msgid "Date"
+msgstr ""
+
+#: includes/post-types/match.php:77
+msgid "From"
+msgstr ""
+
+#: includes/post-types/match.php:78
+msgid "Till"
+msgstr ""
+
+#: includes/post-types/match.php:95
+msgid "Home game"
+msgstr ""
+
+#: includes/post-types/match.php:102
+msgid "Away game"
+msgstr ""
+
+#: includes/post-types/match.php:111
+#: includes/post-types/player.php:116
+#: includes/post-types/player.php:180
+#: includes/post-types/team.php:39
+#: blocks/team-players/edit.js:91
+#: build/team-players/index.js:104
+#: build/team-players/index.js:91
+msgid "Team"
+msgstr ""
+
+#: includes/post-types/match.php:112
+#: includes/post-types/match.php:114
+msgid "Goals"
+msgstr ""
+
+#: includes/post-types/match.php:115
+msgid "Opponent"
+msgstr ""
+
+#: includes/post-types/match.php:133
+msgid "Final score"
+msgstr ""
+
+#: includes/post-types/match.php:225
+msgid "Date/time"
+msgstr ""
+
+#: includes/post-types/match.php:226
+msgid "Home team"
+msgstr ""
+
+#: includes/post-types/match.php:227
+msgid "Away team"
+msgstr ""
+
+#: includes/post-types/match.php:228
+msgid "Result"
+msgstr ""
+
+#: includes/post-types/player.php:16
+msgid "Player"
+msgstr ""
+
+#: includes/post-types/player.php:17
+msgid "New player"
+msgstr ""
+
+#: includes/post-types/player.php:18
+msgid "Edit player"
+msgstr ""
+
+#: includes/post-types/player.php:19
+msgid "Player photo"
+msgstr ""
+
+#: includes/post-types/player.php:20
+msgid "Set player photo"
+msgstr ""
+
+#: includes/post-types/player.php:21
+msgid "Remove player photo"
+msgstr ""
+
+#: includes/post-types/player.php:22
+msgid "Use as player photo"
+msgstr ""
+
+#: includes/post-types/player.php:23
+msgid "No players found"
+msgstr ""
+
+#: includes/post-types/player.php:24
+msgid "No players found in the trash"
+msgstr ""
+
+#: includes/post-types/player.php:25
+msgid "Search player"
+msgstr ""
+
+#: includes/post-types/player.php:81
+msgid "Player information"
+msgstr ""
+
+#: includes/post-types/player.php:108
+#: includes/post-types/player.php:178
+msgid "First name"
+msgstr ""
+
+#: includes/post-types/player.php:112
+#: includes/post-types/player.php:179
+msgid "Last name"
+msgstr ""
+
+#: includes/post-types/team.php:40
+msgid "New team"
+msgstr ""
+
+#: includes/post-types/team.php:41
+msgid "Edit team"
+msgstr ""
+
+#: includes/post-types/team.php:42
+msgid "Team photo"
+msgstr ""
+
+#: includes/post-types/team.php:43
+msgid "Set team photo"
+msgstr ""
+
+#: includes/post-types/team.php:44
+msgid "Remove team photo"
+msgstr ""
+
+#: includes/post-types/team.php:45
+msgid "Use as team photo"
+msgstr ""
+
+#: includes/post-types/team.php:46
+msgid "No teams found"
+msgstr ""
+
+#: includes/post-types/team.php:47
+msgid "No teams found in the trash"
+msgstr ""
+
+#: includes/post-types/team.php:48
+msgid "Search team"
+msgstr ""
+
+#: includes/post-types/team.php:80
+msgid "Team Page Settings"
+msgstr ""
+
+#: includes/post-types/team.php:103
+msgid "Elements"
+msgstr ""
+
+#: includes/post-types/team.php:119
+msgid "Show players"
+msgstr ""
+
+#: blocks/team-players/edit.js:46
+#: build/team-players/index.js:73
+#: build/team-players/index.js:46
+msgid "Player Name"
+msgstr ""
+
+#: blocks/team-players/edit.js:52
+#: build/team-players/index.js:76
+#: build/team-players/index.js:52
+msgid "Select a team"
+msgstr ""
+
+#: blocks/team-players/edit.js:64
+#: build/team-players/index.js:85
+#: build/team-players/index.js:64
+msgid "Team Settings"
+msgstr ""
+
+#: blocks/team-players/edit.js:68
+#: build/team-players/index.js:88
+#: build/team-players/index.js:68
+msgid "Loading teams..."
+msgstr ""
+
+#: blocks/team-players/edit.js:71
+#: build/team-players/index.js:90
+#: build/team-players/index.js:71
+msgid "Choose a team..."
+msgstr ""
+
+#: blocks/team-players/edit.js:75
+#: build/team-players/index.js:96
+#: build/team-players/index.js:75
+msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
+msgstr ""
+
+#: blocks/team-players/block.json
+#: build/team-players/block.json
+msgctxt "block title"
+msgid "Team Players"
+msgstr ""
+
+#: blocks/team-players/block.json
+#: build/team-players/block.json
+msgctxt "block description"
+msgid "Show an overview of the players in a team."
+msgstr ""
