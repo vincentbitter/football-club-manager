@@ -75,7 +75,7 @@ jobs:
       - name: Copy release files to SVN
         run: |
           mkdir temp
-          tar -x -C temp ${{github.workspace}}/${{ github.event.repository.name }}.zip
+          unzip ${{github.workspace}}/${{ github.event.repository.name }}.zip -d temp
           rsync -av --delete temp/ svn-wordpress/trunk/
 
       - name: Copy assets to SVN
