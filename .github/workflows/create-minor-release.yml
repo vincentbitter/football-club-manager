@@ -87,6 +87,11 @@ jobs:
           cd svn-wordpress
           svn add --force * --auto-props --parents --depth infinity -q
 
+      - name: Create SVN tag
+        run: |
+          cd svn-wordpress
+          svn copy trunk tags/${{ env.GitVersion_FullSemVer }}
+
       - name: Commit trunk and assets
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
@@ -94,11 +99,3 @@ jobs:
         run: |
           cd svn-wordpress
           svn commit --username "$SVN_USERNAME" --password "$SVN_PASSWORD" -m "Deploy version ${{ env.GitVersion_FullSemVer }}"
-
-      - name: Create SVN tag
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        run: |
-          cd svn-wordpress
-          svn copy trunk tags/${{ env.GitVersion_FullSemVer }} --username "$SVN_USERNAME" --password "$SVN_PASSWORD" -m "Tagging version ${{ env.GitVersion_FullSemVer }}"
