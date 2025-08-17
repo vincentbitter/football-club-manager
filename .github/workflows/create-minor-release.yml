@@ -30,6 +30,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Build blocks
+        run: |
+          npm install
+          npm run build
+
       - name: Determine next version
         uses: gittools/actions/gitversion/execute@v3.2.1
         with:
