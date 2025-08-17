@@ -5,7 +5,7 @@
  * Description: Easily create a website for your football club to publish teams, players and fixtures.
  * Version: 0.5.0
  * Requires at least: 6.8
- * Requires PHP: 8.2
+ * Requires PHP: 7.4
  * Author: Vincent Bitter
  * Author URI: https://vincentbitter.nl
  * License: GPLv3
