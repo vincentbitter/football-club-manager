@@ -22,10 +22,24 @@ function fcmanager_register_match_post_type()
             ),
             'show_ui'       => true,
             'show_in_menu' => false,
+            'show_in_rest' => true,
             'supports'      => array(''),
         )
     );
 }
+
+add_action('rest_api_init', function () {
+    register_rest_field(
+        'fcmanager_match',
+        'meta',
+        array(
+            'get_callback' => function ($post) {
+                return get_post_meta($post['id']);
+            },
+            'schema' => null,
+        )
+    );
+});
 
 // Unregister Custom Post Type: Match
 function fcmanager_unregister_match_post_type()
@@ -273,3 +287,38 @@ function fcmanager_custom_match_column($column, $post_id)
 }
 
 add_action('manage_fcmanager_match_posts_custom_column', 'fcmanager_custom_match_column', 10, 2);
+
+// Allow filtering matches via REST API
+add_filter('rest_fcmanager_match_query', function ($args, $request) {
+    $args['meta_query'] = array();
+    if ($meta_key = $request->get_param('meta_key')) {
+        $args['meta_query'][] = array(
+            'key' => $meta_key,
+            'value' => $request->get_param('meta_value'),
+            'compare' => '=',
+            'type' => 'NUMERIC',
+        );
+    }
+
+    if ($request->get_param('upcoming') === 'true') {
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_date',
+            'value' => date('Y-m-d'),
+            'compare' => '>=',
+            'type' => 'DATE',
+        );
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_goals_for',
+            'compare' => 'NOT EXISTS',
+        );
+    }
+    return $args;
+}, 10, 2);
+
+// Order matches by date in REST API
+add_filter('rest_fcmanager_match_query', function ($args, $request) {
+    $args['meta_key'] = '_fcmanager_match_date';
+    $args['orderby'] = 'meta_value';
+    $args['order'] = 'ASC';
+    return $args;
+}, 10, 2);
