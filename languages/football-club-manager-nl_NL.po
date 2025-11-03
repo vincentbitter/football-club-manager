@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-"
 "manager\n"
-"POT-Creation-Date: 2025-11-03T20:01:39+00:00\n"
+"POT-Creation-Date: 2025-11-03T20:48:00+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -272,15 +272,23 @@ msgstr "Geen teams gevonden in de prullenbak"
 msgid "Search team"
 msgstr "Zoek team"
 
-#: includes/post-types/team.php:80
+#: includes/post-types/team.php:115
 msgid "Team Page Settings"
 msgstr "Teampagina instellingen"
 
-#: includes/post-types/team.php:91 includes/post-types/team.php:118
+#: includes/post-types/team.php:126 includes/post-types/team.php:186
 msgid "Show players"
 msgstr "Toon spelers"
 
-#: includes/post-types/team.php:102
+#: includes/post-types/team.php:138 includes/post-types/team.php:188
+msgid "Show results"
+msgstr "Toon uitslagen"
+
+#: includes/post-types/team.php:150 includes/post-types/team.php:187
+msgid "Show schedule"
+msgstr "Toon speelschema"
+
+#: includes/post-types/team.php:161
 msgid "Elements"
 msgstr "Elementen"
 
