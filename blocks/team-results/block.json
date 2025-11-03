@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fcmanager/team-schedule",
+	"version": "0.6.0",
+	"title": "Team Results",
+	"category": "widgets",
+	"icon": "table",
+	"description": "Show an overview of recent results of a team.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"teamId": {
+			"type": "number",
+			"default": 0
+		}
+	}
+}

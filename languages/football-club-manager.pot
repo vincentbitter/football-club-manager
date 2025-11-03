@@ -2,20 +2,21 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.5.0\n"
+"Project-Id-Version: Football Club Manager 0.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-17T20:03:09+00:00\n"
+"POT-Creation-Date: 2025-11-03T20:01:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
+#: football-club-manager.php:185
 msgid "Football Club Manager"
 msgstr ""
 
@@ -61,6 +62,35 @@ msgstr ""
 msgid "No players found for this team."
 msgstr ""
 
+#: blocks/team-results/render.php:41
+#: build/team-results/render.php:41
+#: blocks/team-results/edit.js:92
+#: build/team-results/index.js:106
+#: build/team-results/index.js:92
+msgid "Results"
+msgstr ""
+
+#: blocks/team-results/render.php:84
+#: blocks/team-schedule/render.php:76
+#: build/team-results/render.php:84
+#: build/team-schedule/render.php:76
+#: blocks/team-results/edit.js:95
+#: blocks/team-schedule/edit.js:93
+#: build/team-results/index.js:108
+#: build/team-schedule/index.js:106
+#: build/team-results/index.js:95
+#: build/team-schedule/index.js:93
+msgid "No matches found for this team."
+msgstr ""
+
+#: blocks/team-schedule/render.php:45
+#: build/team-schedule/render.php:45
+#: blocks/team-schedule/edit.js:90
+#: build/team-schedule/index.js:104
+#: build/team-schedule/index.js:90
+msgid "Upcoming matches"
+msgstr ""
+
 #: football-club-manager.php:45
 #: football-club-manager.php:46
 msgid "Dashboard"
@@ -75,7 +105,6 @@ msgstr ""
 #: football-club-manager.php:63
 #: football-club-manager.php:64
 #: includes/post-types/player.php:15
-#: includes/post-types/team.php:91
 msgid "Players"
 msgstr ""
 
@@ -109,31 +138,31 @@ msgstr ""
 msgid "Search match"
 msgstr ""
 
-#: includes/post-types/match.php:41
+#: includes/post-types/match.php:55
 msgid "Match information"
 msgstr ""
 
-#: includes/post-types/match.php:76
+#: includes/post-types/match.php:90
 msgid "Date"
 msgstr ""
 
-#: includes/post-types/match.php:77
+#: includes/post-types/match.php:91
 msgid "From"
 msgstr ""
 
-#: includes/post-types/match.php:78
+#: includes/post-types/match.php:92
 msgid "Till"
 msgstr ""
 
-#: includes/post-types/match.php:95
+#: includes/post-types/match.php:109
 msgid "Home game"
 msgstr ""
 
-#: includes/post-types/match.php:102
+#: includes/post-types/match.php:116
 msgid "Away game"
 msgstr ""
 
-#: includes/post-types/match.php:111
+#: includes/post-types/match.php:125
 #: includes/post-types/player.php:116
 #: includes/post-types/player.php:180
 #: includes/post-types/team.php:39
@@ -143,32 +172,32 @@ msgstr ""
 msgid "Team"
 msgstr ""
 
-#: includes/post-types/match.php:112
-#: includes/post-types/match.php:114
+#: includes/post-types/match.php:126
+#: includes/post-types/match.php:128
 msgid "Goals"
 msgstr ""
 
-#: includes/post-types/match.php:115
+#: includes/post-types/match.php:129
 msgid "Opponent"
 msgstr ""
 
-#: includes/post-types/match.php:133
+#: includes/post-types/match.php:147
 msgid "Final score"
 msgstr ""
 
-#: includes/post-types/match.php:225
+#: includes/post-types/match.php:239
 msgid "Date/time"
 msgstr ""
 
-#: includes/post-types/match.php:226
+#: includes/post-types/match.php:240
 msgid "Home team"
 msgstr ""
 
-#: includes/post-types/match.php:227
+#: includes/post-types/match.php:241
 msgid "Away team"
 msgstr ""
 
-#: includes/post-types/match.php:228
+#: includes/post-types/match.php:242
 msgid "Result"
 msgstr ""
 
@@ -266,12 +295,13 @@ msgstr ""
 msgid "Team Page Settings"
 msgstr ""
 
-#: includes/post-types/team.php:103
-msgid "Elements"
+#: includes/post-types/team.php:91
+#: includes/post-types/team.php:118
+msgid "Show players"
 msgstr ""
 
-#: includes/post-types/team.php:119
-msgid "Show players"
+#: includes/post-types/team.php:102
+msgid "Elements"
 msgstr ""
 
 #: blocks/team-players/edit.js:46
@@ -281,26 +311,50 @@ msgid "Player Name"
 msgstr ""
 
 #: blocks/team-players/edit.js:52
+#: blocks/team-results/edit.js:59
+#: blocks/team-schedule/edit.js:57
 #: build/team-players/index.js:76
+#: build/team-results/index.js:78
+#: build/team-schedule/index.js:76
 #: build/team-players/index.js:52
+#: build/team-results/index.js:59
+#: build/team-schedule/index.js:57
 msgid "Select a team"
 msgstr ""
 
 #: blocks/team-players/edit.js:64
+#: blocks/team-results/edit.js:71
+#: blocks/team-schedule/edit.js:69
 #: build/team-players/index.js:85
+#: build/team-results/index.js:87
+#: build/team-schedule/index.js:85
 #: build/team-players/index.js:64
+#: build/team-results/index.js:71
+#: build/team-schedule/index.js:69
 msgid "Team Settings"
 msgstr ""
 
 #: blocks/team-players/edit.js:68
+#: blocks/team-results/edit.js:75
+#: blocks/team-schedule/edit.js:73
 #: build/team-players/index.js:88
+#: build/team-results/index.js:90
+#: build/team-schedule/index.js:88
 #: build/team-players/index.js:68
+#: build/team-results/index.js:75
+#: build/team-schedule/index.js:73
 msgid "Loading teams..."
 msgstr ""
 
 #: blocks/team-players/edit.js:71
+#: blocks/team-results/edit.js:78
+#: blocks/team-schedule/edit.js:76
 #: build/team-players/index.js:90
+#: build/team-results/index.js:92
+#: build/team-schedule/index.js:90
 #: build/team-players/index.js:71
+#: build/team-results/index.js:78
+#: build/team-schedule/index.js:76
 msgid "Choose a team..."
 msgstr ""
 
@@ -308,6 +362,15 @@ msgstr ""
 #: build/team-players/index.js:96
 #: build/team-players/index.js:75
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
+msgstr ""
+
+#: blocks/team-results/edit.js:82
+#: blocks/team-schedule/edit.js:80
+#: build/team-results/index.js:98
+#: build/team-schedule/index.js:96
+#: build/team-results/index.js:82
+#: build/team-schedule/index.js:80
+msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the matches of the current team."
 msgstr ""
 
 #: blocks/team-players/block.json
@@ -320,4 +383,28 @@ msgstr ""
 #: build/team-players/block.json
 msgctxt "block description"
 msgid "Show an overview of the players in a team."
+msgstr ""
+
+#: blocks/team-results/block.json
+#: build/team-results/block.json
+msgctxt "block title"
+msgid "Team Results"
+msgstr ""
+
+#: blocks/team-results/block.json
+#: build/team-results/block.json
+msgctxt "block description"
+msgid "Show an overview of recent results of a team."
+msgstr ""
+
+#: blocks/team-schedule/block.json
+#: build/team-schedule/block.json
+msgctxt "block title"
+msgid "Team Schedule"
+msgstr ""
+
+#: blocks/team-schedule/block.json
+#: build/team-schedule/block.json
+msgctxt "block description"
+msgid "Show an overview of the upcoming matches of a team."
 msgstr ""

@@ -311,6 +311,13 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
             'key' => '_fcmanager_match_goals_for',
             'compare' => 'NOT EXISTS',
         );
+    } else if ($request->get_param('results') === 'true') {
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_date',
+            'value' => date('Y-m-d'),
+            'compare' => '<=',
+            'type' => 'DATE',
+        );
     }
     return $args;
 }, 10, 2);
@@ -320,5 +327,8 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
     $args['meta_key'] = '_fcmanager_match_date';
     $args['orderby'] = 'meta_value';
     $args['order'] = 'ASC';
+    if ($request->get_param('results') === 'true') {
+        $args['order'] = 'DESC';
+    }
     return $args;
 }, 10, 2);
