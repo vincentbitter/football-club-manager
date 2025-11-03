@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "fcmanager/team-schedule",
+	"name": "fcmanager/team-results",
 	"version": "0.6.0",
 	"title": "Team Results",
 	"category": "widgets",
-	"icon": "table",
+	"icon": "editor-table",
 	"description": "Show an overview of recent results of a team.",
 	"example": {},
 	"supports": {
