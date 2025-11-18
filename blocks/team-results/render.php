@@ -28,6 +28,16 @@ function fcmanager_render_team_results_block($attributes, $content)
                     'compare' => '<=',
                     'type'    => 'DATE',
                 ],
+                'goals_for_exists' => [
+                    'key'     => '_fcmanager_match_goals_for',
+                    'compare' => 'EXISTS',
+                ],
+                'goals_for_not_empty' => [
+                    'key'     => '_fcmanager_match_goals_for',
+                    'value'   => '',
+                    'compare' => '!=',
+                    'type'    => 'NUMERIC',
+                ],
                 'match_starttime' => [
                     'key'     => '_fcmanager_match_starttime',
                     'type'    => 'TIME',

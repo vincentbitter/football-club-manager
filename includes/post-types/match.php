@@ -318,6 +318,16 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
             'compare' => '<=',
             'type' => 'DATE',
         );
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_goals_for',
+            'compare' => 'EXISTS',
+        );
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_goals_for',
+            'compare' => '!=',
+            'value' => '',
+            'type' => 'NUMERIC',
+        );
     }
     return $args;
 }, 10, 2);
