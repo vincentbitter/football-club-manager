@@ -16,26 +16,31 @@ function fcmanager_render_team_schedule_block($attributes, $content)
         $matches = get_posts([
             'post_type' => 'fcmanager_match',
             'meta_query' => [
-                [
-                    'key' => '_fcmanager_match_team',
-                    'value' => $team_id,
+                'team' => [
+                    'key'     => '_fcmanager_match_team',
+                    'value'   => $team_id,
                     'compare' => '=',
-                    'type' => 'NUMERIC',
+                    'type'    => 'NUMERIC',
                 ],
-                [
-                    'key' => '_fcmanager_match_date',
-                    'value' => date('Y-m-d'),
+                'match_date' => [
+                    'key'     => '_fcmanager_match_date',
+                    'value'   => date('Y-m-d'),
                     'compare' => '>=',
-                    'type' => 'DATE',
+                    'type'    => 'DATE',
                 ],
-                [
-                    'key' => '_fcmanager_match_goals_for',
+                'goals_for_missing' => [
+                    'key'     => '_fcmanager_match_goals_for',
                     'compare' => 'NOT EXISTS',
                 ],
+                'match_starttime' => [
+                    'key'  => '_fcmanager_match_starttime',
+                    'type' => 'TIME',
+                ],
             ],
-            'meta_key' => '_fcmanager_match_date',
-            'orderby' => 'meta_value',
-            'order' => 'ASC',
+            'orderby' => [
+                'match_date' => 'ASC',
+                'match_starttime' => 'ASC',
+            ],
             'posts_per_page' => 20,
         ]);
 

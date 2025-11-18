@@ -324,11 +324,26 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
 
 // Order matches by date in REST API
 add_filter('rest_fcmanager_match_query', function ($args, $request) {
-    $args['meta_key'] = '_fcmanager_match_date';
-    $args['orderby'] = 'meta_value';
-    $args['order'] = 'ASC';
+    $args['meta_query']['match_date'] = array(
+        'key'   => '_fcmanager_match_date',
+        'type'  => 'DATE',
+    );
+    $args['meta_query']['match_starttime'] = array(
+        'key'   => '_fcmanager_match_starttime',
+        'type'  => 'TIME',
+    );
+
+    $args['orderby'] = array(
+        'match_date' => 'ASC',
+        'match_starttime' => 'ASC',
+    );
+
     if ($request->get_param('results') === 'true') {
-        $args['order'] = 'DESC';
+        $args['orderby'] = array(
+            'match_date' => 'DESC',
+            'match_starttime' => 'DESC',
+        );
     }
+
     return $args;
 }, 10, 2);

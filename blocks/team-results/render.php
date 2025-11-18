@@ -16,22 +16,27 @@ function fcmanager_render_team_results_block($attributes, $content)
         $matches = get_posts([
             'post_type' => 'fcmanager_match',
             'meta_query' => [
-                [
-                    'key' => '_fcmanager_match_team',
-                    'value' => $team_id,
+                'team' => [
+                    'key'     => '_fcmanager_match_team',
+                    'value'   => $team_id,
                     'compare' => '=',
-                    'type' => 'NUMERIC',
+                    'type'    => 'NUMERIC',
                 ],
-                [
-                    'key' => '_fcmanager_match_date',
-                    'value' => date('Y-m-d'),
+                'match_date' => [
+                    'key'     => '_fcmanager_match_date',
+                    'value'   => date('Y-m-d'),
                     'compare' => '<=',
-                    'type' => 'DATE',
+                    'type'    => 'DATE',
+                ],
+                'match_starttime' => [
+                    'key'     => '_fcmanager_match_starttime',
+                    'type'    => 'TIME',
                 ],
             ],
-            'meta_key' => '_fcmanager_match_date',
-            'orderby' => 'meta_value',
-            'order' => 'DESC',
+            'orderby' => [
+                'match_date' => 'DESC',
+                'match_starttime' => 'DESC',
+            ],
             'posts_per_page' => 20,
         ]);
 
