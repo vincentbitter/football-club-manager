@@ -175,7 +175,7 @@ function fcmanager_render_block_toggle_meta_box($post, $block, $label)
     <div>
         <label>
             <input type="checkbox" name="fcmanager_show_<? echo $block; ?>_block" value="1" <?php checked($value, '1'); ?>>
-            <?php esc_html($label); ?>
+            <?php echo esc_html($label); ?>
         </label>
     </div>
 <?php
