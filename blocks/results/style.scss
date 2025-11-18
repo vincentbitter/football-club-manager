@@ -1,0 +1,33 @@
+table.fcmanager-matches {
+    width: 100%;
+    border: none;
+
+    tr:nth-child(even) {
+    	background-color: var(--wp--preset--color--palette-color-5);
+    }
+
+    td {
+        border: none;
+    }
+
+    td.fcmanager-match-date,
+    td.fcmanager-match-time,
+    td.fcmanager-match-hometeam,
+    td.fcmanager-match-homescore,
+    td.fcmanager-match-awayscore,
+    td.fcmanager-match-separator {
+        width: 1px;
+        white-space: nowrap;
+    }
+
+    td.fcmanager-match-separator {
+        padding: 0 0.5em;
+        text-align: center;
+    }
+
+    td.fcmanager-match-hometeam,
+    td.fcmanager-match-homescore {
+        text-align: right;
+    }
+}
+

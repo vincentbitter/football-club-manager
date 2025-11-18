@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.6.0\n"
+"Project-Id-Version: Football Club Manager 0.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-03T20:48:00+00:00\n"
+"POT-Creation-Date: 2025-11-18T20:16:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
@@ -44,6 +44,27 @@ msgstr ""
 msgid "At a Glance"
 msgstr ""
 
+#: blocks/results/render.php:83
+#: blocks/team-results/render.php:56
+#: build/results/render.php:83
+#: build/team-results/render.php:56
+#: blocks/results/edit.js:89
+#: blocks/team-results/edit.js:92
+#: build/results/index.js:113
+#: build/team-results/index.js:106
+#: build/results/index.js:89
+#: build/team-results/index.js:92
+msgid "Results"
+msgstr ""
+
+#: blocks/results/render.php:126
+#: build/results/render.php:126
+#: blocks/results/edit.js:91
+#: build/results/index.js:115
+#: build/results/index.js:91
+msgid "No matches found."
+msgstr ""
+
 #. translators: %s is the team name
 #: blocks/team-players/render.php:36
 #: build/team-players/render.php:36
@@ -62,18 +83,10 @@ msgstr ""
 msgid "No players found for this team."
 msgstr ""
 
-#: blocks/team-results/render.php:41
-#: build/team-results/render.php:41
-#: blocks/team-results/edit.js:92
-#: build/team-results/index.js:106
-#: build/team-results/index.js:92
-msgid "Results"
-msgstr ""
-
-#: blocks/team-results/render.php:84
-#: blocks/team-schedule/render.php:76
-#: build/team-results/render.php:84
-#: build/team-schedule/render.php:76
+#: blocks/team-results/render.php:99
+#: blocks/team-schedule/render.php:81
+#: build/team-results/render.php:99
+#: build/team-schedule/render.php:81
 #: blocks/team-results/edit.js:95
 #: blocks/team-schedule/edit.js:93
 #: build/team-results/index.js:108
@@ -83,8 +96,8 @@ msgstr ""
 msgid "No matches found for this team."
 msgstr ""
 
-#: blocks/team-schedule/render.php:45
-#: build/team-schedule/render.php:45
+#: blocks/team-schedule/render.php:50
+#: build/team-schedule/render.php:50
 #: blocks/team-schedule/edit.js:90
 #: build/team-schedule/index.js:104
 #: build/team-schedule/index.js:90
@@ -314,6 +327,36 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
+#: blocks/results/edit.js:60
+#: build/results/index.js:90
+#: build/results/index.js:60
+msgid "Query"
+msgstr ""
+
+#: blocks/results/edit.js:64
+#: build/results/index.js:93
+#: build/results/index.js:64
+msgid "Number of items"
+msgstr ""
+
+#: blocks/results/edit.js:69
+#: build/results/index.js:98
+#: build/results/index.js:69
+msgid "Select the maximum number of results to show."
+msgstr ""
+
+#: blocks/results/edit.js:75
+#: build/results/index.js:100
+#: build/results/index.js:75
+msgid "Number of days"
+msgstr ""
+
+#: blocks/results/edit.js:80
+#: build/results/index.js:105
+#: build/results/index.js:80
+msgid "Select the number of days to search back for results."
+msgstr ""
+
 #: blocks/team-players/edit.js:46
 #: build/team-players/index.js:73
 #: build/team-players/index.js:46
@@ -381,6 +424,18 @@ msgstr ""
 #: build/team-results/index.js:82
 #: build/team-schedule/index.js:80
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the matches of the current team."
+msgstr ""
+
+#: blocks/results/block.json
+#: build/results/block.json
+msgctxt "block title"
+msgid "Results"
+msgstr ""
+
+#: blocks/results/block.json
+#: build/results/block.json
+msgctxt "block description"
+msgid "Show an overview of recent results."
 msgstr ""
 
 #: blocks/team-players/block.json

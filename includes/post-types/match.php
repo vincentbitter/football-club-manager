@@ -290,13 +290,21 @@ add_action('manage_fcmanager_match_posts_custom_column', 'fcmanager_custom_match
 
 // Allow filtering matches via REST API
 add_filter('rest_fcmanager_match_query', function ($args, $request) {
+    $compare = $request->get_param('meta_compare');
+    if (!in_array($compare, array('=', '!=', '>', '>=', '<', '<=')))
+        $compare = '=';
+
+    $type = $request->get_param('meta_type');
+    if (!in_array($type, array('NUMERIC', 'CHAR', 'DATE', 'DATETIME', 'DECIMAL', 'SIGNED', 'TIME', 'UNSIGNED')))
+        $type = 'NUMERIC';
+
     $args['meta_query'] = array();
     if ($meta_key = $request->get_param('meta_key')) {
         $args['meta_query'][] = array(
             'key' => $meta_key,
             'value' => $request->get_param('meta_value'),
-            'compare' => '=',
-            'type' => 'NUMERIC',
+            'compare' => $compare,
+            'type' => $type,
         );
     }
 

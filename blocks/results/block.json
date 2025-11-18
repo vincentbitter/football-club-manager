@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fcmanager/results",
+	"version": "0.7.0",
+	"title": "Results",
+	"category": "widgets",
+	"icon": "editor-table",
+	"description": "Show an overview of recent results.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"numberOfItems": {
+			"type": "number",
+			"default": 20
+		},
+		"numberOfDays": {
+			"type": "number",
+			"default": 14
+		}
+	}
+}
