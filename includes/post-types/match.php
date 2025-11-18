@@ -311,7 +311,7 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
     if ($request->get_param('upcoming') === 'true') {
         $args['meta_query'][] = array(
             'key' => '_fcmanager_match_date',
-            'value' => date('Y-m-d'),
+            'value' => wp_date('Y-m-d'),
             'compare' => '>=',
             'type' => 'DATE',
         );
@@ -322,7 +322,7 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
     } else if ($request->get_param('results') === 'true') {
         $args['meta_query'][] = array(
             'key' => '_fcmanager_match_date',
-            'value' => date('Y-m-d'),
+            'value' => wp_date('Y-m-d'),
             'compare' => '<=',
             'type' => 'DATE',
         );

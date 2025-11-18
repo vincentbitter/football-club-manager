@@ -24,7 +24,7 @@ function fcmanager_render_team_results_block($attributes, $content)
                 ],
                 'match_date' => [
                     'key'     => '_fcmanager_match_date',
-                    'value'   => date('Y-m-d'),
+                    'value'   => wp_date('Y-m-d'),
                     'compare' => '<=',
                     'type'    => 'DATE',
                 ],
@@ -53,7 +53,7 @@ function fcmanager_render_team_results_block($attributes, $content)
         ob_start();
 ?>
         <div class="fcmanager-team-results">
-            <h2><?php _e("Results", "football-club-manager") ?></h2>
+            <h2><?php esc_html_e("Results", "football-club-manager") ?></h2>
             <?php if ($matches): ?>
                 <table class="fcmanager-matches">
                     <tbody>
