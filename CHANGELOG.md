@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - 2025-11-19
+
+### 🚀 Features
+
+- Results block showing recent matches.
+- Schedule block showing upcoming matches.
+
+### 🐛 Bug Fixes
+
+- Sort matches by time instead of date only.
+- Only show results when scores are available.
+- Show labels in block editor for showing elements on team page.
+- Security findings by plugin check.
+
 ## [0.7.0] - 2025-11-03
 
 ### 🚀 Features
