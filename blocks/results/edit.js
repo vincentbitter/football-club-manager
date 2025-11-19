@@ -92,30 +92,33 @@ export default function Edit({ attributes, setAttributes }) {
 					) : (
 						<table class="fcmanager-matches">
 							<tbody>
-								{matches?.map((match) => (
-									<tr key={match.id}>
-										<td class="fcmanager-match-date">{match.date}</td>
-										<td class="fcmanager-match-time">{match.starttime}</td>
-										<td class="fcmanager-match-hometeam">
-											{match.away
-												? match.opponent
-												: teams?.find((t) => t.id == match.team)?.title
-														.rendered}
-										</td>
-										<td class="fcmanager-match-homescore">
-											{match.away ? match.goals_against : match.goals_for}
-										</td>
-										<td class="fcmanager-match-separator">-</td>
-										<td class="fcmanager-match-awayscore">
-											{match.away ? match.goals_for : match.goals_against}
-										</td>
-										<td class="fcmanager-match-awayteam">
-											{match.away
-												? teams?.find((t) => t.id == match.team)?.title.rendered
-												: match.opponent}
-										</td>
-									</tr>
-								))}
+								{matches
+									?.filter((match) => teams?.find((t) => t.id == match.team))
+									.map((match) => (
+										<tr key={match.id}>
+											<td class="fcmanager-match-date">{match.date}</td>
+											<td class="fcmanager-match-time">{match.starttime}</td>
+											<td class="fcmanager-match-hometeam">
+												{match.away
+													? match.opponent
+													: teams?.find((t) => t.id == match.team)?.title
+															.rendered}
+											</td>
+											<td class="fcmanager-match-homescore">
+												{match.away ? match.goals_against : match.goals_for}
+											</td>
+											<td class="fcmanager-match-separator">-</td>
+											<td class="fcmanager-match-awayscore">
+												{match.away ? match.goals_for : match.goals_against}
+											</td>
+											<td class="fcmanager-match-awayteam">
+												{match.away
+													? teams?.find((t) => t.id == match.team)?.title
+															.rendered
+													: match.opponent}
+											</td>
+										</tr>
+									))}
 							</tbody>
 						</table>
 					)}
