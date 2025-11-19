@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fcmanager/schedule",
+	"version": "0.7.0",
+	"title": "Schedule",
+	"category": "widgets",
+	"icon": "editor-table",
+	"description": "Show an overview of upcoming matches.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"numberOfItems": {
+			"type": "number",
+			"default": 20
+		},
+		"numberOfDays": {
+			"type": "number",
+			"default": 14
+		}
+	}
+}

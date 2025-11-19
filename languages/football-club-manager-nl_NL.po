@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-"
 "manager\n"
-"POT-Creation-Date: 2025-11-18T20:16:31+00:00\n"
+"POT-Creation-Date: 2025-11-19T19:02:05+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -48,19 +48,29 @@ msgstr "https://vincentbitter.nl"
 msgid "At a Glance"
 msgstr "In een oogopslag"
 
-#: blocks/results/render.php:83 blocks/team-results/render.php:56
-#: build/results/render.php:83 build/team-results/render.php:56
+#: blocks/results/render.php:59 blocks/team-results/render.php:56
+#: build/results/render.php:59 build/team-results/render.php:56
 #: blocks/results/edit.js:89 blocks/team-results/edit.js:92
 #: build/results/index.js:113 build/team-results/index.js:106
 #: build/results/index.js:89 build/team-results/index.js:92
 msgid "Results"
 msgstr "Uitslagen"
 
-#: blocks/results/render.php:126 build/results/render.php:126
-#: blocks/results/edit.js:91 build/results/index.js:115
-#: build/results/index.js:91
+#: blocks/results/render.php:107 blocks/schedule/render.php:89
+#: build/results/render.php:107 build/schedule/render.php:89
+#: blocks/results/edit.js:91 blocks/schedule/edit.js:89
+#: build/results/index.js:115 build/schedule/index.js:113
+#: build/results/index.js:91 build/schedule/index.js:89
 msgid "No matches found."
 msgstr "Geen wedstrijden gevonden."
+
+#: blocks/schedule/render.php:53 blocks/team-schedule/render.php:50
+#: build/schedule/render.php:53 build/team-schedule/render.php:50
+#: blocks/schedule/edit.js:87 blocks/team-schedule/edit.js:90
+#: build/schedule/index.js:111 build/team-schedule/index.js:104
+#: build/schedule/index.js:87 build/team-schedule/index.js:90
+msgid "Upcoming matches"
+msgstr "Speelschema"
 
 #. translators: %s is the team name
 #: blocks/team-players/render.php:36 build/team-players/render.php:36
@@ -83,12 +93,6 @@ msgstr "Geen spelers gevonden voor dit team."
 #: build/team-results/index.js:95 build/team-schedule/index.js:93
 msgid "No matches found for this team."
 msgstr "Geen wedstrijden gevonden voor dit team."
-
-#: blocks/team-schedule/render.php:50 build/team-schedule/render.php:50
-#: blocks/team-schedule/edit.js:90 build/team-schedule/index.js:104
-#: build/team-schedule/index.js:90
-msgid "Upcoming matches"
-msgstr "Speelschema"
 
 #: football-club-manager.php:45 football-club-manager.php:46
 msgid "Dashboard"
@@ -300,13 +304,15 @@ msgstr "Toon speelschema"
 msgid "Elements"
 msgstr "Elementen"
 
-#: blocks/results/edit.js:60 build/results/index.js:90
-#: build/results/index.js:60
+#: blocks/results/edit.js:60 blocks/schedule/edit.js:58
+#: build/results/index.js:90 build/schedule/index.js:88
+#: build/results/index.js:60 build/schedule/index.js:58
 msgid "Query"
 msgstr "Query"
 
-#: blocks/results/edit.js:64 build/results/index.js:93
-#: build/results/index.js:64
+#: blocks/results/edit.js:64 blocks/schedule/edit.js:62
+#: build/results/index.js:93 build/schedule/index.js:91
+#: build/results/index.js:64 build/schedule/index.js:62
 msgid "Number of items"
 msgstr "Aantal items"
 
@@ -315,8 +321,9 @@ msgstr "Aantal items"
 msgid "Select the maximum number of results to show."
 msgstr "Selecteer het maximum aantal resultaten om te tonen."
 
-#: blocks/results/edit.js:75 build/results/index.js:100
-#: build/results/index.js:75
+#: blocks/results/edit.js:75 blocks/schedule/edit.js:73
+#: build/results/index.js:100 build/schedule/index.js:98
+#: build/results/index.js:75 build/schedule/index.js:73
 msgid "Number of days"
 msgstr "Aantal dagen"
 
@@ -324,6 +331,16 @@ msgstr "Aantal dagen"
 #: build/results/index.js:80
 msgid "Select the number of days to search back for results."
 msgstr "Selecteer het aantal dagen om terug te zoeken naar uitslagen."
+
+#: blocks/schedule/edit.js:67 build/schedule/index.js:96
+#: build/schedule/index.js:67
+msgid "Select the maximum number of matches to show."
+msgstr "Selecteer het maximum aantal wedstrijden om te tonen."
+
+#: blocks/schedule/edit.js:78 build/schedule/index.js:103
+#: build/schedule/index.js:78
+msgid "Select the number of days to search for matches."
+msgstr "Selecteer het aantal dagen om vooruit te zoeken naar wedstrijden."
 
 #: blocks/team-players/edit.js:46 build/team-players/index.js:73
 #: build/team-players/index.js:46
@@ -392,6 +409,16 @@ msgstr "Uitslagen"
 msgctxt "block description"
 msgid "Show an overview of recent results."
 msgstr "Toon een overzicht van recente uitslagen."
+
+#: blocks/schedule/block.json build/schedule/block.json
+msgctxt "block title"
+msgid "Schedule"
+msgstr "Speelschema"
+
+#: blocks/schedule/block.json build/schedule/block.json
+msgctxt "block description"
+msgid "Show an overview of upcoming matches."
+msgstr "Toon een overzicht van de aankomende wedstrijden."
 
 #: blocks/team-players/block.json build/team-players/block.json
 msgctxt "block title"
