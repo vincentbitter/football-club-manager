@@ -93,7 +93,7 @@ export default function Edit({ attributes, setAttributes }) {
 							{__("No matches found for this team.", "football-club-manager")}
 						</p>
 					) : (
-						<table class="fcmanager-matches">
+						<table class="fcmanager-matches fcmanager-matches-schedule">
 							<tbody>
 								{matches?.map((match) => (
 									<tr key={match.id}>

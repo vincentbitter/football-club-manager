@@ -49,7 +49,7 @@ function fcmanager_render_team_schedule_block($attributes, $content)
         <div class="fcmanager-team-schedule">
             <h2><?php esc_html_e("Upcoming matches", "football-club-manager") ?></h2>
             <?php if ($matches): ?>
-                <table class="fcmanager-matches">
+                <table class="fcmanager-matches fcmanager-matches-schedule">
                     <tbody>
                         <?php foreach ($matches as $match): ?>
                             <?php

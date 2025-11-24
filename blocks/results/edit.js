@@ -90,7 +90,7 @@ export default function Edit({ attributes, setAttributes }) {
 					{!matches?.length ? (
 						<p>{__("No matches found.", "football-club-manager")}</p>
 					) : (
-						<table class="fcmanager-matches">
+						<table class="fcmanager-matches fcmanager-matches-results">
 							<tbody>
 								{matches
 									?.filter((match) => teams?.find((t) => t.id == match.team))

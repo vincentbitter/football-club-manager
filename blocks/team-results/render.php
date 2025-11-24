@@ -55,7 +55,7 @@ function fcmanager_render_team_results_block($attributes, $content)
         <div class="fcmanager-team-results">
             <h2><?php esc_html_e("Results", "football-club-manager") ?></h2>
             <?php if ($matches): ?>
-                <table class="fcmanager-matches">
+                <table class="fcmanager-matches fcmanager-matches-results">
                     <tbody>
                         <?php foreach ($matches as $match): ?>
                             <?php

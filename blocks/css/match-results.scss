@@ -1,0 +1,97 @@
+table.fcmanager-matches {
+	width: 100%;
+	border: none;
+
+	tr:nth-child(even) {
+		background-color: var(--wp--preset--color--palette-color-5);
+	}
+
+	td {
+		border: none;
+	}
+
+	td.fcmanager-match-date,
+	td.fcmanager-match-time,
+	td.fcmanager-match-hometeam,
+	td.fcmanager-match-homescore,
+	td.fcmanager-match-awayscore,
+	td.fcmanager-match-separator {
+		width: 1px;
+		white-space: nowrap;
+	}
+
+	td.fcmanager-match-separator {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		text-align: center;
+	}
+
+	td.fcmanager-match-hometeam,
+	td.fcmanager-match-homescore {
+		text-align: right;
+	}
+}
+
+@mixin two-row-match-layout {
+	table.fcmanager-matches {
+		td {
+			display: block;
+			float: left;
+			padding: 0.1em;
+		}
+
+		td.fcmanager-match-date {
+			text-align: right;
+		}
+
+		td.fcmanager-match-date,
+		td.fcmanager-match-time {
+			display: inline-block;
+			width: 55%;
+			padding: 0.5em 0.1em 0.1em 0.1em;
+		}
+		td.fcmanager-match-time {
+			width: 45%;
+		}
+
+		td.fcmanager-match-hometeam {
+			clear: both;
+		}
+
+		td.fcmanager-match-hometeam,
+		td.fcmanager-match-awayteam {
+			width: 35%;
+		}
+		td.fcmanager-match-homescore,
+		td.fcmanager-match-awayscore {
+			width: 10%;
+		}
+
+		&.fcmanager-matches-schedule td.fcmanager-match-hometeam,
+		&.fcmanager-matches-schedule td.fcmanager-match-awayteam {
+			width: 45%;
+		}
+
+		td.fcmanager-match-separator {
+			width: 10%;
+		}
+
+		td.fcmanager-match-hometeam,
+		td.fcmanager-match-awayteam,
+		td.fcmanager-match-homescore,
+		td.fcmanager-match-awayscore,
+		td.fcmanager-match-separator {
+			padding: 0.1em 0.1em 0.5em 0.1em;
+		}
+	}
+}
+
+@media (min-width: 782px) and (max-width: 1350px) {
+	.wp-block-columns {
+		@include two-row-match-layout;
+	}
+}
+
+@media (max-width: 781px) {
+	@include two-row-match-layout;
+}
