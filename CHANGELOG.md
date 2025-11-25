@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.0] - 2025-11-25
+
+### 🐛 Bug Fixes
+
+- Show preview content in block editor.
+
+### 📚 Documentation
+
+- Improve readme.
+
+### 🎨 Styling
+
+- Support mobile/tablet view for match results and schedule blocks.
+
 ## [0.8.0] - 2025-11-19
 
 ### 🚀 Features
