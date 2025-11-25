@@ -19,7 +19,7 @@ With Football Club Manager it is easy to manage your amateur football club in Wo
 ---
 
 ## 📋 Requirements
-- WordPress 5.0 or higher
+- WordPress 6.8 or higher
 - PHP 7.4 or higher
 
 ---
