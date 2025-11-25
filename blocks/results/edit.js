@@ -36,7 +36,7 @@ export default function Edit({ attributes, setAttributes }) {
 					)
 						.toISOString()
 						.slice(0, 10),
-					meta_compare: ">",
+					meta_compare: "gt",
 					meta_type: "DATE",
 					results: true,
 				})
