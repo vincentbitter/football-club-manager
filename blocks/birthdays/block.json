@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fcmanager/birthdays",
+	"version": "0.9.0",
+	"title": "Birthdays",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Show an overview of people who have a birthday today.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css"
+}

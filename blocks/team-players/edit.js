@@ -9,7 +9,9 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const teams = useSelect(
 		(select) =>
-			select("core").getEntityRecords("postType", "fcmanager_team", { per_page: -1 }),
+			select("core").getEntityRecords("postType", "fcmanager_team", {
+				per_page: -1,
+			}),
 		[],
 	);
 
@@ -96,7 +98,7 @@ export default function Edit({ attributes, setAttributes }) {
 							{__("No players found for this team.", "football-club-manager")}
 						</p>
 					) : (
-						<ul class="fcmanager-player-list">
+						<ul class="fcmanager-player-photo-list">
 							{players?.map((player) => (
 								<li class="fcmanager-player-card" key={player.id}>
 									<figure class="fcmanager-player-photo">

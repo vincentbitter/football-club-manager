@@ -36,7 +36,7 @@ function fcmanager_render_team_players_block($attributes, $content)
                 printf(esc_html__("Players of %s", 'football-club-manager'), esc_html($team_post->post_title)); ?></h2>
 
             <?php if ($players): ?>
-                <ul class="fcmanager-player-list">
+                <ul class="fcmanager-player-photo-list">
                     <?php foreach ($players as $player): ?>
                         <li class="fcmanager-player-card">
                             <figure class="fcmanager-player-photo">

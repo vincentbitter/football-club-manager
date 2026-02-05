@@ -1,22 +1,22 @@
-# Copyright (C) 2025 Vincent Bitter
+# Copyright (C) 2026 Vincent Bitter
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.7.0\n"
+"Project-Id-Version: Football Club Manager 0.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-19T19:02:05+00:00\n"
+"POT-Creation-Date: 2026-02-05T21:15:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
-#: football-club-manager.php:185
+#: football-club-manager.php:201
 msgid "Football Club Manager"
 msgstr ""
 
@@ -42,6 +42,32 @@ msgstr ""
 
 #: admin/page_dashboard.php:39
 msgid "At a Glance"
+msgstr ""
+
+#: admin/page_settings.php:16
+#: football-club-manager.php:81
+#: football-club-manager.php:82
+msgid "Settings"
+msgstr ""
+
+#: admin/page_settings.php:26
+msgid "Save settings"
+msgstr ""
+
+#: blocks/birthdays/render.php:34
+#: build/birthdays/render.php:34
+#: blocks/birthdays/edit.js:29
+#: build/birthdays/index.js:56
+#: build/birthdays/index.js:29
+msgid "Birthdays"
+msgstr ""
+
+#: blocks/birthdays/render.php:48
+#: build/birthdays/render.php:48
+#: blocks/birthdays/edit.js:31
+#: build/birthdays/index.js:58
+#: build/birthdays/index.js:31
+msgid "No birthdays today."
 msgstr ""
 
 #: blocks/results/render.php:59
@@ -86,18 +112,18 @@ msgstr ""
 #. translators: %s is the team name
 #: blocks/team-players/render.php:36
 #: build/team-players/render.php:36
-#: blocks/team-players/edit.js:87
+#: blocks/team-players/edit.js:89
 #: build/team-players/index.js:104
-#: build/team-players/index.js:87
+#: build/team-players/index.js:89
 #, php-format,js-format
 msgid "Players of %s"
 msgstr ""
 
 #: blocks/team-players/render.php:63
 #: build/team-players/render.php:63
-#: blocks/team-players/edit.js:96
+#: blocks/team-players/edit.js:98
 #: build/team-players/index.js:106
-#: build/team-players/index.js:96
+#: build/team-players/index.js:98
 msgid "No players found for this team."
 msgstr ""
 
@@ -114,25 +140,25 @@ msgstr ""
 msgid "No matches found for this team."
 msgstr ""
 
-#: football-club-manager.php:45
-#: football-club-manager.php:46
+#: football-club-manager.php:49
+#: football-club-manager.php:50
 msgid "Dashboard"
 msgstr ""
 
-#: football-club-manager.php:54
-#: football-club-manager.php:55
+#: football-club-manager.php:57
+#: football-club-manager.php:58
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr ""
 
-#: football-club-manager.php:63
-#: football-club-manager.php:64
-#: includes/post-types/player.php:15
+#: football-club-manager.php:65
+#: football-club-manager.php:66
+#: includes/post-types/player.php:18
 msgid "Players"
 msgstr ""
 
-#: football-club-manager.php:72
 #: football-club-manager.php:73
+#: football-club-manager.php:74
 #: includes/post-types/match.php:15
 msgid "Matches"
 msgstr ""
@@ -186,12 +212,12 @@ msgid "Away game"
 msgstr ""
 
 #: includes/post-types/match.php:125
-#: includes/post-types/player.php:116
-#: includes/post-types/player.php:180
+#: includes/post-types/player.php:138
+#: includes/post-types/player.php:208
 #: includes/post-types/team.php:39
-#: blocks/team-players/edit.js:91
+#: blocks/team-players/edit.js:93
 #: build/team-players/index.js:104
-#: build/team-players/index.js:91
+#: build/team-players/index.js:93
 msgid "Team"
 msgstr ""
 
@@ -224,58 +250,70 @@ msgstr ""
 msgid "Result"
 msgstr ""
 
-#: includes/post-types/player.php:16
+#: includes/post-types/player.php:19
 msgid "Player"
 msgstr ""
 
-#: includes/post-types/player.php:17
+#: includes/post-types/player.php:20
 msgid "New player"
 msgstr ""
 
-#: includes/post-types/player.php:18
+#: includes/post-types/player.php:21
 msgid "Edit player"
 msgstr ""
 
-#: includes/post-types/player.php:19
+#: includes/post-types/player.php:22
 msgid "Player photo"
 msgstr ""
 
-#: includes/post-types/player.php:20
+#: includes/post-types/player.php:23
 msgid "Set player photo"
 msgstr ""
 
-#: includes/post-types/player.php:21
+#: includes/post-types/player.php:24
 msgid "Remove player photo"
 msgstr ""
 
-#: includes/post-types/player.php:22
+#: includes/post-types/player.php:25
 msgid "Use as player photo"
 msgstr ""
 
-#: includes/post-types/player.php:23
+#: includes/post-types/player.php:26
 msgid "No players found"
 msgstr ""
 
-#: includes/post-types/player.php:24
+#: includes/post-types/player.php:27
 msgid "No players found in the trash"
 msgstr ""
 
-#: includes/post-types/player.php:25
+#: includes/post-types/player.php:28
 msgid "Search player"
 msgstr ""
 
-#: includes/post-types/player.php:81
+#: includes/post-types/player.php:88
 msgid "Player information"
 msgstr ""
 
-#: includes/post-types/player.php:108
-#: includes/post-types/player.php:178
+#: includes/post-types/player.php:118
+#: includes/post-types/player.php:206
 msgid "First name"
 msgstr ""
 
-#: includes/post-types/player.php:112
-#: includes/post-types/player.php:179
+#: includes/post-types/player.php:122
+#: includes/post-types/player.php:207
 msgid "Last name"
+msgstr ""
+
+#: includes/post-types/player.php:126
+msgid "Date of birth"
+msgstr ""
+
+#: includes/post-types/player.php:130
+msgid "Publish birthday?"
+msgstr ""
+
+#: includes/post-types/player.php:134
+msgid "Publish age?"
 msgstr ""
 
 #: includes/post-types/team.php:40
@@ -337,6 +375,18 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
+#: includes/settings.php:37
+msgid "Player Settings"
+msgstr ""
+
+#: includes/settings.php:45
+msgid "Publish birthday by default"
+msgstr ""
+
+#: includes/settings.php:55
+msgid "Publish age by default"
+msgstr ""
+
 #: blocks/results/edit.js:60
 #: blocks/schedule/edit.js:58
 #: build/results/index.js:90
@@ -388,63 +438,63 @@ msgstr ""
 msgid "Select the number of days to search for matches."
 msgstr ""
 
-#: blocks/team-players/edit.js:46
+#: blocks/team-players/edit.js:48
 #: build/team-players/index.js:73
-#: build/team-players/index.js:46
+#: build/team-players/index.js:48
 msgid "Player Name"
 msgstr ""
 
-#: blocks/team-players/edit.js:52
+#: blocks/team-players/edit.js:54
 #: blocks/team-results/edit.js:59
 #: blocks/team-schedule/edit.js:57
 #: build/team-players/index.js:76
 #: build/team-results/index.js:78
 #: build/team-schedule/index.js:76
-#: build/team-players/index.js:52
+#: build/team-players/index.js:54
 #: build/team-results/index.js:59
 #: build/team-schedule/index.js:57
 msgid "Select a team"
 msgstr ""
 
-#: blocks/team-players/edit.js:64
+#: blocks/team-players/edit.js:66
 #: blocks/team-results/edit.js:71
 #: blocks/team-schedule/edit.js:69
 #: build/team-players/index.js:85
 #: build/team-results/index.js:87
 #: build/team-schedule/index.js:85
-#: build/team-players/index.js:64
+#: build/team-players/index.js:66
 #: build/team-results/index.js:71
 #: build/team-schedule/index.js:69
 msgid "Team Settings"
 msgstr ""
 
-#: blocks/team-players/edit.js:68
+#: blocks/team-players/edit.js:70
 #: blocks/team-results/edit.js:75
 #: blocks/team-schedule/edit.js:73
 #: build/team-players/index.js:88
 #: build/team-results/index.js:90
 #: build/team-schedule/index.js:88
-#: build/team-players/index.js:68
+#: build/team-players/index.js:70
 #: build/team-results/index.js:75
 #: build/team-schedule/index.js:73
 msgid "Loading teams..."
 msgstr ""
 
-#: blocks/team-players/edit.js:71
+#: blocks/team-players/edit.js:73
 #: blocks/team-results/edit.js:78
 #: blocks/team-schedule/edit.js:76
 #: build/team-players/index.js:90
 #: build/team-results/index.js:92
 #: build/team-schedule/index.js:90
-#: build/team-players/index.js:71
+#: build/team-players/index.js:73
 #: build/team-results/index.js:78
 #: build/team-schedule/index.js:76
 msgid "Choose a team..."
 msgstr ""
 
-#: blocks/team-players/edit.js:75
+#: blocks/team-players/edit.js:77
 #: build/team-players/index.js:96
-#: build/team-players/index.js:75
+#: build/team-players/index.js:77
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
 msgstr ""
 
@@ -455,6 +505,18 @@ msgstr ""
 #: build/team-results/index.js:82
 #: build/team-schedule/index.js:80
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the matches of the current team."
+msgstr ""
+
+#: blocks/birthdays/block.json
+#: build/birthdays/block.json
+msgctxt "block title"
+msgid "Birthdays"
+msgstr ""
+
+#: blocks/birthdays/block.json
+#: build/birthdays/block.json
+msgctxt "block description"
+msgid "Show an overview of people who have a birthday today."
 msgstr ""
 
 #: blocks/results/block.json
