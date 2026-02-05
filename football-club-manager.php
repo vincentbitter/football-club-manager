@@ -25,8 +25,12 @@ require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');
 require_once('includes/post-types/match.php');
 
+// Register settings
+require_once('includes/settings.php');
+
 // Register administration pages
 require_once('admin/page_dashboard.php');
+require_once('admin/page_settings.php');
 
 // Register administration menu
 function fcmanager_register_administration_menu()
@@ -46,8 +50,7 @@ function fcmanager_register_administration_menu()
         __('Dashboard', 'football-club-manager'),
         'edit_posts',
         'fcmanager',
-        'fcmanager_page_dashboard',
-        1
+        'fcmanager_page_dashboard'
     );
     add_submenu_page(
         'fcmanager',
@@ -55,26 +58,31 @@ function fcmanager_register_administration_menu()
         __('Teams', 'football-club-manager'),
         'edit_posts',
         'edit.php?post_type=fcmanager_team',
-        false,
-        2
+        false
     );
     add_submenu_page(
         'fcmanager',
         __('Players', 'football-club-manager'),
         __('Players', 'football-club-manager'),
-        'administrator',
+        'edit_posts',
         'edit.php?post_type=fcmanager_player',
-        false,
-        3
+        false
     );
     add_submenu_page(
         'fcmanager',
         __('Matches', 'football-club-manager'),
         __('Matches', 'football-club-manager'),
-        'administrator',
+        'edit_posts',
         'edit.php?post_type=fcmanager_match',
-        false,
-        4
+        false
+    );
+    add_submenu_page(
+        'fcmanager',
+        __('Settings', 'football-club-manager'),
+        __('Settings', 'football-club-manager'),
+        'manage_options',
+        'fcmanager_settings',
+        'fcmanager_page_settings'
     );
 }
 
@@ -101,6 +109,14 @@ function fcmanager_disable_quick_edit($actions)
 }
 
 add_filter('post_row_actions', 'fcmanager_disable_quick_edit');
+
+// On admin init
+function fcmanager_admin_init()
+{
+    fcmanager_settings_init();
+}
+
+add_action('admin_init', 'fcmanager_admin_init');
 
 // On init
 function fcmanager_init()

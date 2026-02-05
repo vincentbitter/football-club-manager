@@ -5,6 +5,9 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+require_once(dirname(__FILE__) . '/../class-settings.php');
+require_once(dirname(__FILE__) . '/../class-player.php');
+
 // Register Custom Post Type: Player
 function fcmanager_register_player_post_type()
 {
@@ -38,7 +41,11 @@ add_action('rest_api_init', function () {
         'meta',
         array(
             'get_callback' => function ($post) {
-                return get_post_meta($post['id']);
+                $player = new FCManager_Player($post['id']);
+                $meta = get_post_meta($post['id']);
+                $meta['_fcmanager_player_date_of_birth'] = array($player->date_of_birth());
+                $meta['_fcmanager_player_age'] = array($player->age(false));
+                return $meta;
             },
             'schema' => null,
         )
@@ -95,6 +102,9 @@ function fcmanager_render_player_meta_box($post)
     // Retreive current meta values
     $first_name = get_post_meta($post->ID, '_fcmanager_player_first_name', true);
     $last_name = get_post_meta($post->ID, '_fcmanager_player_last_name', true);
+    $date_of_birth = get_post_meta($post->ID, '_fcmanager_player_date_of_birth', true);
+    $publish_birthday = $post->post_status !== 'auto-draft' ? get_post_meta($post->ID, '_fcmanager_player_publish_birthday', true) === 'true' : FCManager_Settings::instance()->player->publish_birthday_by_default();
+    $publish_age = $post->post_status !== 'auto-draft' ? get_post_meta($post->ID, '_fcmanager_player_publish_age', true) === 'true' : FCManager_Settings::instance()->player->publish_age_by_default();
     $team = get_post_meta($post->ID, '_fcmanager_player_team', true);
 
     $team_options = fcmanager_get_teams();
@@ -111,6 +121,18 @@ function fcmanager_render_player_meta_box($post)
             <tr>
                 <th><label for="fcmanager_player_last_name"><?php esc_html_e('Last name', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="fcmanager_player_last_name" name="fcmanager_player_last_name" value="<?php echo esc_attr($last_name); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_player_date_of_birth"><?php esc_html_e('Date of birth', 'football-club-manager'); ?></label></th>
+                <td><input type="date" id="fcmanager_player_date_of_birth" name="fcmanager_player_date_of_birth" value="<?php echo esc_attr($date_of_birth); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_player_publish_birthday"><?php esc_html_e('Publish birthday?', 'football-club-manager'); ?></label></th>
+                <td><input type="checkbox" id="fcmanager_player_publish_birthday" name="fcmanager_player_publish_birthday" <?php checked($publish_birthday, true); ?>></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_player_publish_age"><?php esc_html_e('Publish age?', 'football-club-manager'); ?></label></th>
+                <td><input type="checkbox" id="fcmanager_player_publish_age" name="fcmanager_player_publish_age" <?php checked($publish_age, true); ?>></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_team"><?php esc_html_e('Team', 'football-club-manager'); ?></label></th>
@@ -154,6 +176,12 @@ function fcmanager_save_player_meta_box($post_id)
         update_post_meta($post_id, '_fcmanager_player_last_name', sanitize_text_field(wp_unslash($_POST['fcmanager_player_last_name'])));
     if (array_key_exists('fcmanager_player_team', $_POST))
         update_post_meta($post_id, '_fcmanager_player_team', sanitize_text_field(wp_unslash($_POST['fcmanager_player_team'])));
+    if (array_key_exists('fcmanager_player_date_of_birth', $_POST))
+        update_post_meta($post_id, '_fcmanager_player_date_of_birth', sanitize_text_field(wp_unslash($_POST['fcmanager_player_date_of_birth'])));
+    $publish_birthday = array_key_exists('fcmanager_player_publish_birthday', $_POST) ? 'true' : 'false';
+    update_post_meta($post_id, '_fcmanager_player_publish_birthday', $publish_birthday);
+    $publish_age = array_key_exists('fcmanager_player_publish_age', $_POST) ? 'true' : 'false';
+    update_post_meta($post_id, '_fcmanager_player_publish_age', $publish_age);
 
     // Update post with new title
     $name = get_post_meta($post_id, '_fcmanager_player_first_name', true) . ' ' . get_post_meta($post_id, '_fcmanager_player_last_name', true);
@@ -212,14 +240,51 @@ add_action('manage_fcmanager_player_posts_custom_column', 'fcmanager_custom_play
 // Allow filtering players via REST API
 add_filter('rest_fcmanager_player_query', function ($args, $request) {
     if ($meta_key = $request->get_param('meta_key')) {
-        $args['meta_query'] = array(
-            [
-                'key' => $meta_key,
-                'value' => $request->get_param('meta_value'),
-                'compare' => '=',
-                'type' => 'NUMERIC',
-            ],
-        );
+        $meta_value = $request->get_param('meta_value');
+
+        if ($meta_key === '_fcmanager_player_date_of_birth') {
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $meta_value)) {
+                $args['meta_query'][] = array(
+                    'key' => '_fcmanager_player_date_of_birth',
+                    'value' => $meta_value,
+                    'compare' => '=',
+                    'type' => 'DATE',
+                );
+                $args['meta_query'][] = array(
+                    'key' => '_fcmanager_player_publish_birthday',
+                    'value' => 'true',
+                    'compare' => '='
+                );
+            } elseif ($meta_value === 'today') {
+                $args['meta_query'][] = array(
+                    'key' => '_fcmanager_player_date_of_birth',
+                    'value' => '-' . wp_date('m-d'),
+                    'compare' => 'LIKE'
+                );
+                $args['meta_query'][] = array(
+                    'key' => '_fcmanager_player_publish_birthday',
+                    'value' => 'true',
+                    'compare' => '='
+                );
+            }
+        } else {
+            $args['meta_query'] = array(
+                [
+                    'key' => $meta_key,
+                    'value' => $meta_value,
+                    'compare' => '=',
+                    'type' => 'NUMERIC',
+                ],
+            );
+        }
     }
+    return $args;
+}, 10, 2);
+
+// Order players by name in REST API
+add_filter('rest_fcmanager_player_query', function ($args, $request) {
+    $args['orderby'] = 'title';
+    $args['order'] = 'ASC';
+
     return $args;
 }, 10, 2);
