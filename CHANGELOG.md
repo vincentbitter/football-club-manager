@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.0] - 2026-02-08
+
+### 🚀 Features
+
+- Compatible with WordPress 6.9
+- Date of birth for players, including privacy settings
+- Birthdays block showing today's birthdays
+- Volunteers management
+
 ## [0.9.0] - 2025-11-25
 
 ### 🐛 Bug Fixes
