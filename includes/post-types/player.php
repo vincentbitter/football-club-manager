@@ -100,13 +100,7 @@ add_action('add_meta_boxes', 'fcmanager_add_player_meta_boxes');
 function fcmanager_render_player_meta_box($post)
 {
     // Retreive current meta values
-    $first_name = get_post_meta($post->ID, '_fcmanager_player_first_name', true);
-    $last_name = get_post_meta($post->ID, '_fcmanager_player_last_name', true);
-    $date_of_birth = get_post_meta($post->ID, '_fcmanager_player_date_of_birth', true);
-    $publish_birthday = $post->post_status !== 'auto-draft' ? get_post_meta($post->ID, '_fcmanager_player_publish_birthday', true) === 'true' : FCManager_Settings::instance()->player->publish_birthday_by_default();
-    $publish_age = $post->post_status !== 'auto-draft' ? get_post_meta($post->ID, '_fcmanager_player_publish_age', true) === 'true' : FCManager_Settings::instance()->player->publish_age_by_default();
-    $team = get_post_meta($post->ID, '_fcmanager_player_team', true);
-
+    $player = new FCManager_Player($post);
     $team_options = fcmanager_get_teams();
 
     // Show form
@@ -116,30 +110,30 @@ function fcmanager_render_player_meta_box($post)
         <tbody>
             <tr>
                 <th><label for="fcmanager_player_first_name"><?php esc_html_e('First name', 'football-club-manager'); ?></label></th>
-                <td><input type="text" id="fcmanager_player_first_name" name="fcmanager_player_first_name" value="<?php echo esc_attr($first_name); ?>"></td>
+                <td><input type="text" id="fcmanager_player_first_name" name="fcmanager_player_first_name" value="<?php echo esc_attr($player->first_name()); ?>"></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_last_name"><?php esc_html_e('Last name', 'football-club-manager'); ?></label></th>
-                <td><input type="text" id="fcmanager_player_last_name" name="fcmanager_player_last_name" value="<?php echo esc_attr($last_name); ?>"></td>
+                <td><input type="text" id="fcmanager_player_last_name" name="fcmanager_player_last_name" value="<?php echo esc_attr($player->last_name()); ?>"></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_date_of_birth"><?php esc_html_e('Date of birth', 'football-club-manager'); ?></label></th>
-                <td><input type="date" id="fcmanager_player_date_of_birth" name="fcmanager_player_date_of_birth" value="<?php echo esc_attr($date_of_birth); ?>"></td>
+                <td><input type="date" id="fcmanager_player_date_of_birth" name="fcmanager_player_date_of_birth" value="<?php echo esc_attr($player->date_of_birth() != null ? $player->date_of_birth()->format('Y-m-d') : ''); ?>"></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_publish_birthday"><?php esc_html_e('Publish birthday?', 'football-club-manager'); ?></label></th>
-                <td><input type="checkbox" id="fcmanager_player_publish_birthday" name="fcmanager_player_publish_birthday" <?php checked($publish_birthday, true); ?>></td>
+                <td><input type="checkbox" id="fcmanager_player_publish_birthday" name="fcmanager_player_publish_birthday" <?php checked($player->publish_birthday(), true); ?>></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_publish_age"><?php esc_html_e('Publish age?', 'football-club-manager'); ?></label></th>
-                <td><input type="checkbox" id="fcmanager_player_publish_age" name="fcmanager_player_publish_age" <?php checked($publish_age, true); ?>></td>
+                <td><input type="checkbox" id="fcmanager_player_publish_age" name="fcmanager_player_publish_age" <?php checked($player->publish_age(), true); ?>></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_player_team"><?php esc_html_e('Team', 'football-club-manager'); ?></label></th>
                 <td>
                     <select id="fcmanager_player_team" name="fcmanager_player_team">
                         <?php foreach ($team_options as $team_option) : ?>
-                            <option value="<?php echo esc_attr($team_option->ID); ?>" <?php selected($team, $team_option->ID); ?>><?php echo esc_html($team_option->post_title); ?></option>
+                            <option value="<?php echo esc_attr($team_option->ID); ?>" <?php selected($player->team_id(), $team_option->ID); ?>><?php echo esc_html($team_option->post_title); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
