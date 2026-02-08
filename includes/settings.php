@@ -20,8 +20,8 @@ function fcmanager_field_toggle_callback($args)
 
 function fcmanager_options_sanitize_callback($input)
 {
-    $input['fcmanager_field_show_birthday_by_default'] = $input['fcmanager_field_show_birthday_by_default'] == 1 ? 1 : 0;
-    $input['fcmanager_field_show_age_by_default'] = $input['fcmanager_field_show_age_by_default'] == 1 ? 1 : 0;
+    $input['fcmanager_player_publish_birthday_by_default'] = $input['fcmanager_player_publish_birthday_by_default'] == 1 ? 1 : 0;
+    $input['fcmanager_player_publish_age_by_default'] = $input['fcmanager_player_publish_age_by_default'] == 1 ? 1 : 0;
 
     return $input;
 }

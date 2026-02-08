@@ -24,7 +24,7 @@ abstract class FCManager_Settings_Base
      */
     protected function get_or_update_boolean($option_name, $new_value = null)
     {
-        return $this->get_or_update($option_name, ($new_value !== null) ? $new_value === '1' || $new_value === 'true' : null) === '1';
+        return $this->get_or_update($option_name, ($new_value !== null) ? $new_value == '1' || $new_value == 'true' : null) === 1;
     }
 }
 
@@ -57,11 +57,11 @@ class FCManager_Player_Settings extends FCManager_Settings_Base
 {
     public function publish_birthday_by_default($newValue = null)
     {
-        return $this->get_or_update_boolean('fcmanager_player_publish_birthday_by_default');
+        return $this->get_or_update_boolean('fcmanager_player_publish_birthday_by_default', $newValue);
     }
 
     public function publish_age_by_default($newValue = null)
     {
-        return $this->get_or_update_boolean('fcmanager_player_publish_age_by_default');
+        return $this->get_or_update_boolean('fcmanager_player_publish_age_by_default', $newValue);
     }
 }
