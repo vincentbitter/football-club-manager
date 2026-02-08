@@ -23,6 +23,7 @@ define('FCMANAGER_VERSION', '0.9.0');
 // Register custom post types
 require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');
+require_once('includes/post-types/volunteer.php');
 require_once('includes/post-types/match.php');
 
 // Register settings
@@ -66,6 +67,14 @@ function fcmanager_register_administration_menu()
         __('Players', 'football-club-manager'),
         'edit_posts',
         'edit.php?post_type=fcmanager_player',
+        false
+    );
+    add_submenu_page(
+        'fcmanager',
+        __('Volunteers', 'football-club-manager'),
+        __('Volunteers', 'football-club-manager'),
+        'edit_posts',
+        'edit.php?post_type=fcmanager_volunteer',
         false
     );
     add_submenu_page(
@@ -123,6 +132,7 @@ function fcmanager_init()
 {
     fcmanager_register_team_post_type();
     fcmanager_register_player_post_type();
+    fcmanager_register_volunteer_post_type();
     fcmanager_register_match_post_type();
 
     wp_register_block_types_from_metadata_collection(__DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php');
@@ -171,6 +181,7 @@ function fcmanager_deactivated()
     // Unregister post types before refreshing rewrite rules
     fcmanager_unregister_team_post_type();
     fcmanager_unregister_player_post_type();
+    fcmanager_unregister_volunteer_post_type();
     fcmanager_unregister_match_post_type();
 
     flush_rewrite_rules();

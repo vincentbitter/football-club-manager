@@ -60,8 +60,8 @@ function fcmanager_dashboard_right_now()
     <div class="main">
         <ul>
             <?php
-            // Teams, players and matches
-            foreach (array('fcmanager_team', 'fcmanager_player', 'fcmanager_match') as $post_type) {
+            // Teams, players, volunteers and matches
+            foreach (array('fcmanager_team', 'fcmanager_player', 'fcmanager_volunteer', 'fcmanager_match') as $post_type) {
                 $num_posts = wp_count_posts($post_type);
 
                 if ($num_posts) {

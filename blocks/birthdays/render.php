@@ -1,23 +1,32 @@
 <?php
 
+use function PHPSTORM_META\map;
+
 if (! defined('ABSPATH')) {
     exit;
 }
 
 require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-player.php';
+require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-volunteer.php';
 
-function fcmanager_render_birthdays_block($attributes, $content)
+/**
+ * Retrieve all players or volunteers whose birthday is today and who have enabled birthday display.
+ *
+ * @param string $post_type 'player' or 'volunteer'
+ * @return WP_Post[] List of posts matching the criteria.
+ */
+function fcmanager_get_birthdays($post_type, $class)
 {
-    $players = get_posts([
-        'post_type' => 'fcmanager_player',
+    $posts = get_posts([
+        'post_type' => 'fcmanager_' . $post_type,
         'meta_query' => [
             [
-                'key' => '_fcmanager_player_date_of_birth',
+                'key' => '_fcmanager_' . $post_type . '_date_of_birth',
                 'value' => '-' . wp_date('m-d'),
                 'compare' => 'LIKE'
             ],
             [
-                'key' => '_fcmanager_player_publish_birthday',
+                'key' => '_fcmanager_' . $post_type . '_publish_birthday',
                 'value' => 'true',
                 'compare' => '='
             ]
@@ -27,6 +36,17 @@ function fcmanager_render_birthdays_block($attributes, $content)
         'posts_per_page' => -1,
     ]);
 
+    return array_map(fn($post) => new $class($post), $posts);
+}
+
+function fcmanager_render_birthdays_block($attributes, $content)
+{
+    $players = fcmanager_get_birthdays('player', 'FCManager_Player');
+    $volunteers = fcmanager_get_birthdays('volunteer', 'FCManager_Volunteer');
+
+    /** @var FCManager_Person[] */
+    $people = array_merge($players, $volunteers);
+
     ob_start();
 ?>
     <div class="fcmanager-birthdays">
@@ -34,12 +54,11 @@ function fcmanager_render_birthdays_block($attributes, $content)
             esc_html_e("Birthdays", 'football-club-manager'); ?></h2>
 
         <?php if ($players): ?>
-            <ul class="fcmanager-player-name-list">
-                <?php foreach ($players as $player): ?>
-                    <?php $player_obj = new FCManager_Player($player); ?>
+            <ul class="fcmanager-people-name-list">
+                <?php foreach ($people as $person): ?>
                     <li class="fcmanager-player-item">
-                        <?php echo esc_html($player_obj->name()); ?>
-                        <?php $age = $player_obj->age();
+                        <?php echo esc_html($person->name()); ?>
+                        <?php $age = $person->age();
                         if ($age !== null) echo ' (' . esc_html($age) . ')'; ?>
                     </li>
                 <?php endforeach; ?>

@@ -12,7 +12,8 @@ With Football Club Manager it is easy to manage your amateur football club in Wo
 
 - 👥 Create customizable team pages
 - 👤 Register team players, including picture
-- 📝 Manage match schedule and results
+- 📝 Publish match schedule and results
+- 🙋‍♂️ Manage volunteers
 - 🧩 Customizable blocks for Gutenberg editor
 - 🌍 Multilingual support
 

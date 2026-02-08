@@ -22,18 +22,41 @@ export default function Edit({ attributes, setAttributes }) {
 		[],
 	);
 
+	const volunteers = useSelect(
+		(select) =>
+			select("core")
+				.getEntityRecords("postType", "fcmanager_volunteer", {
+					per_page: -1,
+					meta_key: "_fcmanager_volunteer_date_of_birth",
+					meta_value: "today",
+				})
+				?.map((volunteer) => ({
+					id: volunteer.id,
+					name: volunteer.title,
+					age:
+						volunteer.meta._fcmanager_volunteer_publish_age[0] === "true"
+							? volunteer.meta._fcmanager_volunteer_age
+							: null,
+				})),
+		[],
+	);
+
+	const allBirthdays = [...(players || []), ...(volunteers || [])].sort(
+		(a, b) => a.name.localeCompare(b.name),
+	);
+
 	return (
 		<>
 			<div {...useBlockProps()}>
 				<div class="fcmanager-birthdays">
 					<h2>{__("Birthdays", "football-club-manager")}</h2>
-					{!players?.length ? (
+					{!allBirthdays?.length ? (
 						<p>{__("No birthdays today.", "football-club-manager")}</p>
 					) : (
-						<ul class="fcmanager-player-name-list">
-							{players?.map((player) => (
-								<li class="fcmanager-player-item" key={player.id}>
-									{player.name} {player.age !== null ? ` (${player.age})` : ""}
+						<ul class="fcmanager-people-name-list">
+							{allBirthdays?.map((person) => (
+								<li class="fcmanager-person-item" key={person.id}>
+									{person.name} {person.age !== null ? ` (${person.age})` : ""}
 								</li>
 							))}
 						</ul>

@@ -31,8 +31,12 @@ abstract class FCManager_Settings_Base
 class FCManager_Settings
 {
     protected static $_instance = null;
+
     /** @var FCManager_Player_Settings */
     public $player;
+
+    /** @var FCManager_Volunteer_Settings */
+    public $volunteer;
 
     /**
      * This method will create and return the only instance of this class.
@@ -50,6 +54,7 @@ class FCManager_Settings
     private function __construct()
     {
         $this->player = new FCManager_Player_Settings();
+        $this->volunteer = new FCManager_Volunteer_Settings();
     }
 }
 
@@ -63,5 +68,18 @@ class FCManager_Player_Settings extends FCManager_Settings_Base
     public function publish_age_by_default($newValue = null)
     {
         return $this->get_or_update_boolean('fcmanager_player_publish_age_by_default', $newValue);
+    }
+}
+
+class FCManager_Volunteer_Settings extends FCManager_Settings_Base
+{
+    public function publish_birthday_by_default($newValue = null)
+    {
+        return $this->get_or_update_boolean('fcmanager_volunteer_publish_birthday_by_default', $newValue);
+    }
+
+    public function publish_age_by_default($newValue = null)
+    {
+        return $this->get_or_update_boolean('fcmanager_volunteer_publish_age_by_default', $newValue);
     }
 }

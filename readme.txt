@@ -17,7 +17,8 @@ With this plugin, you can:
 
 * 🏟️ Create customizable team pages
 * 👤 Register team players, including picture
-* 📅 Manage match schedules and results
+* 📅 Publish match schedule and results
+* 🙋‍♂️ Manage volunteers
 * 🧩 Customizable blocks for Gutenberg editor
 * 🌐 Multilingual support
 
