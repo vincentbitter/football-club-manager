@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2026-02-08
+
+### 🐛 Bug Fixes
+
+- Add missing NL translations
+- Add missing translations in editor
+
+### 🚜 Refactor
+
+- Load settings class from plugin file
+
 ## [0.10.0] - 2026-02-08
 
 ### 🚀 Features
