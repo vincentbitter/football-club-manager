@@ -27,6 +27,7 @@ require_once('includes/post-types/volunteer.php');
 require_once('includes/post-types/match.php');
 
 // Register settings
+require_once('includes/class-settings.php');
 require_once('includes/settings.php');
 
 // Register administration pages

@@ -3,8 +3,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-require_once(dirname(__FILE__) . '/../includes/class-settings.php');
-
 function fcmanager_page_settings()
 {
 
