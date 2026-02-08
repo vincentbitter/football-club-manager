@@ -2,21 +2,21 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.9.0\n"
+"Project-Id-Version: Football Club Manager 0.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-05T21:15:41+00:00\n"
+"POT-Creation-Date: 2026-02-08T13:32:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
-#: football-club-manager.php:201
+#: football-club-manager.php:213
 msgid "Football Club Manager"
 msgstr ""
 
@@ -44,29 +44,29 @@ msgstr ""
 msgid "At a Glance"
 msgstr ""
 
-#: admin/page_settings.php:16
-#: football-club-manager.php:81
-#: football-club-manager.php:82
+#: admin/page_settings.php:13
+#: football-club-manager.php:91
+#: football-club-manager.php:92
 msgid "Settings"
 msgstr ""
 
-#: admin/page_settings.php:26
+#: admin/page_settings.php:23
 msgid "Save settings"
 msgstr ""
 
-#: blocks/birthdays/render.php:34
-#: build/birthdays/render.php:34
-#: blocks/birthdays/edit.js:29
-#: build/birthdays/index.js:56
-#: build/birthdays/index.js:29
+#: blocks/birthdays/render.php:54
+#: build/birthdays/render.php:54
+#: blocks/birthdays/edit.js:52
+#: build/birthdays/index.js:66
+#: build/birthdays/index.js:52
 msgid "Birthdays"
 msgstr ""
 
-#: blocks/birthdays/render.php:48
-#: build/birthdays/render.php:48
-#: blocks/birthdays/edit.js:31
-#: build/birthdays/index.js:58
-#: build/birthdays/index.js:31
+#: blocks/birthdays/render.php:67
+#: build/birthdays/render.php:67
+#: blocks/birthdays/edit.js:54
+#: build/birthdays/index.js:68
+#: build/birthdays/index.js:54
 msgid "No birthdays today."
 msgstr ""
 
@@ -140,25 +140,31 @@ msgstr ""
 msgid "No matches found for this team."
 msgstr ""
 
-#: football-club-manager.php:49
-#: football-club-manager.php:50
+#: football-club-manager.php:51
+#: football-club-manager.php:52
 msgid "Dashboard"
 msgstr ""
 
-#: football-club-manager.php:57
-#: football-club-manager.php:58
+#: football-club-manager.php:59
+#: football-club-manager.php:60
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr ""
 
-#: football-club-manager.php:65
-#: football-club-manager.php:66
+#: football-club-manager.php:67
+#: football-club-manager.php:68
 #: includes/post-types/player.php:18
 msgid "Players"
 msgstr ""
 
-#: football-club-manager.php:73
-#: football-club-manager.php:74
+#: football-club-manager.php:75
+#: football-club-manager.php:76
+#: includes/post-types/volunteer.php:17
+msgid "Volunteers"
+msgstr ""
+
+#: football-club-manager.php:83
+#: football-club-manager.php:84
 #: includes/post-types/match.php:15
 msgid "Matches"
 msgstr ""
@@ -212,8 +218,8 @@ msgid "Away game"
 msgstr ""
 
 #: includes/post-types/match.php:125
-#: includes/post-types/player.php:138
-#: includes/post-types/player.php:208
+#: includes/post-types/player.php:132
+#: includes/post-types/player.php:202
 #: includes/post-types/team.php:39
 #: blocks/team-players/edit.js:93
 #: build/team-players/index.js:104
@@ -294,25 +300,32 @@ msgstr ""
 msgid "Player information"
 msgstr ""
 
-#: includes/post-types/player.php:118
-#: includes/post-types/player.php:206
+#: includes/post-types/player.php:112
+#: includes/post-types/player.php:200
+#: includes/post-types/volunteer.php:110
+#: includes/post-types/volunteer.php:186
 msgid "First name"
 msgstr ""
 
-#: includes/post-types/player.php:122
-#: includes/post-types/player.php:207
+#: includes/post-types/player.php:116
+#: includes/post-types/player.php:201
+#: includes/post-types/volunteer.php:114
+#: includes/post-types/volunteer.php:187
 msgid "Last name"
 msgstr ""
 
-#: includes/post-types/player.php:126
+#: includes/post-types/player.php:120
+#: includes/post-types/volunteer.php:118
 msgid "Date of birth"
 msgstr ""
 
-#: includes/post-types/player.php:130
+#: includes/post-types/player.php:124
+#: includes/post-types/volunteer.php:122
 msgid "Publish birthday?"
 msgstr ""
 
-#: includes/post-types/player.php:134
+#: includes/post-types/player.php:128
+#: includes/post-types/volunteer.php:126
 msgid "Publish age?"
 msgstr ""
 
@@ -375,16 +388,66 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: includes/settings.php:37
+#: includes/post-types/volunteer.php:18
+msgid "Volunteer"
+msgstr ""
+
+#: includes/post-types/volunteer.php:19
+msgid "New volunteer"
+msgstr ""
+
+#: includes/post-types/volunteer.php:20
+msgid "Edit volunteer"
+msgstr ""
+
+#: includes/post-types/volunteer.php:21
+msgid "Volunteer photo"
+msgstr ""
+
+#: includes/post-types/volunteer.php:22
+msgid "Set volunteer photo"
+msgstr ""
+
+#: includes/post-types/volunteer.php:23
+msgid "Remove volunteer photo"
+msgstr ""
+
+#: includes/post-types/volunteer.php:24
+msgid "Use as volunteer photo"
+msgstr ""
+
+#: includes/post-types/volunteer.php:25
+msgid "No volunteers found"
+msgstr ""
+
+#: includes/post-types/volunteer.php:26
+msgid "No volunteers found in the trash"
+msgstr ""
+
+#: includes/post-types/volunteer.php:27
+msgid "Search volunteer"
+msgstr ""
+
+#: includes/post-types/volunteer.php:87
+msgid "Volunteer information"
+msgstr ""
+
+#: includes/settings.php:39
 msgid "Player Settings"
 msgstr ""
 
-#: includes/settings.php:45
+#: includes/settings.php:47
+#: includes/settings.php:75
 msgid "Publish birthday by default"
 msgstr ""
 
-#: includes/settings.php:55
+#: includes/settings.php:57
+#: includes/settings.php:85
 msgid "Publish age by default"
+msgstr ""
+
+#: includes/settings.php:67
+msgid "Volunteer Settings"
 msgstr ""
 
 #: blocks/results/edit.js:60
