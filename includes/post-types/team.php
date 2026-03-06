@@ -214,3 +214,43 @@ function fcmanager_save_results_toggle_meta($post_id)
     fcmanager_save_block_toggle_meta($post_id, 'results');
 }
 add_action('save_post', 'fcmanager_save_results_toggle_meta');
+
+function fcmanager_find_team_by_player($query)
+{
+    if (! $query->is_search || is_admin()) {
+        return;
+    }
+
+    $search_term = trim($query->query_vars['s']);
+    if (! $search_term) {
+        return;
+    }
+
+    global $wpdb;
+
+    $terms = preg_split('/\s+/', trim($search_term));
+
+    $team_ids = $wpdb->get_col($wpdb->prepare(
+        "
+    SELECT pm.meta_value
+    FROM $wpdb->posts p
+    INNER JOIN $wpdb->postmeta pm
+        ON pm.post_id = p.ID
+        AND pm.meta_key = '_fcmanager_player_team'
+    WHERE p.post_type = 'fcmanager_player'
+      AND p.post_status = 'publish'
+      AND " . implode(' AND ', array_fill(0, count($terms), 'p.post_title LIKE %s')),
+        ...array_map(
+            fn($t) => '%' . $wpdb->esc_like($t) . '%',
+            $terms
+        )
+    ));
+
+
+    if (empty($team_ids)) {
+        return;
+    }
+    $query->set('s', null);
+    $query->set('post__in', $team_ids);
+}
+add_action('pre_get_posts', 'fcmanager_find_team_by_player');
