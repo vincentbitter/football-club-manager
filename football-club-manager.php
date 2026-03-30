@@ -24,6 +24,7 @@ define('FCMANAGER_VERSION', '0.11.0');
 require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');
 require_once('includes/post-types/volunteer.php');
+require_once('includes/post-types/signup.php');
 require_once('includes/post-types/match.php');
 
 // Register settings
@@ -76,6 +77,14 @@ function fcmanager_register_administration_menu()
         __('Volunteers', 'football-club-manager'),
         'edit_posts',
         'edit.php?post_type=fcmanager_volunteer',
+        false
+    );
+    add_submenu_page(
+        'fcmanager',
+        __('Signups', 'football-club-manager'),
+        __('Signups', 'football-club-manager'),
+        'edit_posts',
+        'edit.php?post_type=fcmanager_signup',
         false
     );
     add_submenu_page(
@@ -134,6 +143,7 @@ function fcmanager_init()
     fcmanager_register_team_post_type();
     fcmanager_register_player_post_type();
     fcmanager_register_volunteer_post_type();
+    fcmanager_register_signup_post_type();
     fcmanager_register_match_post_type();
 
     wp_register_block_types_from_metadata_collection(__DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php');
@@ -183,6 +193,7 @@ function fcmanager_deactivated()
     fcmanager_unregister_team_post_type();
     fcmanager_unregister_player_post_type();
     fcmanager_unregister_volunteer_post_type();
+    fcmanager_unregister_signup_post_type();
     fcmanager_unregister_match_post_type();
 
     flush_rewrite_rules();

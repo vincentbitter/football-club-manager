@@ -1,0 +1,508 @@
+<?php
+
+if (! defined('ABSPATH')) {
+    exit;
+}
+
+class FCManager_Signup
+{
+    private $id;
+
+    /** @var FCManager_Signup_Personal_Details */
+    private $personal_details;
+
+    /** @var FCManager_Signup_Parent */
+    private $parent1;
+
+    /** @var FCManager_Signup_Parent */
+    private $parent2;
+
+    /** @var FCManager_Signup_Payment_Details */
+    private $payment_details;
+
+    /** @var FCManager_Signup_Additional_Information */
+    private $additional_information;
+
+    public function __construct($id_or_post = null)
+    {
+        $this->set_id($id_or_post);
+
+        $this->personal_details = new FCManager_Signup_Personal_Details($this->id);
+        $this->parent1 = new FCManager_Signup_Parent($this->id, 1);
+        $this->parent2 = new FCManager_Signup_Parent($this->id, 2);
+        $this->payment_details = new FCManager_Signup_Payment_Details($this->id);
+        $this->additional_information = new FCManager_Signup_Additional_Information($this->id);
+    }
+
+    private function set_id($id_or_post)
+    {
+        if ($id_or_post === null || ($id_or_post instanceof WP_Post && $id_or_post->post_status === 'auto-draft')) {
+            $this->id = $id_or_post;
+            return;
+        }
+
+        if (is_int($id_or_post)) {
+            $id_or_post = get_post($id_or_post);
+            if (!$id_or_post) {
+                throw new InvalidArgumentException('Invalid post ID.');
+            }
+        }
+
+        if ($id_or_post instanceof WP_Post) {
+            $this->id = $id_or_post->ID;
+        } else {
+            throw new InvalidArgumentException('Expected an integer ID or a WP_Post object.');
+        }
+    }
+
+    public function personal_details()
+    {
+        return $this->personal_details;
+    }
+
+    public function parent1()
+    {
+        return $this->parent1;
+    }
+
+    public function parent2()
+    {
+        return $this->parent2;
+    }
+
+    public function payment_details()
+    {
+        return $this->payment_details;
+    }
+
+    public function additional_information()
+    {
+        return $this->additional_information;
+    }
+
+    public function save()
+    {
+        if (!$this->id) {
+            // Create new post
+            $this->id = wp_insert_post([
+                'post_type' => 'fcmanager_signup',
+                'post_status' => 'publish',
+            ]);
+        }
+
+        $this->personal_details->save($this->id);
+        $this->parent1->save($this->id);
+        $this->parent2->save($this->id);
+        $this->payment_details->save($this->id);
+        $this->additional_information->save($this->id);
+    }
+}
+
+class FCManager_Signup_Personal_Details
+{
+    private $first_name;
+    private $initials;
+    private $middle_name;
+    private $last_name;
+
+    private $date_of_birth;
+    private $gender;
+
+    private $street;
+    private $house_number;
+    private $house_number_addition;
+    private $postal_code;
+    private $city;
+    private $country;
+
+    private $mobile_phone_number;
+    private $phone_number;
+    private $email_address;
+
+    public function __construct($id = null)
+    {
+        $this->first_name = get_post_meta($id, '_fcmanager_signup_personal_details_first_name', true);
+        $this->initials = get_post_meta($id, '_fcmanager_signup_personal_details_initials', true);
+        $this->middle_name = get_post_meta($id, '_fcmanager_signup_personal_details_middle_name', true);
+        $this->last_name = get_post_meta($id, '_fcmanager_signup_personal_details_last_name', true);
+
+        $date_of_birth = get_post_meta($id, '_fcmanager_signup_personal_details_date_of_birth', true);
+        $this->date_of_birth = $date_of_birth ? new DateTime($date_of_birth) : null;
+
+        $this->gender = get_post_meta($id, '_fcmanager_signup_personal_details_gender', true);
+
+        $this->street = get_post_meta($id, '_fcmanager_signup_personal_details_street', true);
+        $this->house_number = get_post_meta($id, '_fcmanager_signup_personal_details_house_number', true);
+        $this->house_number_addition = get_post_meta($id, '_fcmanager_signup_personal_details_house_number_addition', true);
+        $this->postal_code = get_post_meta($id, '_fcmanager_signup_personal_details_postal_code', true);
+        $this->city = get_post_meta($id, '_fcmanager_signup_personal_details_city', true);
+        $this->country = get_post_meta($id, '_fcmanager_signup_personal_details_country', true);
+
+        $this->mobile_phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_mobile_phone_number', true);
+        $this->phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_phone_number', true);
+        $this->email_address = get_post_meta($id, '_fcmanager_signup_personal_details_email_address', true);
+    }
+
+    public function save($signup_id)
+    {
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_first_name', $this->first_name);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_initials', $this->initials);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_middle_name', $this->middle_name);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_last_name', $this->last_name);
+
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_date_of_birth', $this->date_of_birth ? $this->date_of_birth->format('Y-m-d') : '');
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_gender', $this->gender);
+
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_street', $this->street);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_house_number', $this->house_number);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_house_number_addition', $this->house_number_addition);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_postal_code', $this->postal_code);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_city', $this->city);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_country', $this->country);
+
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_mobile_phone_number', $this->mobile_phone_number);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_phone_number', $this->phone_number);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_email_address', $this->email_address);
+
+        $this->save_title($signup_id);
+    }
+
+    protected function save_title($signup_id)
+    {
+        wp_update_post([
+            'ID' => $signup_id,
+            'post_title' => $this->name(),
+            'post_name' => sanitize_title($this->name())
+        ]);
+    }
+
+    public function initials($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->initials = $new_value;
+        }
+        return $this->initials;
+    }
+
+    public function first_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->first_name = $new_value;
+        }
+        return $this->first_name;
+    }
+
+    public function middle_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->middle_name = $new_value;
+        }
+        return $this->middle_name;
+    }
+
+    public function last_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->last_name = $new_value;
+        }
+        return $this->last_name;
+    }
+
+    public function full_last_name()
+    {
+        return ($this->middle_name ? $this->middle_name . ' ' : '') . $this->last_name;
+    }
+
+    public function name()
+    {
+        return $this->initials . ' ' . $this->full_last_name();
+    }
+
+    public function date_of_birth($new_value = null)
+    {
+        if ($new_value !== null) {
+            if ($new_value instanceof DateTime) {
+                $this->date_of_birth = $new_value;
+            } else {
+                throw new InvalidArgumentException('Expected a DateTime object.');
+            }
+        }
+
+        return $this->date_of_birth;
+    }
+
+    public function gender($new_value = null)
+    {
+        if ($new_value !== null && in_array($new_value, ['male', 'female', 'gender neutral'])) {
+            $this->gender = $new_value;
+        }
+        return $this->gender;
+    }
+
+    public function street($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->street = $new_value;
+        }
+        return $this->street;
+    }
+
+    public function house_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->house_number = $new_value;
+        }
+        return $this->house_number;
+    }
+
+    public function house_number_addition($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->house_number_addition = $new_value;
+        }
+        return $this->house_number_addition;
+    }
+
+    public function postal_code($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->postal_code = $new_value;
+        }
+        return $this->postal_code;
+    }
+
+    public function city($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->city = $new_value;
+        }
+        return $this->city;
+    }
+
+    public function country($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->country = $new_value;
+        }
+        return $this->country;
+    }
+
+    public function mobile_phone_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->mobile_phone_number = $new_value;
+        }
+        return $this->mobile_phone_number;
+    }
+
+    public function phone_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->phone_number = $new_value;
+        }
+        return $this->phone_number;
+    }
+
+    public function email_address($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->email_address = $new_value;
+        }
+        return $this->email_address;
+    }
+}
+
+class FCManager_Signup_Parent
+{
+    private $key_prefix;
+
+    private $first_name;
+    private $middle_name;
+    private $last_name;
+
+    private $mobile_phone_number;
+    private $phone_number;
+    private $email_address;
+
+    public function __construct($id = null, $position)
+    {
+        $this->key_prefix = '_fcmanager_signup_parent_' . $position . '_';
+
+        $this->first_name = get_post_meta($id, $this->key_prefix . 'first_name', true);
+        $this->middle_name = get_post_meta($id, $this->key_prefix . 'middle_name', true);
+        $this->last_name = get_post_meta($id, $this->key_prefix . 'last_name', true);
+
+        $this->mobile_phone_number = get_post_meta($id, $this->key_prefix . 'mobile_phone_number', true);
+        $this->phone_number = get_post_meta($id, $this->key_prefix . 'phone_number', true);
+        $this->email_address = get_post_meta($id, $this->key_prefix . 'email_address', true);
+    }
+
+    public function save($signup_id)
+    {
+        update_post_meta($signup_id, $this->key_prefix . 'first_name', $this->first_name);
+        update_post_meta($signup_id, $this->key_prefix . 'middle_name', $this->middle_name);
+        update_post_meta($signup_id, $this->key_prefix . 'last_name', $this->last_name);
+
+        update_post_meta($signup_id, $this->key_prefix . 'mobile_phone_number', $this->mobile_phone_number);
+        update_post_meta($signup_id, $this->key_prefix . 'phone_number', $this->phone_number);
+        update_post_meta($signup_id, $this->key_prefix . 'email_address', $this->email_address);
+    }
+
+    public function first_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->first_name = $new_value;
+        }
+        return $this->first_name;
+    }
+
+    public function middle_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->middle_name = $new_value;
+        }
+        return $this->middle_name;
+    }
+
+    public function last_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->last_name = $new_value;
+        }
+        return $this->last_name;
+    }
+
+    public function full_last_name()
+    {
+        return ($this->middle_name ? $this->middle_name . ' ' : '') . $this->last_name;
+    }
+
+    public function name()
+    {
+        return $this->first_name() . ' ' . $this->full_last_name();
+    }
+
+    public function mobile_phone_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->mobile_phone_number = $new_value;
+        }
+        return $this->mobile_phone_number;
+    }
+
+    public function phone_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->phone_number = $new_value;
+        }
+        return $this->phone_number;
+    }
+
+    public function email_address($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->email_address = $new_value;
+        }
+        return $this->email_address;
+    }
+}
+
+
+class FCManager_Signup_Payment_Details
+{
+    private $method;
+    private $reason;
+    private $iban;
+    private $account_holder_name;
+
+    public function __construct($id = null)
+    {
+        $this->method = get_post_meta($id, '_fcmanager_signup_payment_details_method', true);
+        $this->reason = get_post_meta($id, '_fcmanager_signup_payment_details_reason', true);
+        $this->iban = get_post_meta($id, '_fcmanager_signup_payment_details_iban', true);
+        $this->account_holder_name = get_post_meta($id, '_fcmanager_signup_payment_details_account_holder_name', true);
+    }
+
+    public function save($signup_id)
+    {
+        update_post_meta($signup_id, '_fcmanager_signup_payment_details_method', $this->method);
+        update_post_meta($signup_id, '_fcmanager_signup_payment_details_reason', $this->reason);
+        update_post_meta($signup_id, '_fcmanager_signup_payment_details_iban', $this->iban);
+        update_post_meta($signup_id, '_fcmanager_signup_payment_details_account_holder_name', $this->account_holder_name);
+    }
+
+    public function method($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->method = $new_value;
+        }
+        return $this->method;
+    }
+
+    public function reason($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->reason = $new_value;
+        }
+        return $this->reason;
+    }
+
+    public function iban($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->iban = $new_value;
+        }
+        return $this->iban;
+    }
+
+    public function account_holder_name($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->account_holder_name = $new_value;
+        }
+        return $this->account_holder_name;
+    }
+}
+
+class FCManager_Signup_Additional_Information implements ArrayAccess
+{
+    private array $data = [];
+
+    public function __construct($id = null)
+    {
+        $extra_fields_json = get_post_meta($id, '_fcmanager_signup_additional_information', true);
+        $this->data = $extra_fields_json ? json_decode($extra_fields_json, true) : [];
+    }
+
+    public function save($signup_id)
+    {
+        update_post_meta($signup_id, '_fcmanager_signup_additional_information', json_encode($this->data));
+    }
+
+    public function offsetSet($offset, $value): void
+    {
+        $valid_keys = FCManager_Settings::instance()->signup->extra_fields();
+        if ($offset === null) {
+            throw new InvalidArgumentException('Offset cannot be null.');
+        } else if (!in_array($offset, $valid_keys)) {
+            throw new InvalidArgumentException('Invalid additional information key');
+        } else {
+            $this->data[$offset] = $value;
+        }
+    }
+
+    public function offsetExists($offset): bool
+    {
+        return isset($this->data[$offset]);
+    }
+
+    public function offsetUnset($offset): void
+    {
+        unset($this->data[$offset]);
+    }
+
+    public function offsetGet($offset): string
+    {
+        return $this->data[$offset] ?? null;
+    }
+}
