@@ -74,10 +74,10 @@ class FCManager_Signup
         return $this->parent2;
     }
 
-    public function payment_details($post = null)
+    public function payment_details($post = null, $allowed_methods = null)
     {
         if ($post) {
-            $this->payment_details->from_post_data($post);
+            $this->payment_details->from_post_data($post, $allowed_methods);
             return $this->payment_details->validate();
         }
         return $this->payment_details;
@@ -533,9 +533,9 @@ class FCManager_Signup_Payment_Details
         return $this->account_holder_name;
     }
 
-    public function from_post_data($post)
+    public function from_post_data($post, $allowed_methods = null)
     {
-        $this->method = sanitize_text_field($post['method'] ?? '');
+        $this->method = (array_key_exists('method', $post) && (! $allowed_methods || in_array($post['method'], $allowed_methods))) ? sanitize_text_field($post['method']) : null;
         $this->iban = sanitize_text_field($post['iban'] ?? '');
         $this->account_holder_name = sanitize_text_field($post['account_holder_name'] ?? '');
         $this->reason = sanitize_text_field($post['reason'] ?? '');

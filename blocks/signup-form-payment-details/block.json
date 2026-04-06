@@ -13,5 +13,17 @@
     },
     "textdomain": "football-club-manager",
     "editorScript": "file:./index.js",
-    "style": "file:./style-index.css"
+    "style": "file:./style-index.css",
+    "attributes": {
+        "allowedMethods": {
+            "type": "array",
+            "default": [
+                "direct_debit",
+                "no_payment"
+            ],
+            "items": {
+                "type": "string"
+            }
+        }
+    }
 }

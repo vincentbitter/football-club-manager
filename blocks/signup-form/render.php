@@ -23,7 +23,8 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
             if ($inner_block['blockName'] === 'fcmanager/signup-form-personal-details') {
                 $success &= $signup->personal_details($_POST);
             } elseif ($inner_block['blockName'] === 'fcmanager/signup-form-payment-details') {
-                $success &= $signup->payment_details($_POST);
+                $allowed_methods = $inner_block['attrs']['allowedMethods'];
+                $success &= $signup->payment_details($_POST, $allowed_methods);
             }
         }
 
