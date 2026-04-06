@@ -74,8 +74,12 @@ class FCManager_Signup
         return $this->parent2;
     }
 
-    public function payment_details()
+    public function payment_details($post = null)
     {
+        if ($post) {
+            $this->payment_details->from_post_data($post);
+            return $this->payment_details->validate();
+        }
         return $this->payment_details;
     }
 
@@ -171,16 +175,18 @@ class FCManager_Signup_Personal_Details
 
     public function validate()
     {
-        if (empty($this->first_name)
-                || empty($this->initials)
-                || empty($this->last_name)
-                || empty($this->gender)
-                || empty($this->date_of_birth)
-                || empty($this->street)
-                || empty($this->house_number)
-                || empty($this->postal_code)
-                || empty($this->city)
-                || empty($this->email_address)) {
+        if (
+            empty($this->first_name)
+            || empty($this->initials)
+            || empty($this->last_name)
+            || empty($this->gender)
+            || empty($this->date_of_birth)
+            || empty($this->street)
+            || empty($this->house_number)
+            || empty($this->postal_code)
+            || empty($this->city)
+            || empty($this->email_address)
+        ) {
             return false;
         }
 
@@ -525,6 +531,35 @@ class FCManager_Signup_Payment_Details
             $this->account_holder_name = $new_value;
         }
         return $this->account_holder_name;
+    }
+
+    public function from_post_data($post)
+    {
+        $this->method = sanitize_text_field($post['method'] ?? '');
+        $this->iban = sanitize_text_field($post['iban'] ?? '');
+        $this->account_holder_name = sanitize_text_field($post['account_holder_name'] ?? '');
+        $this->reason = sanitize_text_field($post['reason'] ?? '');
+    }
+
+    public function validate()
+    {
+        if (empty($this->method)) {
+            return false;
+        }
+
+        if ($this->method === 'direct_debit') {
+            if (empty($this->iban) || empty($this->account_holder_name)) {
+                return false;
+            }
+        } elseif ($this->method === 'no_payment') {
+            if (empty($this->reason)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        return true;
     }
 }
 

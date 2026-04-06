@@ -34,7 +34,7 @@ export default function Edit({ attributes, setAttributes }) {
 							[
 								["fcmanager/signup-form-personal-details"],
 								// ["fcmanager/signup-form-parents"],
-								// ["fcmanager/signup-form-payment-details"],
+								["fcmanager/signup-form-payment-details"],
 								// ["fcmanager/signup-form-additional-information"],
 								// ["fcmanager/signup-form-terms"],
 								// ["fcmanager/signup-form-submit"],

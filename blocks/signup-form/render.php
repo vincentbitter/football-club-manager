@@ -17,9 +17,11 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
         $success = true;
 
         $inner_blocks = $block->parsed_block['innerBlocks'];
-        foreach($inner_blocks as $inner_block) {
+        foreach ($inner_blocks as $inner_block) {
             if ($inner_block['blockName'] === 'fcmanager/signup-form-personal-details') {
-                $success = $signup->personal_details($_POST);
+                $success &= $signup->personal_details($_POST);
+            } elseif ($inner_block['blockName'] === 'fcmanager/signup-form-payment-details') {
+                $success &= $signup->payment_details($_POST);
             }
         }
 
