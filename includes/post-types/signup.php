@@ -158,6 +158,30 @@ function fcmanager_render_signup_personal_details_meta_box($post)
                 </td>
             </tr>
             <tr>
+                <th><label for="fcmanager_signup_personal_details_street"><?php esc_html_e('Street', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_street" name="fcmanager_signup_personal_details_street" value="<?php echo esc_attr($signup->personal_details()->street()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_house_number"><?php esc_html_e('House number', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_house_number" name="fcmanager_signup_personal_details_house_number" value="<?php echo esc_attr($signup->personal_details()->house_number()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_house_number_addition"><?php esc_html_e('House number addition', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_house_number_addition" name="fcmanager_signup_personal_details_house_number_addition" value="<?php echo esc_attr($signup->personal_details()->house_number_addition()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_postal_code"><?php esc_html_e('Postal code', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_postal_code" name="fcmanager_signup_personal_details_postal_code" value="<?php echo esc_attr($signup->personal_details()->postal_code()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_city"><?php esc_html_e('City', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_city" name="fcmanager_signup_personal_details_city" value="<?php echo esc_attr($signup->personal_details()->city()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_country"><?php esc_html_e('Country', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_country" name="fcmanager_signup_personal_details_country" value="<?php echo esc_attr($signup->personal_details()->country()); ?>"></td>
+            </tr>
+            <tr>
                 <th><label for="fcmanager_signup_personal_details_mobile_phone_number"><?php esc_html_e('Mobile phone number', 'football-club-manager'); ?></label></th>
                 <td><input type="tel" id="fcmanager_signup_personal_details_mobile_phone_number" name="fcmanager_signup_personal_details_mobile_phone_number" value="<?php echo esc_attr($signup->personal_details()->mobile_phone_number()); ?>"></td>
             </tr>

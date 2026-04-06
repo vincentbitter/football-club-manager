@@ -1,0 +1,34 @@
+.fcmanager-form-grid {
+    display: grid;
+    gap: 1.25rem 2rem;
+    margin-bottom: 1.5rem;
+
+    .fcmanager-form-grid {
+        margin-bottom: 0;
+    }
+
+    &--full {
+        grid-template-columns: 1fr;
+    }
+
+    &--double {
+        grid-template-columns: 1fr 1fr;
+
+        @media (max-width: 781px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &--triple {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        @media (max-width: 781px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.fcmanager-form-field {
+    display: flex;
+    flex-direction: column;
+}

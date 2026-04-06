@@ -8,12 +8,29 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
 {
     $redirectUrl = $attributes['redirectUrl'] ?? '';
 
-    if ($_POST) {
-        $inner_blocks = $block->parsed_block['innerBlocks'];
+    if ($_POST && isset($_POST['fcmanager_nonce'])) {
+        if (!wp_verify_nonce($_POST['fcmanager_nonce'], 'fcmanager_signup')) {
+            return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
+        }
 
-        if ($redirectUrl) {
-            wp_redirect($redirectUrl);
-            exit;
+        $signup = new FCManager_Signup();
+        $success = true;
+
+        $inner_blocks = $block->parsed_block['innerBlocks'];
+        foreach($inner_blocks as $inner_block) {
+            if ($inner_block['blockName'] === 'fcmanager/signup-form-personal-details') {
+                $success = $signup->personal_details($_POST);
+            }
+        }
+
+        if (!$success) {
+            return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
+        } else {
+            $signup->save();
+            if ($redirectUrl) {
+                wp_redirect($redirectUrl);
+                exit;
+            }
         }
     }
 
@@ -25,6 +42,8 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
 
         <?php echo $content; ?>
 
+        <button type="submit">
+            <?php echo __('Sign Up', 'football-club-manager'); ?>
     </form>
 <?php
 

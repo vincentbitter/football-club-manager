@@ -55,8 +55,12 @@ class FCManager_Signup
         }
     }
 
-    public function personal_details()
+    public function personal_details($post = null)
     {
+        if ($post) {
+            $this->personal_details->from_post_data($post);
+            return $this->personal_details->validate();
+        }
         return $this->personal_details;
     }
 
@@ -141,6 +145,66 @@ class FCManager_Signup_Personal_Details
         $this->mobile_phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_mobile_phone_number', true);
         $this->phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_phone_number', true);
         $this->email_address = get_post_meta($id, '_fcmanager_signup_personal_details_email_address', true);
+    }
+
+    public function from_post_data($post)
+    {
+        $this->first_name = sanitize_text_field($post['first_name'] ?? '');
+        $this->initials = sanitize_text_field($post['initials'] ?? '');
+        $this->middle_name = sanitize_text_field($post['middle_name'] ?? '');
+        $this->last_name = sanitize_text_field($post['last_name'] ?? '');
+
+        $this->date_of_birth = isset($post['date_of_birth']) ? new DateTime($post['date_of_birth']) : null;
+        $this->gender = sanitize_text_field($post['gender'] ?? '');
+
+        $this->street = sanitize_text_field($post['street'] ?? '');
+        $this->house_number = sanitize_text_field($post['house_number'] ?? '');
+        $this->house_number_addition = sanitize_text_field($post['house_number_addition'] ?? '');
+        $this->postal_code = sanitize_text_field($post['postal_code'] ?? '');
+        $this->city = sanitize_text_field($post['city'] ?? '');
+        $this->country = sanitize_text_field($post['country'] ?? '');
+
+        $this->mobile_phone_number = sanitize_text_field($post['mobile_phone'] ?? '');
+        $this->phone_number = sanitize_text_field($post['phone'] ?? '');
+        $this->email_address = sanitize_email($post['email'] ?? '');
+    }
+
+    public function validate()
+    {
+        if (empty($this->first_name)
+                || empty($this->initials)
+                || empty($this->last_name)
+                || empty($this->gender)
+                || empty($this->date_of_birth)
+                || empty($this->street)
+                || empty($this->house_number)
+                || empty($this->postal_code)
+                || empty($this->city)
+                || empty($this->email_address)) {
+            return false;
+        }
+
+        if ($this->date_of_birth > new DateTime()) {
+            return false;
+        }
+
+        if (!in_array($this->gender, ['male', 'female', 'gender neutral'])) {
+            return false;
+        }
+
+        if (!is_email($this->email_address)) {
+            return false;
+        }
+
+        if ($this->mobile_phone_number && !preg_match('/^\+?[0-9\s\-]+$/', $this->mobile_phone_number)) {
+            return false;
+        }
+
+        if ($this->phone_number && !preg_match('/^\+?[0-9\s\-]+$/', $this->phone_number)) {
+            return false;
+        }
+
+        return true;
     }
 
     public function save($signup_id)

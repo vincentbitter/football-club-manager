@@ -1,0 +1,9 @@
+{
+    "name": "vincentbitter/football-club-manager",
+    "description": "Football Club Manager plugin",
+    "type": "wordpress-plugin",
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "^6.0",
+        "phpunit/phpunit": "^10.0"
+    }
+}
