@@ -9,7 +9,7 @@ export default function Save() {
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Payment method", "football-club-manager")}
-                        <select name="method" required>
+                        <select name="method" className="fcmanager-payment-method-select" required>
                             <option value="">
                                 {__("Select…", "football-club-manager")}
                             </option>
@@ -24,27 +24,27 @@ export default function Save() {
                 </div>
             </div>
 
-            <div className="fcmanager-form-grid fcmanager-form-grid--double">
+            <div className="fcmanager-form-grid fcmanager-form-grid--double" data-payment-method="direct_debit">
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Bank account (IBAN)", "football-club-manager")}
-                        <input type="text" name="iban" />
+                        <input type="text" name="iban" required />
                     </label>
                 </div>
 
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Account holder name", "football-club-manager")}
-                        <input type="text" name="account_holder_name" />
+                        <input type="text" name="account_holder_name" required />
                     </label>
                 </div>
             </div>
 
-            <div className="fcmanager-form-grid fcmanager-form-grid--full">
+            <div className="fcmanager-form-grid fcmanager-form-grid--full" data-payment-method="no_payment">
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Reason", "football-club-manager")}
-                        <input type="text" name="reason" />
+                        <input type="text" name="reason" required />
                     </label>
                 </div>
             </div>

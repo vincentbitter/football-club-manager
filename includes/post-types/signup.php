@@ -352,38 +352,26 @@ function fcmanager_render_signup_payment_details_meta_box($post)
     // Show form
     wp_nonce_field('fcmanager_save_signup_payment_details_meta_box', 'fcmanager_signup_payment_details_meta_box_nonce');
 ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            function togglePaymentDetails() {
-                const method = jQuery('#<?php echo esc_js($prefix); ?>method').val();
-                jQuery('[data-method]').hide();
-                jQuery('[data-method="' + method + '"]').show();
-            }
-
-            jQuery('#<?php echo esc_js($prefix); ?>method').change(togglePaymentDetails);
-            togglePaymentDetails();
-        });
-    </script>
     <table class="form-table">
         <tbody>
             <tr>
                 <th><label for="<?php echo esc_attr($prefix . 'method'); ?>"><?php esc_html_e('Payment method', 'football-club-manager'); ?></label></th>
                 <td>
-                    <select id="<?php echo esc_attr($prefix . 'method'); ?>" name="<?php echo esc_attr($prefix . 'method'); ?>">
+                    <select id="<?php echo esc_attr($prefix . 'method'); ?>" name="<?php echo esc_attr($prefix . 'method'); ?>" class="fcmanager-payment-method-select">
                         <option value="direct_debit" <?php selected($signup->payment_details()->method(), 'direct_debit'); ?>><?php esc_html_e('Direct debit', 'football-club-manager'); ?></option>
                         <option value="no_payment" <?php selected($signup->payment_details()->method(), 'no_payment'); ?>><?php esc_html_e('No payment needed', 'football-club-manager'); ?></option>
                     </select>
                 </td>
             </tr>
-            <tr data-method="direct_debit">
+            <tr data-payment-method="direct_debit">
                 <th><label for="<?php echo esc_attr($prefix . 'iban'); ?>"><?php esc_html_e('Bank account (IBAN)', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="<?php echo esc_attr($prefix . 'iban'); ?>" name="<?php echo esc_attr($prefix . 'iban'); ?>" value="<?php echo esc_attr($signup->payment_details()->iban()); ?>"></td>
             </tr>
-            <tr data-method="direct_debit">
+            <tr data-payment-method="direct_debit">
                 <th><label for="<?php echo esc_attr($prefix . 'account_holder_name'); ?>"><?php esc_html_e('Account holder name', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="<?php echo esc_attr($prefix . 'account_holder_name'); ?>" name="<?php echo esc_attr($prefix . 'account_holder_name'); ?>" value="<?php echo esc_attr($signup->payment_details()->account_holder_name()); ?>"></td>
             </tr>
-            <tr data-method="no_payment">
+            <tr data-payment-method="no_payment">
                 <th><label for="<?php echo esc_attr($prefix . 'reason'); ?>"><?php esc_html_e('Reason', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="<?php echo esc_attr($prefix . 'reason'); ?>" name="<?php echo esc_attr($prefix . 'reason'); ?>" value="<?php echo esc_attr($signup->payment_details()->reason()); ?>"></td>
             </tr>
@@ -404,7 +392,7 @@ function fcmanager_save_signup_payment_details_meta_box($post_id)
         return;
 
     // Check permissions
-    if (! current_user_can('edit_post', $post_id))
+    if (!current_user_can('edit_post', $post_id))
         return;
 
     // Edit meta values
@@ -468,7 +456,7 @@ function fcmanager_save_signup_additional_information_meta_box($post_id)
         return;
 
     // Check permissions
-    if (! current_user_can('edit_post', $post_id))
+    if (!current_user_can('edit_post', $post_id))
         return;
 
     $extra_fields = FCManager_Settings::instance()->signup->extra_fields();
