@@ -65,3 +65,10 @@ jQuery(document).ready(function () {
         set_age(this);
     });
 });
+
+jQuery(document).ready(function () {
+    jQuery('.fcmanager-signup-form').on('submit', function () {
+        const submitButton = jQuery(this).find('button[type="submit"]');
+        submitButton.prop('disabled', true);
+    });
+});

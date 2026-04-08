@@ -72,6 +72,9 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
             if ($redirectUrl) {
                 wp_redirect($redirectUrl);
                 exit;
+            } else {
+                wp_redirect(add_query_arg('signup', 'success', get_permalink()));
+                exit;
             }
         }
     }
@@ -83,10 +86,6 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
         <?php wp_nonce_field('fcmanager_signup', 'fcmanager_nonce'); ?>
 
         <?php echo $content; ?>
-
-        <button type="submit">
-            <?php echo __('Sign Up', 'football-club-manager'); ?>
-        </button>
     </form>
 <?php
 
