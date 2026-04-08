@@ -89,41 +89,7 @@ function fcmanager_render_signup_personal_details_meta_box($post)
     // Show form
     wp_nonce_field('fcmanager_save_signup_personal_details_meta_box', 'fcmanager_signup_personal_details_meta_box_nonce');
 ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            function set_age() {
-                const dateOfBirth = new Date(jQuery(this).val());
-                if (isNaN(dateOfBirth.getTime())) {
-                    jQuery('#fcmanager_signup_personal_details_age').html('');
-                    jQuery('#fcmanager_signup_personal_details_age_container').addClass('hidden');
-                    return;
-                }
-                const today = new Date();
-                let age = today.getFullYear() - dateOfBirth.getFullYear();
-                const m = today.getMonth() - dateOfBirth.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < dateOfBirth.getDate())) {
-                    age--;
-                }
-
-                jQuery('#fcmanager_signup_personal_details_age').html(age);
-                jQuery('#fcmanager_signup_personal_details_age_container').removeClass('hidden');
-
-                const requireParentsTillAge = <?php echo esc_js(FCManager_Settings::instance()->signup->require_parents_till_age()); ?>;
-                if (requireParentsTillAge) {
-                    if (age < requireParentsTillAge) {
-                        jQuery('#fcmanager_signup_parents_meta_box').removeClass('closed');
-                    } else {
-                        jQuery('#fcmanager_signup_parents_meta_box').addClass('closed');
-                    }
-                }
-            }
-
-            const date_of_birth_input = jQuery('#fcmanager_signup_personal_details_date_of_birth');
-            date_of_birth_input.change(set_age);
-            set_age.call(date_of_birth_input[0]);
-        });
-    </script>
-    <table class="form-table" role="presentation">
+    <table class="form-table" role="presentation" data-require-parents-till-age="<?php echo esc_attr(FCManager_Settings::instance()->signup->require_parents_till_age()); ?>">
         <tbody>
             <tr>
                 <th><label for="fcmanager_signup_personal_details_first_name"><?php esc_html_e('First name', 'football-club-manager'); ?></label></th>
@@ -143,8 +109,8 @@ function fcmanager_render_signup_personal_details_meta_box($post)
             </tr>
             <tr>
                 <th><label for="fcmanager_signup_personal_details_date_of_birth"><?php esc_html_e('Date of birth', 'football-club-manager'); ?></label></th>
-                <td><input type="date" id="fcmanager_signup_personal_details_date_of_birth" name="fcmanager_signup_personal_details_date_of_birth" value="<?php echo esc_attr($signup->personal_details()->date_of_birth() != null ? $signup->personal_details()->date_of_birth()->format('Y-m-d') : ''); ?>">
-                    <span class="hidden" id="fcmanager_signup_personal_details_age_container"><span class="description"><span id="fcmanager_signup_personal_details_age"></span> <?php esc_html_e('Year', 'football-club-manager'); ?></span></span>
+                <td><input type="date" id="fcmanager_signup_personal_details_date_of_birth" name="fcmanager_signup_personal_details_date_of_birth" class="fcmanager-personal-details-date-of-birth" value="<?php echo esc_attr($signup->personal_details()->date_of_birth() != null ? $signup->personal_details()->date_of_birth()->format('Y-m-d') : ''); ?>">
+                    <span class="hidden fcmanager-personal-details-age-container"><span class="description"><span class="fcmanager-personal-details-age"></span> <?php esc_html_e('Year', 'football-club-manager'); ?></span></span>
                 </td>
             </tr>
             <tr>
@@ -258,6 +224,12 @@ function fcmanager_render_signup_parents_meta_box($post)
     echo '<h3>' . __('Parent/guardian 2', 'football-club-manager') . '</h3>';
     fcmanager_render_signup_parent_meta_box(2, $signup->parent2());
 }
+
+// Add class to signup parent details meta box to be able to hide it when not needed
+add_filter('postbox_classes_fcmanager_signup_fcmanager_signup_parents_meta_box', function ($classes) {
+    $classes[] = 'fcmanager-parent-details-meta-box';
+    return $classes;
+});
 
 // Render parent meta box
 function fcmanager_render_signup_parent_meta_box($position, $parent)

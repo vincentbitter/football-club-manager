@@ -43,7 +43,12 @@ export default function Save() {
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Date of birth", "football-club-manager")}
-                        <input type="date" name="date_of_birth" required />
+                        <input
+                            className="fcmanager-personal-details-date-of-birth"
+                            type="date"
+                            name="date_of_birth"
+                            required
+                        />
                     </label>
                 </div>
 

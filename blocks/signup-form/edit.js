@@ -33,11 +33,27 @@ export default function Edit({ attributes, setAttributes }) {
 						template={
 							[
 								["fcmanager/signup-form-personal-details"],
-								// ["fcmanager/signup-form-parents"],
+								[
+									"core/columns",
+									{ className: "fcmanager-parent-details-data" },
+									[
+										[
+											"core/column",
+											{},
+											[
+												["fcmanager/signup-form-parent-details", { parent: "parent1" }]
+											]
+										],
+										[
+											"core/column",
+											{},
+											[
+												["fcmanager/signup-form-parent-details", { parent: "parent2" }]
+											]
+										]
+									]
+								],
 								["fcmanager/signup-form-payment-details"],
-								// ["fcmanager/signup-form-additional-information"],
-								// ["fcmanager/signup-form-terms"],
-								// ["fcmanager/signup-form-submit"],
 							]
 						}
 					/>

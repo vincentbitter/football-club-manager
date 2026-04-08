@@ -172,9 +172,7 @@ add_action('enqueue_block_editor_assets', 'fcmanager_enqueue_block_editor_assets
 // Enqueue admin scripts
 function fcmanager_enqueue_admin_scripts($hook)
 {
-    if ($hook === 'post.php' && isset($_GET['post']) && get_post_type($_GET['post']) === 'fcmanager_signup') {
-        wp_enqueue_script('fcmanager-payment-details-toggle', plugin_dir_url(__FILE__) . 'public/js/signup.js', ['jquery'], FCMANAGER_VERSION, true);
-    }
+    wp_enqueue_script('fcmanager-signup', plugin_dir_url(__FILE__) . 'public/js/signup.js', ['jquery'], FCMANAGER_VERSION, true);
 }
 add_action('admin_enqueue_scripts', 'fcmanager_enqueue_admin_scripts');
 

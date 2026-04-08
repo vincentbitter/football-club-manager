@@ -64,13 +64,21 @@ class FCManager_Signup
         return $this->personal_details;
     }
 
-    public function parent1()
+    public function parent1($post = null)
     {
+        if ($post) {
+            $this->parent1->from_post_data($post);
+            return $this->parent1->validate();
+        }
         return $this->parent1;
     }
 
-    public function parent2()
+    public function parent2($post = null)
     {
+        if ($post) {
+            $this->parent2->from_post_data($post);
+            return $this->parent2->validate(true);
+        }
         return $this->parent2;
     }
 
@@ -301,6 +309,18 @@ class FCManager_Signup_Personal_Details
         return $this->date_of_birth;
     }
 
+    public function age()
+    {
+        if (! $this->date_of_birth) {
+            return null;
+        }
+
+        $today = new DateTime();
+        $age = $today->diff($this->date_of_birth)->y;
+
+        return $age;
+    }
+
     public function gender($new_value = null)
     {
         if ($new_value !== null && in_array($new_value, ['male', 'female', 'gender neutral'])) {
@@ -384,6 +404,7 @@ class FCManager_Signup_Personal_Details
 
 class FCManager_Signup_Parent
 {
+    private $position;
     private $key_prefix;
 
     private $first_name;
@@ -394,8 +415,9 @@ class FCManager_Signup_Parent
     private $phone_number;
     private $email_address;
 
-    public function __construct($id = null, $position)
+    public function __construct($id = null, $position = 1)
     {
+        $this->position = $position;
         $this->key_prefix = '_fcmanager_signup_parent_' . $position . '_';
 
         $this->first_name = get_post_meta($id, $this->key_prefix . 'first_name', true);
@@ -416,6 +438,39 @@ class FCManager_Signup_Parent
         update_post_meta($signup_id, $this->key_prefix . 'mobile_phone_number', $this->mobile_phone_number);
         update_post_meta($signup_id, $this->key_prefix . 'phone_number', $this->phone_number);
         update_post_meta($signup_id, $this->key_prefix . 'email_address', $this->email_address);
+    }
+
+    public function from_post_data($post)
+    {
+        $prefix = 'parent' . $this->position . '_';
+        $this->first_name = sanitize_text_field($post[$prefix . 'first_name'] ?? '');
+        $this->middle_name = sanitize_text_field($post[$prefix . 'middle_name'] ?? '');
+        $this->last_name = sanitize_text_field($post[$prefix . 'last_name'] ?? '');
+
+        $this->mobile_phone_number = sanitize_text_field($post[$prefix . 'mobile_phone'] ?? '');
+        $this->phone_number = sanitize_text_field($post[$prefix . 'phone'] ?? '');
+        $this->email_address = sanitize_email($post[$prefix . 'email'] ?? '');
+    }
+
+    public function validate($optional = false)
+    {
+        if (!$optional && (empty($this->first_name) || empty($this->last_name) || empty($this->email_address))) {
+            return false;
+        }
+
+        if ($this->email_address && !is_email($this->email_address)) {
+            return false;
+        }
+
+        if ($this->mobile_phone_number && !preg_match('/^\+?[0-9\s\-]+$/', $this->mobile_phone_number)) {
+            return false;
+        }
+
+        if ($this->phone_number && !preg_match('/^\+?[0-9\s\-]+$/', $this->phone_number)) {
+            return false;
+        }
+
+        return true;
     }
 
     public function first_name($new_value = null)
