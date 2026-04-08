@@ -81,7 +81,7 @@ export default function Edit() {
                     <label>
                         {__("Gender", "football-club-manager")}
                         <select
-                            className="components-select-control__input"
+                            className="components-text-control__input"
                             disabled
                         >
                             <option>{__("Male", "football-club-manager")}</option>

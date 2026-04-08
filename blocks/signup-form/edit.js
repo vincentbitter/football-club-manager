@@ -54,6 +54,7 @@ export default function Edit({ attributes, setAttributes }) {
 									]
 								],
 								["fcmanager/signup-form-payment-details"],
+								["fcmanager/signup-form-additional-information"],
 							]
 						}
 					/>

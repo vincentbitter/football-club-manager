@@ -44,6 +44,9 @@ function fcmanager_process_signup_form($block): ?FCManager_Signup
                     $success &= $signup->{$parent}($_POST);
                 }
                 break;
+            case 'fcmanager/signup-form-additional-information':
+                $success &= $signup->additional_information($_POST);
+                break;
         }
     }
     return $success ? $signup : null;
@@ -83,6 +86,7 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
 
         <button type="submit">
             <?php echo __('Sign Up', 'football-club-manager'); ?>
+        </button>
     </form>
 <?php
 

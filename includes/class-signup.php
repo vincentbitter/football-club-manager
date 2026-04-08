@@ -91,8 +91,12 @@ class FCManager_Signup
         return $this->payment_details;
     }
 
-    public function additional_information()
+    public function additional_information($post = null)
     {
+        if ($post) {
+            $this->additional_information->from_post_data($post);
+            return true;
+        }
         return $this->additional_information;
     }
 
@@ -658,5 +662,19 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
     public function offsetGet($offset): string
     {
         return $this->data[$offset] ?? null;
+    }
+
+    public function from_post_data($post)
+    {
+        $extra_fields = FCManager_Settings::instance()->signup->extra_fields();
+        if (empty($extra_fields) || !is_array($extra_fields) || !array_key_exists('fcmanager_signup_additional_information', $post)) {
+            return;
+        }
+
+        foreach ($extra_fields as $field) {
+            if (array_key_exists($field, $post['fcmanager_signup_additional_information'])) {
+                $this->data[$field] = sanitize_text_field(wp_unslash($post['fcmanager_signup_additional_information'][$field]));
+            }
+        }
     }
 }

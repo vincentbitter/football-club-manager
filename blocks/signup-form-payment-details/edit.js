@@ -55,7 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
                             <label>
                                 {__("Payment method", "football-club-manager")}
                                 <select
-                                    className="components-select-control__input"
+                                    className="components-text-control__input"
                                     value={selectedPaymentMethod || ''}
                                     onChange={(e) => setSelectedPaymentMethod(e.target.value)}
                                 >
