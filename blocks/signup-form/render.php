@@ -47,8 +47,13 @@ function fcmanager_process_signup_form($block): ?FCManager_Signup
             case 'fcmanager/signup-form-additional-information':
                 $success &= $signup->additional_information($_POST);
                 break;
+            case 'fcmanager/signup-form-terms':
+                $terms_id = $inner_block['attrs']['id'];
+                $success &= $_POST[$terms_id] === 'on';
+                break;
         }
     }
+
     return $success ? $signup : null;
 }
 

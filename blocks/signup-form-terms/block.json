@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/signup-form-terms",
+    "version": "0.11.0",
+    "title": "Signup Form - Terms",
+    "category": "widgets",
+    "icon": "privacy",
+    "description": "Add a terms and conditions checkbox to the signup form. This block should be used within the Signup Form block.",
+    "example": {},
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "id": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string",
+            "default": "I agree to the terms and conditions."
+        }
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js"
+}
