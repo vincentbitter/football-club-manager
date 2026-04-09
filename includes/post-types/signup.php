@@ -92,6 +92,19 @@ function fcmanager_render_signup_personal_details_meta_box($post)
     <table class="form-table" role="presentation" data-require-parents-till-age="<?php echo esc_attr(FCManager_Settings::instance()->signup->require_parents_till_age()); ?>">
         <tbody>
             <tr>
+                <th><label for="fcmanager_signup_personal_details_type"><?php esc_html_e('Type', 'football-club-manager'); ?></label></th>
+                <td>
+                    <select id="fcmanager_signup_personal_details_type" name="fcmanager_signup_personal_details_type">
+                        <option value="player" <?php selected($signup->type(), 'player'); ?>><?php esc_html_e('Player', 'football-club-manager'); ?></option>
+                        <option value="volunteer" <?php selected($signup->type(), 'volunteer'); ?>><?php esc_html_e('Volunteer', 'football-club-manager'); ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_subtype"><?php esc_html_e('Subtype', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_subtype" name="fcmanager_signup_personal_details_subtype" value="<?php echo esc_attr($signup->subtype()); ?>"></td>
+            </tr>
+            <tr>
                 <th><label for="fcmanager_signup_personal_details_first_name"><?php esc_html_e('First name', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="fcmanager_signup_personal_details_first_name" name="fcmanager_signup_personal_details_first_name" value="<?php echo esc_attr($signup->personal_details()->first_name()); ?>"></td>
             </tr>
@@ -455,6 +468,7 @@ add_action('save_post_fcmanager_signup', 'fcmanager_save_signup_additional_infor
 function fcmanager_set_custom_edit_signup_columns($columns)
 {
     unset($columns['title']);
+    $columns['signup_type'] = __('Type', 'football-club-manager');
     $columns['signup_first_name'] = __('First name', 'football-club-manager');
     $columns['signup_last_name'] = __('Last name', 'football-club-manager');
 
@@ -469,6 +483,12 @@ function fcmanager_custom_signup_column($column, $post_id)
 {
     $signup = new FCManager_Signup($post_id);
     switch ($column) {
+        case 'signup_type':
+            $type = 'Player';
+            if ($signup->type() === 'volunteer')
+                $type = 'Volunteer';
+            echo esc_html_e($type, 'football-club-manager') . ($signup->subtype() ? ' - ' . esc_html($signup->subtype()) : '');
+            break;
         case 'signup_first_name':
             echo esc_html($signup->personal_details()->first_name());
             break;

@@ -6,7 +6,13 @@ if (! defined('ABSPATH')) {
 
 class FCManager_Signup
 {
+    /** @var int */
     private $id;
+
+    /** @var string */
+    private $type;
+    /** @var string */
+    private $subtype;
 
     /** @var FCManager_Signup_Personal_Details */
     private $personal_details;
@@ -26,6 +32,8 @@ class FCManager_Signup
     public function __construct($id_or_post = null)
     {
         $this->set_id($id_or_post);
+        $this->type = get_post_meta($this->id, '_fcmanager_signup_type', true) ?: 'player';
+        $this->subtype = get_post_meta($this->id, '_fcmanager_signup_subtype', true) ?: '';
 
         $this->personal_details = new FCManager_Signup_Personal_Details($this->id);
         $this->parent1 = new FCManager_Signup_Parent($this->id, 1);
@@ -53,6 +61,24 @@ class FCManager_Signup
         } else {
             throw new InvalidArgumentException('Expected an integer ID or a WP_Post object.');
         }
+    }
+
+    public function type($new_value = null)
+    {
+        if ($new_value !== null && in_array($new_value, ['player', 'volunteer'], true)) {
+            $this->type = $new_value;
+        }
+
+        return $this->type;
+    }
+
+    public function subtype($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->subtype = sanitize_text_field($new_value);
+        }
+
+        return $this->subtype;
     }
 
     public function personal_details($post = null)
@@ -110,6 +136,8 @@ class FCManager_Signup
             ]);
         }
 
+        update_post_meta($this->id, '_fcmanager_signup_type', $this->type);
+        update_post_meta($this->id, '_fcmanager_signup_subtype', $this->subtype);
         $this->personal_details->save($this->id);
         $this->parent1->save($this->id);
         $this->parent2->save($this->id);

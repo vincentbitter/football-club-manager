@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { PanelBody } from "@wordpress/components";
+import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
 import {
 	useBlockProps,
 	InnerBlocks,
@@ -9,12 +9,27 @@ import {
 import { BaseControl } from "@wordpress/components";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { redirectUrl } = attributes;
+	const { redirectUrl, signupType, signupSubtype } = attributes;
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title={__("Form Settings", "fcmanager")}>
+					<SelectControl
+						label={__("Signup type", "fcmanager")}
+						value={signupType}
+						options={[
+							{ value: "player", label: __("Player", "fcmanager") },
+							{ value: "volunteer", label: __("Volunteer", "fcmanager") },
+						]}
+						onChange={(value) => setAttributes({ signupType: value })}
+					/>
+					<TextControl
+						label={__("Subtype", "fcmanager")}
+						value={signupSubtype}
+						onChange={(value) => setAttributes({ signupSubtype: value })}
+						help={__("Optional subtype to categorize the registration.", "fcmanager")}
+					/>
 					<BaseControl label={__("Redirect URL", "fcmanager")}>
 						<div className="fcmanager-urlinput-wrapper">
 							<URLInput

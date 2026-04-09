@@ -22,9 +22,12 @@ function fcmanager_get_blocks($block): array
     return $blocks;
 }
 
-function fcmanager_process_signup_form($block): ?FCManager_Signup
+function fcmanager_process_signup_form($block, $attributes): ?FCManager_Signup
 {
     $signup = new FCManager_Signup();
+    $signup->type($attributes['signupType'] ?? 'player');
+    $signup->subtype($attributes['signupSubtype'] ?? '');
+
     $blocks = fcmanager_get_blocks($block->parsed_block);
     $success = true;
 
@@ -49,7 +52,7 @@ function fcmanager_process_signup_form($block): ?FCManager_Signup
                 break;
             case 'fcmanager/signup-form-terms':
                 $terms_id = $inner_block['attrs']['id'];
-                $success &= $_POST[$terms_id] === 'on';
+                $success &= isset($_POST[$terms_id]) && $_POST[$terms_id] === 'on';
                 break;
         }
     }
@@ -68,7 +71,7 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
             return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
         }
 
-        $signup = fcmanager_process_signup_form($block);
+        $signup = fcmanager_process_signup_form($block, $attributes);
 
         if (!$signup) {
             return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
@@ -87,9 +90,7 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
     ob_start();
 ?>
     <form class="fcmanager-signup-form" action="" method="post" data-require-parents-till-age="<?php echo esc_attr(FCManager_Settings::instance()->signup->require_parents_till_age()); ?>">
-
         <?php wp_nonce_field('fcmanager_signup', 'fcmanager_nonce'); ?>
-
         <?php echo $content; ?>
     </form>
 <?php

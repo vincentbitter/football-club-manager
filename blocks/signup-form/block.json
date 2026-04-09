@@ -19,6 +19,14 @@
 		"redirectUrl": {
 			"type": "string",
 			"default": ""
+		},
+		"signupType": {
+			"type": "string",
+			"default": "player"
+		},
+		"signupSubtype": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }
