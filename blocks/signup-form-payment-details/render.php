@@ -7,6 +7,7 @@ if (! defined('ABSPATH')) {
 function fcmanager_render_signup_form_payment_details_block($attributes, $content, $block)
 {
     $allowedMethods = $attributes['allowedMethods'] ?? ['direct_debit', 'no_payment'];
+    $posted = ! empty($_POST) ? wp_unslash($_POST) : [];
 
     ob_start();
 ?>
@@ -25,12 +26,12 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
                                 <?php esc_html_e('Select…', 'football-club-manager'); ?>
                             </option>
                             <?php if (in_array('direct_debit', $allowedMethods)): ?>
-                                <option value="direct_debit" <?php selected($_POST['method'] ?? '', 'direct_debit'); ?>>
+                                <option value="direct_debit" <?php selected(sanitize_text_field($posted['method'] ?? ''), 'direct_debit'); ?>>
                                     <?php esc_html_e('Direct debit', 'football-club-manager'); ?>
                                 </option>
                             <?php endif; ?>
                             <?php if (in_array('no_payment', $allowedMethods)): ?>
-                                <option value="no_payment" <?php selected($_POST['method'] ?? '', 'no_payment'); ?>>
+                                <option value="no_payment" <?php selected(sanitize_text_field($posted['method'] ?? ''), 'no_payment'); ?>>
                                     <?php esc_html_e('No payment needed', 'football-club-manager'); ?>
                                 </option>
                             <?php endif; ?>
@@ -45,14 +46,14 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
                 <div class="fcmanager-form-field">
                     <label>
                         <?php esc_html_e('Bank account (IBAN)', 'football-club-manager'); ?>
-                        <input type="text" name="iban" value="<?php echo esc_attr($_POST['iban'] ?? ''); ?>" required />
+                        <input type="text" name="iban" value="<?php echo esc_attr(sanitize_text_field($posted['iban'] ?? '')); ?>" required />
                     </label>
                 </div>
 
                 <div class="fcmanager-form-field">
                     <label>
                         <?php esc_html_e('Account holder name', 'football-club-manager'); ?>
-                        <input type="text" name="account_holder_name" value="<?php echo esc_attr($_POST['account_holder_name'] ?? ''); ?>" required />
+                        <input type="text" name="account_holder_name" value="<?php echo esc_attr(sanitize_text_field($posted['account_holder_name'] ?? '')); ?>" required />
                     </label>
                 </div>
             </div>
@@ -63,7 +64,7 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
                 <div class="fcmanager-form-field">
                     <label>
                         <?php esc_html_e('Reason', 'football-club-manager'); ?>
-                        <input type="text" name="reason" value="<?php echo esc_attr($_POST['reason'] ?? ''); ?>" required />
+                        <input type="text" name="reason" value="<?php echo esc_attr(sanitize_text_field($posted['reason'] ?? '')); ?>" required />
                     </label>
                 </div>
             </div>

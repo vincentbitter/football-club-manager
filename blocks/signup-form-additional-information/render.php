@@ -11,6 +11,9 @@ function fcmanager_render_signup_form_additional_information_block($attributes, 
         return '';
     }
 
+    $posted = ! empty($_POST) ? wp_unslash($_POST) : [];
+    $additional_information = isset($posted['fcmanager_signup_additional_information']) && is_array($posted['fcmanager_signup_additional_information']) ? $posted['fcmanager_signup_additional_information'] : [];
+
     ob_start();
 ?>
     <div class="fcmanager-signup-additional-information">
@@ -22,7 +25,7 @@ function fcmanager_render_signup_form_additional_information_block($attributes, 
                         <input
                             type="text"
                             name="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>"
-                            value="<?php echo esc_attr($_POST['fcmanager_signup_additional_information'][$field] ?? ''); ?>" />
+                            value="<?php echo esc_attr(sanitize_text_field($additional_information[$field] ?? '')); ?>" />
                     </label>
                 </div>
             </div>

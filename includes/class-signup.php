@@ -701,7 +701,7 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
 
         foreach ($extra_fields as $field) {
             if (array_key_exists($field, $post['fcmanager_signup_additional_information'])) {
-                $this->data[$field] = sanitize_text_field(wp_unslash($post['fcmanager_signup_additional_information'][$field]));
+                $this->data[$field] = sanitize_text_field($post['fcmanager_signup_additional_information'][$field]);
             }
         }
     }

@@ -24,7 +24,7 @@ function fcmanager_get_blocks($block): array
     return $blocks;
 }
 
-function fcmanager_process_signup_form($block, $attributes): ?FCManager_Signup
+function fcmanager_process_signup_form($block, $attributes, $post_data): ?FCManager_Signup
 {
     $signup = new FCManager_Signup();
     $signup->type($attributes['signupType'] ?? 'player');
@@ -36,30 +36,30 @@ function fcmanager_process_signup_form($block, $attributes): ?FCManager_Signup
     foreach ($blocks as $inner_block) {
         switch ($inner_block['blockName']) {
             case 'fcmanager/signup-form-personal-details':
-                $success &= $signup->personal_details($_POST);
+                $success &= $signup->personal_details($post_data);
                 break;
             case 'fcmanager/signup-form-payment-details':
                 $allowed_methods = $inner_block['attrs']['allowedMethods'] ?? [];
-                $success &= $signup->payment_details($_POST, $allowed_methods);
+                $success &= $signup->payment_details($post_data, $allowed_methods);
                 break;
             case 'fcmanager/signup-form-parent-details':
                 $require_parents_till_age = FCManager_Settings::instance()->signup->require_parents_till_age();
                 if ($require_parents_till_age && $require_parents_till_age > $signup->personal_details()->age()) {
                     $parent = ($inner_block['attrs']['parent'] ?? '') === 'parent2' ? 'parent2' : 'parent1';
-                    $success &= $signup->{$parent}($_POST);
+                    $success &= $signup->{$parent}($post_data);
                 }
                 break;
             case 'fcmanager/signup-form-additional-information':
-                $success &= $signup->additional_information($_POST);
+                $success &= $signup->additional_information($post_data);
                 break;
             case 'fcmanager/signup-form-terms':
                 $terms_id = $inner_block['attrs']['id'];
-                $success &= isset($_POST[$terms_id]) && $_POST[$terms_id] === 'on';
+                $success &= isset($post_data[$terms_id]) && $post_data[$terms_id] === 'on';
                 break;
             case 'fcmanager/signup-form-captcha':
                 $provider = FCManager_CaptchaProviderFactory::get_default_provider();
                 if ($provider) {
-                    $success &= $provider->validate($_POST);
+                    $success &= $provider->validate($post_data);
                 }
                 break;
         }
@@ -72,14 +72,15 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
 {
     $redirectUrl = $attributes['redirectUrl'] ?? '';
     $error_message = '';
+    $post_data = ! empty($_POST) ? wp_unslash($_POST) : [];
 
     wp_enqueue_script('fcmanager-payment-details-toggle', plugins_url('public/js/signup.js', dirname(__DIR__)), ['jquery'], FCMANAGER_VERSION, true);
 
-    if ($_POST && isset($_POST['fcmanager_nonce'])) {
-        if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcmanager_nonce'])), 'fcmanager_signup')) {
+    if (! empty($post_data) && isset($post_data['fcmanager_nonce'])) {
+        if (!wp_verify_nonce(sanitize_text_field($post_data['fcmanager_nonce']), 'fcmanager_signup')) {
             $error_message = __('Error occurred while processing the form. Please try again.', 'football-club-manager');
         } else {
-            $signup = fcmanager_process_signup_form($block, $attributes);
+            $signup = fcmanager_process_signup_form($block, $attributes, $post_data);
 
             if (!$signup) {
                 $error_message = __('Error occurred while processing the form. Please try again.', 'football-club-manager');
