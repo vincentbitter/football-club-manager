@@ -4,6 +4,8 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+require_once(plugin_dir_path(dirname(__DIR__)) . 'includes/captcha/class-captchaproviderfactory.php');
+
 /**
  * @param array $block
  * @return array(array)
@@ -53,6 +55,12 @@ function fcmanager_process_signup_form($block, $attributes): ?FCManager_Signup
             case 'fcmanager/signup-form-terms':
                 $terms_id = $inner_block['attrs']['id'];
                 $success &= isset($_POST[$terms_id]) && $_POST[$terms_id] === 'on';
+                break;
+            case 'fcmanager/signup-form-captcha':
+                $provider = FCManager_CaptchaProviderFactory::get_default_provider();
+                if ($provider) {
+                    $success &= $provider->validate($_POST);
+                }
                 break;
         }
     }

@@ -43,6 +43,25 @@ function fcmanager_field_number_callback($args)
 <?php
 }
 
+function fcmanager_field_select_callback($args)
+{
+    $options = get_option('fcmanager_options');
+    $value = isset($options[$args['label_for']]) ? $options[$args['label_for']] : '';
+?>
+    <select id="<?php echo esc_attr($args['label_for']); ?>"
+        name="fcmanager_options[<?php echo esc_attr($args['label_for']); ?>]">
+        <?php foreach ($args['options'] as $option_value => $option_label) : ?>
+            <option value="<?php echo esc_attr($option_value); ?>" <?php selected($value, $option_value); ?>>
+                <?php echo esc_html($option_label); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <?php if (isset($args['description'])) : ?>
+        <p class="description"><?php echo esc_html($args['description']); ?></p>
+    <?php endif; ?>
+<?php
+}
+
 function fcmanager_options_sanitize_callback($input)
 {
     $input['fcmanager_player_publish_birthday_by_default'] = $input['fcmanager_player_publish_birthday_by_default'] == 1 ? 1 : 0;
@@ -51,6 +70,7 @@ function fcmanager_options_sanitize_callback($input)
     $input['fcmanager_volunteer_publish_age_by_default'] = $input['fcmanager_volunteer_publish_age_by_default'] == 1 ? 1 : 0;
     $input['fcmanager_signup_extra_fields'] = sanitize_textarea_field($input['fcmanager_signup_extra_fields']);
     $input['fcmanager_signup_require_parents_till_age'] = is_numeric($input['fcmanager_signup_require_parents_till_age']) ? (int) $input['fcmanager_signup_require_parents_till_age'] : "";
+    $input['fcmanager_signup_captcha_provider'] = sanitize_text_field($input['fcmanager_signup_captcha_provider']);
 
     return $input;
 }
@@ -147,6 +167,20 @@ function fcmanager_settings_init()
         array(
             'label_for' => 'fcmanager_signup_require_parents_till_age',
             'description' => __('Set the age until which parents are required for the signup form.', 'football-club-manager')
+        )
+    );
+
+    // Register "Captcha provider" field: fcmanager > fcmanager_section_signup_settings > fcmanager_signup_captcha_provider.
+    add_settings_field(
+        'fcmanager_signup_captcha_provider',
+        __('Captcha provider', 'football-club-manager'),
+        'fcmanager_field_select_callback',
+        'fcmanager',
+        'fcmanager_section_signup_settings',
+        array(
+            'label_for' => 'fcmanager_signup_captcha_provider',
+            'description' => __('Select the captcha provider to use for the signup form.', 'football-club-manager'),
+            'options' => array_merge(['' => __('None', 'football-club-manager')], array_combine(FCManager_CaptchaProviderFactory::get_providers(), FCManager_CaptchaProviderFactory::get_providers()))
         )
     );
 }

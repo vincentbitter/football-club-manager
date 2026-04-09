@@ -71,6 +71,7 @@ export default function Edit({ attributes, setAttributes }) {
 								["fcmanager/signup-form-payment-details"],
 								["fcmanager/signup-form-additional-information"],
 								["fcmanager/signup-form-terms"],
+								["fcmanager/signup-form-captcha"],
 								["fcmanager/signup-form-button"],
 							]
 						}

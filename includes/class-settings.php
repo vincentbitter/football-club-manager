@@ -103,4 +103,9 @@ class FCManager_Signup_Settings extends FCManager_Settings_Base
     {
         return (int) $this->get_or_update('fcmanager_signup_require_parents_till_age', $newValue);
     }
+
+    public function captcha_provider($newValue = null)
+    {
+        return $this->get_or_update('fcmanager_signup_captcha_provider', $newValue);
+    }
 }
