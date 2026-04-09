@@ -21,7 +21,8 @@ function fcmanager_render_signup_form_additional_information_block($attributes, 
                         <?php echo esc_html($field); ?>
                         <input
                             type="text"
-                            name="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>" />
+                            name="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>"
+                            value="<?php echo esc_attr($_POST['fcmanager_signup_additional_information'][$field] ?? ''); ?>" />
                     </label>
                 </div>
             </div>

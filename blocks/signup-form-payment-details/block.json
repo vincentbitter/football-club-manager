@@ -13,6 +13,7 @@
     },
     "textdomain": "football-club-manager",
     "editorScript": "file:./index.js",
+    "render": "file:./render.php",
     "style": "file:./style-index.css",
     "attributes": {
         "allowedMethods": {

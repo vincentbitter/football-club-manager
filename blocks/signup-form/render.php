@@ -71,26 +71,27 @@ function fcmanager_process_signup_form($block, $attributes): ?FCManager_Signup
 function fcmanager_render_signup_form_block($attributes, $content, $block)
 {
     $redirectUrl = $attributes['redirectUrl'] ?? '';
+    $error_message = '';
 
     wp_enqueue_script('fcmanager-payment-details-toggle', plugins_url('public/js/signup.js', dirname(__DIR__)), ['jquery'], FCMANAGER_VERSION, true);
 
     if ($_POST && isset($_POST['fcmanager_nonce'])) {
         if (!wp_verify_nonce($_POST['fcmanager_nonce'], 'fcmanager_signup')) {
-            return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
-        }
-
-        $signup = fcmanager_process_signup_form($block, $attributes);
-
-        if (!$signup) {
-            return __('Error occurred while processing the form. Please try again.', 'football-club-manager');
+            $error_message = __('Error occurred while processing the form. Please try again.', 'football-club-manager');
         } else {
-            $signup->save();
-            if ($redirectUrl) {
-                wp_redirect($redirectUrl);
-                exit;
+            $signup = fcmanager_process_signup_form($block, $attributes);
+
+            if (!$signup) {
+                $error_message = __('Error occurred while processing the form. Please try again.', 'football-club-manager');
             } else {
-                wp_redirect(add_query_arg('signup', 'success', get_permalink()));
-                exit;
+                $signup->save();
+                if ($redirectUrl) {
+                    wp_redirect($redirectUrl);
+                    exit;
+                } else {
+                    wp_redirect(add_query_arg('signup', 'success', get_permalink()));
+                    exit;
+                }
             }
         }
     }
@@ -98,6 +99,11 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
     ob_start();
 ?>
     <form class="fcmanager-signup-form" action="" method="post" data-require-parents-till-age="<?php echo esc_attr(FCManager_Settings::instance()->signup->require_parents_till_age()); ?>">
+        <?php if ($error_message): ?>
+            <div class="fcmanager-form-error">
+                <?php echo esc_html($error_message); ?>
+            </div>
+        <?php endif; ?>
         <?php wp_nonce_field('fcmanager_signup', 'fcmanager_nonce'); ?>
         <?php echo $content; ?>
     </form>
