@@ -31,6 +31,16 @@ class RecaptchaProvider implements CaptchaProvider
 
         ob_start();
         WPCaptcha_Functions::captcha_fields_print();
+?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const captchaInputs = document.querySelectorAll('.fcmanager-signup-form-captcha #wpcaptcha_captcha');
+                captchaInputs.forEach(function(input) {
+                    input.required = true;
+                });
+            });
+        </script>
+<?php
         return ob_get_clean();
     }
 
