@@ -232,9 +232,9 @@ function fcmanager_render_signup_parents_meta_box($post)
     // Show form
     wp_nonce_field('fcmanager_save_signup_parents_meta_box', 'fcmanager_signup_parents_meta_box_nonce');
 
-    echo '<h3>' . __('Parent/guardian 1', 'football-club-manager') . '</h3>';
+    echo '<h3>' . esc_html__('Parent/guardian 1', 'football-club-manager') . '</h3>';
     fcmanager_render_signup_parent_meta_box(1, $signup->parent1());
-    echo '<h3>' . __('Parent/guardian 2', 'football-club-manager') . '</h3>';
+    echo '<h3>' . esc_html__('Parent/guardian 2', 'football-club-manager') . '</h3>';
     fcmanager_render_signup_parent_meta_box(2, $signup->parent2());
 }
 
@@ -404,7 +404,7 @@ function fcmanager_render_signup_additional_information_meta_box($post)
 {
     $extra_fields = FCManager_Settings::instance()->signup->extra_fields();
     if (empty($extra_fields)) {
-        echo '<p>' . __('No extra fields defined. You can define extra fields in the settings page.', 'football-club-manager') . '</p>';
+        echo '<p>' . esc_html__('No extra fields defined. You can define extra fields in the settings page.', 'football-club-manager') . '</p>';
         return;
     }
 
@@ -484,10 +484,10 @@ function fcmanager_custom_signup_column($column, $post_id)
     $signup = new FCManager_Signup($post_id);
     switch ($column) {
         case 'signup_type':
-            $type = 'Player';
+            $type = __('Player', 'football-club-manager');
             if ($signup->type() === 'volunteer')
-                $type = 'Volunteer';
-            echo esc_html_e($type, 'football-club-manager') . ($signup->subtype() ? ' - ' . esc_html($signup->subtype()) : '');
+                $type = __('Volunteer', 'football-club-manager');
+            echo esc_html($type) . ($signup->subtype() ? ' - ' . esc_html($signup->subtype()) : '');
             break;
         case 'signup_first_name':
             echo esc_html($signup->personal_details()->first_name());

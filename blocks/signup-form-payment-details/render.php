@@ -19,19 +19,19 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
             <div class="fcmanager-form-grid fcmanager-form-grid--full">
                 <div class="fcmanager-form-field">
                     <label>
-                        <?php _e('Payment method', 'football-club-manager'); ?>
+                        <?php esc_html_e('Payment method', 'football-club-manager'); ?>
                         <select name="method" class="fcmanager-payment-method-select" required>
                             <option value="">
-                                <?php _e('Select…', 'football-club-manager'); ?>
+                                <?php esc_html_e('Select…', 'football-club-manager'); ?>
                             </option>
                             <?php if (in_array('direct_debit', $allowedMethods)): ?>
                                 <option value="direct_debit" <?php selected($_POST['method'] ?? '', 'direct_debit'); ?>>
-                                    <?php _e('Direct debit', 'football-club-manager'); ?>
+                                    <?php esc_html_e('Direct debit', 'football-club-manager'); ?>
                                 </option>
                             <?php endif; ?>
                             <?php if (in_array('no_payment', $allowedMethods)): ?>
                                 <option value="no_payment" <?php selected($_POST['method'] ?? '', 'no_payment'); ?>>
-                                    <?php _e('No payment needed', 'football-club-manager'); ?>
+                                    <?php esc_html_e('No payment needed', 'football-club-manager'); ?>
                                 </option>
                             <?php endif; ?>
                         </select>
@@ -44,14 +44,14 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
             <div class="fcmanager-form-grid fcmanager-form-grid--double" data-payment-method="direct_debit">
                 <div class="fcmanager-form-field">
                     <label>
-                        <?php _e('Bank account (IBAN)', 'football-club-manager'); ?>
+                        <?php esc_html_e('Bank account (IBAN)', 'football-club-manager'); ?>
                         <input type="text" name="iban" value="<?php echo esc_attr($_POST['iban'] ?? ''); ?>" required />
                     </label>
                 </div>
 
                 <div class="fcmanager-form-field">
                     <label>
-                        <?php _e('Account holder name', 'football-club-manager'); ?>
+                        <?php esc_html_e('Account holder name', 'football-club-manager'); ?>
                         <input type="text" name="account_holder_name" value="<?php echo esc_attr($_POST['account_holder_name'] ?? ''); ?>" required />
                     </label>
                 </div>
@@ -62,7 +62,7 @@ function fcmanager_render_signup_form_payment_details_block($attributes, $conten
             <div class="fcmanager-form-grid fcmanager-form-grid--full" data-payment-method="no_payment">
                 <div class="fcmanager-form-field">
                     <label>
-                        <?php _e('Reason', 'football-club-manager'); ?>
+                        <?php esc_html_e('Reason', 'football-club-manager'); ?>
                         <input type="text" name="reason" value="<?php echo esc_attr($_POST['reason'] ?? ''); ?>" required />
                     </label>
                 </div>

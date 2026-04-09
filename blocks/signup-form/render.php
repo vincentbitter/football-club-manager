@@ -76,7 +76,7 @@ function fcmanager_render_signup_form_block($attributes, $content, $block)
     wp_enqueue_script('fcmanager-payment-details-toggle', plugins_url('public/js/signup.js', dirname(__DIR__)), ['jquery'], FCMANAGER_VERSION, true);
 
     if ($_POST && isset($_POST['fcmanager_nonce'])) {
-        if (!wp_verify_nonce($_POST['fcmanager_nonce'], 'fcmanager_signup')) {
+        if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['fcmanager_nonce'])), 'fcmanager_signup')) {
             $error_message = __('Error occurred while processing the form. Please try again.', 'football-club-manager');
         } else {
             $signup = fcmanager_process_signup_form($block, $attributes);
