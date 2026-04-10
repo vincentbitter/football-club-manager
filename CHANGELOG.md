@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - 2026-04-10
+
+### 🚀 Features
+
+- Find team page when searching on player name
+- Signup Form block so new players and volunteers can sign up
+
 ## [0.11.0] - 2026-02-08
 
 ### 🐛 Bug Fixes
