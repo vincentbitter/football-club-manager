@@ -70,6 +70,8 @@ Currently available:
 - 🔗 [FCM for Sportlink](https://github.com/vincentbitter/fcm-for-sportlink)  
   Integrates Football Club Manager with **Sportlink**, allowing you to synchronize official match data and player information directly into WordPress.
 
+- 🔗 [Advanced Google reCAPTCHA](https://www.wordpress.org/plugins/advanced-google-recaptcha/)
+  Add a Captcha to the signup form to avoid spam.
 ---
 
 ## 📜 Changelog
