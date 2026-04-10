@@ -11,14 +11,14 @@
     "supports": {
         "html": false
     },
-    "textdomain": "football-club-manager",
-    "editorScript": "file:./index.js",
-    "render": "file:./render.php",
-    "style": "file:./style-index.css",
     "attributes": {
         "parent": {
             "type": "string",
             "default": "parent1"
         }
-    }
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "style": "file:./style-index.css"
 }

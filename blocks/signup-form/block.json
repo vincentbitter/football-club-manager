@@ -11,10 +11,6 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "football-club-manager",
-	"editorScript": "file:./index.js",
-	"render": "file:./render.php",
-	"style": "file:./style-index.css",
 	"attributes": {
 		"redirectUrl": {
 			"type": "string",
@@ -28,5 +24,9 @@
 			"type": "string",
 			"default": ""
 		}
-	}
+	},
+	"textdomain": "football-club-manager",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css"
 }

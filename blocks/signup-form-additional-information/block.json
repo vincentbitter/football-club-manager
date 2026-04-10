@@ -12,7 +12,7 @@
         "html": false
     },
     "textdomain": "football-club-manager",
-    "editorScript": "file:./index.js",
     "editorStyle": "file:./style-index.css",
+    "editorScript": "file:./index.js",
     "render": "file:./render.php"
 }
