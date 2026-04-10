@@ -14,7 +14,7 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start --blocks-manifest --source-path=blocks",
 		"i18n:make-pot": "wp i18n make-pot . languages/football-club-manager.pot",
-		"i18n:make-json": "wp i18n make-json languages/football-club-manager-*.po --no-purge"
+		"i18n:make-json": "wp i18n make-json languages --no-purge"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.19.0"

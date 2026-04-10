@@ -6,7 +6,7 @@
     "title": "Signup Form - Additional Information",
     "category": "widgets",
     "icon": "info",
-    "description": "Add additional signup fields from the signup settings. This block should be used inside the Signup Form block.",
+    "description": "Add additional fields from the signup settings. This block should be used inside the Signup Form block.",
     "example": {},
     "supports": {
         "html": false
