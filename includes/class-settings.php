@@ -38,6 +38,9 @@ class FCManager_Settings
     /** @var FCManager_Volunteer_Settings */
     public $volunteer;
 
+    /** @var FCManager_Signup_Settings */
+    public $signup;
+
     /**
      * This method will create and return the only instance of this class.
      *
@@ -55,6 +58,7 @@ class FCManager_Settings
     {
         $this->player = new FCManager_Player_Settings();
         $this->volunteer = new FCManager_Volunteer_Settings();
+        $this->signup = new FCManager_Signup_Settings();
     }
 }
 
@@ -81,5 +85,27 @@ class FCManager_Volunteer_Settings extends FCManager_Settings_Base
     public function publish_age_by_default($newValue = null)
     {
         return $this->get_or_update_boolean('fcmanager_volunteer_publish_age_by_default', $newValue);
+    }
+}
+
+class FCManager_Signup_Settings extends FCManager_Settings_Base
+{
+    public function extra_fields($newValue = null)
+    {
+        $value = $this->get_or_update('fcmanager_signup_extra_fields', $newValue);
+        if ($value !== null) {
+            $value = array_filter(array_map('trim', explode("\n", $value)));
+        }
+        return $value;
+    }
+
+    public function require_parents_till_age($newValue = null): int
+    {
+        return (int) $this->get_or_update('fcmanager_signup_require_parents_till_age', $newValue);
+    }
+
+    public function captcha_provider($newValue = null)
+    {
+        return $this->get_or_update('fcmanager_signup_captcha_provider', $newValue);
     }
 }

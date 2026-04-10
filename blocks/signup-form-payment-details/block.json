@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/signup-form-payment-details",
+    "version": "0.11.0",
+    "title": "Signup Form - Payment Details",
+    "category": "widgets",
+    "icon": "forms",
+    "description": "Add payment details fields to the signup form. This block should be used within the Signup Form block.",
+    "example": {},
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "allowedMethods": {
+            "type": "array",
+            "default": [
+                "direct_debit",
+                "no_payment"
+            ],
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "style": "file:./style-index.css"
+}

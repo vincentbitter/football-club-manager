@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/signup-form-parent-details",
+    "version": "0.11.0",
+    "title": "Signup Form - Parent Details",
+    "category": "widgets",
+    "icon": "forms",
+    "description": "Add parent details fields to the signup form. This block should be used within the Signup Form block.",
+    "example": {},
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "parent": {
+            "type": "string",
+            "default": "parent1"
+        }
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "style": "file:./style-index.css"
+}

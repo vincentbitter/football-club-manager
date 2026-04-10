@@ -2,21 +2,21 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.10.0\n"
+"Project-Id-Version: Football Club Manager 0.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-08T13:32:44+00:00\n"
+"POT-Creation-Date: 2026-04-10T19:01:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
-#: football-club-manager.php:213
+#: football-club-manager.php:231
 msgid "Football Club Manager"
 msgstr ""
 
@@ -44,9 +44,9 @@ msgstr ""
 msgid "At a Glance"
 msgstr ""
 
-#: admin/page_settings.php:13
-#: football-club-manager.php:91
-#: football-club-manager.php:92
+#: admin/page_settings.php:14
+#: football-club-manager.php:100
+#: football-club-manager.php:101
 msgid "Settings"
 msgstr ""
 
@@ -109,6 +109,283 @@ msgstr ""
 msgid "Upcoming matches"
 msgstr ""
 
+#: blocks/signup-form-parent-details/render.php:19
+#: blocks/signup-form-personal-details/render.php:18
+#: build/signup-form-parent-details/render.php:19
+#: build/signup-form-personal-details/render.php:18
+#: includes/post-types/player.php:112
+#: includes/post-types/player.php:200
+#: includes/post-types/signup.php:108
+#: includes/post-types/signup.php:255
+#: includes/post-types/signup.php:472
+#: includes/post-types/volunteer.php:110
+#: includes/post-types/volunteer.php:186
+#: blocks/signup-form-parent-details/edit.js:34
+#: blocks/signup-form-personal-details/edit.js:15
+#: build/signup-form-parent-details/index.js:74
+#: build/signup-form-personal-details/index.js:45
+#: build/signup-form-parent-details/index.js:34
+#: build/signup-form-personal-details/index.js:15
+msgid "First name"
+msgstr ""
+
+#: blocks/signup-form-parent-details/render.php:28
+#: blocks/signup-form-personal-details/render.php:35
+#: build/signup-form-parent-details/render.php:28
+#: build/signup-form-personal-details/render.php:35
+#: includes/post-types/signup.php:116
+#: includes/post-types/signup.php:259
+#: blocks/signup-form-parent-details/edit.js:48
+#: blocks/signup-form-personal-details/edit.js:43
+#: build/signup-form-parent-details/index.js:87
+#: build/signup-form-personal-details/index.js:70
+#: build/signup-form-parent-details/index.js:48
+#: build/signup-form-personal-details/index.js:43
+msgid "Middle name"
+msgstr ""
+
+#: blocks/signup-form-parent-details/render.php:35
+#: blocks/signup-form-personal-details/render.php:43
+#: build/signup-form-parent-details/render.php:35
+#: build/signup-form-personal-details/render.php:43
+#: includes/post-types/player.php:116
+#: includes/post-types/player.php:201
+#: includes/post-types/signup.php:120
+#: includes/post-types/signup.php:263
+#: includes/post-types/signup.php:473
+#: includes/post-types/volunteer.php:114
+#: includes/post-types/volunteer.php:187
+#: blocks/signup-form-parent-details/edit.js:60
+#: blocks/signup-form-personal-details/edit.js:56
+#: build/signup-form-parent-details/index.js:97
+#: build/signup-form-personal-details/index.js:81
+#: build/signup-form-parent-details/index.js:60
+#: build/signup-form-personal-details/index.js:56
+msgid "Last name"
+msgstr ""
+
+#: blocks/signup-form-parent-details/render.php:44
+#: blocks/signup-form-personal-details/render.php:123
+#: build/signup-form-parent-details/render.php:44
+#: build/signup-form-personal-details/render.php:123
+#: includes/post-types/signup.php:164
+#: includes/post-types/signup.php:268
+#: blocks/signup-form-parent-details/edit.js:74
+#: blocks/signup-form-personal-details/edit.js:156
+#: build/signup-form-parent-details/index.js:110
+#: build/signup-form-personal-details/index.js:174
+#: build/signup-form-parent-details/index.js:74
+#: build/signup-form-personal-details/index.js:156
+msgid "Mobile phone number"
+msgstr ""
+
+#: blocks/signup-form-parent-details/render.php:51
+#: blocks/signup-form-personal-details/render.php:130
+#: build/signup-form-parent-details/render.php:51
+#: build/signup-form-personal-details/render.php:130
+#: includes/post-types/signup.php:168
+#: includes/post-types/signup.php:272
+#: blocks/signup-form-parent-details/edit.js:86
+#: blocks/signup-form-personal-details/edit.js:168
+#: build/signup-form-parent-details/index.js:120
+#: build/signup-form-personal-details/index.js:184
+#: build/signup-form-parent-details/index.js:86
+#: build/signup-form-personal-details/index.js:168
+msgid "Phone number"
+msgstr ""
+
+#: blocks/signup-form-parent-details/render.php:60
+#: blocks/signup-form-personal-details/render.php:139
+#: build/signup-form-parent-details/render.php:60
+#: build/signup-form-personal-details/render.php:139
+#: includes/post-types/signup.php:172
+#: includes/post-types/signup.php:276
+#: blocks/signup-form-parent-details/edit.js:100
+#: blocks/signup-form-personal-details/edit.js:182
+#: build/signup-form-parent-details/index.js:133
+#: build/signup-form-personal-details/index.js:197
+#: build/signup-form-parent-details/index.js:100
+#: build/signup-form-personal-details/index.js:182
+msgid "Email address"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:23
+#: build/signup-form-payment-details/render.php:23
+#: includes/post-types/signup.php:343
+#: blocks/signup-form-payment-details/edit.js:56
+#: build/signup-form-payment-details/index.js:94
+#: build/signup-form-payment-details/index.js:56
+msgid "Payment method"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:26
+#: blocks/signup-form-personal-details/render.php:67
+#: build/signup-form-payment-details/render.php:26
+#: build/signup-form-personal-details/render.php:67
+msgid "Select…"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:30
+#: build/signup-form-payment-details/render.php:30
+#: includes/post-types/signup.php:346
+#: blocks/signup-form-payment-details/edit.js:16
+#: blocks/signup-form-payment-details/edit.js:63
+#: build/signup-form-payment-details/index.js:54
+#: build/signup-form-payment-details/index.js:100
+#: build/signup-form-payment-details/index.js:16
+#: build/signup-form-payment-details/index.js:63
+msgid "Direct debit"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:35
+#: build/signup-form-payment-details/render.php:35
+#: includes/post-types/signup.php:347
+#: blocks/signup-form-payment-details/edit.js:17
+#: blocks/signup-form-payment-details/edit.js:66
+#: build/signup-form-payment-details/index.js:57
+#: build/signup-form-payment-details/index.js:103
+#: build/signup-form-payment-details/index.js:17
+#: build/signup-form-payment-details/index.js:66
+msgid "No payment needed"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:48
+#: build/signup-form-payment-details/render.php:48
+#: includes/post-types/signup.php:352
+#: blocks/signup-form-payment-details/edit.js:78
+#: build/signup-form-payment-details/index.js:113
+#: build/signup-form-payment-details/index.js:78
+msgid "Bank account (IBAN)"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:55
+#: build/signup-form-payment-details/render.php:55
+#: includes/post-types/signup.php:356
+#: blocks/signup-form-payment-details/edit.js:90
+#: build/signup-form-payment-details/index.js:123
+#: build/signup-form-payment-details/index.js:90
+msgid "Account holder name"
+msgstr ""
+
+#: blocks/signup-form-payment-details/render.php:66
+#: build/signup-form-payment-details/render.php:66
+#: includes/post-types/signup.php:360
+#: blocks/signup-form-payment-details/edit.js:106
+#: build/signup-form-payment-details/index.js:136
+#: build/signup-form-payment-details/index.js:106
+msgid "Reason"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:28
+#: build/signup-form-personal-details/render.php:28
+#: includes/post-types/signup.php:112
+#: blocks/signup-form-personal-details/edit.js:31
+#: build/signup-form-personal-details/index.js:60
+#: build/signup-form-personal-details/index.js:31
+msgid "Initials"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:52
+#: build/signup-form-personal-details/render.php:52
+#: includes/post-types/player.php:120
+#: includes/post-types/signup.php:124
+#: includes/post-types/volunteer.php:118
+#: blocks/signup-form-personal-details/edit.js:70
+#: build/signup-form-personal-details/index.js:94
+#: build/signup-form-personal-details/index.js:70
+msgid "Date of birth"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:64
+#: build/signup-form-personal-details/render.php:64
+#: includes/post-types/signup.php:130
+#: blocks/signup-form-personal-details/edit.js:82
+#: build/signup-form-personal-details/index.js:104
+#: build/signup-form-personal-details/index.js:82
+msgid "Gender"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:70
+#: build/signup-form-personal-details/render.php:70
+#: includes/post-types/signup.php:133
+#: blocks/signup-form-personal-details/edit.js:87
+#: build/signup-form-personal-details/index.js:108
+#: build/signup-form-personal-details/index.js:87
+msgid "Male"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:73
+#: build/signup-form-personal-details/render.php:73
+#: includes/post-types/signup.php:134
+msgid "Female"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:76
+#: build/signup-form-personal-details/render.php:76
+#: includes/post-types/signup.php:135
+msgid "Gender neutral"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:86
+#: build/signup-form-personal-details/render.php:86
+#: includes/post-types/signup.php:140
+#: blocks/signup-form-personal-details/edit.js:96
+#: build/signup-form-personal-details/index.js:118
+#: build/signup-form-personal-details/index.js:96
+msgid "Street"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:93
+#: build/signup-form-personal-details/render.php:93
+#: includes/post-types/signup.php:144
+#: blocks/signup-form-personal-details/edit.js:108
+#: build/signup-form-personal-details/index.js:130
+#: build/signup-form-personal-details/index.js:108
+msgid "House number"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:100
+#: build/signup-form-personal-details/render.php:100
+#: includes/post-types/signup.php:148
+#: blocks/signup-form-personal-details/edit.js:119
+#: build/signup-form-personal-details/index.js:140
+#: build/signup-form-personal-details/index.js:119
+msgid "House number addition"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:108
+#: build/signup-form-personal-details/render.php:108
+#: includes/post-types/signup.php:152
+#: blocks/signup-form-personal-details/edit.js:131
+#: build/signup-form-personal-details/index.js:151
+#: build/signup-form-personal-details/index.js:131
+msgid "Postal code"
+msgstr ""
+
+#: blocks/signup-form-personal-details/render.php:114
+#: build/signup-form-personal-details/render.php:114
+#: includes/post-types/signup.php:156
+#: blocks/signup-form-personal-details/edit.js:142
+#: build/signup-form-personal-details/index.js:161
+#: build/signup-form-personal-details/index.js:142
+msgid "City"
+msgstr ""
+
+#: blocks/signup-form-terms/render.php:10
+#: build/signup-form-terms/render.php:10
+#: blocks/signup-form-terms/edit.js:31
+#: build/signup-form-terms/index.js:64
+#: build/signup-form-terms/index.js:31
+msgid "I agree to the terms and conditions."
+msgstr ""
+
+#: blocks/signup-form/render.php:81
+#: blocks/signup-form/render.php:86
+#: build/signup-form/render.php:81
+#: build/signup-form/render.php:86
+msgid "Error occurred while processing the form. Please try again."
+msgstr ""
+
 #. translators: %s is the team name
 #: blocks/team-players/render.php:36
 #: build/team-players/render.php:36
@@ -140,31 +417,44 @@ msgstr ""
 msgid "No matches found for this team."
 msgstr ""
 
-#: football-club-manager.php:51
+#: build/signup-form-button/render.php:9
+#: blocks/signup-form-button/edit.js:15
+#: build/signup-form-button/index.js:49
+#: build/signup-form-button/index.js:15
+msgid "Sign up"
+msgstr ""
+
 #: football-club-manager.php:52
+#: football-club-manager.php:53
 msgid "Dashboard"
 msgstr ""
 
-#: football-club-manager.php:59
 #: football-club-manager.php:60
+#: football-club-manager.php:61
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr ""
 
-#: football-club-manager.php:67
 #: football-club-manager.php:68
+#: football-club-manager.php:69
 #: includes/post-types/player.php:18
 msgid "Players"
 msgstr ""
 
-#: football-club-manager.php:75
 #: football-club-manager.php:76
+#: football-club-manager.php:77
 #: includes/post-types/volunteer.php:17
 msgid "Volunteers"
 msgstr ""
 
-#: football-club-manager.php:83
 #: football-club-manager.php:84
+#: football-club-manager.php:85
+#: includes/post-types/signup.php:18
+msgid "Signups"
+msgstr ""
+
+#: football-club-manager.php:92
+#: football-club-manager.php:93
 #: includes/post-types/match.php:15
 msgid "Matches"
 msgstr ""
@@ -257,6 +547,8 @@ msgid "Result"
 msgstr ""
 
 #: includes/post-types/player.php:19
+#: includes/post-types/signup.php:98
+#: includes/post-types/signup.php:487
 msgid "Player"
 msgstr ""
 
@@ -300,25 +592,6 @@ msgstr ""
 msgid "Player information"
 msgstr ""
 
-#: includes/post-types/player.php:112
-#: includes/post-types/player.php:200
-#: includes/post-types/volunteer.php:110
-#: includes/post-types/volunteer.php:186
-msgid "First name"
-msgstr ""
-
-#: includes/post-types/player.php:116
-#: includes/post-types/player.php:201
-#: includes/post-types/volunteer.php:114
-#: includes/post-types/volunteer.php:187
-msgid "Last name"
-msgstr ""
-
-#: includes/post-types/player.php:120
-#: includes/post-types/volunteer.php:118
-msgid "Date of birth"
-msgstr ""
-
 #: includes/post-types/player.php:124
 #: includes/post-types/volunteer.php:122
 msgid "Publish birthday?"
@@ -327,6 +600,84 @@ msgstr ""
 #: includes/post-types/player.php:128
 #: includes/post-types/volunteer.php:126
 msgid "Publish age?"
+msgstr ""
+
+#: includes/post-types/signup.php:19
+msgid "Signup"
+msgstr ""
+
+#: includes/post-types/signup.php:20
+msgid "New signup"
+msgstr ""
+
+#: includes/post-types/signup.php:21
+msgid "Edit signup"
+msgstr ""
+
+#: includes/post-types/signup.php:22
+msgid "No signups found"
+msgstr ""
+
+#: includes/post-types/signup.php:23
+msgid "No signups found in the trash"
+msgstr ""
+
+#: includes/post-types/signup.php:24
+msgid "Search signup"
+msgstr ""
+
+#: includes/post-types/signup.php:45
+msgid "Personal details"
+msgstr ""
+
+#: includes/post-types/signup.php:54
+msgid "Parent details"
+msgstr ""
+
+#: includes/post-types/signup.php:63
+msgid "Payment details"
+msgstr ""
+
+#: includes/post-types/signup.php:72
+msgid "Additional information"
+msgstr ""
+
+#: includes/post-types/signup.php:95
+#: includes/post-types/signup.php:471
+msgid "Type"
+msgstr ""
+
+#: includes/post-types/signup.php:99
+#: includes/post-types/signup.php:489
+#: includes/post-types/volunteer.php:18
+#: blocks/signup-form-payment-details/edit.js:110
+#: build/signup-form-payment-details/index.js:139
+#: build/signup-form-payment-details/index.js:110
+msgid "Volunteer"
+msgstr ""
+
+#: includes/post-types/signup.php:104
+msgid "Subtype"
+msgstr ""
+
+#: includes/post-types/signup.php:126
+msgid "Year"
+msgstr ""
+
+#: includes/post-types/signup.php:160
+msgid "Country"
+msgstr ""
+
+#: includes/post-types/signup.php:235
+msgid "Parent/guardian 1"
+msgstr ""
+
+#: includes/post-types/signup.php:237
+msgid "Parent/guardian 2"
+msgstr ""
+
+#: includes/post-types/signup.php:407
+msgid "No extra fields defined. You can define extra fields in the settings page."
 msgstr ""
 
 #: includes/post-types/team.php:40
@@ -388,10 +739,6 @@ msgstr ""
 msgid "Elements"
 msgstr ""
 
-#: includes/post-types/volunteer.php:18
-msgid "Volunteer"
-msgstr ""
-
 #: includes/post-types/volunteer.php:19
 msgid "New volunteer"
 msgstr ""
@@ -432,22 +779,54 @@ msgstr ""
 msgid "Volunteer information"
 msgstr ""
 
-#: includes/settings.php:39
+#: includes/settings.php:86
 msgid "Player Settings"
 msgstr ""
 
-#: includes/settings.php:47
-#: includes/settings.php:75
+#: includes/settings.php:94
+#: includes/settings.php:122
 msgid "Publish birthday by default"
 msgstr ""
 
-#: includes/settings.php:57
-#: includes/settings.php:85
+#: includes/settings.php:104
+#: includes/settings.php:132
 msgid "Publish age by default"
 msgstr ""
 
-#: includes/settings.php:67
+#: includes/settings.php:114
 msgid "Volunteer Settings"
+msgstr ""
+
+#: includes/settings.php:142
+msgid "Signup Settings"
+msgstr ""
+
+#: includes/settings.php:150
+msgid "Extra Fields"
+msgstr ""
+
+#: includes/settings.php:156
+msgid "Define extra fields for the signup form. One field per line. These fields will be added to the \"Additional Information\" section of the signup form."
+msgstr ""
+
+#: includes/settings.php:163
+msgid "Require parents till age"
+msgstr ""
+
+#: includes/settings.php:169
+msgid "Set the age until which parents are required for the signup form."
+msgstr ""
+
+#: includes/settings.php:176
+msgid "Captcha provider"
+msgstr ""
+
+#: includes/settings.php:182
+msgid "Select the captcha provider to use for the signup form."
+msgstr ""
+
+#: includes/settings.php:183
+msgid "None"
 msgstr ""
 
 #: blocks/results/edit.js:60
@@ -499,6 +878,54 @@ msgstr ""
 #: build/schedule/index.js:103
 #: build/schedule/index.js:78
 msgid "Select the number of days to search for matches."
+msgstr ""
+
+#: blocks/signup-form-additional-information/edit.js:15
+#: build/signup-form-additional-information/index.js:45
+#: build/signup-form-additional-information/index.js:15
+msgid "How did you hear about us? (example)"
+msgstr ""
+
+#: blocks/signup-form-additional-information/edit.js:25
+#: build/signup-form-additional-information/index.js:55
+#: build/signup-form-additional-information/index.js:25
+msgid "Have you played for another football club? (example)"
+msgstr ""
+
+#: blocks/signup-form-captcha/edit.js:14
+#: build/signup-form-captcha/index.js:49
+#: build/signup-form-captcha/index.js:14
+msgid "Captcha will be displayed here on the frontend"
+msgstr ""
+
+#: blocks/signup-form-parent-details/edit.js:13
+#: build/signup-form-parent-details/index.js:49
+#: build/signup-form-parent-details/index.js:13
+msgid "Parent 1"
+msgstr ""
+
+#: blocks/signup-form-parent-details/edit.js:14
+#: build/signup-form-parent-details/index.js:52
+#: build/signup-form-parent-details/index.js:14
+msgid "Parent 2"
+msgstr ""
+
+#: blocks/signup-form-parent-details/edit.js:20
+#: build/signup-form-parent-details/index.js:57
+#: build/signup-form-parent-details/index.js:20
+msgid "Parent Selection"
+msgstr ""
+
+#: blocks/signup-form-parent-details/edit.js:22
+#: build/signup-form-parent-details/index.js:59
+#: build/signup-form-parent-details/index.js:22
+msgid "Select Parent"
+msgstr ""
+
+#: blocks/signup-form-payment-details/edit.js:38
+#: build/signup-form-payment-details/index.js:80
+#: build/signup-form-payment-details/index.js:38
+msgid "Payment Methods"
 msgstr ""
 
 #: blocks/team-players/edit.js:48
@@ -606,6 +1033,101 @@ msgctxt "block description"
 msgid "Show an overview of upcoming matches."
 msgstr ""
 
+#: blocks/signup-form-additional-information/block.json
+#: build/signup-form-additional-information/block.json
+msgctxt "block title"
+msgid "Signup Form - Additional Information"
+msgstr ""
+
+#: blocks/signup-form-additional-information/block.json
+msgctxt "block description"
+msgid "Add additional fields from the signup settings. This block should be used inside the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form-button/block.json
+#: build/signup-form-button/block.json
+msgctxt "block title"
+msgid "Signup Form - Button"
+msgstr ""
+
+#: blocks/signup-form-button/block.json
+#: build/signup-form-button/block.json
+msgctxt "block description"
+msgid "Button for the signup form."
+msgstr ""
+
+#: blocks/signup-form-captcha/block.json
+#: build/signup-form-captcha/block.json
+msgctxt "block title"
+msgid "Signup Form - Captcha"
+msgstr ""
+
+#: blocks/signup-form-captcha/block.json
+#: build/signup-form-captcha/block.json
+msgctxt "block description"
+msgid "Add a captcha to the signup form. This block should be used within the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form-parent-details/block.json
+#: build/signup-form-parent-details/block.json
+msgctxt "block title"
+msgid "Signup Form - Parent Details"
+msgstr ""
+
+#: blocks/signup-form-parent-details/block.json
+#: build/signup-form-parent-details/block.json
+msgctxt "block description"
+msgid "Add parent details fields to the signup form. This block should be used within the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form-payment-details/block.json
+#: build/signup-form-payment-details/block.json
+msgctxt "block title"
+msgid "Signup Form - Payment Details"
+msgstr ""
+
+#: blocks/signup-form-payment-details/block.json
+#: build/signup-form-payment-details/block.json
+msgctxt "block description"
+msgid "Add payment details fields to the signup form. This block should be used within the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form-personal-details/block.json
+#: build/signup-form-personal-details/block.json
+msgctxt "block title"
+msgid "Signup Form - Personal Details"
+msgstr ""
+
+#: blocks/signup-form-personal-details/block.json
+#: build/signup-form-personal-details/block.json
+msgctxt "block description"
+msgid "Add personal details fields to the signup form. This block should be used within the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form-terms/block.json
+#: build/signup-form-terms/block.json
+msgctxt "block title"
+msgid "Signup Form - Terms"
+msgstr ""
+
+#: blocks/signup-form-terms/block.json
+#: build/signup-form-terms/block.json
+msgctxt "block description"
+msgid "Add a terms and conditions checkbox to the signup form. This block should be used within the Signup Form block."
+msgstr ""
+
+#: blocks/signup-form/block.json
+#: build/signup-form/block.json
+msgctxt "block title"
+msgid "Signup Form"
+msgstr ""
+
+#: blocks/signup-form/block.json
+#: build/signup-form/block.json
+msgctxt "block description"
+msgid "Add a signup form to your page. This block serves as a wrapper for the individual form fields."
+msgstr ""
+
 #: blocks/team-players/block.json
 #: build/team-players/block.json
 msgctxt "block title"
@@ -640,4 +1162,9 @@ msgstr ""
 #: build/team-schedule/block.json
 msgctxt "block description"
 msgid "Show an overview of the upcoming matches of a team."
+msgstr ""
+
+#: build/signup-form-additional-information/block.json
+msgctxt "block description"
+msgid "Add additional signup fields from the signup settings. This block should be used inside the Signup Form block."
 msgstr ""

@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/signup-form-additional-information",
+    "version": "0.11.0",
+    "title": "Signup Form - Additional Information",
+    "category": "widgets",
+    "icon": "info",
+    "description": "Add additional fields from the signup settings. This block should be used inside the Signup Form block.",
+    "example": {},
+    "supports": {
+        "html": false
+    },
+    "textdomain": "football-club-manager",
+    "editorStyle": "file:./style-index.css",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php"
+}

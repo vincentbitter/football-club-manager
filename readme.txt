@@ -15,12 +15,13 @@ Easily manage your amateur football club. Create team pages, player info, and in
 Football Club Manager helps amateur football clubs organize and present their information online.  
 With this plugin, you can:
 
-* 🏟️ Create customizable team pages
-* 👤 Register team players, including picture
-* 📅 Publish match schedule and results
-* 🙋‍♂️ Manage volunteers
-* 🧩 Customizable blocks for Gutenberg editor
-* 🌐 Multilingual support
+- 🏟️ Create customizable team pages
+- 👤 Register team players, including picture
+- 📅 Publish match schedule and results
+- 🙋‍♂️ Manage volunteers
+- 📝 New players and volunteers can sign up
+- 🧩 Customizable blocks for Gutenberg editor
+- 🌍 Multilingual support
 
 == Installation ==
 
@@ -57,6 +58,9 @@ Currently available:
 - 🔗 [FCM for Sportlink](https://www.wordpress.org/plugins/fcm-for-sportlink/)  
   Integrates Football Club Manager with **Sportlink**, allowing you to synchronize official match data and player information directly into WordPress.
 
+- 🔗 [Advanced Google reCAPTCHA](https://www.wordpress.org/plugins/advanced-google-recaptcha/)
+  Add a Captcha to the signup form to avoid spam.
+  
 == Frequently Asked Questions ==
 
 = Do I need coding experience to use this plugin? =
@@ -73,6 +77,12 @@ It’s designed to work with Gutenberg editor. While it should play nicely with 
 
 = What is Gutenberg editor? =
 The standard page editor since WordPress 5.0 (December 2018). If you use a different editor, blocks might not work. Check the [demo](https://wordpress.org/gutenberg/) if you are not sure if your website uses it.
+
+= How do I add a signup form for new players or volunteers? =
+You can add signup forms in the Gutenberg editor and customize those to your needs. The Signup Form block contains properties to chose between Player and Volunteer signup, and you can even specify a subtype if you need different forms for different types of players or volunteers. When adding a Signup Form block to the page, all possible child blocks will automatically be added. You can remove the blocks you don't need or customize and reorganize those.
+
+= What happens if someone signs up via the signup form? =
+The data is stored as a new 'signup' you can find in the Wordpress admin area (Football Club Manager -> Signups). Because of GDPR and other privacy/security regulations, it is not advised to store all personal data in Wordpress for a long time. Instead, you can verify the registration and copy the data to a separate CRM system. After processing the data, remove it from Wordpress. Need automation? Create a plugin for Football Club Manager that forwards the signup data to your CRM system.
 
 == Changelog ==
 

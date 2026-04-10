@@ -10,10 +10,11 @@ With Football Club Manager it is easy to manage your amateur football club in Wo
 
 ## 🚀 Features
 
-- 👥 Create customizable team pages
+- 🏟️ Create customizable team pages
 - 👤 Register team players, including picture
-- 📝 Publish match schedule and results
+- 📅 Publish match schedule and results
 - 🙋‍♂️ Manage volunteers
+- 📝 New players and volunteers can sign up
 - 🧩 Customizable blocks for Gutenberg editor
 - 🌍 Multilingual support
 
@@ -69,6 +70,8 @@ Currently available:
 - 🔗 [FCM for Sportlink](https://github.com/vincentbitter/fcm-for-sportlink)  
   Integrates Football Club Manager with **Sportlink**, allowing you to synchronize official match data and player information directly into WordPress.
 
+- 🔗 [Advanced Google reCAPTCHA](https://www.wordpress.org/plugins/advanced-google-recaptcha/)
+  Add a Captcha to the signup form to avoid spam.
 ---
 
 ## 📜 Changelog
@@ -85,14 +88,20 @@ Not at all! You just need access to your WordPress dashboard to manage the data,
 ❔ **Can I also import data?**
 Yes! Since Football Club Manager is built using Custom Post Types, it's compatible with most import/export plugins. Even WordPress itself offers import/export features, which you can find in the **Tools** admin menu. Also, you can develop your own import plugin for automatic importing, like the one for [Sportlink](https://github.com/vincentbitter/fcm-for-sportlink).
 
-? **Do you collect any data from me?**
+❔ **Do you collect any data from me?**
 No. Football Club Manager does not contain any tracking code or integration with external services. WordPress Plugin Directory tracks the number of installs though, but you can avoid even that by downloading a release from GitHub.
 
 ❔ **Is this plugin compatible with other WordPress themes or plugins?**
 It’s designed to work with Gutenberg editor. While it should play nicely with most themes, custom styling may be needed depending on your setup.
 
-? **What is Gutenberg editor?**
+❔ **What is Gutenberg editor?**
 The standard page editor since WordPress 5.0 (December 2018). If you use a different editor, blocks might not work. Check the [demo](https://wordpress.org/gutenberg/) if you are not sure if your website uses it.
+
+❔ **How do I add a signup form for new players or volunteers?**
+You can add signup forms in the Gutenberg editor and customize those to your needs. The Signup Form block contains properties to chose between Player and Volunteer signup, and you can even specify a subtype if you need different forms for different types of players or volunteers. When adding a Signup Form block to the page, all possible child blocks will automatically be added. You can remove the blocks you don't need or customize and reorganize those.
+
+❔ **What happens if someone signs up via the signup form?**
+The data is stored as a new 'signup' you can find in the Wordpress admin area (Football Club Manager -> Signups). Because of GDPR and other privacy/security regulations, it is not advised to store all personal data in Wordpress for a long time. Instead, you can verify the registration and copy the data to a separate CRM system. After processing the data, remove it from Wordpress. Need automation? Create a plugin for Football Club Manager that forwards the signup data to your CRM system.
 
 ---
 

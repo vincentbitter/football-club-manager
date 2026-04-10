@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/signup-form-button",
+    "version": "0.11.0",
+    "title": "Signup Form - Button",
+    "category": "widgets",
+    "icon": "button",
+    "description": "Button for the signup form.",
+    "example": {},
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true,
+            "gradients": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        },
+        "border": {
+            "radius": true,
+            "color": true,
+            "width": true
+        },
+        "html": false
+    },
+    "attributes": {
+        "text": {
+            "type": "string",
+            "default": "Sign up"
+        }
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php"
+}
