@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-"
 "manager\n"
-"POT-Creation-Date: 2026-04-16T19:03:18+00:00\n"
+"POT-Creation-Date: 2026-04-16T20:28:25+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Plugin Name of the plugin
-#: football-club-manager.php football-club-manager.php:231
+#: football-club-manager.php football-club-manager.php:242
 msgid "Football Club Manager"
 msgstr "Football Club Manager"
 
@@ -48,8 +48,8 @@ msgstr "https://vincentbitter.nl"
 msgid "At a Glance"
 msgstr "In een oogopslag"
 
-#: admin/page_settings.php:14 football-club-manager.php:100
-#: football-club-manager.php:101
+#: admin/page_settings.php:14 football-club-manager.php:109
+#: football-club-manager.php:110
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -57,15 +57,16 @@ msgstr "Instellingen"
 msgid "Save settings"
 msgstr "Instellingen opslaan"
 
-#: blocks/birthdays/render.php:54 build/birthdays/render.php:54
-#: blocks/birthdays/edit.js:52 build/birthdays/index.js:66
-#: build/birthdays/index.js:52
+#: blocks/birthdays/render.php:69 build/birthdays/render.php:69
+#: football-club-manager.php:85 football-club-manager.php:86
+#: includes/post-types/birthday.php:18 blocks/birthdays/edit.js:81
+#: build/birthdays/index.js:79 build/birthdays/index.js:81
 msgid "Birthdays"
 msgstr "Verjaardagen"
 
-#: blocks/birthdays/render.php:67 build/birthdays/render.php:67
-#: blocks/birthdays/edit.js:54 build/birthdays/index.js:68
-#: build/birthdays/index.js:54
+#: blocks/birthdays/render.php:82 build/birthdays/render.php:82
+#: blocks/birthdays/edit.js:83 build/birthdays/index.js:81
+#: build/birthdays/index.js:83
 msgid "No birthdays today."
 msgstr "Vandaag is niemand jarig."
 
@@ -97,6 +98,7 @@ msgstr "Speelschema"
 #: blocks/signup-form-personal-details/render.php:18
 #: build/signup-form-parent-details/render.php:19
 #: build/signup-form-personal-details/render.php:18
+#: includes/post-types/birthday.php:94 includes/post-types/birthday.php:165
 #: includes/post-types/player.php:112 includes/post-types/player.php:200
 #: includes/post-types/signup.php:108 includes/post-types/signup.php:267
 #: includes/post-types/signup.php:484 includes/post-types/volunteer.php:110
@@ -128,6 +130,7 @@ msgstr "Tussenvoegsel"
 #: blocks/signup-form-personal-details/render.php:43
 #: build/signup-form-parent-details/render.php:35
 #: build/signup-form-personal-details/render.php:43
+#: includes/post-types/birthday.php:98 includes/post-types/birthday.php:166
 #: includes/post-types/player.php:116 includes/post-types/player.php:201
 #: includes/post-types/signup.php:120 includes/post-types/signup.php:275
 #: includes/post-types/signup.php:485 includes/post-types/volunteer.php:114
@@ -261,8 +264,8 @@ msgstr "Initialen"
 
 #: blocks/signup-form-personal-details/render.php:52
 #: build/signup-form-personal-details/render.php:52
-#: includes/post-types/player.php:120 includes/post-types/signup.php:124
-#: includes/post-types/volunteer.php:118
+#: includes/post-types/birthday.php:102 includes/post-types/player.php:120
+#: includes/post-types/signup.php:124 includes/post-types/volunteer.php:118
 #: blocks/signup-form-personal-details/edit.js:70
 #: build/signup-form-personal-details/index.js:94
 #: build/signup-form-personal-details/index.js:70
@@ -397,34 +400,67 @@ msgstr "Geen spelers gevonden voor dit team."
 msgid "No matches found for this team."
 msgstr "Geen wedstrijden gevonden voor dit team."
 
-#: football-club-manager.php:52 football-club-manager.php:53
+#: football-club-manager.php:53 football-club-manager.php:54
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: football-club-manager.php:60 football-club-manager.php:61
+#: football-club-manager.php:61 football-club-manager.php:62
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr "Teams"
 
-#: football-club-manager.php:68 football-club-manager.php:69
+#: football-club-manager.php:69 football-club-manager.php:70
 #: includes/post-types/player.php:18
 msgid "Players"
 msgstr "Spelers"
 
-#: football-club-manager.php:76 football-club-manager.php:77
+#: football-club-manager.php:77 football-club-manager.php:78
 #: includes/post-types/volunteer.php:17
 msgid "Volunteers"
 msgstr "Vrijwilligers"
 
-#: football-club-manager.php:84 football-club-manager.php:85
+#: football-club-manager.php:93 football-club-manager.php:94
 #: includes/post-types/signup.php:18
 msgid "Signups"
 msgstr "Inschrijvingen"
 
-#: football-club-manager.php:92 football-club-manager.php:93
+#: football-club-manager.php:101 football-club-manager.php:102
 #: includes/post-types/match.php:15
 msgid "Matches"
 msgstr "Wedstrijden"
+
+#: includes/post-types/birthday.php:19 includes/post-types/birthday.php:167
+msgid "Birthday"
+msgstr "Verjaardag"
+
+#: includes/post-types/birthday.php:20
+msgid "New birthday"
+msgstr "Nieuwe verjaardag"
+
+#: includes/post-types/birthday.php:21
+msgid "Edit birthday"
+msgstr "Wijzig verjaardag"
+
+#: includes/post-types/birthday.php:22
+msgid "No birthdays found"
+msgstr "Geen verjaardagen gevonden"
+
+#: includes/post-types/birthday.php:23
+msgid "No birthdays found in the trash"
+msgstr "Geen verjaardagen gevonden in de prullenbak"
+
+#: includes/post-types/birthday.php:24
+msgid "Search birthday"
+msgstr "Zoek verjaardag"
+
+#: includes/post-types/birthday.php:71
+msgid "Birthday information"
+msgstr "Verjaardag informatie"
+
+#: includes/post-types/birthday.php:106 includes/post-types/player.php:128
+#: includes/post-types/volunteer.php:126
+msgid "Publish age?"
+msgstr "Publiceer leeftijd?"
 
 #: includes/post-types/match.php:16
 msgid "Match"
@@ -557,10 +593,6 @@ msgstr "Spelersinformatie"
 #: includes/post-types/player.php:124 includes/post-types/volunteer.php:122
 msgid "Publish birthday?"
 msgstr "Publiceer geboortedatum?"
-
-#: includes/post-types/player.php:128 includes/post-types/volunteer.php:126
-msgid "Publish age?"
-msgstr "Publiceer leeftijd?"
 
 #: includes/post-types/signup.php:19
 msgid "Signup"
@@ -737,31 +769,32 @@ msgstr "Zoek vrijwilliger"
 msgid "Volunteer information"
 msgstr "Vrijwilligersinformatie"
 
-#: includes/settings.php:86
+#: includes/settings.php:87
 msgid "Player Settings"
 msgstr "Speler instellingen"
 
-#: includes/settings.php:94 includes/settings.php:122
+#: includes/settings.php:95 includes/settings.php:123
 msgid "Publish birthday by default"
 msgstr "Publiceer standaard geboortedatum"
 
-#: includes/settings.php:104 includes/settings.php:132
+#: includes/settings.php:105 includes/settings.php:133
+#: includes/settings.php:199
 msgid "Publish age by default"
 msgstr "Publiceer standaard leeftijd"
 
-#: includes/settings.php:114
+#: includes/settings.php:115
 msgid "Volunteer Settings"
 msgstr "Vrijwilliger instellingen"
 
-#: includes/settings.php:142
+#: includes/settings.php:143
 msgid "Signup Settings"
 msgstr "Inschrijfinstellingen"
 
-#: includes/settings.php:150
+#: includes/settings.php:151
 msgid "Extra Fields"
 msgstr "Extra velden"
 
-#: includes/settings.php:156
+#: includes/settings.php:157
 msgid ""
 "Define extra fields for the signup form. One field per line. These fields "
 "will be added to the \"Additional Information\" section of the signup form."
@@ -770,29 +803,33 @@ msgstr ""
 "velden worden toegevoegd aan het gedeelte “Aanvullende informatie” van het "
 "inschrijfformulier."
 
-#: includes/settings.php:163
+#: includes/settings.php:164
 msgid "Require parents till age"
 msgstr "Verplicht ouders tot leeftijd"
 
-#: includes/settings.php:169
+#: includes/settings.php:170
 msgid "Set the age until which parents are required for the signup form."
 msgstr ""
 "Stel de leeftijd in tot welke ouders verplicht zijn op het "
 "inschrijfformulier."
 
-#: includes/settings.php:176
+#: includes/settings.php:177
 msgid "Captcha provider"
 msgstr "Captcha-aanbieder"
 
-#: includes/settings.php:182
+#: includes/settings.php:183
 msgid "Select the captcha provider to use for the signup form."
 msgstr ""
 "Selecteer de captcha-aanbieder die u voor het inschrijfformulier wilt "
 "gebruiken."
 
-#: includes/settings.php:183
+#: includes/settings.php:184
 msgid "None"
 msgstr "Geen"
+
+#: includes/settings.php:191
+msgid "Birthday Settings"
+msgstr "Verjaardag instellingen"
 
 #: blocks/results/edit.js:60 blocks/schedule/edit.js:58
 #: build/results/index.js:90 build/schedule/index.js:88

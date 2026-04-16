@@ -8,11 +8,13 @@ if (! defined('ABSPATH')) {
 
 require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-player.php';
 require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-volunteer.php';
+require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-birthday.php';
 
 /**
  * Retrieve all players or volunteers whose birthday is today and who have enabled birthday display.
- *
- * @param string $post_type 'player' or 'volunteer'
+ * Also, include all birthday custom post types.
+ * 
+ * @param string $post_type 'player', 'volunteer', or 'birthday'
  * @return WP_Post[] List of posts matching the criteria.
  */
 function fcmanager_get_birthdays($post_type, $class)
@@ -43,9 +45,22 @@ function fcmanager_render_birthdays_block($attributes, $content)
 {
     $players = fcmanager_get_birthdays('player', 'FCManager_Player');
     $volunteers = fcmanager_get_birthdays('volunteer', 'FCManager_Volunteer');
+    $birthdays = fcmanager_get_birthdays('birthday', 'FCManager_Birthday');
 
     /** @var FCManager_Person[] */
-    $people = array_merge($players, $volunteers);
+    $people = [];
+
+    foreach (array_merge($players, $volunteers, $birthdays) as $person) {
+        $key = $person->name() . '.' . $person->age();
+        $people[$key] = $person;
+    }
+
+    $people = array_values($people);
+
+    usort($people, function ($a, $b) {
+        $nameCompare = strcmp($a->name(), $b->name());
+        return $nameCompare !== 0 ? $nameCompare : $a->age() <=> $b->age();
+    });
 
     ob_start();
 ?>
@@ -53,7 +68,7 @@ function fcmanager_render_birthdays_block($attributes, $content)
         <h2><?php
             esc_html_e("Birthdays", 'football-club-manager'); ?></h2>
 
-        <?php if ($players): ?>
+        <?php if ($people): ?>
             <ul class="fcmanager-people-name-list">
                 <?php foreach ($people as $person): ?>
                     <li class="fcmanager-player-item">

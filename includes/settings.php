@@ -71,6 +71,7 @@ function fcmanager_options_sanitize_callback($input)
     $input['fcmanager_signup_extra_fields'] = sanitize_textarea_field($input['fcmanager_signup_extra_fields']);
     $input['fcmanager_signup_require_parents_till_age'] = is_numeric($input['fcmanager_signup_require_parents_till_age']) ? (int) $input['fcmanager_signup_require_parents_till_age'] : "";
     $input['fcmanager_signup_captcha_provider'] = sanitize_text_field($input['fcmanager_signup_captcha_provider']);
+    $input['fcmanager_birthday_publish_age_by_default'] = $input['fcmanager_birthday_publish_age_by_default'] == 1 ? 1 : 0;
 
     return $input;
 }
@@ -182,5 +183,23 @@ function fcmanager_settings_init()
             'description' => __('Select the captcha provider to use for the signup form.', 'football-club-manager'),
             'options' => array_merge(['' => __('None', 'football-club-manager')], array_combine(FCManager_CaptchaProviderFactory::get_providers(), FCManager_CaptchaProviderFactory::get_providers()))
         )
+    );
+
+    // Register birthday settings section in the Football Club Manager page.
+    add_settings_section(
+        'fcmanager_section_birthday_settings',
+        __('Birthday Settings', 'football-club-manager'),
+        null,
+        'fcmanager'
+    );
+
+    // Register "Publish age by default" toggle: fcmanager > fcmanager_section_birthday_settings > fcmanager_birthday_publish_age_by_default.
+    add_settings_field(
+        'fcmanager_birthday_publish_age_by_default',
+        __('Publish age by default', 'football-club-manager'),
+        'fcmanager_field_toggle_callback',
+        'fcmanager',
+        'fcmanager_section_birthday_settings',
+        array('label_for' => 'fcmanager_birthday_publish_age_by_default')
     );
 }
