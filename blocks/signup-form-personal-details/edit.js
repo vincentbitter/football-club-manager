@@ -90,6 +90,20 @@ export default function Edit() {
                 </div>
             </div>
 
+            <div className="fcmanager-form-grid fcmanager-form-grid--full">
+                <div className="fcmanager-form-field">
+                    <label>
+                        {__("Nationality", "football-club-manager")}
+                        <input
+                            className="components-text-control__input"
+                            type="text"
+                            value={__("Dutch", "football-club-manager")}
+                            readOnly
+                        />
+                    </label>
+                </div>
+            </div>
+
             <div className="fcmanager-form-grid fcmanager-form-grid--double">
                 <div className="fcmanager-form-field">
                     <label>
@@ -177,6 +191,17 @@ export default function Edit() {
             </div>
 
             <div className="fcmanager-form-grid fcmanager-form-grid--full">
+                <div className="fcmanager-form-field">
+                    <label>
+                        {__("Emergency contact number", "football-club-manager")}
+                        <input
+                            className="components-text-control__input"
+                            type="tel"
+                            value="0612345678"
+                            readOnly
+                        />
+                    </label>
+                </div>
                 <div className="fcmanager-form-field">
                     <label>
                         {__("Email address", "football-club-manager")}

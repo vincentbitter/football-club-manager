@@ -137,6 +137,10 @@ function fcmanager_render_signup_personal_details_meta_box($post)
                 </td>
             </tr>
             <tr>
+                <th><label for="fcmanager_signup_personal_details_nationality"><?php esc_html_e('Nationality', 'football-club-manager'); ?></label></th>
+                <td><input type="text" id="fcmanager_signup_personal_details_nationality" name="fcmanager_signup_personal_details_nationality" value="<?php echo esc_attr($signup->personal_details()->nationality()); ?>"></td>
+            </tr>
+            <tr>
                 <th><label for="fcmanager_signup_personal_details_street"><?php esc_html_e('Street', 'football-club-manager'); ?></label></th>
                 <td><input type="text" id="fcmanager_signup_personal_details_street" name="fcmanager_signup_personal_details_street" value="<?php echo esc_attr($signup->personal_details()->street()); ?>"></td>
             </tr>
@@ -167,6 +171,10 @@ function fcmanager_render_signup_personal_details_meta_box($post)
             <tr>
                 <th><label for="fcmanager_signup_personal_details_phone_number"><?php esc_html_e('Phone number', 'football-club-manager'); ?></label></th>
                 <td><input type="tel" id="fcmanager_signup_personal_details_phone_number" name="fcmanager_signup_personal_details_phone_number" value="<?php echo esc_attr($signup->personal_details()->phone_number()); ?>"></td>
+            </tr>
+            <tr>
+                <th><label for="fcmanager_signup_personal_details_emergency_contact_number"><?php esc_html_e('Emergency contact number', 'football-club-manager'); ?></label></th>
+                <td><input type="tel" id="fcmanager_signup_personal_details_emergency_contact_number" name="fcmanager_signup_personal_details_emergency_contact_number" value="<?php echo esc_attr($signup->personal_details()->emergency_contact_number()); ?>"></td>
             </tr>
             <tr>
                 <th><label for="fcmanager_signup_personal_details_email_address"><?php esc_html_e('Email address', 'football-club-manager'); ?></label></th>
@@ -207,11 +215,15 @@ function fcmanager_save_signup_personal_details_meta_box($post_id)
         $signup->personal_details()->date_of_birth(new DateTime(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_date_of_birth']))));
     if (array_key_exists('fcmanager_signup_personal_details_gender', $_POST))
         $signup->personal_details()->gender(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_gender'])));
+    if (array_key_exists('fcmanager_signup_personal_details_nationality', $_POST))
+        $signup->personal_details()->nationality(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_nationality'])));
 
     if (array_key_exists('fcmanager_signup_personal_details_mobile_phone_number', $_POST))
         $signup->personal_details()->mobile_phone_number(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_mobile_phone_number'])));
     if (array_key_exists('fcmanager_signup_personal_details_phone_number', $_POST))
         $signup->personal_details()->phone_number(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_phone_number'])));
+    if (array_key_exists('fcmanager_signup_personal_details_emergency_contact_number', $_POST))
+        $signup->personal_details()->emergency_contact_number(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_emergency_contact_number'])));
     if (array_key_exists('fcmanager_signup_personal_details_email_address', $_POST))
         $signup->personal_details()->email_address(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_email_address'])));
 

@@ -80,6 +80,15 @@ function fcmanager_render_signup_form_personal_details_block($attributes, $conte
             </div>
         </div>
 
+        <div class="fcmanager-form-grid fcmanager-form-grid--full">
+            <div class="fcmanager-form-field">
+                <label>
+                    <?php esc_html_e('Nationality', 'football-club-manager'); ?>
+                    <input type="text" name="nationality" value="<?php echo esc_attr(sanitize_text_field($posted['nationality'] ?? '')); ?>" required />
+                </label>
+            </div>
+        </div>
+
         <div class="fcmanager-form-grid fcmanager-form-grid--double">
             <div class="fcmanager-form-field">
                 <label>
@@ -134,6 +143,12 @@ function fcmanager_render_signup_form_personal_details_block($attributes, $conte
         </div>
 
         <div class="fcmanager-form-grid fcmanager-form-grid--full">
+            <div class="fcmanager-form-field">
+                <label>
+                    <?php esc_html_e('Emergency contact number', 'football-club-manager'); ?>
+                    <input type="text" name="emergency_contact_number" value="<?php echo esc_attr(sanitize_text_field($posted['emergency_contact_number'] ?? '')); ?>" />
+                </label>
+            </div>
             <div class="fcmanager-form-field">
                 <label>
                     <?php esc_html_e('Email address', 'football-club-manager'); ?>

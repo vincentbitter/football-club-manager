@@ -155,6 +155,7 @@ class FCManager_Signup_Personal_Details
 
     private $date_of_birth;
     private $gender;
+    private $nationality;
 
     private $street;
     private $house_number;
@@ -165,6 +166,7 @@ class FCManager_Signup_Personal_Details
 
     private $mobile_phone_number;
     private $phone_number;
+    private $emergency_contact_number;
     private $email_address;
 
     public function __construct($id = null)
@@ -178,6 +180,7 @@ class FCManager_Signup_Personal_Details
         $this->date_of_birth = $date_of_birth ? new DateTime($date_of_birth) : null;
 
         $this->gender = get_post_meta($id, '_fcmanager_signup_personal_details_gender', true);
+        $this->nationality = get_post_meta($id, '_fcmanager_signup_personal_details_nationality', true);
 
         $this->street = get_post_meta($id, '_fcmanager_signup_personal_details_street', true);
         $this->house_number = get_post_meta($id, '_fcmanager_signup_personal_details_house_number', true);
@@ -188,6 +191,7 @@ class FCManager_Signup_Personal_Details
 
         $this->mobile_phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_mobile_phone_number', true);
         $this->phone_number = get_post_meta($id, '_fcmanager_signup_personal_details_phone_number', true);
+        $this->emergency_contact_number = get_post_meta($id, '_fcmanager_signup_personal_details_emergency_contact_number', true);
         $this->email_address = get_post_meta($id, '_fcmanager_signup_personal_details_email_address', true);
     }
 
@@ -200,6 +204,7 @@ class FCManager_Signup_Personal_Details
 
         $this->date_of_birth = isset($post['date_of_birth']) ? new DateTime($post['date_of_birth']) : null;
         $this->gender = sanitize_text_field($post['gender'] ?? '');
+        $this->nationality = sanitize_text_field($post['nationality'] ?? '');
 
         $this->street = sanitize_text_field($post['street'] ?? '');
         $this->house_number = sanitize_text_field($post['house_number'] ?? '');
@@ -210,6 +215,7 @@ class FCManager_Signup_Personal_Details
 
         $this->mobile_phone_number = sanitize_text_field($post['mobile_phone'] ?? '');
         $this->phone_number = sanitize_text_field($post['phone'] ?? '');
+        $this->emergency_contact_number = sanitize_text_field($post['emergency_contact_number'] ?? '');
         $this->email_address = sanitize_email($post['email'] ?? '');
     }
 
@@ -220,6 +226,7 @@ class FCManager_Signup_Personal_Details
             || empty($this->initials)
             || empty($this->last_name)
             || empty($this->gender)
+            || empty($this->nationality)
             || empty($this->date_of_birth)
             || empty($this->street)
             || empty($this->house_number)
@@ -250,6 +257,10 @@ class FCManager_Signup_Personal_Details
             return false;
         }
 
+        if ($this->emergency_contact_number && !preg_match('/^\+?[0-9\s\-]+$/', $this->emergency_contact_number)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -262,6 +273,7 @@ class FCManager_Signup_Personal_Details
 
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_date_of_birth', $this->date_of_birth ? $this->date_of_birth->format('Y-m-d') : '');
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_gender', $this->gender);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_nationality', $this->nationality);
 
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_street', $this->street);
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_house_number', $this->house_number);
@@ -272,6 +284,7 @@ class FCManager_Signup_Personal_Details
 
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_mobile_phone_number', $this->mobile_phone_number);
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_phone_number', $this->phone_number);
+        update_post_meta($signup_id, '_fcmanager_signup_personal_details_emergency_contact_number', $this->emergency_contact_number);
         update_post_meta($signup_id, '_fcmanager_signup_personal_details_email_address', $this->email_address);
 
         $this->save_title($signup_id);
@@ -361,6 +374,14 @@ class FCManager_Signup_Personal_Details
         return $this->gender;
     }
 
+    public function nationality($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->nationality = $new_value;
+        }
+        return $this->nationality;
+    }
+
     public function street($new_value = null)
     {
         if ($new_value !== null) {
@@ -423,6 +444,14 @@ class FCManager_Signup_Personal_Details
             $this->phone_number = $new_value;
         }
         return $this->phone_number;
+    }
+
+    public function emergency_contact_number($new_value = null)
+    {
+        if ($new_value !== null) {
+            $this->emergency_contact_number = $new_value;
+        }
+        return $this->emergency_contact_number;
     }
 
     public function email_address($new_value = null)
