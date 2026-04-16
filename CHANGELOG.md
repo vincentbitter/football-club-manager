@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.13.0] - 2026-04-16
+
+### 🚀 Features
+
+- Nationality and emergency contact number in signup form
+- Birthdays for others than players and volunteers
+
 ## [0.12.0] - 2026-04-10
 
 ### 🚀 Features
