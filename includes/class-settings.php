@@ -38,6 +38,9 @@ class FCManager_Settings
     /** @var FCManager_Volunteer_Settings */
     public $volunteer;
 
+    /** @var FCManager_Referee_Settings */
+    public $referee;
+
     /** @var FCManager_Signup_Settings */
     public $signup;
 
@@ -61,6 +64,7 @@ class FCManager_Settings
     {
         $this->player = new FCManager_Player_Settings();
         $this->volunteer = new FCManager_Volunteer_Settings();
+        $this->referee = new FCManager_Referee_Settings();
         $this->signup = new FCManager_Signup_Settings();
         $this->birthday = new FCManager_Birthday_Settings();
     }
@@ -89,6 +93,19 @@ class FCManager_Volunteer_Settings extends FCManager_Settings_Base
     public function publish_age_by_default($newValue = null)
     {
         return $this->get_or_update_boolean('fcmanager_volunteer_publish_age_by_default', $newValue);
+    }
+}
+
+class FCManager_Referee_Settings extends FCManager_Settings_Base
+{
+    public function publish_birthday_by_default($newValue = null)
+    {
+        return $this->get_or_update_boolean('fcmanager_referee_publish_birthday_by_default', $newValue);
+    }
+
+    public function publish_age_by_default($newValue = null)
+    {
+        return $this->get_or_update_boolean('fcmanager_referee_publish_age_by_default', $newValue);
     }
 }
 

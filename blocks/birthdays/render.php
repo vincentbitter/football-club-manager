@@ -44,13 +44,14 @@ function fcmanager_get_birthdays($post_type, $class)
 function fcmanager_render_birthdays_block($attributes, $content)
 {
     $players = fcmanager_get_birthdays('player', 'FCManager_Player');
+    $referees = fcmanager_get_birthdays('referee', 'FCManager_Referee');
     $volunteers = fcmanager_get_birthdays('volunteer', 'FCManager_Volunteer');
     $birthdays = fcmanager_get_birthdays('birthday', 'FCManager_Birthday');
 
     /** @var FCManager_Person[] */
     $people = [];
 
-    foreach (array_merge($players, $volunteers, $birthdays) as $person) {
+    foreach (array_merge($players, $referees, $volunteers, $birthdays) as $person) {
         $key = $person->name() . '.' . $person->age();
         $people[$key] = $person;
     }

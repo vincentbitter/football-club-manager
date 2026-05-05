@@ -1,6 +1,7 @@
 table.fcmanager-matches {
 	width: 100%;
 	border: none;
+	border-spacing: 0;
 
 	tr:nth-child(even) {
 		background-color: var(--wp--preset--color--palette-color-5);
@@ -8,36 +9,61 @@ table.fcmanager-matches {
 
 	td {
 		border: none;
-	}
-
-	td.fcmanager-match-date,
-	td.fcmanager-match-time,
-	td.fcmanager-match-hometeam,
-	td.fcmanager-match-homescore,
-	td.fcmanager-match-awayscore,
-	td.fcmanager-match-separator {
 		width: 1px;
 		white-space: nowrap;
+
+	}
+
+	td.fcmanager-match-date {}
+
+	td.fcmanager-match-time {}
+
+	td.fcmanager-match-hometeam,
+	td.fcmanager-match-awayteam {
+		width: 20%;
+		max-width: 1px;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	td.fcmanager-match-separator {
+		width: 20px;
+	}
+
+	th {
+		border: none;
+		text-align: center;
+	}
+
+	th:last-child,
+	td:last-child {
+		width: auto;
+		text-align: left;
+	}
+
+	.fcmanager-match-separator {
 		padding-left: 0.5em;
 		padding-right: 0.5em;
 		text-align: center;
 	}
 
-	td.fcmanager-match-hometeam,
-	td.fcmanager-match-homescore {
+	.fcmanager-match-hometeam,
+	.fcmanager-match-homescore {
 		text-align: right;
 	}
 }
 
 @mixin two-row-match-layout {
 	table.fcmanager-matches {
+		thead {
+			display: none;
+		}
+
 		td {
 			display: block;
 			float: left;
 			padding: 0.1em;
+			box-sizing: border-box;
 		}
 
 		td.fcmanager-match-date {
@@ -48,8 +74,10 @@ table.fcmanager-matches {
 		td.fcmanager-match-time {
 			display: inline-block;
 			width: 55%;
-			padding: 0.5em 0.1em 0.1em 0.1em;
+			padding: 0.5em 0.5em 0.1em 0.5em;
+			font-weight: bold;
 		}
+
 		td.fcmanager-match-time {
 			width: 45%;
 		}
@@ -61,7 +89,9 @@ table.fcmanager-matches {
 		td.fcmanager-match-hometeam,
 		td.fcmanager-match-awayteam {
 			width: 35%;
+			max-width: 35%;
 		}
+
 		td.fcmanager-match-homescore,
 		td.fcmanager-match-awayscore {
 			width: 10%;
@@ -70,6 +100,7 @@ table.fcmanager-matches {
 		&.fcmanager-matches-schedule td.fcmanager-match-hometeam,
 		&.fcmanager-matches-schedule td.fcmanager-match-awayteam {
 			width: 45%;
+			max-width: 45%;
 		}
 
 		td.fcmanager-match-separator {
@@ -81,6 +112,12 @@ table.fcmanager-matches {
 		td.fcmanager-match-homescore,
 		td.fcmanager-match-awayscore,
 		td.fcmanager-match-separator {
+			padding: 0.1em 0.1em 0.1em 0.1em;
+		}
+
+		td.fcmanager-match-referee {
+			text-align: center;
+			width: 100%;
 			padding: 0.1em 0.1em 0.5em 0.1em;
 		}
 	}

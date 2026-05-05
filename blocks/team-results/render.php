@@ -6,6 +6,8 @@ if (! defined('ABSPATH')) {
 
 function fcmanager_render_team_results_block($attributes, $content)
 {
+    $referees = fcmanager_get_referees();
+
     $team_id = isset($attributes['teamId']) && $attributes['teamId'] > 0
         ? intval($attributes['teamId'])
         : get_the_ID();
@@ -56,6 +58,13 @@ function fcmanager_render_team_results_block($attributes, $content)
             <h2><?php esc_html_e("Results", "football-club-manager") ?></h2>
             <?php if ($matches): ?>
                 <table class="fcmanager-matches fcmanager-matches-results">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><?php esc_html_e("Date/time", "football-club-manager") ?></th>
+                            <th colspan="5"><?php esc_html_e("Match", "football-club-manager") ?></th>
+                            <th><?php esc_html_e("Referee", "football-club-manager") ?></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <?php foreach ($matches as $match): ?>
                             <?php
@@ -63,6 +72,11 @@ function fcmanager_render_team_results_block($attributes, $content)
                             $opponent = get_post_meta($match->ID, '_fcmanager_match_opponent', true);
                             $goals_for = get_post_meta($match->ID, '_fcmanager_match_goals_for', true);
                             $goals_against = get_post_meta($match->ID, '_fcmanager_match_goals_against', true);
+
+                            $referee_obj = array_find($referees, function ($referee) use ($match) {
+                                return $referee->ID == get_post_meta($match->ID, '_fcmanager_match_referee', true);
+                            });
+                            $referee_name = $referee_obj ? $referee_obj->post_title : '';
                             ?>
                             <tr>
                                 <td class="fcmanager-match-date">
@@ -71,7 +85,7 @@ function fcmanager_render_team_results_block($attributes, $content)
                                 <td class="fcmanager-match-time">
                                     <?php echo esc_html(get_post_meta($match->ID, '_fcmanager_match_starttime', true)); ?>
                                 </td>
-                                <td class="fcmanager-match-hometeam">
+                                <td class="fcmanager-match-hometeam" title="<?php echo $away ? esc_attr($opponent) : esc_attr($team_post->post_title); ?>">
                                     <?php
                                     echo $away ? esc_html($opponent) : esc_html($team_post->post_title);
                                     ?>
@@ -87,10 +101,13 @@ function fcmanager_render_team_results_block($attributes, $content)
                                     echo $away ? esc_html($goals_for) : esc_html($goals_against);
                                     ?>
                                 </td>
-                                <td class="fcmanager-match-awayteam">
+                                <td class="fcmanager-match-awayteam" title="<?php echo $away ? esc_attr($team_post->post_title) : esc_attr($opponent); ?>">
                                     <?php
                                     echo $away ? esc_html($team_post->post_title) : esc_html($opponent);
                                     ?>
+                                </td>
+                                <td class="fcmanager-match-referee">
+                                    <?php echo esc_html($referee_name); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

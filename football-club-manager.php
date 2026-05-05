@@ -24,6 +24,7 @@ define('FCMANAGER_VERSION', '0.13.0');
 require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');
 require_once('includes/post-types/volunteer.php');
+require_once('includes/post-types/referee.php');
 require_once('includes/post-types/birthday.php');
 require_once('includes/post-types/signup.php');
 require_once('includes/post-types/match.php');
@@ -70,6 +71,14 @@ function fcmanager_register_administration_menu()
         __('Players', 'football-club-manager'),
         'edit_posts',
         'edit.php?post_type=fcmanager_player',
+        false
+    );
+    add_submenu_page(
+        'fcmanager',
+        __('Referees', 'football-club-manager'),
+        __('Referees', 'football-club-manager'),
+        'edit_posts',
+        'edit.php?post_type=fcmanager_referee',
         false
     );
     add_submenu_page(
@@ -152,6 +161,7 @@ function fcmanager_init()
     fcmanager_register_team_post_type();
     fcmanager_register_player_post_type();
     fcmanager_register_volunteer_post_type();
+    fcmanager_register_referee_post_type();
     fcmanager_register_birthday_post_type();
     fcmanager_register_signup_post_type();
     fcmanager_register_match_post_type();
@@ -210,6 +220,7 @@ function fcmanager_deactivated()
     fcmanager_unregister_team_post_type();
     fcmanager_unregister_player_post_type();
     fcmanager_unregister_volunteer_post_type();
+    fcmanager_unregister_referee_post_type();
     fcmanager_unregister_birthday_post_type();
     fcmanager_unregister_signup_post_type();
     fcmanager_unregister_match_post_type();

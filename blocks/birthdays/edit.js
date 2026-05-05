@@ -2,65 +2,35 @@ import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 import { useBlockProps } from "@wordpress/block-editor";
 
+const useBirthdaySelector = (type) => {
+	return useSelect(
+		(select) =>
+			select("core")
+				.getEntityRecords("postType", "fcmanager_" + type, {
+					per_page: -1,
+					meta_key: "_fcmanager_" + type + "_date_of_birth",
+					meta_value: "today",
+				})
+				?.map((item) => ({
+					id: item.id,
+					name: item.title,
+					age:
+						item.meta["_fcmanager_" + type + "_publish_age"][0] === "true"
+							? item.meta["_fcmanager_" + type + "_age"]
+							: null,
+				}))
+		,
+		[type],
+	);
+};
+
 export default function Edit({ attributes, setAttributes }) {
-	const players = useSelect(
-		(select) =>
-			select("core")
-				.getEntityRecords("postType", "fcmanager_player", {
-					per_page: -1,
-					meta_key: "_fcmanager_player_date_of_birth",
-					meta_value: "today",
-				})
-				?.map((player) => ({
-					id: player.id,
-					name: player.title,
-					age:
-						player.meta._fcmanager_player_publish_age[0] === "true"
-							? player.meta._fcmanager_player_age
-							: null,
-				})),
-		[],
-	);
+	const players = useBirthdaySelector("player");
+	const referees = useBirthdaySelector("referee");
+	const volunteers = useBirthdaySelector("volunteer");
+	const birthdays = useBirthdaySelector("birthday");
 
-	const volunteers = useSelect(
-		(select) =>
-			select("core")
-				.getEntityRecords("postType", "fcmanager_volunteer", {
-					per_page: -1,
-					meta_key: "_fcmanager_volunteer_date_of_birth",
-					meta_value: "today",
-				})
-				?.map((volunteer) => ({
-					id: volunteer.id,
-					name: volunteer.title,
-					age:
-						volunteer.meta._fcmanager_volunteer_publish_age[0] === "true"
-							? volunteer.meta._fcmanager_volunteer_age
-							: null,
-				})),
-		[],
-	);
-
-	const birthdays = useSelect(
-		(select) =>
-			select("core")
-				.getEntityRecords("postType", "fcmanager_birthday", {
-					per_page: -1,
-					meta_key: "_fcmanager_birthday_date_of_birth",
-					meta_value: "today",
-				})
-				?.map((birthday) => ({
-					id: birthday.id,
-					name: birthday.title,
-					age:
-						birthday.meta._fcmanager_birthday_publish_age[0] === "true"
-							? birthday.meta._fcmanager_birthday_age
-							: null,
-				})),
-		[],
-	);
-
-	const allBirthdays = [...(players || []), ...(volunteers || []), ...(birthdays || [])].sort(
+	const allBirthdays = [...(players || []), ...(referees || []), ...(volunteers || []), ...(birthdays || [])].sort(
 		(a, b) => {
 			const nameCompare = a.name.localeCompare(b.name);
 			return nameCompare !== 0 ? nameCompare : a.age - b.age;

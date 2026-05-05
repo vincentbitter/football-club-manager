@@ -25,6 +25,14 @@ export default function Edit({ attributes, setAttributes }) {
 		[],
 	);
 
+	const referees = useSelect(
+		(select) =>
+			select("core").getEntityRecords("postType", "fcmanager_referee", {
+				per_page: -1,
+			}),
+		[],
+	);
+
 	const matches = useSelect(
 		(select) =>
 			select("core")
@@ -47,6 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
 					team: match.meta._fcmanager_match_team,
 					opponent: match.meta._fcmanager_match_opponent,
 					away: match.meta._fcmanager_match_away == "1",
+					referee: match.meta._fcmanager_match_referee,
 				})),
 		[params],
 	);
@@ -89,6 +98,13 @@ export default function Edit({ attributes, setAttributes }) {
 						<p>{__("No matches found.", "football-club-manager")}</p>
 					) : (
 						<table class="fcmanager-matches fcmanager-matches-schedule">
+							<thead>
+								<tr>
+									<th colspan="2">{__("Date/time", "football-club-manager")}</th>
+									<th colspan="3">{__("Match", "football-club-manager")}</th>
+									<th>{__("Referee", "football-club-manager")}</th>
+								</tr>
+							</thead>
 							<tbody>
 								{matches
 									?.filter((match) => teams?.find((t) => t.id == match.team))
@@ -100,14 +116,19 @@ export default function Edit({ attributes, setAttributes }) {
 												{match.away
 													? match.opponent
 													: teams?.find((t) => t.id == match.team)?.title
-															.rendered}
+														.rendered}
 											</td>
 											<td class="fcmanager-match-separator">-</td>
 											<td class="fcmanager-match-awayteam">
 												{match.away
 													? teams?.find((t) => t.id == match.team)?.title
-															.rendered
+														.rendered
 													: match.opponent}
+											</td>
+											<td class="fcmanager-match-referee">
+												{referees?.find(
+													(r) => r.id == match.referee,
+												)?.title || ""}
 											</td>
 										</tr>
 									))}

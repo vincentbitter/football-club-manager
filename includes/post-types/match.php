@@ -75,21 +75,23 @@ function fcmanager_render_match_meta_box($post)
     $goals_against = get_post_meta($post->ID, '_fcmanager_match_goals_against', true);
     $goals_for_final = get_post_meta($post->ID, '_fcmanager_match_goals_for_final', true);
     $goals_against_final = get_post_meta($post->ID, '_fcmanager_match_goals_against_final', true);
+    $referee = get_post_meta($post->ID, '_fcmanager_match_referee', true);
 
     if ($away !== 0 && $away !== 1)
         $away = 0;
 
     $team_options = fcmanager_get_teams();
+    $referee_options = fcmanager_get_referees();
 
     // Show form
     wp_nonce_field('fcmanager_save_match_meta_box', 'fcmanager_match_meta_box_nonce');
 ?>
-    <table role="presentation">
+    <table style="width: 464px;" role="presentation">
         <thead>
             <tr>
-                <th style="width: 150px;"><label for="fcmanager_match_date"><?php esc_attr_e('Date', 'football-club-manager'); ?></label></th>
-                <th style="width: 150px;"><label for="fcmanager_match_starttime"><?php esc_attr_e('From', 'football-club-manager'); ?></label></th>
-                <th style="width: 150px;"><label for="fcmanager_match_endtime"><?php esc_attr_e('Till', 'football-club-manager'); ?></label></th>
+                <th><label for="fcmanager_match_date"><?php esc_attr_e('Date', 'football-club-manager'); ?></label></th>
+                <th><label for="fcmanager_match_starttime"><?php esc_attr_e('From', 'football-club-manager'); ?></label></th>
+                <th><label for="fcmanager_match_endtime"><?php esc_attr_e('Till', 'football-club-manager'); ?></label></th>
             </tr>
         </thead>
         <tbody>
@@ -119,13 +121,13 @@ function fcmanager_render_match_meta_box($post)
 
         </tbody>
     </table>
-    <table role="presentation">
+    <table style="width: 464px;" role="presentation">
         <thead>
             <tr>
                 <th style="width: 150px; text-align: right;"><label for="fcmanager_match_team"><?php esc_html_e('Team', 'football-club-manager'); ?></label></th>
-                <th style="width: 63px; text-align: right;"><label for="fcmanager_match_goals_for"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
-                <th style="width: 16px;"></th>
-                <th style="width: 63px; text-align: left;"><label for="fcmanager_match_goals_against"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
+                <th style="width: 73px; text-align: right;"><label for="fcmanager_match_goals_for"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
+                <th></th>
+                <th style="width: 73px; text-align: left;"><label for="fcmanager_match_goals_against"><?php esc_html_e('Goals', 'football-club-manager'); ?></label></th>
                 <th style="width: 150px; text-align: left;"><label for="fcmanager_match_opponent"><?php esc_html_e('Opponent', 'football-club-manager'); ?></label></th>
             </tr>
         </thead>
@@ -149,6 +151,25 @@ function fcmanager_render_match_meta_box($post)
                 <td style="text-align: center;">-</td>
                 <td><input style="width: 100%;" type="number" id="fcmanager_match_goals_against_final" name="fcmanager_match_goals_against_final" value="<?php echo esc_attr($goals_against_final); ?>"></td>
                 <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="width: 464px; margin: 20px 0;" role="presentation">
+        <thead>
+            <tr>
+                <th><label for="fcmanager_match_referee"><?php esc_attr_e('Referee', 'football-club-manager'); ?></label></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select style="width: 100%" id="fcmanager_match_referee" name="fcmanager_match_referee">
+                        <option value=""></option>
+                        <?php foreach ($referee_options as $referee_option) : ?>
+                            <option value="<?php echo esc_attr($referee_option->ID); ?>" <?php selected($referee, $referee_option->ID); ?>><?php echo esc_html($referee_option->post_title); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -191,6 +212,8 @@ function fcmanager_save_match_meta_box($post_id)
         update_post_meta($post_id, '_fcmanager_match_goals_for_final', sanitize_text_field(wp_unslash($_POST['fcmanager_match_goals_for_final'])));
     if (array_key_exists('fcmanager_match_goals_against_final', $_POST))
         update_post_meta($post_id, '_fcmanager_match_goals_against_final', sanitize_text_field(wp_unslash($_POST['fcmanager_match_goals_against_final'])));
+    if (array_key_exists('fcmanager_match_referee', $_POST))
+        update_post_meta($post_id, '_fcmanager_match_referee', sanitize_text_field(wp_unslash($_POST['fcmanager_match_referee'])));
 
     // Update post with new title
     $home_team = fcmanager_get_home_team_name($post_id);

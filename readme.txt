@@ -18,7 +18,7 @@ With this plugin, you can:
 - 🏟️ Create customizable team pages
 - 👤 Register team players, including picture
 - 📅 Publish match schedule and results
-- 🙋‍♂️ Manage volunteers
+- 🙋‍♂️ Manage volunteers and referees
 - 📝 New players and volunteers can sign up
 - 🧩 Customizable blocks for Gutenberg editor
 - 🌍 Multilingual support
@@ -45,7 +45,7 @@ You can install the plugin in one of three ways:
 == Usage ==
 
 - Navigate to **Football Club Manager** in your WordPress dashboard.  
-- Add **Players**, **Teams**, and **Matches**.  
+- Add **Players**, **Referees**, **Volunteers**, **Teams**, and **Matches**.  
 - Visit team pages and modify the content, or enable/disable default blocks via page settings.  
 - Go to the **Football Club Manager** section in **Customizer** to change default blocks on team page.  
 - Display match results or team rosters on your site using Gutenberg editor.

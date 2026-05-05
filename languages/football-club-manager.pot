@@ -2,21 +2,21 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.12.0\n"
+"Project-Id-Version: Football Club Manager 0.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-16T20:28:25+00:00\n"
+"POT-Creation-Date: 2026-05-05T20:40:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
-#: football-club-manager.php:242
+#: football-club-manager.php:253
 msgid "Football Club Manager"
 msgstr ""
 
@@ -45,8 +45,8 @@ msgid "At a Glance"
 msgstr ""
 
 #: admin/page_settings.php:14
-#: football-club-manager.php:109
-#: football-club-manager.php:110
+#: football-club-manager.php:118
+#: football-club-manager.php:119
 msgid "Settings"
 msgstr ""
 
@@ -54,61 +54,134 @@ msgstr ""
 msgid "Save settings"
 msgstr ""
 
-#: blocks/birthdays/render.php:69
-#: build/birthdays/render.php:69
-#: football-club-manager.php:85
-#: football-club-manager.php:86
+#: blocks/birthdays/render.php:70
+#: build/birthdays/render.php:70
+#: football-club-manager.php:94
+#: football-club-manager.php:95
 #: includes/post-types/birthday.php:18
-#: blocks/birthdays/edit.js:81
-#: build/birthdays/index.js:79
-#: build/birthdays/index.js:81
+#: blocks/birthdays/edit.js:51
+#: build/birthdays/index.js:67
+#: build/birthdays/index.js:51
 msgid "Birthdays"
 msgstr ""
 
-#: blocks/birthdays/render.php:82
-#: build/birthdays/render.php:82
-#: blocks/birthdays/edit.js:83
-#: build/birthdays/index.js:81
-#: build/birthdays/index.js:83
+#: blocks/birthdays/render.php:83
+#: build/birthdays/render.php:83
+#: blocks/birthdays/edit.js:53
+#: build/birthdays/index.js:69
+#: build/birthdays/index.js:53
 msgid "No birthdays today."
 msgstr ""
 
-#: blocks/results/render.php:59
-#: blocks/team-results/render.php:56
-#: build/results/render.php:59
-#: build/team-results/render.php:56
-#: blocks/results/edit.js:89
-#: blocks/team-results/edit.js:92
-#: build/results/index.js:113
-#: build/team-results/index.js:106
-#: build/results/index.js:89
-#: build/team-results/index.js:92
+#: blocks/results/render.php:60
+#: blocks/team-results/render.php:58
+#: build/results/render.php:60
+#: build/team-results/render.php:58
+#: blocks/results/edit.js:98
+#: blocks/team-results/edit.js:101
+#: build/results/index.js:117
+#: build/team-results/index.js:110
+#: build/results/index.js:98
+#: build/team-results/index.js:101
 msgid "Results"
 msgstr ""
 
-#: blocks/results/render.php:107
-#: blocks/schedule/render.php:89
-#: build/results/render.php:107
-#: build/schedule/render.php:89
-#: blocks/results/edit.js:91
-#: blocks/schedule/edit.js:89
-#: build/results/index.js:115
-#: build/schedule/index.js:113
-#: build/results/index.js:91
-#: build/schedule/index.js:89
+#: blocks/results/render.php:65
+#: blocks/schedule/render.php:67
+#: blocks/team-results/render.php:63
+#: blocks/team-schedule/render.php:66
+#: build/results/render.php:65
+#: build/schedule/render.php:67
+#: build/team-results/render.php:63
+#: build/team-schedule/render.php:66
+#: includes/post-types/match.php:262
+#: blocks/results/edit.js:105
+#: blocks/schedule/edit.js:103
+#: blocks/team-results/edit.js:110
+#: blocks/team-schedule/edit.js:108
+#: build/results/index.js:126
+#: build/schedule/index.js:124
+#: build/team-results/index.js:119
+#: build/team-schedule/index.js:117
+#: build/results/index.js:105
+#: build/schedule/index.js:103
+#: build/team-results/index.js:110
+#: build/team-schedule/index.js:108
+msgid "Date/time"
+msgstr ""
+
+#: blocks/results/render.php:66
+#: blocks/schedule/render.php:68
+#: blocks/team-results/render.php:64
+#: blocks/team-schedule/render.php:67
+#: build/results/render.php:66
+#: build/schedule/render.php:68
+#: build/team-results/render.php:64
+#: build/team-schedule/render.php:67
+#: includes/post-types/match.php:16
+#: blocks/results/edit.js:106
+#: blocks/schedule/edit.js:104
+#: blocks/team-results/edit.js:111
+#: blocks/team-schedule/edit.js:109
+#: build/results/index.js:129
+#: build/schedule/index.js:127
+#: build/team-results/index.js:122
+#: build/team-schedule/index.js:120
+#: build/results/index.js:106
+#: build/schedule/index.js:104
+#: build/team-results/index.js:111
+#: build/team-schedule/index.js:109
+msgid "Match"
+msgstr ""
+
+#: blocks/results/render.php:67
+#: blocks/schedule/render.php:69
+#: blocks/team-results/render.php:65
+#: blocks/team-schedule/render.php:68
+#: build/results/render.php:67
+#: build/schedule/render.php:69
+#: build/team-results/render.php:65
+#: build/team-schedule/render.php:68
+#: includes/post-types/match.php:160
+#: includes/post-types/referee.php:31
+#: blocks/results/edit.js:107
+#: blocks/schedule/edit.js:105
+#: blocks/team-results/edit.js:112
+#: blocks/team-schedule/edit.js:110
+#: build/results/index.js:131
+#: build/schedule/index.js:129
+#: build/team-results/index.js:124
+#: build/team-schedule/index.js:122
+#: build/results/index.js:107
+#: build/schedule/index.js:105
+#: build/team-results/index.js:112
+#: build/team-schedule/index.js:110
+msgid "Referee"
+msgstr ""
+
+#: blocks/results/render.php:123
+#: blocks/schedule/render.php:114
+#: build/results/render.php:123
+#: build/schedule/render.php:114
+#: blocks/results/edit.js:100
+#: blocks/schedule/edit.js:98
+#: build/results/index.js:119
+#: build/schedule/index.js:117
+#: build/results/index.js:100
+#: build/schedule/index.js:98
 msgid "No matches found."
 msgstr ""
 
-#: blocks/schedule/render.php:53
-#: blocks/team-schedule/render.php:50
-#: build/schedule/render.php:53
-#: build/team-schedule/render.php:50
-#: blocks/schedule/edit.js:87
-#: blocks/team-schedule/edit.js:90
-#: build/schedule/index.js:111
-#: build/team-schedule/index.js:104
-#: build/schedule/index.js:87
-#: build/team-schedule/index.js:90
+#: blocks/schedule/render.php:62
+#: blocks/team-schedule/render.php:61
+#: build/schedule/render.php:62
+#: build/team-schedule/render.php:61
+#: blocks/schedule/edit.js:96
+#: blocks/team-schedule/edit.js:99
+#: build/schedule/index.js:115
+#: build/team-schedule/index.js:108
+#: build/schedule/index.js:96
+#: build/team-schedule/index.js:99
 msgid "Upcoming matches"
 msgstr ""
 
@@ -120,6 +193,8 @@ msgstr ""
 #: includes/post-types/birthday.php:165
 #: includes/post-types/player.php:112
 #: includes/post-types/player.php:200
+#: includes/post-types/referee.php:123
+#: includes/post-types/referee.php:199
 #: includes/post-types/signup.php:108
 #: includes/post-types/signup.php:267
 #: includes/post-types/signup.php:484
@@ -157,6 +232,8 @@ msgstr ""
 #: includes/post-types/birthday.php:166
 #: includes/post-types/player.php:116
 #: includes/post-types/player.php:201
+#: includes/post-types/referee.php:127
+#: includes/post-types/referee.php:200
 #: includes/post-types/signup.php:120
 #: includes/post-types/signup.php:275
 #: includes/post-types/signup.php:485
@@ -296,6 +373,7 @@ msgstr ""
 #: build/signup-form-personal-details/render.php:52
 #: includes/post-types/birthday.php:102
 #: includes/post-types/player.php:120
+#: includes/post-types/referee.php:131
 #: includes/post-types/signup.php:124
 #: includes/post-types/volunteer.php:118
 #: blocks/signup-form-personal-details/edit.js:70
@@ -430,50 +508,56 @@ msgstr ""
 msgid "No players found for this team."
 msgstr ""
 
-#: blocks/team-results/render.php:99
-#: blocks/team-schedule/render.php:81
-#: build/team-results/render.php:99
-#: build/team-schedule/render.php:81
-#: blocks/team-results/edit.js:95
-#: blocks/team-schedule/edit.js:93
-#: build/team-results/index.js:108
-#: build/team-schedule/index.js:106
-#: build/team-results/index.js:95
-#: build/team-schedule/index.js:93
+#: blocks/team-results/render.php:116
+#: blocks/team-schedule/render.php:107
+#: build/team-results/render.php:116
+#: build/team-schedule/render.php:107
+#: blocks/team-results/edit.js:104
+#: blocks/team-schedule/edit.js:102
+#: build/team-results/index.js:112
+#: build/team-schedule/index.js:110
+#: build/team-results/index.js:104
+#: build/team-schedule/index.js:102
 msgid "No matches found for this team."
 msgstr ""
 
-#: football-club-manager.php:53
 #: football-club-manager.php:54
+#: football-club-manager.php:55
 msgid "Dashboard"
 msgstr ""
 
-#: football-club-manager.php:61
 #: football-club-manager.php:62
+#: football-club-manager.php:63
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr ""
 
-#: football-club-manager.php:69
 #: football-club-manager.php:70
+#: football-club-manager.php:71
 #: includes/post-types/player.php:18
 msgid "Players"
 msgstr ""
 
-#: football-club-manager.php:77
 #: football-club-manager.php:78
+#: football-club-manager.php:79
+#: includes/post-types/referee.php:30
+msgid "Referees"
+msgstr ""
+
+#: football-club-manager.php:86
+#: football-club-manager.php:87
 #: includes/post-types/volunteer.php:17
 msgid "Volunteers"
 msgstr ""
 
-#: football-club-manager.php:93
-#: football-club-manager.php:94
+#: football-club-manager.php:102
+#: football-club-manager.php:103
 #: includes/post-types/signup.php:18
 msgid "Signups"
 msgstr ""
 
-#: football-club-manager.php:101
-#: football-club-manager.php:102
+#: football-club-manager.php:110
+#: football-club-manager.php:111
 #: includes/post-types/match.php:15
 msgid "Matches"
 msgstr ""
@@ -509,12 +593,9 @@ msgstr ""
 
 #: includes/post-types/birthday.php:106
 #: includes/post-types/player.php:128
+#: includes/post-types/referee.php:139
 #: includes/post-types/volunteer.php:126
 msgid "Publish age?"
-msgstr ""
-
-#: includes/post-types/match.php:16
-msgid "Match"
 msgstr ""
 
 #: includes/post-types/match.php:17
@@ -541,27 +622,27 @@ msgstr ""
 msgid "Match information"
 msgstr ""
 
-#: includes/post-types/match.php:90
+#: includes/post-types/match.php:92
 msgid "Date"
 msgstr ""
 
-#: includes/post-types/match.php:91
+#: includes/post-types/match.php:93
 msgid "From"
 msgstr ""
 
-#: includes/post-types/match.php:92
+#: includes/post-types/match.php:94
 msgid "Till"
 msgstr ""
 
-#: includes/post-types/match.php:109
+#: includes/post-types/match.php:111
 msgid "Home game"
 msgstr ""
 
-#: includes/post-types/match.php:116
+#: includes/post-types/match.php:118
 msgid "Away game"
 msgstr ""
 
-#: includes/post-types/match.php:125
+#: includes/post-types/match.php:127
 #: includes/post-types/player.php:132
 #: includes/post-types/player.php:202
 #: includes/post-types/team.php:39
@@ -571,32 +652,28 @@ msgstr ""
 msgid "Team"
 msgstr ""
 
-#: includes/post-types/match.php:126
 #: includes/post-types/match.php:128
+#: includes/post-types/match.php:130
 msgid "Goals"
 msgstr ""
 
-#: includes/post-types/match.php:129
+#: includes/post-types/match.php:131
 msgid "Opponent"
 msgstr ""
 
-#: includes/post-types/match.php:147
+#: includes/post-types/match.php:149
 msgid "Final score"
 msgstr ""
 
-#: includes/post-types/match.php:239
-msgid "Date/time"
-msgstr ""
-
-#: includes/post-types/match.php:240
+#: includes/post-types/match.php:263
 msgid "Home team"
 msgstr ""
 
-#: includes/post-types/match.php:241
+#: includes/post-types/match.php:264
 msgid "Away team"
 msgstr ""
 
-#: includes/post-types/match.php:242
+#: includes/post-types/match.php:265
 msgid "Result"
 msgstr ""
 
@@ -647,8 +724,49 @@ msgid "Player information"
 msgstr ""
 
 #: includes/post-types/player.php:124
+#: includes/post-types/referee.php:135
 #: includes/post-types/volunteer.php:122
 msgid "Publish birthday?"
+msgstr ""
+
+#: includes/post-types/referee.php:32
+msgid "New referee"
+msgstr ""
+
+#: includes/post-types/referee.php:33
+msgid "Edit referee"
+msgstr ""
+
+#: includes/post-types/referee.php:34
+msgid "Referee photo"
+msgstr ""
+
+#: includes/post-types/referee.php:35
+msgid "Set referee photo"
+msgstr ""
+
+#: includes/post-types/referee.php:36
+msgid "Remove referee photo"
+msgstr ""
+
+#: includes/post-types/referee.php:37
+msgid "Use as referee photo"
+msgstr ""
+
+#: includes/post-types/referee.php:38
+msgid "No referees found"
+msgstr ""
+
+#: includes/post-types/referee.php:39
+msgid "No referees found in the trash"
+msgstr ""
+
+#: includes/post-types/referee.php:40
+msgid "Search referee"
+msgstr ""
+
+#: includes/post-types/referee.php:100
+msgid "Referee information"
 msgstr ""
 
 #: includes/post-types/signup.php:19
@@ -832,105 +950,107 @@ msgstr ""
 msgid "Player Settings"
 msgstr ""
 
-#: includes/settings.php:95
-#: includes/settings.php:123
-msgid "Publish birthday by default"
-msgstr ""
-
-#: includes/settings.php:105
-#: includes/settings.php:133
-#: includes/settings.php:199
-msgid "Publish age by default"
-msgstr ""
-
-#: includes/settings.php:115
+#: includes/settings.php:88
 msgid "Volunteer Settings"
 msgstr ""
 
-#: includes/settings.php:143
-msgid "Signup Settings"
+#: includes/settings.php:89
+msgid "Referee Settings"
 msgstr ""
 
-#: includes/settings.php:151
-msgid "Extra Fields"
+#: includes/settings.php:103
+msgid "Publish birthday by default"
 msgstr ""
 
-#: includes/settings.php:157
-msgid "Define extra fields for the signup form. One field per line. These fields will be added to the \"Additional Information\" section of the signup form."
+#: includes/settings.php:113
+#: includes/settings.php:132
+msgid "Publish age by default"
 msgstr ""
 
-#: includes/settings.php:164
-msgid "Require parents till age"
-msgstr ""
-
-#: includes/settings.php:170
-msgid "Set the age until which parents are required for the signup form."
-msgstr ""
-
-#: includes/settings.php:177
-msgid "Captcha provider"
-msgstr ""
-
-#: includes/settings.php:183
-msgid "Select the captcha provider to use for the signup form."
-msgstr ""
-
-#: includes/settings.php:184
-msgid "None"
-msgstr ""
-
-#: includes/settings.php:191
+#: includes/settings.php:124
 msgid "Birthday Settings"
 msgstr ""
 
-#: blocks/results/edit.js:60
-#: blocks/schedule/edit.js:58
-#: build/results/index.js:90
-#: build/schedule/index.js:88
-#: build/results/index.js:60
-#: build/schedule/index.js:58
-msgid "Query"
+#: includes/settings.php:142
+msgid "Signup Settings"
 msgstr ""
 
-#: blocks/results/edit.js:64
-#: blocks/schedule/edit.js:62
-#: build/results/index.js:93
-#: build/schedule/index.js:91
-#: build/results/index.js:64
-#: build/schedule/index.js:62
-msgid "Number of items"
+#: includes/settings.php:150
+msgid "Extra Fields"
+msgstr ""
+
+#: includes/settings.php:156
+msgid "Define extra fields for the signup form. One field per line. These fields will be added to the \"Additional Information\" section of the signup form."
+msgstr ""
+
+#: includes/settings.php:163
+msgid "Require parents till age"
+msgstr ""
+
+#: includes/settings.php:169
+msgid "Set the age until which parents are required for the signup form."
+msgstr ""
+
+#: includes/settings.php:176
+msgid "Captcha provider"
+msgstr ""
+
+#: includes/settings.php:182
+msgid "Select the captcha provider to use for the signup form."
+msgstr ""
+
+#: includes/settings.php:183
+msgid "None"
 msgstr ""
 
 #: blocks/results/edit.js:69
-#: build/results/index.js:98
+#: blocks/schedule/edit.js:67
+#: build/results/index.js:94
+#: build/schedule/index.js:92
 #: build/results/index.js:69
+#: build/schedule/index.js:67
+msgid "Query"
+msgstr ""
+
+#: blocks/results/edit.js:73
+#: blocks/schedule/edit.js:71
+#: build/results/index.js:97
+#: build/schedule/index.js:95
+#: build/results/index.js:73
+#: build/schedule/index.js:71
+msgid "Number of items"
+msgstr ""
+
+#: blocks/results/edit.js:78
+#: build/results/index.js:102
+#: build/results/index.js:78
 msgid "Select the maximum number of results to show."
 msgstr ""
 
-#: blocks/results/edit.js:75
-#: blocks/schedule/edit.js:73
-#: build/results/index.js:100
-#: build/schedule/index.js:98
-#: build/results/index.js:75
-#: build/schedule/index.js:73
+#: blocks/results/edit.js:84
+#: blocks/schedule/edit.js:82
+#: build/results/index.js:104
+#: build/schedule/index.js:102
+#: build/results/index.js:84
+#: build/schedule/index.js:82
 msgid "Number of days"
 msgstr ""
 
-#: blocks/results/edit.js:80
-#: build/results/index.js:105
-#: build/results/index.js:80
+#: blocks/results/edit.js:89
+#: build/results/index.js:109
+#: build/results/index.js:89
 msgid "Select the number of days to search back for results."
 msgstr ""
 
-#: blocks/schedule/edit.js:67
-#: build/schedule/index.js:96
-#: build/schedule/index.js:67
+#: blocks/schedule/edit.js:76
+#: build/schedule/index.js:100
+#: build/schedule/index.js:76
 msgid "Select the maximum number of matches to show."
 msgstr ""
 
-#: blocks/schedule/edit.js:78
-#: build/schedule/index.js:103
-#: build/schedule/index.js:78
+#: blocks/schedule/edit.js:87
+#: build/schedule/index.js:107
+#: build/schedule/index.js:87
 msgid "Select the number of days to search for matches."
 msgstr ""
 
@@ -1001,50 +1121,50 @@ msgid "Player Name"
 msgstr ""
 
 #: blocks/team-players/edit.js:54
-#: blocks/team-results/edit.js:59
-#: blocks/team-schedule/edit.js:57
+#: blocks/team-results/edit.js:68
+#: blocks/team-schedule/edit.js:66
 #: build/team-players/index.js:76
-#: build/team-results/index.js:78
-#: build/team-schedule/index.js:76
+#: build/team-results/index.js:82
+#: build/team-schedule/index.js:80
 #: build/team-players/index.js:54
-#: build/team-results/index.js:59
-#: build/team-schedule/index.js:57
+#: build/team-results/index.js:68
+#: build/team-schedule/index.js:66
 msgid "Select a team"
 msgstr ""
 
 #: blocks/team-players/edit.js:66
-#: blocks/team-results/edit.js:71
-#: blocks/team-schedule/edit.js:69
+#: blocks/team-results/edit.js:80
+#: blocks/team-schedule/edit.js:78
 #: build/team-players/index.js:85
-#: build/team-results/index.js:87
-#: build/team-schedule/index.js:85
+#: build/team-results/index.js:91
+#: build/team-schedule/index.js:89
 #: build/team-players/index.js:66
-#: build/team-results/index.js:71
-#: build/team-schedule/index.js:69
+#: build/team-results/index.js:80
+#: build/team-schedule/index.js:78
 msgid "Team Settings"
 msgstr ""
 
 #: blocks/team-players/edit.js:70
-#: blocks/team-results/edit.js:75
-#: blocks/team-schedule/edit.js:73
+#: blocks/team-results/edit.js:84
+#: blocks/team-schedule/edit.js:82
 #: build/team-players/index.js:88
-#: build/team-results/index.js:90
-#: build/team-schedule/index.js:88
+#: build/team-results/index.js:94
+#: build/team-schedule/index.js:92
 #: build/team-players/index.js:70
-#: build/team-results/index.js:75
-#: build/team-schedule/index.js:73
+#: build/team-results/index.js:84
+#: build/team-schedule/index.js:82
 msgid "Loading teams..."
 msgstr ""
 
 #: blocks/team-players/edit.js:73
-#: blocks/team-results/edit.js:78
-#: blocks/team-schedule/edit.js:76
+#: blocks/team-results/edit.js:87
+#: blocks/team-schedule/edit.js:85
 #: build/team-players/index.js:90
-#: build/team-results/index.js:92
-#: build/team-schedule/index.js:90
+#: build/team-results/index.js:96
+#: build/team-schedule/index.js:94
 #: build/team-players/index.js:73
-#: build/team-results/index.js:78
-#: build/team-schedule/index.js:76
+#: build/team-results/index.js:87
+#: build/team-schedule/index.js:85
 msgid "Choose a team..."
 msgstr ""
 
@@ -1054,12 +1174,12 @@ msgstr ""
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the players of the current team."
 msgstr ""
 
-#: blocks/team-results/edit.js:82
-#: blocks/team-schedule/edit.js:80
-#: build/team-results/index.js:98
-#: build/team-schedule/index.js:96
-#: build/team-results/index.js:82
-#: build/team-schedule/index.js:80
+#: blocks/team-results/edit.js:91
+#: blocks/team-schedule/edit.js:89
+#: build/team-results/index.js:102
+#: build/team-schedule/index.js:100
+#: build/team-results/index.js:91
+#: build/team-schedule/index.js:89
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the matches of the current team."
 msgstr ""
 

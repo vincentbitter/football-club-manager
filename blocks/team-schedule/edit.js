@@ -14,6 +14,14 @@ export default function Edit({ attributes, setAttributes }) {
 		[],
 	);
 
+	const referees = useSelect(
+		(select) =>
+			select("core").getEntityRecords("postType", "fcmanager_referee", {
+				per_page: -1,
+			}),
+		[],
+	);
+
 	const preview_team_id = useSelect(
 		(select) => {
 			if (teamId) {
@@ -35,11 +43,11 @@ export default function Edit({ attributes, setAttributes }) {
 					"fcmanager_match",
 					preview_team_id
 						? {
-								per_page: 20,
-								meta_key: "_fcmanager_match_team",
-								meta_value: preview_team_id,
-								upcoming: true,
-						  }
+							per_page: 20,
+							meta_key: "_fcmanager_match_team",
+							meta_value: preview_team_id,
+							upcoming: true,
+						}
 						: { per_page: 20, upcoming: true },
 				)
 				?.map((match) => ({
@@ -49,6 +57,7 @@ export default function Edit({ attributes, setAttributes }) {
 					team: match.meta._fcmanager_match_team,
 					opponent: match.meta._fcmanager_match_opponent,
 					away: match.meta._fcmanager_match_away == "1",
+					referee: match.meta._fcmanager_match_referee,
 				})),
 		[preview_team_id],
 	);
@@ -94,6 +103,13 @@ export default function Edit({ attributes, setAttributes }) {
 						</p>
 					) : (
 						<table class="fcmanager-matches fcmanager-matches-schedule">
+							<thead>
+								<tr>
+									<th colspan="2">{__("Date/time", "football-club-manager")}</th>
+									<th colspan="3">{__("Match", "football-club-manager")}</th>
+									<th>{__("Referee", "football-club-manager")}</th>
+								</tr>
+							</thead>
 							<tbody>
 								{matches?.map((match) => (
 									<tr key={match.id}>
@@ -103,13 +119,18 @@ export default function Edit({ attributes, setAttributes }) {
 											{match.away
 												? match.opponent
 												: teams?.find((t) => t.id == match.team)?.title
-														.rendered}
+													.rendered}
 										</td>
 										<td class="fcmanager-match-separator">-</td>
 										<td class="fcmanager-match-awayteam">
 											{match.away
 												? teams?.find((t) => t.id == match.team)?.title.rendered
 												: match.opponent}
+										</td>
+										<td class="fcmanager-match-referee">
+											{referees?.find(
+												(r) => r.id == match.referee,
+											)?.title || ""}
 										</td>
 									</tr>
 								))}
