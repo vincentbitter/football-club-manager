@@ -30,9 +30,18 @@ function fcmanager_render_team_schedule_block($attributes, $content)
                     'compare' => '>=',
                     'type'    => 'DATE',
                 ],
-                'goals_for_missing' => [
-                    'key'     => '_fcmanager_match_goals_for',
-                    'compare' => 'NOT EXISTS',
+                'goals_for_missing' =>
+                [
+                    'relation' => 'OR',
+                    [
+                        'key'     => '_fcmanager_match_goals_for',
+                        'compare' => 'NOT EXISTS',
+                    ],
+                    [
+                        'key'     => '_fcmanager_match_goals_for',
+                        'value'   => '',
+                        'compare' => '=',
+                    ],
                 ],
                 'match_starttime' => [
                     'key'  => '_fcmanager_match_starttime',

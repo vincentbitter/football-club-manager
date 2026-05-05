@@ -339,10 +339,18 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
             'compare' => '>=',
             'type' => 'DATE',
         );
-        $args['meta_query'][] = array(
-            'key' => '_fcmanager_match_goals_for',
-            'compare' => 'NOT EXISTS',
-        );
+        $args['meta_query'][] = [
+            'relation' => 'OR',
+            [
+                'key'     => '_fcmanager_match_goals_for',
+                'compare' => 'NOT EXISTS',
+            ],
+            [
+                'key'     => '_fcmanager_match_goals_for',
+                'value'   => '',
+                'compare' => '=',
+            ],
+        ];
     } else if ($request->get_param('results') === 'true') {
         $args['meta_query'][] = array(
             'key' => '_fcmanager_match_date',
