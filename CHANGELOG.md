@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.14.0] - 2026-05-05
+
+### 🚀 Features
+
+- Assign referee to a match
+
+### 🐛 Bug Fixes
+
+- Matches didn't show up in schedule widgets
+
 ## [0.13.0] - 2026-04-16
 
 ### 🚀 Features
