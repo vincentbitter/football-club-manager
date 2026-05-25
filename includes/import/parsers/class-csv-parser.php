@@ -53,7 +53,7 @@ class FCManager_Import_Parsers_CSV_Parser extends FCManager_Import_Parser
         return $mime === 'text/plain' || $mime === 'text/csv';
     }
 
-    public function supported_extensions(): array
+    public static function supported_extensions(): array
     {
         return ['csv'];
     }

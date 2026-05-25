@@ -21,7 +21,7 @@ abstract class FCManager_Import_Parser
      * 
      * @return array An array of supported file extensions.
      */
-    public abstract function supported_extensions(): array;
+    public static abstract function supported_extensions(): array;
 
     /**
      * Get a specific row of the import file as an associative array, where the keys are the column names.
