@@ -6,7 +6,8 @@
 	"license": "GPL-3.0",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "wp-scripts build --blocks-manifest --source-path=blocks",
+		"build": "wp-scripts build --blocks-manifest --source-path=blocks && npm run build:vendor",
+		"build:vendor": "node update-js-libraries.js",
 		"format": "wp-scripts format ./blocks",
 		"lint:css": "wp-scripts lint-style 'blocks/**/*.scss'",
 		"lint:js": "wp-scripts lint-js ./blocks",
@@ -18,5 +19,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.19.0"
+	},
+	"dependencies": {
+		"papaparse": "^5.5.3"
 	}
 }

@@ -104,4 +104,35 @@ abstract class FCManager_Person
             'post_title' => $this->name(),
         ]);
     }
+
+    public static function get_form_fields()
+    {
+        return [
+            [
+                'key' => 'first_name',
+                'label' => __('First Name', 'football-club-manager'),
+                'type' => 'string',
+            ],
+            [
+                'key' => 'last_name',
+                'label' => __('Last Name', 'football-club-manager'),
+                'type' => 'string',
+            ],
+            [
+                'key' => 'date_of_birth',
+                'label' => __('Date of Birth', 'football-club-manager'),
+                'type' => 'date',
+            ],
+            [
+                'key' => 'publish_birthday',
+                'label' => __('Publish birthday?', 'football-club-manager'),
+                'type' => 'boolean',
+            ],
+            [
+                'key' => 'publish_age',
+                'label' => __('Publish age?', 'football-club-manager'),
+                'type' => 'boolean',
+            ],
+        ];
+    }
 }

@@ -186,7 +186,7 @@ function fcmanager_custom_birthday_column($column, $post_id)
             break;
 
         case 'birthday_birthday':
-            echo wp_date('j F', strtotime(esc_html(get_post_meta($post_id, '_fcmanager_birthday_date_of_birth', true))));
+            echo esc_html(wp_date('j F', strtotime(get_post_meta($post_id, '_fcmanager_birthday_date_of_birth', true))));
             break;
     }
 }

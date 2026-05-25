@@ -8,7 +8,6 @@ require_once 'class-person.php';
 
 class FCManager_Birthday extends FCManager_Person
 {
-
     public function __construct($id_or_post = null)
     {
 
@@ -39,5 +38,28 @@ class FCManager_Birthday extends FCManager_Person
         } else {
             throw new InvalidArgumentException('Expected an integer ID or a WP_Post object.');
         }
+    }
+
+    public static function get_form_fields()
+    {
+        return array_values(array_filter(parent::get_form_fields(), fn($f) => $f['key'] !== 'publish_birthday'));
+    }
+
+    public function save()
+    {
+        if (!$this->id) {
+            $this->id = wp_insert_post([
+                'post_type' => 'fcmanager_birthday',
+                'post_status' => 'publish',
+            ]);
+        }
+
+        update_post_meta($this->id, '_fcmanager_birthday_first_name', $this->first_name());
+        update_post_meta($this->id, '_fcmanager_birthday_last_name', $this->last_name());
+        update_post_meta($this->id, '_fcmanager_birthday_date_of_birth', $this->date_of_birth() ? $this->date_of_birth()->format('Y-m-d') : '');
+        update_post_meta($this->id, '_fcmanager_birthday_publish_birthday', $this->publish_birthday ? 'true' : 'false');
+        update_post_meta($this->id, '_fcmanager_birthday_publish_age', $this->publish_age ? 'true' : 'false');
+
+        $this->save_title();
     }
 }

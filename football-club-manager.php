@@ -35,7 +35,15 @@ require_once('includes/settings.php');
 
 // Register administration pages
 require_once('admin/page_dashboard.php');
+require_once('admin/page_import.php');
 require_once('admin/page_settings.php');
+
+// Register endpoints
+require_once('endpoints/import/upload.php');
+require_once('endpoints/import/process.php');
+
+// Register import parsers
+require_once('includes/import/parsers/class-csv-parser.php');
 
 // Register administration menu
 function fcmanager_register_administration_menu()
@@ -121,6 +129,14 @@ function fcmanager_register_administration_menu()
         'fcmanager_settings',
         'fcmanager_page_settings'
     );
+    add_submenu_page(
+        null,
+        __('Import', 'football-club-manager'),
+        __('Import', 'football-club-manager'),
+        'edit_posts',
+        'fcmanager_import',
+        'fcmanager_page_import'
+    );
 }
 
 // Highlight submenu for child pages
@@ -190,9 +206,27 @@ function fcmanager_enqueue_block_editor_assets()
 add_action('enqueue_block_editor_assets', 'fcmanager_enqueue_block_editor_assets');
 
 // Enqueue admin scripts
+function fcmanager_vendor_version($library)
+{
+    $file = plugin_dir_path(__FILE__) . 'public/js/lib/versions.json';
+
+    if (!file_exists($file)) {
+        return null;
+    }
+
+    $json = json_decode(file_get_contents($file), true);
+
+    return $json[$library] ?? null;
+}
+
 function fcmanager_enqueue_admin_scripts($hook)
 {
+    wp_register_script('papaparse', plugin_dir_url(__FILE__) . 'public/js/lib/papaparse/papaparse.min.js', array(), fcmanager_vendor_version('papaparse'), true);
+
+    wp_enqueue_script('fcmanager-import', plugin_dir_url(__FILE__) . 'public/js/import.js', ['papaparse', 'wp-i18n'], FCMANAGER_VERSION, true);
     wp_enqueue_script('fcmanager-signup', plugin_dir_url(__FILE__) . 'public/js/signup.js', ['jquery'], FCMANAGER_VERSION, true);
+
+    wp_enqueue_style('fcmanager-admin', plugin_dir_url(__FILE__) . 'public/css/admin.css', false, FCMANAGER_VERSION);
 }
 add_action('admin_enqueue_scripts', 'fcmanager_enqueue_admin_scripts');
 
@@ -259,3 +293,22 @@ function fcmanager_customize_register($wp_customize)
 }
 
 add_action('customize_register', 'fcmanager_customize_register');
+
+// Add import button to post overview
+add_action('manage_posts_extra_tablenav', function ($which) {
+    if ($which === 'top' && get_current_screen()->post_type === 'fcmanager_birthday') {
+        $import_url = esc_attr(admin_url('admin.php?page=fcmanager_import&post_type=' . get_current_screen()->post_type));
+        echo '<div class="alignleft actions">';
+        echo '<a href="' . esc_url($import_url) . '" class="button">' . esc_html__('Import', 'football-club-manager') . "</a>";
+        echo '</div>';
+    }
+});
+
+// Fix titles
+add_filter('admin_title', function ($admin_title, $title) {
+    switch (get_current_screen()->id) {
+        case 'admin_page_fcmanager_import':
+            return __('Import', 'football-club-manager') . $admin_title;
+    }
+    return $admin_title;
+}, 10, 2);
