@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.15.0] - 2026-05-25
+
+### 🚀 Features
+
+- Import tool for birthdays.
+- Print signup forms.
+
+### 🧪 Testing
+
+- Tested with WordPress 7.0.
+
 ## [0.14.0] - 2026-05-05
 
 ### 🚀 Features
