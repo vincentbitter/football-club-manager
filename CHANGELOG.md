@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.17.0] - 2026-05-25
+
+### 🐛 Bug Fixes
+
+- Include endpoints in release package.
+
 ## [0.15.0] - 2026-05-25
 
 ### 🚀 Features
