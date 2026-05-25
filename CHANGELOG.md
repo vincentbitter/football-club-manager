@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 - Import tool for birthdays.
 - Print signup forms.
 
+### 🐛 Bug Fixes
+
+- Plugin Check findings.
+- Include endpoints in release package.
+
 ### 🧪 Testing
 
 - Tested with WordPress 7.0.
