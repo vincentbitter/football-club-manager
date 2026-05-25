@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.18.0] - 2026-05-25
+
+### 🐛 Bug Fixes
+
+- Error on import screen.
+
 ## [0.17.0] - 2026-05-25
 
 ### 🐛 Bug Fixes
