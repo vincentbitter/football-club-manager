@@ -17,6 +17,18 @@
 		"i18n:make-pot": "wp i18n make-pot . languages/football-club-manager.pot",
 		"i18n:make-json": "wp i18n make-json languages --no-purge"
 	},
+	"files": [
+		"admin/",
+		"build/",
+		"endpoints/",
+		"includes/",
+		"languages/",
+		"public/",
+		"CHANGELOG.md",
+		"football-club-manager.php",
+		"README.md",
+		"readme.txt"
+	],
 	"devDependencies": {
 		"@wordpress/scripts": "^30.19.0"
 	},
