@@ -10,9 +10,9 @@ function fcmanager_page_print_signup()
 
     if (
         ! current_user_can('edit_post', $post_id)
-        || ! wp_verify_nonce($_GET['_wpnonce'] ?? '', 'fcmanager_print_' . $post_id)
+        || ! wp_verify_nonce(sanitize_text_field($_GET['_wpnonce']) ?? '', 'fcmanager_print_' . $post_id)
     ) {
-        wp_die(__('Access denied.', 'football-club-manager'));
+        wp_die(esc_html__('Access denied.', 'football-club-manager'));
     }
 
     $signup = new FCManager_Signup($post_id);
