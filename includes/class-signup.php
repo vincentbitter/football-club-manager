@@ -374,6 +374,14 @@ class FCManager_Signup_Personal_Details
         return $this->gender;
     }
 
+    public function print_gender()
+    {
+        if (!$this->gender) {
+            return '';
+        }
+        return ucfirst($this->gender);
+    }
+
     public function nationality($new_value = null)
     {
         if ($new_value !== null) {
@@ -719,6 +727,17 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
     public function offsetGet($offset): string
     {
         return $this->data[$offset] ?? null;
+    }
+
+    /**
+     * Return all additional information,
+     * even if the field no longer exists.
+     * 
+     * @return array All additional information as key => value
+     */
+    public function getAll(): array
+    {
+        return $this->data;
     }
 
     public function from_post_data($post)

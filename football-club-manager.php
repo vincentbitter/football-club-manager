@@ -36,6 +36,7 @@ require_once('includes/settings.php');
 // Register administration pages
 require_once('admin/page_dashboard.php');
 require_once('admin/page_import.php');
+require_once('admin/page_print_signup.php');
 require_once('admin/page_settings.php');
 
 // Register endpoints

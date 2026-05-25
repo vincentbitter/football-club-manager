@@ -75,6 +75,14 @@ function fcmanager_add_signup_meta_boxes()
         'normal',
         'low'
     );
+
+    add_meta_box(
+        'fcmanager_signup_tools',
+        __('Tools', 'football-club-manager'),
+        'fcmanager_render_tools_metabox',
+        'fcmanager_signup',
+        'side'
+    );
 }
 
 add_action('add_meta_boxes', 'fcmanager_add_signup_meta_boxes');
@@ -476,6 +484,18 @@ function fcmanager_save_signup_additional_information_meta_box($post_id)
 
 add_action('save_post_fcmanager_signup', 'fcmanager_save_signup_additional_information_meta_box');
 
+// Tools meta box
+function fcmanager_render_tools_metabox($post)
+{
+    $print_url = admin_url(
+        'admin-post.php?action=fcmanager_print_signup&post_id=' . $post->ID
+            . '&_wpnonce=' . wp_create_nonce('fcmanager_print_' . $post->ID)
+    );
+    echo '<a href="' . esc_url($print_url) . '" target="_blank" class="button button-primary">'
+        . esc_html__('Print', 'football-club-manager')
+        . '</a>';
+}
+
 // Add the custom columns to the signup post type:
 function fcmanager_set_custom_edit_signup_columns($columns)
 {
@@ -519,3 +539,11 @@ add_filter('post_date_column_status', function ($status, $post) {
     }
     return $status;
 }, 10, 2);
+
+add_action('admin_post_fcmanager_print_signup', 'fcmanager_handle_print_signup');
+
+function fcmanager_handle_print_signup()
+{
+    fcmanager_page_print_signup();
+    exit;
+}
