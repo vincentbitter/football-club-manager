@@ -1,0 +1,15 @@
+{
+    "name": "Football Club Manager",
+    "files": [
+        "admin/",
+        "build/",
+        "endpoints/",
+        "includes/",
+        "languages/",
+        "public/",
+        "CHANGELOG.md",
+        "football-club-manager.php",
+        "README.md",
+        "readme.txt"
+    ]
+}
