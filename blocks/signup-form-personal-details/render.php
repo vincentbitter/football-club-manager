@@ -66,14 +66,14 @@ function fcmanager_render_signup_form_personal_details_block($attributes, $conte
                         <option value="">
                             <?php esc_html_e('Select…', 'football-club-manager'); ?>
                         </option>
-                        <option value="male" <?php selected(sanitize_text_field($posted['gender'] ?? ''), 'male'); ?>>
-                            <?php esc_html_e('Male', 'football-club-manager'); ?>
+                        <option value="<?php echo esc_attr(FCManager_Gender::MALE); ?>" <?php selected(sanitize_text_field($posted['gender'] ?? ''), FCManager_Gender::MALE); ?>>
+                            <?php FCManager_Gender::esc_html_e(FCManager_Gender::MALE); ?>
                         </option>
-                        <option value="female" <?php selected(sanitize_text_field($posted['gender'] ?? ''), 'female'); ?>>
-                            <?php esc_html_e('Female', 'football-club-manager'); ?>
+                        <option value="<?php echo esc_attr(FCManager_Gender::FEMALE); ?>" <?php selected(sanitize_text_field($posted['gender'] ?? ''), FCManager_Gender::FEMALE); ?>>
+                            <?php FCManager_Gender::esc_html_e(FCManager_Gender::FEMALE); ?>
                         </option>
-                        <option value="gender neutral" <?php selected(sanitize_text_field($posted['gender'] ?? ''), 'gender neutral'); ?>>
-                            <?php esc_html_e('Gender neutral', 'football-club-manager'); ?>
+                        <option value="<?php echo esc_attr(FCManager_Gender::GENDER_NEUTRAL); ?>" <?php selected(sanitize_text_field($posted['gender'] ?? ''), FCManager_Gender::GENDER_NEUTRAL); ?>>
+                            <?php FCManager_Gender::esc_html_e(FCManager_Gender::GENDER_NEUTRAL); ?>
                         </option>
                     </select>
                 </label>

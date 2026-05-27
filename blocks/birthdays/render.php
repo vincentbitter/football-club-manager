@@ -14,7 +14,7 @@ require_once plugin_dir_path(dirname(__DIR__)) . 'includes/class-birthday.php';
  * Retrieve all players or volunteers whose birthday is today and who have enabled birthday display.
  * Also, include all birthday custom post types.
  * 
- * @param string $post_type 'player', 'volunteer', or 'birthday'
+ * @param string $post_type 'player', 'referee', 'volunteer', or 'birthday'
  * @return WP_Post[] List of posts matching the criteria.
  */
 function fcmanager_get_birthdays($post_type, $class)

@@ -20,6 +20,10 @@ if (! defined('ABSPATH')) {
 
 define('FCMANAGER_VERSION', '0.18.0');
 
+// Enums
+require_once('includes/class-gender.php');
+require_once('includes/class-signup-type.php');
+
 // Register custom post types
 require_once('includes/post-types/team.php');
 require_once('includes/post-types/player.php');

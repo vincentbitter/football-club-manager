@@ -27,7 +27,7 @@ function fcmanager_get_blocks($block): array
 function fcmanager_process_signup_form($block, $attributes, $post_data): ?FCManager_Signup
 {
     $signup = new FCManager_Signup();
-    $signup->type($attributes['signupType'] ?? 'player');
+    $signup->type($attributes['signupType'] ?? FCManager_SignupType::PLAYER);
     $signup->subtype($attributes['signupSubtype'] ?? '');
 
     $blocks = fcmanager_get_blocks($block->parsed_block);

@@ -65,7 +65,7 @@ class FCManager_Signup
 
     public function type($new_value = null)
     {
-        if ($new_value !== null && in_array($new_value, ['player', 'volunteer'], true)) {
+        if ($new_value !== null && in_array($new_value, FCManager_SignupType::values(), true)) {
             $this->type = $new_value;
         }
 
@@ -241,7 +241,7 @@ class FCManager_Signup_Personal_Details
             return false;
         }
 
-        if (!in_array($this->gender, ['male', 'female', 'gender neutral'])) {
+        if (!in_array($this->gender, FCManager_Gender::values())) {
             return false;
         }
 
@@ -368,18 +368,10 @@ class FCManager_Signup_Personal_Details
 
     public function gender($new_value = null)
     {
-        if ($new_value !== null && in_array($new_value, ['male', 'female', 'gender neutral'])) {
+        if ($new_value !== null && in_array($new_value, FCManager_Gender::values())) {
             $this->gender = $new_value;
         }
         return $this->gender;
-    }
-
-    public function print_gender()
-    {
-        if (!$this->gender) {
-            return '';
-        }
-        return ucfirst($this->gender);
     }
 
     public function nationality($new_value = null)

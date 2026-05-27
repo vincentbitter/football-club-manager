@@ -102,7 +102,7 @@ function fcmanager_page_print_signup()
 
     <body onload="window.print()">
         <h1><?php echo esc_html($signup->personal_details()->name()); ?></h1>
-        <p class="fcmanager_print_subtitle"><?php echo esc_html($signup->type()); ?><?php echo $signup->subtype() ? ' - ' . esc_html($signup->subtype()) : ''; ?></em>
+        <p class="fcmanager_print_subtitle"><?php FCManager_SignupType::esc_html_e($signup->type()); ?><?php echo $signup->subtype() ? ' - ' . esc_html($signup->subtype()) : ''; ?></em>
         <h2><?php echo esc_html__('Personal details', 'football-club-manager'); ?></h2>
         <?php
         if ($signup->personal_details()->initials() || $signup->personal_details()->first_name() || $signup->personal_details()->middle_name() || $signup->personal_details()->last_name()) {
@@ -178,7 +178,7 @@ function fcmanager_page_print_signup()
                             <td><?php echo esc_html($signup->personal_details()->date_of_birth()->format('d-m-Y')); ?></td>
                         <?php } ?>
                         <?php if ($signup->personal_details()->gender()) { ?>
-                            <td><?php echo esc_html__($signup->personal_details()->print_gender(), 'football-club-manager'); ?></td>
+                            <td><?php FCManager_Gender::esc_html_e($signup->personal_details()->gender()); ?></td>
                         <?php } ?>
                         <?php if ($signup->personal_details()->nationality()) { ?>
                             <td><?php echo esc_html($signup->personal_details()->nationality()); ?></td>

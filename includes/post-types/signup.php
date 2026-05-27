@@ -103,8 +103,8 @@ function fcmanager_render_signup_personal_details_meta_box($post)
                 <th><label for="fcmanager_signup_personal_details_type"><?php esc_html_e('Type', 'football-club-manager'); ?></label></th>
                 <td>
                     <select id="fcmanager_signup_personal_details_type" name="fcmanager_signup_personal_details_type">
-                        <option value="player" <?php selected($signup->type(), 'player'); ?>><?php esc_html_e('Player', 'football-club-manager'); ?></option>
-                        <option value="volunteer" <?php selected($signup->type(), 'volunteer'); ?>><?php esc_html_e('Volunteer', 'football-club-manager'); ?></option>
+                        <option value="<?php echo esc_attr(FCManager_SignupType::PLAYER); ?>" <?php selected($signup->type(), FCManager_SignupType::PLAYER); ?>><?php FCManager_SignupType::esc_html_e(FCManager_SignupType::PLAYER); ?></option>
+                        <option value="<?php echo esc_attr(FCManager_SignupType::VOLUNTEER); ?>" <?php selected($signup->type(), FCManager_SignupType::VOLUNTEER); ?>><?php FCManager_SignupType::esc_html_e(FCManager_SignupType::VOLUNTEER); ?></option>
                     </select>
                 </td>
             </tr>
@@ -138,9 +138,9 @@ function fcmanager_render_signup_personal_details_meta_box($post)
                 <th><label for="fcmanager_signup_personal_details_gender"><?php esc_html_e('Gender', 'football-club-manager'); ?></label></th>
                 <td>
                     <select id="fcmanager_signup_personal_details_gender" name="fcmanager_signup_personal_details_gender">
-                        <option value="male" <?php selected($signup->personal_details()->gender(), 'male'); ?>><?php esc_html_e('Male', 'football-club-manager'); ?></option>
-                        <option value="female" <?php selected($signup->personal_details()->gender(), 'female'); ?>><?php esc_html_e('Female', 'football-club-manager'); ?></option>
-                        <option value="gender neutral" <?php selected($signup->personal_details()->gender(), 'gender neutral'); ?>><?php esc_html_e('Gender neutral', 'football-club-manager'); ?></option>
+                        <option value="<?php echo esc_attr(FCManager_Gender::MALE); ?>" <?php selected($signup->personal_details()->gender(), FCManager_Gender::MALE); ?>><?php FCManager_Gender::esc_html_e(FCManager_Gender::MALE); ?></option>
+                        <option value="<?php echo esc_attr(FCManager_Gender::FEMALE); ?>" <?php selected($signup->personal_details()->gender(), FCManager_Gender::FEMALE); ?>><?php FCManager_Gender::esc_html_e(FCManager_Gender::FEMALE); ?></option>
+                        <option value="<?php echo esc_attr(FCManager_Gender::GENDER_NEUTRAL); ?>" <?php selected($signup->personal_details()->gender(), FCManager_Gender::GENDER_NEUTRAL); ?>><?php FCManager_Gender::esc_html_e(FCManager_Gender::GENDER_NEUTRAL); ?></option>
                     </select>
                 </td>
             </tr>
@@ -517,10 +517,8 @@ function fcmanager_custom_signup_column($column, $post_id)
     $signup = new FCManager_Signup($post_id);
     switch ($column) {
         case 'signup_type':
-            $type = __('Player', 'football-club-manager');
-            if ($signup->type() === 'volunteer')
-                $type = __('Volunteer', 'football-club-manager');
-            echo esc_html($type) . ($signup->subtype() ? ' - ' . esc_html($signup->subtype()) : '');
+            FCManager_SignupType::esc_html_e($signup->type());
+            echo $signup->subtype() ? ' - ' . esc_html($signup->subtype()) : '';
             break;
         case 'signup_first_name':
             echo esc_html($signup->personal_details()->first_name());
