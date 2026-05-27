@@ -43,6 +43,7 @@ function fcmanager_page_print_signup()
 
             h3 {
                 font-size: inherit;
+                margin: 0px;
             }
 
             .fcmanager_print_subtitle {
@@ -52,9 +53,10 @@ function fcmanager_page_print_signup()
             }
 
             table {
+                table-layout: fixed;
                 width: 100%;
                 border-spacing: 10px 0;
-                margin: 10px -16px;
+                margin: 8px -16px;
             }
 
             table.fcmanager-vertical-table {
@@ -65,15 +67,17 @@ function fcmanager_page_print_signup()
 
             th,
             td {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
                 text-align: left;
                 padding: 6px 8px;
                 border-bottom: 1px solid #ccc;
+                vertical-align: bottom;
             }
 
             th {
-                width: 35%;
                 color: #555;
-                white-space: nowrap;
             }
 
             thead th {
@@ -84,6 +88,7 @@ function fcmanager_page_print_signup()
             .fcmanager-print-footer {
                 color: #ccc;
                 text-align: center;
+                font-size: 10px;
             }
 
             @media print {
