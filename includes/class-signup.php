@@ -704,7 +704,10 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
 
     public function offsetSet($offset, $value): void
     {
-        $valid_keys = FCManager_Settings::instance()->signup->extra_fields();
+        $valid_keys = array_column(
+            FCManager_Settings::instance()->signup->extra_fields(),
+            'label'
+        );
         if ($offset === null) {
             throw new InvalidArgumentException('Offset cannot be null.');
         } else if (!in_array($offset, $valid_keys)) {
@@ -748,8 +751,9 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
         }
 
         foreach ($extra_fields as $field) {
-            if (array_key_exists($field, $post['fcmanager_signup_additional_information'])) {
-                $this->data[$field] = sanitize_text_field($post['fcmanager_signup_additional_information'][$field]);
+            $label = $field['label'];
+            if (array_key_exists($label, $post['fcmanager_signup_additional_information'])) {
+                $this->data[$label] = sanitize_text_field($post['fcmanager_signup_additional_information'][$label]);
             }
         }
     }

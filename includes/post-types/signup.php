@@ -436,11 +436,12 @@ function fcmanager_render_signup_additional_information_meta_box($post)
 ?>
     <table class="form-table">
         <tbody>
-            <?php foreach ($extra_fields as $index => $field) : ?>
+            <?php foreach ($extra_fields as $index => $field) :
+                $label = $field['label']; ?>
                 <tr>
-                    <th><label for="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>"><?php echo esc_html($field); ?></label></th>
+                    <th><label for="<?php echo esc_attr('fcmanager_signup_additional_information[' . $label . ']'); ?>"><?php echo esc_html($label); ?></label></th>
                     <td>
-                        <input type="text" id="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>" name="<?php echo esc_attr('fcmanager_signup_additional_information[' . $field . ']'); ?>" value="<?php echo esc_attr($signup->additional_information()[$field] ?? ''); ?>">
+                        <input type="text" id="<?php echo esc_attr('fcmanager_signup_additional_information[' . $label . ']'); ?>" name="<?php echo esc_attr('fcmanager_signup_additional_information[' . $label . ']'); ?>" value="<?php echo esc_attr($signup->additional_information()[$label] ?? ''); ?>">
                     </td>
                 </tr>
             <?php endforeach; ?>

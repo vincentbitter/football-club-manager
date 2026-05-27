@@ -62,6 +62,37 @@ function fcmanager_field_select_callback($args)
 <?php
 }
 
+function fcmanager_field_structured_list_callback($args)
+{
+    $options   = get_option('fcmanager_options');
+    $value     = $options[$args['field_name']] ?? [];
+    $json      = esc_attr(wp_json_encode($value));
+    $field_key = "fcmanager_options[{$args['field_name']}]";
+?>
+    <div class="fcmanager-structured-list"
+        data-field="<?php echo esc_attr($args['field_name']); ?>"
+        data-columns="<?php echo esc_attr(wp_json_encode($args['columns'])); ?>">
+        <input type="hidden"
+            name="<?php echo esc_attr($field_key); ?>"
+            value="<?php echo esc_attr($json); ?>">
+        <p class="description"><?php echo esc_html($args['description'] ?? ''); ?></p>
+    </div>
+<?php
+}
+
+function fcmanager_options_sanitize_signup_extra_fields($value)
+{
+    $value = isset($value) && is_string($value) ? $value : '[]';
+    $decoded = json_decode($value, true);
+    return array_values(array_filter(
+        array_map(function ($field) {
+            if (!isset($field['label']) || !is_string($field['label'])) return null;
+            $label = sanitize_text_field($field['label']);
+            return $label !== '' ? ['label' => $label] : null;
+        }, is_array($decoded) ? $decoded : [])
+    ));
+}
+
 function fcmanager_options_sanitize_callback($input)
 {
     foreach (['player', 'volunteer', 'referee'] as $type) {
@@ -70,7 +101,8 @@ function fcmanager_options_sanitize_callback($input)
     }
     $input['fcmanager_birthday_publish_age_by_default'] = $input['fcmanager_birthday_publish_age_by_default'] == 1 ? 1 : 0;
 
-    $input['fcmanager_signup_extra_fields'] = sanitize_textarea_field($input['fcmanager_signup_extra_fields']);
+    $input['fcmanager_signup_extra_fields'] = fcmanager_options_sanitize_signup_extra_fields($input['fcmanager_signup_extra_fields']);
+
     $input['fcmanager_signup_require_parents_till_age'] = is_numeric($input['fcmanager_signup_require_parents_till_age']) ? (int) $input['fcmanager_signup_require_parents_till_age'] : "";
     $input['fcmanager_signup_captcha_provider'] = sanitize_text_field($input['fcmanager_signup_captcha_provider']);
 
@@ -148,12 +180,13 @@ function fcmanager_settings_init()
     add_settings_field(
         'fcmanager_signup_extra_fields',
         __('Extra Fields', 'football-club-manager'),
-        'fcmanager_field_textarea_callback',
+        'fcmanager_field_structured_list_callback',
         'fcmanager',
         'fcmanager_section_signup_settings',
         array(
-            'label_for' => 'fcmanager_signup_extra_fields',
-            'description' => __('Define extra fields for the signup form. One field per line. These fields will be added to the "Additional Information" section of the signup form.', 'football-club-manager')
+            'field_name' => 'fcmanager_signup_extra_fields',
+            'columns'     => [['key' => 'label']],
+            'description' => __('Define extra fields for the signup form. These fields will be added to the "Additional Information" section of the signup form.', 'football-club-manager')
         )
     );
 

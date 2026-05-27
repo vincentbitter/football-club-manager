@@ -66,3 +66,26 @@ h1+.fcm-dropzone {
     color: white;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
 }
+
+.fcmanager-structured-list__table {
+    margin-bottom: 8px;
+    border-spacing: 10px;
+}
+
+.fcmanager-structured-list__table td {
+    padding: 0;
+}
+
+.fcmanager-structured-list__table td input {
+    width: 100%;
+}
+
+.fcmanager-structured-list__table td:last-child {
+    width: 20px;
+    padding-right: 0;
+}
+
+.fcmanager-structured-list__table button.fcmanager-structured-list__remove {
+    color: #b32d2e;
+    padding: 10px;
+}

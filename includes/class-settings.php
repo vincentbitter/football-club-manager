@@ -114,10 +114,15 @@ class FCManager_Signup_Settings extends FCManager_Settings_Base
     public function extra_fields($newValue = null)
     {
         $value = $this->get_or_update('fcmanager_signup_extra_fields', $newValue);
-        if ($value !== null) {
-            $value = array_filter(array_map('trim', explode("\n", $value)));
+
+        // Legacy migration: previously this was a newline-separated string
+        if (is_string($value)) {
+            $labels = array_values(array_filter(array_map('trim', explode("\n", $value))));
+            $value  = array_map(fn($label) => ['label' => $label], $labels);
+            $this->get_or_update('fcmanager_signup_extra_fields', $value);
         }
-        return $value;
+
+        return is_array($value) ? $value : [];
     }
 
     public function require_parents_till_age($newValue = null): int

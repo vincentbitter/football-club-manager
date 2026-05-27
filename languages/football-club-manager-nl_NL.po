@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-"
 "manager\n"
-"POT-Creation-Date: 2026-05-25T20:36:42+00:00\n"
+"POT-Creation-Date: 2026-05-27T20:42:27+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Plugin Name of the plugin
-#: football-club-manager.php football-club-manager.php:288
+#: football-club-manager.php football-club-manager.php:289
 msgid "Football Club Manager"
 msgstr "Football Club Manager"
 
@@ -58,7 +58,7 @@ msgstr "Niet ondersteund berichttype voor import."
 
 #: admin/page_import.php:41 admin/page_import.php:75
 #: football-club-manager.php:135 football-club-manager.php:136
-#: football-club-manager.php:303 football-club-manager.php:312
+#: football-club-manager.php:304 football-club-manager.php:313
 msgid "Import"
 msgstr "Importeer"
 
@@ -86,21 +86,22 @@ msgstr "Wijs toe vanaf"
 msgid "Access denied."
 msgstr "Toegang geweigerd."
 
-#: admin/page_print_signup.php:100 includes/post-types/signup.php:45
+#: admin/page_print_signup.php:105 includes/post-types/signup.php:45
 msgid "Personal details"
 msgstr "Persoonlijke gegevens"
 
-#: admin/page_print_signup.php:107
+#: admin/page_print_signup.php:112
 #: blocks/signup-form-personal-details/render.php:28
 #: build/signup-form-personal-details/render.php:28
 #: includes/post-types/signup.php:120
 #: blocks/signup-form-personal-details/edit.js:31
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:60
+#: build/signup-form-personal-details/index.js:31
 msgid "Initials"
 msgstr "Initialen"
 
-#: admin/page_print_signup.php:108 admin/page_print_signup.php:237
-#: admin/page_print_signup.php:277
+#: admin/page_print_signup.php:113 admin/page_print_signup.php:242
+#: admin/page_print_signup.php:282
 #: blocks/signup-form-parent-details/render.php:19
 #: blocks/signup-form-personal-details/render.php:18
 #: build/signup-form-parent-details/render.php:19
@@ -109,17 +110,19 @@ msgstr "Initialen"
 #: includes/post-types/player.php:112 includes/post-types/player.php:200
 #: includes/post-types/referee.php:123 includes/post-types/referee.php:199
 #: includes/post-types/signup.php:116 includes/post-types/signup.php:275
-#: includes/post-types/signup.php:504 includes/post-types/volunteer.php:110
+#: includes/post-types/signup.php:505 includes/post-types/volunteer.php:110
 #: includes/post-types/volunteer.php:186
 #: blocks/signup-form-parent-details/edit.js:34
 #: blocks/signup-form-personal-details/edit.js:15
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:74
+#: build/signup-form-personal-details/index.js:45
+#: build/signup-form-parent-details/index.js:34
+#: build/signup-form-personal-details/index.js:15
 msgid "First name"
 msgstr "Voornaam"
 
-#: admin/page_print_signup.php:109 admin/page_print_signup.php:238
-#: admin/page_print_signup.php:278
+#: admin/page_print_signup.php:114 admin/page_print_signup.php:243
+#: admin/page_print_signup.php:283
 #: blocks/signup-form-parent-details/render.php:28
 #: blocks/signup-form-personal-details/render.php:35
 #: build/signup-form-parent-details/render.php:28
@@ -127,13 +130,15 @@ msgstr "Voornaam"
 #: includes/post-types/signup.php:124 includes/post-types/signup.php:279
 #: blocks/signup-form-parent-details/edit.js:48
 #: blocks/signup-form-personal-details/edit.js:43
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:87
+#: build/signup-form-personal-details/index.js:70
+#: build/signup-form-parent-details/index.js:48
+#: build/signup-form-personal-details/index.js:43
 msgid "Middle name"
 msgstr "Tussenvoegsel"
 
-#: admin/page_print_signup.php:110 admin/page_print_signup.php:239
-#: admin/page_print_signup.php:279
+#: admin/page_print_signup.php:115 admin/page_print_signup.php:244
+#: admin/page_print_signup.php:284
 #: blocks/signup-form-parent-details/render.php:35
 #: blocks/signup-form-personal-details/render.php:43
 #: build/signup-form-parent-details/render.php:35
@@ -142,50 +147,55 @@ msgstr "Tussenvoegsel"
 #: includes/post-types/player.php:116 includes/post-types/player.php:201
 #: includes/post-types/referee.php:127 includes/post-types/referee.php:200
 #: includes/post-types/signup.php:128 includes/post-types/signup.php:283
-#: includes/post-types/signup.php:505 includes/post-types/volunteer.php:114
+#: includes/post-types/signup.php:506 includes/post-types/volunteer.php:114
 #: includes/post-types/volunteer.php:187
 #: blocks/signup-form-parent-details/edit.js:60
 #: blocks/signup-form-personal-details/edit.js:56
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:97
+#: build/signup-form-personal-details/index.js:81
+#: build/signup-form-parent-details/index.js:60
+#: build/signup-form-personal-details/index.js:56
 msgid "Last name"
 msgstr "Achternaam"
 
-#: admin/page_print_signup.php:131
+#: admin/page_print_signup.php:136
 msgid "Address"
 msgstr "Adres"
 
-#: admin/page_print_signup.php:159
+#: admin/page_print_signup.php:164
 #: blocks/signup-form-personal-details/render.php:52
 #: build/signup-form-personal-details/render.php:52
 #: includes/post-types/birthday.php:102 includes/post-types/player.php:120
 #: includes/post-types/referee.php:131 includes/post-types/signup.php:132
 #: includes/post-types/volunteer.php:118
 #: blocks/signup-form-personal-details/edit.js:70
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:94
+#: build/signup-form-personal-details/index.js:70
 msgid "Date of birth"
 msgstr "Geboortedatum"
 
-#: admin/page_print_signup.php:162
+#: admin/page_print_signup.php:167
 #: blocks/signup-form-personal-details/render.php:64
 #: build/signup-form-personal-details/render.php:64
 #: includes/post-types/signup.php:138
 #: blocks/signup-form-personal-details/edit.js:82
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:104
+#: build/signup-form-personal-details/index.js:82
 msgid "Gender"
 msgstr "Geslacht"
 
-#: admin/page_print_signup.php:165
+#: admin/page_print_signup.php:170
 #: blocks/signup-form-personal-details/render.php:86
 #: build/signup-form-personal-details/render.php:86
 #: includes/post-types/signup.php:148
 #: blocks/signup-form-personal-details/edit.js:96
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:118
+#: build/signup-form-personal-details/index.js:96
 msgid "Nationality"
 msgstr "Nationaliteit"
 
-#: admin/page_print_signup.php:192 admin/page_print_signup.php:255
-#: admin/page_print_signup.php:295
+#: admin/page_print_signup.php:197 admin/page_print_signup.php:260
+#: admin/page_print_signup.php:300
 #: blocks/signup-form-parent-details/render.php:51
 #: blocks/signup-form-personal-details/render.php:139
 #: build/signup-form-parent-details/render.php:51
@@ -193,13 +203,15 @@ msgstr "Nationaliteit"
 #: includes/post-types/signup.php:180 includes/post-types/signup.php:292
 #: blocks/signup-form-parent-details/edit.js:86
 #: blocks/signup-form-personal-details/edit.js:182
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:120
+#: build/signup-form-personal-details/index.js:197
+#: build/signup-form-parent-details/index.js:86
+#: build/signup-form-personal-details/index.js:182
 msgid "Phone number"
 msgstr "Telefoonnummer"
 
-#: admin/page_print_signup.php:195 admin/page_print_signup.php:256
-#: admin/page_print_signup.php:296
+#: admin/page_print_signup.php:200 admin/page_print_signup.php:261
+#: admin/page_print_signup.php:301
 #: blocks/signup-form-parent-details/render.php:44
 #: blocks/signup-form-personal-details/render.php:132
 #: build/signup-form-parent-details/render.php:44
@@ -207,13 +219,15 @@ msgstr "Telefoonnummer"
 #: includes/post-types/signup.php:176 includes/post-types/signup.php:288
 #: blocks/signup-form-parent-details/edit.js:74
 #: blocks/signup-form-personal-details/edit.js:170
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:110
+#: build/signup-form-personal-details/index.js:187
+#: build/signup-form-parent-details/index.js:74
+#: build/signup-form-personal-details/index.js:170
 msgid "Mobile phone number"
 msgstr "Mobiel telefoonnummer"
 
-#: admin/page_print_signup.php:198 admin/page_print_signup.php:257
-#: admin/page_print_signup.php:297
+#: admin/page_print_signup.php:203 admin/page_print_signup.php:262
+#: admin/page_print_signup.php:302
 #: blocks/signup-form-parent-details/render.php:60
 #: blocks/signup-form-personal-details/render.php:154
 #: build/signup-form-parent-details/render.php:60
@@ -221,65 +235,72 @@ msgstr "Mobiel telefoonnummer"
 #: includes/post-types/signup.php:188 includes/post-types/signup.php:296
 #: blocks/signup-form-parent-details/edit.js:100
 #: blocks/signup-form-personal-details/edit.js:207
-#: build/signup-form-parent-details/index.js:1
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-parent-details/index.js:133
+#: build/signup-form-personal-details/index.js:220
+#: build/signup-form-parent-details/index.js:100
+#: build/signup-form-personal-details/index.js:207
 msgid "Email address"
 msgstr "E-mailadres"
 
-#: admin/page_print_signup.php:201
+#: admin/page_print_signup.php:206
 #: blocks/signup-form-personal-details/render.php:148
 #: build/signup-form-personal-details/render.php:148
 #: includes/post-types/signup.php:184
 #: blocks/signup-form-personal-details/edit.js:196
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:210
+#: build/signup-form-personal-details/index.js:196
 msgid "Emergency contact number"
 msgstr "Telefoonnummer in geval van calamiteiten"
 
-#: admin/page_print_signup.php:230 includes/post-types/signup.php:54
+#: admin/page_print_signup.php:235 includes/post-types/signup.php:54
 msgid "Parent details"
 msgstr "Gegevens ouder"
 
-#: admin/page_print_signup.php:232 includes/post-types/signup.php:255
+#: admin/page_print_signup.php:237 includes/post-types/signup.php:255
 msgid "Parent/guardian 1"
 msgstr "Ouder/verzorger 1"
 
-#: admin/page_print_signup.php:272 includes/post-types/signup.php:257
+#: admin/page_print_signup.php:277 includes/post-types/signup.php:257
 msgid "Parent/guardian 2"
 msgstr "Ouder/verzorger 2"
 
-#: admin/page_print_signup.php:315 includes/post-types/signup.php:63
+#: admin/page_print_signup.php:320 includes/post-types/signup.php:63
 msgid "Payment details"
 msgstr "Betaalgegevens"
 
-#: admin/page_print_signup.php:320
+#: admin/page_print_signup.php:325
 msgid "IBAN"
 msgstr "IBAN"
 
-#: admin/page_print_signup.php:323
+#: admin/page_print_signup.php:328
 #: blocks/signup-form-payment-details/render.php:55
 #: build/signup-form-payment-details/render.php:55
 #: includes/post-types/signup.php:376
 #: blocks/signup-form-payment-details/edit.js:90
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:123
+#: build/signup-form-payment-details/index.js:90
 msgid "Account holder name"
 msgstr "Rekeninghouder"
 
-#: admin/page_print_signup.php:326
+#: admin/page_print_signup.php:331
 #: blocks/signup-form-payment-details/render.php:35
 #: build/signup-form-payment-details/render.php:35
 #: includes/post-types/signup.php:367
 #: blocks/signup-form-payment-details/edit.js:17
 #: blocks/signup-form-payment-details/edit.js:66
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:57
+#: build/signup-form-payment-details/index.js:103
+#: build/signup-form-payment-details/index.js:17
+#: build/signup-form-payment-details/index.js:66
 msgid "No payment needed"
 msgstr "Geen betaling nodig"
 
-#: admin/page_print_signup.php:350 includes/post-types/signup.php:72
+#: admin/page_print_signup.php:355 includes/post-types/signup.php:72
 msgid "Additional information"
 msgstr "Aanvullende informatie"
 
 #. translators: %s: Current date and time
-#: admin/page_print_signup.php:366
+#: admin/page_print_signup.php:371
 #, php-format
 msgid "Printed on %s"
 msgstr "Geprint op %s"
@@ -289,26 +310,28 @@ msgstr "Geprint op %s"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: admin/page_settings.php:23
+#: admin/page_settings.php:19
 msgid "Save settings"
 msgstr "Instellingen opslaan"
 
 #: blocks/birthdays/render.php:70 build/birthdays/render.php:70
 #: football-club-manager.php:103 football-club-manager.php:104
 #: includes/post-types/birthday.php:18 blocks/birthdays/edit.js:51
-#: build/birthdays/index.js:1
+#: build/birthdays/index.js:67 build/birthdays/index.js:51
 msgid "Birthdays"
 msgstr "Verjaardagen"
 
 #: blocks/birthdays/render.php:83 build/birthdays/render.php:83
-#: blocks/birthdays/edit.js:53 build/birthdays/index.js:1
+#: blocks/birthdays/edit.js:53 build/birthdays/index.js:69
+#: build/birthdays/index.js:53
 msgid "No birthdays today."
 msgstr "Vandaag is niemand jarig."
 
 #: blocks/results/render.php:60 blocks/team-results/render.php:58
 #: build/results/render.php:60 build/team-results/render.php:58
 #: blocks/results/edit.js:98 blocks/team-results/edit.js:101
-#: build/results/index.js:1 build/team-results/index.js:1
+#: build/results/index.js:117 build/team-results/index.js:110
+#: build/results/index.js:98 build/team-results/index.js:101
 msgid "Results"
 msgstr "Uitslagen"
 
@@ -318,9 +341,11 @@ msgstr "Uitslagen"
 #: build/team-results/render.php:63 build/team-schedule/render.php:66
 #: includes/post-types/match.php:262 blocks/results/edit.js:105
 #: blocks/schedule/edit.js:103 blocks/team-results/edit.js:110
-#: blocks/team-schedule/edit.js:108 build/results/index.js:1
-#: build/schedule/index.js:1 build/team-results/index.js:1
-#: build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:108 build/results/index.js:126
+#: build/schedule/index.js:124 build/team-results/index.js:119
+#: build/team-schedule/index.js:117 build/results/index.js:105
+#: build/schedule/index.js:103 build/team-results/index.js:110
+#: build/team-schedule/index.js:108
 msgid "Date/time"
 msgstr "Datum/tijd"
 
@@ -330,9 +355,11 @@ msgstr "Datum/tijd"
 #: build/team-results/render.php:64 build/team-schedule/render.php:67
 #: includes/post-types/match.php:16 blocks/results/edit.js:106
 #: blocks/schedule/edit.js:104 blocks/team-results/edit.js:111
-#: blocks/team-schedule/edit.js:109 build/results/index.js:1
-#: build/schedule/index.js:1 build/team-results/index.js:1
-#: build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:109 build/results/index.js:129
+#: build/schedule/index.js:127 build/team-results/index.js:122
+#: build/team-schedule/index.js:120 build/results/index.js:106
+#: build/schedule/index.js:104 build/team-results/index.js:111
+#: build/team-schedule/index.js:109
 msgid "Match"
 msgstr "Wedstrijd"
 
@@ -343,22 +370,26 @@ msgstr "Wedstrijd"
 #: includes/post-types/match.php:160 includes/post-types/referee.php:31
 #: blocks/results/edit.js:107 blocks/schedule/edit.js:105
 #: blocks/team-results/edit.js:112 blocks/team-schedule/edit.js:110
-#: build/results/index.js:1 build/schedule/index.js:1
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: build/results/index.js:131 build/schedule/index.js:129
+#: build/team-results/index.js:124 build/team-schedule/index.js:122
+#: build/results/index.js:107 build/schedule/index.js:105
+#: build/team-results/index.js:112 build/team-schedule/index.js:110
 msgid "Referee"
 msgstr "Scheidsrechter"
 
 #: blocks/results/render.php:123 blocks/schedule/render.php:114
 #: build/results/render.php:123 build/schedule/render.php:114
 #: blocks/results/edit.js:100 blocks/schedule/edit.js:98
-#: build/results/index.js:1 build/schedule/index.js:1
+#: build/results/index.js:119 build/schedule/index.js:117
+#: build/results/index.js:100 build/schedule/index.js:98
 msgid "No matches found."
 msgstr "Geen wedstrijden gevonden."
 
 #: blocks/schedule/render.php:62 blocks/team-schedule/render.php:61
 #: build/schedule/render.php:62 build/team-schedule/render.php:61
 #: blocks/schedule/edit.js:96 blocks/team-schedule/edit.js:99
-#: build/schedule/index.js:1 build/team-schedule/index.js:1
+#: build/schedule/index.js:115 build/team-schedule/index.js:108
+#: build/schedule/index.js:96 build/team-schedule/index.js:99
 msgid "Upcoming matches"
 msgstr "Speelschema"
 
@@ -366,7 +397,8 @@ msgstr "Speelschema"
 #: build/signup-form-payment-details/render.php:23
 #: includes/post-types/signup.php:363
 #: blocks/signup-form-payment-details/edit.js:56
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:94
+#: build/signup-form-payment-details/index.js:56
 msgid "Payment method"
 msgstr "Betaalmethode"
 
@@ -382,7 +414,10 @@ msgstr "Selecteer…"
 #: includes/post-types/signup.php:366
 #: blocks/signup-form-payment-details/edit.js:16
 #: blocks/signup-form-payment-details/edit.js:63
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:54
+#: build/signup-form-payment-details/index.js:100
+#: build/signup-form-payment-details/index.js:16
+#: build/signup-form-payment-details/index.js:63
 msgid "Direct debit"
 msgstr "Automatische incasso"
 
@@ -390,7 +425,8 @@ msgstr "Automatische incasso"
 #: build/signup-form-payment-details/render.php:48
 #: includes/post-types/signup.php:372
 #: blocks/signup-form-payment-details/edit.js:78
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:113
+#: build/signup-form-payment-details/index.js:78
 msgid "Bank account (IBAN)"
 msgstr "Bankrekeningnummer (IBAN)"
 
@@ -398,7 +434,8 @@ msgstr "Bankrekeningnummer (IBAN)"
 #: build/signup-form-payment-details/render.php:66
 #: includes/post-types/signup.php:380
 #: blocks/signup-form-payment-details/edit.js:106
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:136
+#: build/signup-form-payment-details/index.js:106
 msgid "Reason"
 msgstr "Reden"
 
@@ -406,7 +443,8 @@ msgstr "Reden"
 #: build/signup-form-personal-details/render.php:70
 #: includes/post-types/signup.php:141
 #: blocks/signup-form-personal-details/edit.js:87
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:108
+#: build/signup-form-personal-details/index.js:87
 msgid "Male"
 msgstr "Man"
 
@@ -426,7 +464,8 @@ msgstr "Genderneutraal"
 #: build/signup-form-personal-details/render.php:95
 #: includes/post-types/signup.php:152
 #: blocks/signup-form-personal-details/edit.js:110
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:131
+#: build/signup-form-personal-details/index.js:110
 msgid "Street"
 msgstr "Straat"
 
@@ -434,7 +473,8 @@ msgstr "Straat"
 #: build/signup-form-personal-details/render.php:102
 #: includes/post-types/signup.php:156
 #: blocks/signup-form-personal-details/edit.js:122
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:143
+#: build/signup-form-personal-details/index.js:122
 msgid "House number"
 msgstr "Huisnummer"
 
@@ -442,7 +482,8 @@ msgstr "Huisnummer"
 #: build/signup-form-personal-details/render.php:109
 #: includes/post-types/signup.php:160
 #: blocks/signup-form-personal-details/edit.js:133
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:153
+#: build/signup-form-personal-details/index.js:133
 msgid "House number addition"
 msgstr "Huisnummer toevoeging"
 
@@ -450,7 +491,8 @@ msgstr "Huisnummer toevoeging"
 #: build/signup-form-personal-details/render.php:117
 #: includes/post-types/signup.php:164
 #: blocks/signup-form-personal-details/edit.js:145
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:164
+#: build/signup-form-personal-details/index.js:145
 msgid "Postal code"
 msgstr "Postcode"
 
@@ -458,12 +500,14 @@ msgstr "Postcode"
 #: build/signup-form-personal-details/render.php:123
 #: includes/post-types/signup.php:168
 #: blocks/signup-form-personal-details/edit.js:156
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:174
+#: build/signup-form-personal-details/index.js:156
 msgid "City"
 msgstr "Plaats"
 
 #: blocks/signup-form-terms/render.php:10 build/signup-form-terms/render.php:10
-#: blocks/signup-form-terms/edit.js:31 build/signup-form-terms/index.js:1
+#: blocks/signup-form-terms/edit.js:31 build/signup-form-terms/index.js:64
+#: build/signup-form-terms/index.js:31
 msgid "I agree to the terms and conditions."
 msgstr "Ik ga akkoord met de algemene voorwaarden."
 
@@ -476,20 +520,23 @@ msgstr ""
 
 #. translators: %s is the team name
 #: blocks/team-players/render.php:36 build/team-players/render.php:36
-#: blocks/team-players/edit.js:89 build/team-players/index.js:1
+#: blocks/team-players/edit.js:89 build/team-players/index.js:104
+#: build/team-players/index.js:89
 #, php-format
 msgid "Players of %s"
 msgstr "Spelers van %s"
 
 #: blocks/team-players/render.php:63 build/team-players/render.php:63
-#: blocks/team-players/edit.js:98 build/team-players/index.js:1
+#: blocks/team-players/edit.js:98 build/team-players/index.js:106
+#: build/team-players/index.js:98
 msgid "No players found for this team."
 msgstr "Geen spelers gevonden voor dit team."
 
 #: blocks/team-results/render.php:116 blocks/team-schedule/render.php:107
 #: build/team-results/render.php:116 build/team-schedule/render.php:107
 #: blocks/team-results/edit.js:104 blocks/team-schedule/edit.js:102
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: build/team-results/index.js:112 build/team-schedule/index.js:110
+#: build/team-results/index.js:104 build/team-schedule/index.js:102
 msgid "No matches found for this team."
 msgstr "Geen wedstrijden gevonden voor dit team."
 
@@ -630,7 +677,8 @@ msgstr "Uitwedstrijd"
 
 #: includes/post-types/match.php:127 includes/post-types/player.php:132
 #: includes/post-types/player.php:202 includes/post-types/team.php:39
-#: blocks/team-players/edit.js:93 build/team-players/index.js:1
+#: blocks/team-players/edit.js:93 build/team-players/index.js:104
+#: build/team-players/index.js:93
 msgid "Team"
 msgstr "Team"
 
@@ -659,7 +707,7 @@ msgid "Result"
 msgstr "Uitslag"
 
 #: includes/post-types/player.php:19 includes/post-types/signup.php:106
-#: includes/post-types/signup.php:519
+#: includes/post-types/signup.php:520
 msgid "Player"
 msgstr "Speler"
 
@@ -771,14 +819,15 @@ msgstr "Zoek inschrijving"
 msgid "Tools"
 msgstr "Hulpmiddelen"
 
-#: includes/post-types/signup.php:103 includes/post-types/signup.php:503
+#: includes/post-types/signup.php:103 includes/post-types/signup.php:504
 msgid "Type"
 msgstr "Type"
 
-#: includes/post-types/signup.php:107 includes/post-types/signup.php:521
+#: includes/post-types/signup.php:107 includes/post-types/signup.php:522
 #: includes/post-types/volunteer.php:18
 #: blocks/signup-form-payment-details/edit.js:110
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:139
+#: build/signup-form-payment-details/index.js:110
 msgid "Volunteer"
 msgstr "Vrijwilliger"
 
@@ -801,7 +850,7 @@ msgstr ""
 "Er zijn geen extra velden gedefinieerd. Je kunt extra velden definiëren op "
 "de instellingenpagina."
 
-#: includes/post-types/signup.php:495
+#: includes/post-types/signup.php:496
 msgid "Print"
 msgstr "Afdrukken"
 
@@ -901,179 +950,206 @@ msgstr "Zoek vrijwilliger"
 msgid "Volunteer information"
 msgstr "Vrijwilligersinformatie"
 
-#: includes/settings.php:87
+#: includes/settings.php:119
 msgid "Player Settings"
 msgstr "Speler instellingen"
 
-#: includes/settings.php:88
+#: includes/settings.php:120
 msgid "Volunteer Settings"
 msgstr "Vrijwilliger instellingen"
 
-#: includes/settings.php:89
+#: includes/settings.php:121
 msgid "Referee Settings"
 msgstr "Scheidsrechter instellingen"
 
-#: includes/settings.php:103
+#: includes/settings.php:135
 msgid "Publish birthday by default"
 msgstr "Publiceer standaard geboortedatum"
 
-#: includes/settings.php:113 includes/settings.php:132
+#: includes/settings.php:145 includes/settings.php:164
 msgid "Publish age by default"
 msgstr "Publiceer standaard leeftijd"
 
-#: includes/settings.php:124
+#: includes/settings.php:156
 msgid "Birthday Settings"
 msgstr "Verjaardag instellingen"
 
-#: includes/settings.php:142
+#: includes/settings.php:174
 msgid "Signup Settings"
 msgstr "Inschrijfinstellingen"
 
-#: includes/settings.php:150
+#: includes/settings.php:182
 msgid "Extra Fields"
 msgstr "Extra velden"
 
-#: includes/settings.php:156
+#: includes/settings.php:189
 msgid ""
-"Define extra fields for the signup form. One field per line. These fields "
-"will be added to the \"Additional Information\" section of the signup form."
+"Define extra fields for the signup form. These fields will be added to the "
+"\"Additional Information\" section of the signup form."
 msgstr ""
-"Definieer extra velden voor het inschrijfformulier. Eén veld per regel. Deze "
-"velden worden toegevoegd aan het gedeelte “Aanvullende informatie” van het "
+"Definieer extra velden voor het inschrijfformulier. Deze velden worden "
+"toegevoegd aan het gedeelte “Aanvullende informatie” van het "
 "inschrijfformulier."
 
-#: includes/settings.php:163
+#: includes/settings.php:196
 msgid "Require parents till age"
 msgstr "Verplicht ouders tot leeftijd"
 
-#: includes/settings.php:169
+#: includes/settings.php:202
 msgid "Set the age until which parents are required for the signup form."
 msgstr ""
 "Stel de leeftijd in tot welke ouders verplicht zijn op het "
 "inschrijfformulier."
 
-#: includes/settings.php:176
+#: includes/settings.php:209
 msgid "Captcha provider"
 msgstr "Captcha-aanbieder"
 
-#: includes/settings.php:182
+#: includes/settings.php:215
 msgid "Select the captcha provider to use for the signup form."
 msgstr ""
 "Selecteer de captcha-aanbieder die u voor het inschrijfformulier wilt "
 "gebruiken."
 
-#: includes/settings.php:183
+#: includes/settings.php:216
 msgid "None"
 msgstr "Geen"
 
 #: blocks/results/edit.js:69 blocks/schedule/edit.js:67
-#: build/results/index.js:1 build/schedule/index.js:1
+#: build/results/index.js:94 build/schedule/index.js:92
+#: build/results/index.js:69 build/schedule/index.js:67
 msgid "Query"
 msgstr "Query"
 
 #: blocks/results/edit.js:73 blocks/schedule/edit.js:71
-#: build/results/index.js:1 build/schedule/index.js:1
+#: build/results/index.js:97 build/schedule/index.js:95
+#: build/results/index.js:73 build/schedule/index.js:71
 msgid "Number of items"
 msgstr "Aantal items"
 
-#: blocks/results/edit.js:78 build/results/index.js:1
+#: blocks/results/edit.js:78 build/results/index.js:102
+#: build/results/index.js:78
 msgid "Select the maximum number of results to show."
 msgstr "Selecteer het maximum aantal resultaten om te tonen."
 
 #: blocks/results/edit.js:84 blocks/schedule/edit.js:82
-#: build/results/index.js:1 build/schedule/index.js:1
+#: build/results/index.js:104 build/schedule/index.js:102
+#: build/results/index.js:84 build/schedule/index.js:82
 msgid "Number of days"
 msgstr "Aantal dagen"
 
-#: blocks/results/edit.js:89 build/results/index.js:1
+#: blocks/results/edit.js:89 build/results/index.js:109
+#: build/results/index.js:89
 msgid "Select the number of days to search back for results."
 msgstr "Selecteer het aantal dagen om terug te zoeken naar uitslagen."
 
-#: blocks/schedule/edit.js:76 build/schedule/index.js:1
+#: blocks/schedule/edit.js:76 build/schedule/index.js:100
+#: build/schedule/index.js:76
 msgid "Select the maximum number of matches to show."
 msgstr "Selecteer het maximum aantal wedstrijden om te tonen."
 
-#: blocks/schedule/edit.js:87 build/schedule/index.js:1
+#: blocks/schedule/edit.js:87 build/schedule/index.js:107
+#: build/schedule/index.js:87
 msgid "Select the number of days to search for matches."
 msgstr "Selecteer het aantal dagen om vooruit te zoeken naar wedstrijden."
 
 #: blocks/signup-form-additional-information/edit.js:15
-#: build/signup-form-additional-information/index.js:1
+#: build/signup-form-additional-information/index.js:45
+#: build/signup-form-additional-information/index.js:15
 msgid "How did you hear about us? (example)"
 msgstr "Hoe heb je over ons gehoord? (voorbeeld)"
 
 #: blocks/signup-form-additional-information/edit.js:25
-#: build/signup-form-additional-information/index.js:1
+#: build/signup-form-additional-information/index.js:55
+#: build/signup-form-additional-information/index.js:25
 msgid "Have you played for another football club? (example)"
 msgstr "Heb je voor een andere voetbalclub gespeeld? (voorbeeld)"
 
-#: blocks/signup-form-button/edit.js:15 build/signup-form-button/index.js:1
+#: blocks/signup-form-button/edit.js:15 build/signup-form-button/index.js:49
+#: build/signup-form-button/index.js:15
 msgid "Sign up"
 msgstr "Inschrijven"
 
-#: blocks/signup-form-captcha/edit.js:14 build/signup-form-captcha/index.js:1
+#: blocks/signup-form-captcha/edit.js:14 build/signup-form-captcha/index.js:49
+#: build/signup-form-captcha/index.js:14
 msgid "Captcha will be displayed here on the frontend"
 msgstr "Hier wordt op de frontend een captcha weergegeven"
 
 #: blocks/signup-form-parent-details/edit.js:13
-#: build/signup-form-parent-details/index.js:1
+#: build/signup-form-parent-details/index.js:49
+#: build/signup-form-parent-details/index.js:13
 msgid "Parent 1"
 msgstr "Ouder 1"
 
 #: blocks/signup-form-parent-details/edit.js:14
-#: build/signup-form-parent-details/index.js:1
+#: build/signup-form-parent-details/index.js:52
+#: build/signup-form-parent-details/index.js:14
 msgid "Parent 2"
 msgstr "Ouder 2"
 
 #: blocks/signup-form-parent-details/edit.js:20
-#: build/signup-form-parent-details/index.js:1
+#: build/signup-form-parent-details/index.js:57
+#: build/signup-form-parent-details/index.js:20
 msgid "Parent Selection"
 msgstr "Ouder Selectie"
 
 #: blocks/signup-form-parent-details/edit.js:22
-#: build/signup-form-parent-details/index.js:1
+#: build/signup-form-parent-details/index.js:59
+#: build/signup-form-parent-details/index.js:22
 msgid "Select Parent"
 msgstr "Selecteer een ouder"
 
 #: blocks/signup-form-payment-details/edit.js:38
-#: build/signup-form-payment-details/index.js:1
+#: build/signup-form-payment-details/index.js:80
+#: build/signup-form-payment-details/index.js:38
 msgid "Payment Methods"
 msgstr "Betaalmethode"
 
 #: blocks/signup-form-personal-details/edit.js:100
-#: build/signup-form-personal-details/index.js:1
+#: build/signup-form-personal-details/index.js:121
+#: build/signup-form-personal-details/index.js:100
 msgid "Dutch"
 msgstr "Nederlandse"
 
-#: blocks/team-players/edit.js:48 build/team-players/index.js:1
+#: blocks/team-players/edit.js:48 build/team-players/index.js:73
+#: build/team-players/index.js:48
 msgid "Player Name"
 msgstr "Naam Speler"
 
 #: blocks/team-players/edit.js:54 blocks/team-results/edit.js:68
-#: blocks/team-schedule/edit.js:66 build/team-players/index.js:1
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:66 build/team-players/index.js:76
+#: build/team-results/index.js:82 build/team-schedule/index.js:80
+#: build/team-players/index.js:54 build/team-results/index.js:68
+#: build/team-schedule/index.js:66
 msgid "Select a team"
 msgstr "Selecteer een team"
 
 #: blocks/team-players/edit.js:66 blocks/team-results/edit.js:80
-#: blocks/team-schedule/edit.js:78 build/team-players/index.js:1
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:78 build/team-players/index.js:85
+#: build/team-results/index.js:91 build/team-schedule/index.js:89
+#: build/team-players/index.js:66 build/team-results/index.js:80
+#: build/team-schedule/index.js:78
 msgid "Team Settings"
 msgstr "Team Instellingen"
 
 #: blocks/team-players/edit.js:70 blocks/team-results/edit.js:84
-#: blocks/team-schedule/edit.js:82 build/team-players/index.js:1
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:82 build/team-players/index.js:88
+#: build/team-results/index.js:94 build/team-schedule/index.js:92
+#: build/team-players/index.js:70 build/team-results/index.js:84
+#: build/team-schedule/index.js:82
 msgid "Loading teams..."
 msgstr "Teams laden…"
 
 #: blocks/team-players/edit.js:73 blocks/team-results/edit.js:87
-#: blocks/team-schedule/edit.js:85 build/team-players/index.js:1
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: blocks/team-schedule/edit.js:85 build/team-players/index.js:90
+#: build/team-results/index.js:96 build/team-schedule/index.js:94
+#: build/team-players/index.js:73 build/team-results/index.js:87
+#: build/team-schedule/index.js:85
 msgid "Choose a team..."
 msgstr "Kies een team…"
 
-#: blocks/team-players/edit.js:77 build/team-players/index.js:1
+#: blocks/team-players/edit.js:77 build/team-players/index.js:96
+#: build/team-players/index.js:77
 msgid ""
 "If you add the component to a team page, you don't need to set this field. "
 "It will automatically show the players of the current team."
@@ -1083,7 +1159,8 @@ msgstr ""
 "team."
 
 #: blocks/team-results/edit.js:91 blocks/team-schedule/edit.js:89
-#: build/team-results/index.js:1 build/team-schedule/index.js:1
+#: build/team-results/index.js:102 build/team-schedule/index.js:100
+#: build/team-results/index.js:91 build/team-schedule/index.js:89
 msgid ""
 "If you add the component to a team page, you don't need to set this field. "
 "It will automatically show the matches of the current team."
@@ -1092,25 +1169,29 @@ msgstr ""
 "ingesteld te worden. Het wordt dan automatisch gevuld met de wedstrijden van "
 "dat team."
 
-#: public/js/import.js:49
+#: public/js/import.js:51
 msgid "File type not supported"
 msgstr "Bestandstype niet ondersteund"
 
-#: public/js/import.js:71
+#: public/js/import.js:73
 msgid "File is empty"
 msgstr "Bestand is leeg"
 
-#: public/js/import.js:137
+#: public/js/import.js:139
 msgid "Must equal value:"
 msgstr "Moet gelijk zijn aan waarde:"
 
-#: public/js/import.js:299
+#: public/js/import.js:301
 msgid "Import failed!"
 msgstr "Importeren mislukt!"
 
-#: public/js/import.js:301
+#: public/js/import.js:303
 msgid "Import complete!"
 msgstr "Importeren voltooid!"
+
+#: public/js/settings.js:75
+msgid "Add Row"
+msgstr "Regel Toevoegen"
 
 #: blocks/birthdays/block.json build/birthdays/block.json
 msgctxt "block title"
@@ -1288,3 +1369,6 @@ msgstr "Team Speelschema"
 msgctxt "block description"
 msgid "Show an overview of the upcoming matches of a team."
 msgstr "Toon een overzicht van de aankomende wedstrijden van een team."
+
+#~ msgid "Label"
+#~ msgstr "Label"

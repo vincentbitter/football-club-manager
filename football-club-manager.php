@@ -226,6 +226,7 @@ function fcmanager_enqueue_admin_scripts($hook)
 
     wp_enqueue_script('fcmanager-import', plugin_dir_url(__FILE__) . 'public/js/import.js', ['papaparse', 'wp-i18n'], FCMANAGER_VERSION, true);
     wp_enqueue_script('fcmanager-signup', plugin_dir_url(__FILE__) . 'public/js/signup.js', ['jquery'], FCMANAGER_VERSION, true);
+    wp_enqueue_script('fcmanager-settings', plugin_dir_url(__FILE__) . 'public/js/settings.js', [], FCMANAGER_VERSION, true);
 
     wp_enqueue_style('fcmanager-admin', plugin_dir_url(__FILE__) . 'public/css/admin.css', false, FCMANAGER_VERSION);
 }

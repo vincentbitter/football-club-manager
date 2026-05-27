@@ -6,6 +6,8 @@ function fcmanager_init_ui() {
     const dropzone = document.getElementById('fcm-dropzone');
     const fileInput = document.getElementById('fcm-file-input');
 
+    if (!dropzone || !fileInput) return;
+
     dropzone.addEventListener('dragover', e => {
         e.preventDefault();
         dropzone.classList.add('dragover');
