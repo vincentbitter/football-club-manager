@@ -10,7 +10,8 @@ function fcmanager_page_print_signup()
 
     if (
         ! current_user_can('edit_post', $post_id)
-        || ! wp_verify_nonce(sanitize_text_field($_GET['_wpnonce']) ?? '', 'fcmanager_print_' . $post_id)
+        || !isset($_GET['_wpnonce'])
+        || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])) ?? '', 'fcmanager_print_' . $post_id)
     ) {
         wp_die(esc_html__('Access denied.', 'football-club-manager'));
     }
@@ -368,7 +369,7 @@ function fcmanager_page_print_signup()
         <p class="fcmanager-print-footer">
             <?php
             /* translators: %s: Current date and time */
-            echo esc_html(sprintf(__('Printed on %s', 'football-club-manager'), date('d-m-Y H:i')));
+            echo esc_html(sprintf(__('Printed on %s', 'football-club-manager'), wp_date('d-m-Y H:i')));
             ?>
         </p>
     </body>
