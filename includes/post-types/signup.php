@@ -562,7 +562,7 @@ function fcmanager_signup_notification_settings(WP_User $user)
             <tr>
                 <th><label for="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>"><?php printf(esc_html__('Notification on %s signup', 'football-club-manager'), strtolower(FCManager_SignupType::esc_html__($signup_type))); ?></label></th>
                 <td class="fcmanager-notification-signup">
-                    <select name=" fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>" id="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>">
+                    <select name="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>" id="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>">
                         <option value="" <?php selected($value, ''); ?>><?php esc_html_e('Off', 'football-club-manager'); ?></option>
                         <option value="immediately" <?php selected($value, 'immediately'); ?>><?php esc_html_e('Immediately', 'football-club-manager'); ?></option>
                         <option value="daily" <?php selected($value, 'daily'); ?>><?php esc_html_e('Daily summary', 'football-club-manager'); ?></option>
@@ -599,7 +599,7 @@ function fcmanager_save_signup_notification_settings(int $user_id)
         update_user_meta(
             $user_id,
             'fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data',
-            sanitize_text_field($_POST['fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data']),
+            isset($_POST['fcmanager_notification_signup_' . $signup_type . '_include_data']) ? 'true' : 'false',
         );
     }
 }
