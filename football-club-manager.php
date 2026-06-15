@@ -50,6 +50,10 @@ require_once('endpoints/import/process.php');
 // Register import parsers
 require_once('includes/import/parsers/class-csv-parser.php');
 
+// Crons
+require_once('includes/cron/class-notification-immediately-cron.php');
+require_once('includes/cron/class-notification-daily-cron.php');
+
 // Register administration menu
 function fcmanager_register_administration_menu()
 {
@@ -248,15 +252,29 @@ add_action('admin_menu', 'fcmanager_admin_menu', 10);
 // On activation
 function fcmanager_activated()
 {
+    fcmanager_register_crons();
+
     fcmanager_init();
     flush_rewrite_rules();
 }
 
 register_activation_hook(__FILE__, 'fcmanager_activated');
 
+// On update
+add_action('plugins_loaded', function () {
+    $stored = get_option('fcmanager_version');
+
+    if ($stored !== FCMANAGER_VERSION) {
+        fcmanager_register_crons();
+        update_option('fcmanager_version', FCMANAGER_VERSION);
+    }
+});
+
 // On deactivation
 function fcmanager_deactivated()
 {
+    fcmanager_unregister_crons();
+
     // Unregister post types before refreshing rewrite rules
     fcmanager_unregister_team_post_type();
     fcmanager_unregister_player_post_type();
@@ -319,3 +337,32 @@ add_filter('admin_title', function ($admin_title, $title) {
     }
     return $admin_title;
 }, 10, 2);
+
+// Crons
+add_filter('cron_schedules', function ($schedules) {
+    $schedules['five_minutes'] = [
+        'interval' => 5 * 60,
+        'display'  => __('Every 5 Minutes'),
+    ];
+    return $schedules;
+});
+
+add_action('fcmanager_cron_notification_immediately', [FCManager_Notification_Immediately_Cron::class, 'run']);
+add_action('fcmanager_cron_notification_daily', [FCManager_Notification_Daily_Cron::class, 'run']);
+
+function fcmanager_register_crons()
+{
+    if (!wp_next_scheduled('fcmanager_cron_notification_immediately')) {
+        wp_schedule_event(time(), 'five_minutes', 'fcmanager_cron_notification_immediately');
+    }
+
+    if (!wp_next_scheduled('fcmanager_cron_notification_daily')) {
+        wp_schedule_event(time(), 'daily', 'fcmanager_cron_notification_daily');
+    }
+}
+
+function fcmanager_unregister_crons()
+{
+    wp_clear_scheduled_hook('fcmanager_cron_notification_immediately');
+    wp_clear_scheduled_hook('fcmanager_cron_notification_daily');
+}
