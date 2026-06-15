@@ -11,5 +11,5 @@ function fcmanager_notification_signup_init(container) {
 }
 
 function fcmanager_notification_signup_toggle_include_data_field(checkbox, select) {
-    checkbox.style.visibility = (select.value === 'immediately' ? 'visible' : 'hidden');
+    checkbox.style.display = (select.value === 'immediately' ? 'block' : 'none');
 }
