@@ -2,10 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.fcmanager-structured-list').forEach(fcmanager_settings_structured_list_init);
 });
 
-function createStructuredListTable() {
-
-}
-
 function fcmanager_settings_structured_list_init(container) {
     const hiddenInput = container.querySelector('input[type="hidden"]');
     let rows = JSON.parse(hiddenInput.value || '[]');
