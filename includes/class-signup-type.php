@@ -30,8 +30,13 @@ class FCManager_SignupType
         }
     }
 
+    public static function esc_html__(string $value): string
+    {
+        return esc_html(self::__($value));
+    }
+
     public static function esc_html_e(string $value): void
     {
-        echo esc_html(self::__($value));
+        echo self::esc_html__($value);
     }
 }

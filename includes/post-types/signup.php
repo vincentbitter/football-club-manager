@@ -546,3 +546,63 @@ function fcmanager_handle_print_signup()
     fcmanager_page_print_signup();
     exit;
 }
+
+function fcmanager_signup_notification_settings(WP_User $user)
+{
+    if (!current_user_can('edit_posts'))
+        return;
+?>
+    <h2><?php esc_html_e('Notifications', 'football-club-manager'); ?></h2>
+    <table class="form-table">
+        <?php
+        foreach (FCManager_SignupType::values() as $signup_type) :
+            $value = get_user_meta($user->ID, 'fcmanager_notification_signup_' . esc_attr($signup_type), true);
+            $value_include_data = get_user_meta($user->ID, 'fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data', true);
+        ?>
+            <tr>
+                <th><label for="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>"><?php printf(esc_html__('Notification on %s signup', 'football-club-manager'), strtolower(FCManager_SignupType::esc_html__($signup_type))); ?></label></th>
+                <td class="fcmanager-notification-signup">
+                    <select name=" fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>" id="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>">
+                        <option value="" <?php selected($value, ''); ?>><?php esc_html_e('Off', 'football-club-manager'); ?></option>
+                        <option value="immediately" <?php selected($value, 'immediately'); ?>><?php esc_html_e('Immediately', 'football-club-manager'); ?></option>
+                        <option value="daily" <?php selected($value, 'daily'); ?>><?php esc_html_e('Daily summary', 'football-club-manager'); ?></option>
+                    </select><br />
+                    <label class="fcmanager-notification-signup-include-data">
+                        <input type="checkbox" name="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>_include_data" value="true" <?php checked($value_include_data, 'true'); ?>>
+                        <?php esc_html_e('Include provided data in email', 'football-club-manager'); ?>
+                    </label>
+                </td>
+            </tr>
+        <?php
+        endforeach;
+        ?>
+    </table>
+<?php
+}
+
+add_action('show_user_profile', 'fcmanager_signup_notification_settings');
+add_action('edit_user_profile', 'fcmanager_signup_notification_settings');
+
+function fcmanager_save_signup_notification_settings(int $user_id)
+{
+
+    if (! current_user_can('edit_user', $user_id) || !current_user_can('edit_posts')) {
+        return false;
+    }
+
+    foreach (FCManager_SignupType::values() as $signup_type) {
+        update_user_meta(
+            $user_id,
+            'fcmanager_notification_signup_' . esc_attr($signup_type),
+            sanitize_text_field($_POST['fcmanager_notification_signup_' . esc_attr($signup_type)]),
+        );
+        update_user_meta(
+            $user_id,
+            'fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data',
+            sanitize_text_field($_POST['fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data']),
+        );
+    }
+}
+
+add_action('personal_options_update', 'fcmanager_save_signup_notification_settings');
+add_action('edit_user_profile_update', 'fcmanager_save_signup_notification_settings');
