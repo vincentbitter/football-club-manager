@@ -32,7 +32,7 @@ class FCManager_Signup
     public function __construct($id_or_post = null)
     {
         $this->set_id($id_or_post);
-        $this->type = get_post_meta($this->id, '_fcmanager_signup_type', true) ?: 'player';
+        $this->type = get_post_meta($this->id, '_fcmanager_signup_type', true) ?: FCManager_SignupType::PLAYER;
         $this->subtype = get_post_meta($this->id, '_fcmanager_signup_subtype', true) ?: '';
 
         $this->personal_details = new FCManager_Signup_Personal_Details($this->id);
@@ -40,6 +40,11 @@ class FCManager_Signup
         $this->parent2 = new FCManager_Signup_Parent($this->id, 2);
         $this->payment_details = new FCManager_Signup_Payment_Details($this->id);
         $this->additional_information = new FCManager_Signup_Additional_Information($this->id);
+    }
+
+    public function id(): int
+    {
+        return $this->id;
     }
 
     private function set_id($id_or_post)

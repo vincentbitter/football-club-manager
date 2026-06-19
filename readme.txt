@@ -20,6 +20,7 @@ With this plugin, you can:
 - 📅 Publish match schedule and results
 - 🙋‍♂️ Manage volunteers and referees
 - 📝 New players and volunteers can sign up
+- 🔔 Receive notifications on sign up
 - 🧩 Customizable blocks for Gutenberg editor
 - 🌍 Multilingual support
 
@@ -83,6 +84,9 @@ You can add signup forms in the Gutenberg editor and customize those to your nee
 
 = What happens if someone signs up via the signup form? =
 The data is stored as a new 'signup' you can find in the Wordpress admin area (Football Club Manager -> Signups). Because of GDPR and other privacy/security regulations, it is not advised to store all personal data in Wordpress for a long time. Instead, you can verify the registration and copy the data to a separate CRM system. After processing the data, remove it from Wordpress. Need automation? Create a plugin for Football Club Manager that forwards the signup data to your CRM system.
+
+= How do I setup e-mail notifications on new sign ups? =
+Go to your user profile in WordPress and at the bottom you will see the options to set notifications per sign up type. To setup notifications to another email address, edit the user with that email address or create a new one. The edit screen also contains the notification options at the bottom, just like in your own profile page.
 
 == Changelog ==
 

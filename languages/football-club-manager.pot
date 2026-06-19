@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-27T22:23:02+00:00\n"
+"POT-Creation-Date: 2026-06-19T18:49:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
 
 #. Plugin Name of the plugin
 #: football-club-manager.php
-#: football-club-manager.php:293
+#: football-club-manager.php:312
 msgid "Football Club Manager"
 msgstr ""
 
@@ -54,10 +54,10 @@ msgstr ""
 
 #: admin/page_import.php:41
 #: admin/page_import.php:75
-#: football-club-manager.php:139
-#: football-club-manager.php:140
-#: football-club-manager.php:308
-#: football-club-manager.php:317
+#: football-club-manager.php:143
+#: football-club-manager.php:144
+#: football-club-manager.php:327
+#: football-club-manager.php:336
 msgid "Import"
 msgstr ""
 
@@ -85,12 +85,12 @@ msgstr ""
 msgid "Access denied."
 msgstr ""
 
-#: admin/page_print_signup.php:106
+#: admin/page_print_signup.php:122
 #: includes/post-types/signup.php:45
 msgid "Personal details"
 msgstr ""
 
-#: admin/page_print_signup.php:113
+#: admin/page_print_signup.php:129
 #: blocks/signup-form-personal-details/render.php:28
 #: build/signup-form-personal-details/render.php:28
 #: includes/post-types/signup.php:120
@@ -100,9 +100,9 @@ msgstr ""
 msgid "Initials"
 msgstr ""
 
-#: admin/page_print_signup.php:114
-#: admin/page_print_signup.php:243
-#: admin/page_print_signup.php:283
+#: admin/page_print_signup.php:130
+#: admin/page_print_signup.php:259
+#: admin/page_print_signup.php:299
 #: blocks/signup-form-parent-details/render.php:19
 #: blocks/signup-form-personal-details/render.php:18
 #: build/signup-form-parent-details/render.php:19
@@ -115,7 +115,7 @@ msgstr ""
 #: includes/post-types/referee.php:199
 #: includes/post-types/signup.php:116
 #: includes/post-types/signup.php:275
-#: includes/post-types/signup.php:505
+#: includes/post-types/signup.php:502
 #: includes/post-types/volunteer.php:110
 #: includes/post-types/volunteer.php:186
 #: blocks/signup-form-parent-details/edit.js:34
@@ -127,9 +127,9 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: admin/page_print_signup.php:115
-#: admin/page_print_signup.php:244
-#: admin/page_print_signup.php:284
+#: admin/page_print_signup.php:131
+#: admin/page_print_signup.php:260
+#: admin/page_print_signup.php:300
 #: blocks/signup-form-parent-details/render.php:28
 #: blocks/signup-form-personal-details/render.php:35
 #: build/signup-form-parent-details/render.php:28
@@ -145,9 +145,9 @@ msgstr ""
 msgid "Middle name"
 msgstr ""
 
-#: admin/page_print_signup.php:116
-#: admin/page_print_signup.php:245
-#: admin/page_print_signup.php:285
+#: admin/page_print_signup.php:132
+#: admin/page_print_signup.php:261
+#: admin/page_print_signup.php:301
 #: blocks/signup-form-parent-details/render.php:35
 #: blocks/signup-form-personal-details/render.php:43
 #: build/signup-form-parent-details/render.php:35
@@ -160,7 +160,7 @@ msgstr ""
 #: includes/post-types/referee.php:200
 #: includes/post-types/signup.php:128
 #: includes/post-types/signup.php:283
-#: includes/post-types/signup.php:506
+#: includes/post-types/signup.php:503
 #: includes/post-types/volunteer.php:114
 #: includes/post-types/volunteer.php:187
 #: blocks/signup-form-parent-details/edit.js:60
@@ -172,11 +172,11 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: admin/page_print_signup.php:137
+#: admin/page_print_signup.php:153
 msgid "Address"
 msgstr ""
 
-#: admin/page_print_signup.php:165
+#: admin/page_print_signup.php:181
 #: blocks/signup-form-personal-details/render.php:52
 #: build/signup-form-personal-details/render.php:52
 #: includes/post-types/birthday.php:102
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Date of birth"
 msgstr ""
 
-#: admin/page_print_signup.php:168
+#: admin/page_print_signup.php:184
 #: blocks/signup-form-personal-details/render.php:64
 #: build/signup-form-personal-details/render.php:64
 #: includes/post-types/signup.php:138
@@ -200,7 +200,7 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: admin/page_print_signup.php:171
+#: admin/page_print_signup.php:187
 #: blocks/signup-form-personal-details/render.php:86
 #: build/signup-form-personal-details/render.php:86
 #: includes/post-types/signup.php:148
@@ -210,9 +210,9 @@ msgstr ""
 msgid "Nationality"
 msgstr ""
 
-#: admin/page_print_signup.php:198
-#: admin/page_print_signup.php:261
-#: admin/page_print_signup.php:301
+#: admin/page_print_signup.php:214
+#: admin/page_print_signup.php:277
+#: admin/page_print_signup.php:317
 #: blocks/signup-form-parent-details/render.php:51
 #: blocks/signup-form-personal-details/render.php:139
 #: build/signup-form-parent-details/render.php:51
@@ -228,9 +228,9 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
-#: admin/page_print_signup.php:201
-#: admin/page_print_signup.php:262
-#: admin/page_print_signup.php:302
+#: admin/page_print_signup.php:217
+#: admin/page_print_signup.php:278
+#: admin/page_print_signup.php:318
 #: blocks/signup-form-parent-details/render.php:44
 #: blocks/signup-form-personal-details/render.php:132
 #: build/signup-form-parent-details/render.php:44
@@ -246,9 +246,9 @@ msgstr ""
 msgid "Mobile phone number"
 msgstr ""
 
-#: admin/page_print_signup.php:204
-#: admin/page_print_signup.php:263
-#: admin/page_print_signup.php:303
+#: admin/page_print_signup.php:220
+#: admin/page_print_signup.php:279
+#: admin/page_print_signup.php:319
 #: blocks/signup-form-parent-details/render.php:60
 #: blocks/signup-form-personal-details/render.php:154
 #: build/signup-form-parent-details/render.php:60
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-#: admin/page_print_signup.php:207
+#: admin/page_print_signup.php:223
 #: blocks/signup-form-personal-details/render.php:148
 #: build/signup-form-personal-details/render.php:148
 #: includes/post-types/signup.php:184
@@ -274,44 +274,44 @@ msgstr ""
 msgid "Emergency contact number"
 msgstr ""
 
-#: admin/page_print_signup.php:236
+#: admin/page_print_signup.php:252
 #: includes/post-types/signup.php:54
 msgid "Parent details"
 msgstr ""
 
-#: admin/page_print_signup.php:238
+#: admin/page_print_signup.php:254
 #: includes/post-types/signup.php:255
 msgid "Parent/guardian 1"
 msgstr ""
 
-#: admin/page_print_signup.php:278
+#: admin/page_print_signup.php:294
 #: includes/post-types/signup.php:257
 msgid "Parent/guardian 2"
 msgstr ""
 
-#: admin/page_print_signup.php:321
+#: admin/page_print_signup.php:337
 #: includes/post-types/signup.php:63
 msgid "Payment details"
 msgstr ""
 
-#: admin/page_print_signup.php:326
+#: admin/page_print_signup.php:342
 msgid "IBAN"
 msgstr ""
 
-#: admin/page_print_signup.php:329
+#: admin/page_print_signup.php:345
 #: blocks/signup-form-payment-details/render.php:55
 #: build/signup-form-payment-details/render.php:55
-#: includes/post-types/signup.php:376
+#: includes/post-types/signup.php:373
 #: blocks/signup-form-payment-details/edit.js:90
 #: build/signup-form-payment-details/index.js:123
 #: build/signup-form-payment-details/index.js:90
 msgid "Account holder name"
 msgstr ""
 
-#: admin/page_print_signup.php:332
+#: admin/page_print_signup.php:348
 #: blocks/signup-form-payment-details/render.php:35
 #: build/signup-form-payment-details/render.php:35
-#: includes/post-types/signup.php:367
+#: includes/post-types/signup.php:364
 #: blocks/signup-form-payment-details/edit.js:17
 #: blocks/signup-form-payment-details/edit.js:66
 #: build/signup-form-payment-details/index.js:57
@@ -321,20 +321,20 @@ msgstr ""
 msgid "No payment needed"
 msgstr ""
 
-#: admin/page_print_signup.php:356
+#: admin/page_print_signup.php:372
 #: includes/post-types/signup.php:72
 msgid "Additional information"
 msgstr ""
 
 #. translators: %s: Current date and time
-#: admin/page_print_signup.php:372
+#: admin/page_print_signup.php:388
 #, php-format
 msgid "Printed on %s"
 msgstr ""
 
 #: admin/page_settings.php:14
-#: football-club-manager.php:131
-#: football-club-manager.php:132
+#: football-club-manager.php:135
+#: football-club-manager.php:136
 msgid "Settings"
 msgstr ""
 
@@ -344,8 +344,8 @@ msgstr ""
 
 #: blocks/birthdays/render.php:70
 #: build/birthdays/render.php:70
-#: football-club-manager.php:107
-#: football-club-manager.php:108
+#: football-club-manager.php:111
+#: football-club-manager.php:112
 #: includes/post-types/birthday.php:18
 #: blocks/birthdays/edit.js:51
 #: build/birthdays/index.js:67
@@ -475,7 +475,7 @@ msgstr ""
 
 #: blocks/signup-form-payment-details/render.php:23
 #: build/signup-form-payment-details/render.php:23
-#: includes/post-types/signup.php:363
+#: includes/post-types/signup.php:360
 #: blocks/signup-form-payment-details/edit.js:56
 #: build/signup-form-payment-details/index.js:94
 #: build/signup-form-payment-details/index.js:56
@@ -491,7 +491,7 @@ msgstr ""
 
 #: blocks/signup-form-payment-details/render.php:30
 #: build/signup-form-payment-details/render.php:30
-#: includes/post-types/signup.php:366
+#: includes/post-types/signup.php:363
 #: blocks/signup-form-payment-details/edit.js:16
 #: blocks/signup-form-payment-details/edit.js:63
 #: build/signup-form-payment-details/index.js:54
@@ -503,7 +503,7 @@ msgstr ""
 
 #: blocks/signup-form-payment-details/render.php:48
 #: build/signup-form-payment-details/render.php:48
-#: includes/post-types/signup.php:372
+#: includes/post-types/signup.php:369
 #: blocks/signup-form-payment-details/edit.js:78
 #: build/signup-form-payment-details/index.js:113
 #: build/signup-form-payment-details/index.js:78
@@ -512,7 +512,7 @@ msgstr ""
 
 #: blocks/signup-form-payment-details/render.php:66
 #: build/signup-form-payment-details/render.php:66
-#: includes/post-types/signup.php:380
+#: includes/post-types/signup.php:377
 #: blocks/signup-form-payment-details/edit.js:106
 #: build/signup-form-payment-details/index.js:136
 #: build/signup-form-payment-details/index.js:106
@@ -610,45 +610,49 @@ msgstr ""
 msgid "No matches found for this team."
 msgstr ""
 
-#: football-club-manager.php:67
-#: football-club-manager.php:68
+#: football-club-manager.php:71
+#: football-club-manager.php:72
 msgid "Dashboard"
 msgstr ""
 
-#: football-club-manager.php:75
-#: football-club-manager.php:76
+#: football-club-manager.php:79
+#: football-club-manager.php:80
 #: includes/post-types/team.php:38
 msgid "Teams"
 msgstr ""
 
-#: football-club-manager.php:83
-#: football-club-manager.php:84
+#: football-club-manager.php:87
+#: football-club-manager.php:88
 #: includes/post-types/player.php:18
 msgid "Players"
 msgstr ""
 
-#: football-club-manager.php:91
-#: football-club-manager.php:92
+#: football-club-manager.php:95
+#: football-club-manager.php:96
 #: includes/post-types/referee.php:30
 msgid "Referees"
 msgstr ""
 
-#: football-club-manager.php:99
-#: football-club-manager.php:100
+#: football-club-manager.php:103
+#: football-club-manager.php:104
 #: includes/post-types/volunteer.php:17
 msgid "Volunteers"
 msgstr ""
 
-#: football-club-manager.php:115
-#: football-club-manager.php:116
+#: football-club-manager.php:119
+#: football-club-manager.php:120
 #: includes/post-types/signup.php:18
 msgid "Signups"
 msgstr ""
 
-#: football-club-manager.php:123
-#: football-club-manager.php:124
+#: football-club-manager.php:127
+#: football-club-manager.php:128
 #: includes/post-types/match.php:15
 msgid "Matches"
+msgstr ""
+
+#: football-club-manager.php:345
+msgid "Every 5 Minutes"
 msgstr ""
 
 #: includes/class-gender.php:27
@@ -704,6 +708,42 @@ msgstr ""
 #: build/signup-form-payment-details/index.js:139
 #: build/signup-form-payment-details/index.js:110
 msgid "Volunteer"
+msgstr ""
+
+#. translators: 1: number of new signups, 2: signup type
+#: includes/cron/class-notification-daily-cron.php:66
+#, php-format
+msgid "%1$u New %2$s signups"
+msgstr ""
+
+#. translators: 1: number of new signups, 2: signup type, 3: admin page link ('the admin page')
+#: includes/cron/class-notification-daily-cron.php:85
+#, php-format
+msgid "There are %1$u new %2$s signups! Please check the details on %3$s."
+msgstr ""
+
+#. translators: admin page link ('the admin page')
+#: includes/cron/class-notification-daily-cron.php:88
+#: includes/cron/class-notification-immediately-cron.php:105
+#: includes/cron/class-notification-immediately-cron.php:112
+msgid "the admin page"
+msgstr ""
+
+#: includes/cron/class-notification-immediately-cron.php:87
+#: includes/post-types/signup.php:20
+msgid "New signup"
+msgstr ""
+
+#. translators: admin page link ('the admin page')
+#: includes/cron/class-notification-immediately-cron.php:105
+#, php-format
+msgid "There is a new signup! Please check the details below or on %s."
+msgstr ""
+
+#. translators: admin page link ('the admin page')
+#: includes/cron/class-notification-immediately-cron.php:112
+#, php-format
+msgid "There is a new signup! Please check the details on %s."
 msgstr ""
 
 #. translators: %s: File extension without dot (e.g. 'csv')
@@ -904,10 +944,6 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: includes/post-types/signup.php:20
-msgid "New signup"
-msgstr ""
-
 #: includes/post-types/signup.php:21
 msgid "Edit signup"
 msgstr ""
@@ -929,7 +965,7 @@ msgid "Tools"
 msgstr ""
 
 #: includes/post-types/signup.php:103
-#: includes/post-types/signup.php:504
+#: includes/post-types/signup.php:501
 msgid "Type"
 msgstr ""
 
@@ -945,12 +981,38 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: includes/post-types/signup.php:427
+#: includes/post-types/signup.php:424
 msgid "No extra fields defined. You can define extra fields in the settings page."
 msgstr ""
 
-#: includes/post-types/signup.php:496
+#: includes/post-types/signup.php:493
 msgid "Print"
+msgstr ""
+
+#: includes/post-types/signup.php:552
+msgid "Notifications"
+msgstr ""
+
+#. translators: %s: signup type
+#: includes/post-types/signup.php:567
+#, php-format
+msgid "Notification on %s signup"
+msgstr ""
+
+#: includes/post-types/signup.php:573
+msgid "Off"
+msgstr ""
+
+#: includes/post-types/signup.php:574
+msgid "Immediately"
+msgstr ""
+
+#: includes/post-types/signup.php:575
+msgid "Daily summary"
+msgstr ""
+
+#: includes/post-types/signup.php:579
+msgid "Include provided data in email"
 msgstr ""
 
 #: includes/post-types/team.php:40
@@ -1309,7 +1371,7 @@ msgstr ""
 msgid "Import complete!"
 msgstr ""
 
-#: public/js/settings.js:75
+#: public/js/settings.js:71
 msgid "Add Row"
 msgstr ""
 

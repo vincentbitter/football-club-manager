@@ -318,8 +318,23 @@ function fcmanager_save_signup_parents_meta_box($post_id)
 
     // Edit meta values
     $signup = new FCManager_Signup($post_id);
-    fcmanager_save_signup_parent_meta_box(1, $signup->parent1());
-    fcmanager_save_signup_parent_meta_box(2, $signup->parent2());
+    for ($position = 1; $position <= 2; $position++) {
+        $parent = $signup->{"parent$position"}();
+        $prefix = 'fcmanager_signup_parent_' . $position . '_';
+        if (array_key_exists($prefix . 'first_name', $_POST))
+            $parent->first_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'first_name'])));
+        if (array_key_exists($prefix . 'middle_name', $_POST))
+            $parent->middle_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'middle_name'])));
+        if (array_key_exists($prefix . 'last_name', $_POST))
+            $parent->last_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'last_name'])));
+
+        if (array_key_exists($prefix . 'mobile_phone_number', $_POST))
+            $parent->mobile_phone_number(sanitize_text_field(wp_unslash($_POST[$prefix . 'mobile_phone_number'])));
+        if (array_key_exists($prefix . 'phone_number', $_POST))
+            $parent->phone_number(sanitize_text_field(wp_unslash($_POST[$prefix . 'phone_number'])));
+        if (array_key_exists($prefix . 'email_address', $_POST))
+            $parent->email_address(sanitize_email(wp_unslash($_POST[$prefix . 'email_address'])));
+    }
 
     // Save
     remove_action('save_post_fcmanager_signup', 'fcmanager_save_signup_parents_meta_box');
@@ -327,24 +342,6 @@ function fcmanager_save_signup_parents_meta_box($post_id)
 }
 
 add_action('save_post_fcmanager_signup', 'fcmanager_save_signup_parents_meta_box');
-
-function fcmanager_save_signup_parent_meta_box($position, $parent)
-{
-    $prefix = 'fcmanager_signup_parent_' . $position . '_';
-    if (array_key_exists($prefix . 'first_name', $_POST))
-        $parent->first_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'first_name'])));
-    if (array_key_exists($prefix . 'middle_name', $_POST))
-        $parent->middle_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'middle_name'])));
-    if (array_key_exists($prefix . 'last_name', $_POST))
-        $parent->last_name(sanitize_text_field(wp_unslash($_POST[$prefix . 'last_name'])));
-
-    if (array_key_exists($prefix . 'mobile_phone_number', $_POST))
-        $parent->mobile_phone_number(sanitize_text_field(wp_unslash($_POST[$prefix . 'mobile_phone_number'])));
-    if (array_key_exists($prefix . 'phone_number', $_POST))
-        $parent->phone_number(sanitize_text_field(wp_unslash($_POST[$prefix . 'phone_number'])));
-    if (array_key_exists($prefix . 'email_address', $_POST))
-        $parent->email_address(sanitize_email(wp_unslash($_POST[$prefix . 'email_address'])));
-}
 
 // Render payment details meta box
 function fcmanager_render_signup_payment_details_meta_box($post)
@@ -546,3 +543,78 @@ function fcmanager_handle_print_signup()
     fcmanager_page_print_signup();
     exit;
 }
+
+function fcmanager_signup_notification_settings(WP_User $user)
+{
+    if (!current_user_can('edit_posts'))
+        return;
+?>
+    <h2><?php esc_html_e('Notifications', 'football-club-manager'); ?></h2>
+    <?php
+    wp_nonce_field('fcmanager_save_signup_notification_settings', 'fcmanager_signup_notification_settings_nonce');
+    ?>
+    <table class="form-table">
+        <?php
+        foreach (FCManager_SignupType::values() as $signup_type) :
+            $value = get_user_meta($user->ID, 'fcmanager_notification_signup_' . esc_attr($signup_type), true);
+            $value_include_data = get_user_meta($user->ID, 'fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data', true);
+        ?>
+            <tr>
+                <th>
+                    <label for="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>">
+                        <?php
+                        /* translators: %s: signup type */
+                        echo esc_html(sprintf(__('Notification on %s signup', 'football-club-manager'), strtolower(FCManager_SignupType::__($signup_type))));
+                        ?>
+                    </label>
+                </th>
+                <td class="fcmanager-notification-signup">
+                    <select name="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>" id="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>">
+                        <option value="" <?php selected($value, ''); ?>><?php esc_html_e('Off', 'football-club-manager'); ?></option>
+                        <option value="immediately" <?php selected($value, 'immediately'); ?>><?php esc_html_e('Immediately', 'football-club-manager'); ?></option>
+                        <option value="daily" <?php selected($value, 'daily'); ?>><?php esc_html_e('Daily summary', 'football-club-manager'); ?></option>
+                    </select><br />
+                    <label class="fcmanager-notification-signup-include-data">
+                        <input type="checkbox" name="fcmanager_notification_signup_<?php echo esc_attr($signup_type); ?>_include_data" value="true" <?php checked($value_include_data, 'true'); ?>>
+                        <?php esc_html_e('Include provided data in email', 'football-club-manager'); ?>
+                    </label>
+                </td>
+            </tr>
+        <?php
+        endforeach;
+        ?>
+    </table>
+<?php
+}
+
+add_action('show_user_profile', 'fcmanager_signup_notification_settings');
+add_action('edit_user_profile', 'fcmanager_signup_notification_settings');
+
+function fcmanager_save_signup_notification_settings(int $user_id)
+{
+    if (! current_user_can('edit_user', $user_id) || !current_user_can('edit_posts')) {
+        return false;
+    }
+
+    if (!array_key_exists('fcmanager_signup_notification_settings_nonce', $_POST) || !check_admin_referer('fcmanager_save_signup_notification_settings', 'fcmanager_signup_notification_settings_nonce'))
+        return false;
+
+    foreach (FCManager_SignupType::values() as $signup_type) {
+        if (!key_exists('fcmanager_notification_signup_' . esc_attr($signup_type), $_POST))
+            continue;
+
+        update_user_meta(
+            $user_id,
+            'fcmanager_notification_signup_' . esc_attr($signup_type),
+            wp_unslash(sanitize_text_field($_POST['fcmanager_notification_signup_' . esc_attr($signup_type)])),
+        );
+        update_user_meta(
+            $user_id,
+            'fcmanager_notification_signup_' . esc_attr($signup_type) . '_include_data',
+            isset($_POST['fcmanager_notification_signup_' . $signup_type . '_include_data']) ? 'true' : 'false',
+        );
+    }
+}
+
+add_action('personal_options_update', 'fcmanager_save_signup_notification_settings');
+add_action('edit_user_profile_update', 'fcmanager_save_signup_notification_settings');

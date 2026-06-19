@@ -89,3 +89,9 @@ h1+.fcm-dropzone {
     color: #b32d2e;
     padding: 10px;
 }
+
+.fcmanager-notification-signup-include-data {
+    margin-top: 8px;
+    margin-left: 2px;
+    display: block;
+}
