@@ -37,6 +37,6 @@ class FCManager_SignupType
 
     public static function esc_html_e(string $value): void
     {
-        echo self::esc_html__($value);
+        echo esc_html(self::__($value));
     }
 }

@@ -101,13 +101,14 @@ class FCManager_Notification_Immediately_Cron
     private static function compose_mail_body_with_data(FCManager_Signup $signup): string
     {
         return
+            /* translators: admin page link ('the admin page') */
             "<p>" . sprintf(esc_html__('There is a new signup! Please check the details below or on %s.', 'football-club-manager'), '<a href="' . admin_url('post.php?action=edit&post=' . $signup->id()) . '">' . esc_html__('the admin page', 'football-club-manager') . '</a>') . "</p>" .
             fcmanager_page_print_get_body($signup);
     }
 
     private static function compose_mail_body_without_data(FCManager_Signup $signup): string
     {
-
+        /* translators: admin page link ('the admin page') */
         return "<p>" . sprintf(esc_html__('There is a new signup! Please check the details on %s.', 'football-club-manager'), '<a href="' . admin_url('post.php?action=edit&post=' . $signup->id()) . '">' . esc_html__('the admin page', 'football-club-manager') . '</a>') . "</p>";
     }
 }

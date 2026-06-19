@@ -24,11 +24,11 @@ function fcmanager_page_print_signup()
     <head>
         <meta charset="UTF-8">
         <title><?php echo esc_html(get_the_title($signup->personal_details()->name())); ?></title>
-        <?php echo fcmanager_page_print_get_style(); ?>
+        <?php echo wp_kses(fcmanager_page_print_get_style(), array('style' => array())); ?>
     </head>
 
     <body onload="window.print()">
-        <?php echo fcmanager_page_print_get_body($signup); ?>
+        <?php echo wp_kses_post(fcmanager_page_print_get_body($signup)); ?>
     </body>
 
     </html>

@@ -62,7 +62,8 @@ class FCManager_Notification_Daily_Cron
 
         foreach ($receivers as $user) {
             $html = self::compose_mail(self::compose_mail_body($type, $count));
-            wp_mail($user->user_email, sprintf(esc_html__('%u New %s signups', 'football-club-manager'), $count, strtolower(FCManager_SignupType::esc_html__($type))), $html, ['Content-Type: text/html; charset=UTF-8']);
+            /* translators: 1: number of new signups, 2: signup type */
+            wp_mail($user->user_email, sprintf(esc_html__('%1$u New %2$s signups', 'football-club-manager'), $count, strtolower(FCManager_SignupType::esc_html__($type))), $html, ['Content-Type: text/html; charset=UTF-8']);
         }
     }
 
@@ -80,9 +81,10 @@ class FCManager_Notification_Daily_Cron
     {
         return "<p>" .
             sprintf(
-                esc_html__('There are %u new %s signups! Please check the details on %s.', 'football-club-manager'),
+                /* translators: 1: number of new signups, 2: signup type, 3: admin page link ('the admin page') */
+                esc_html__('There are %1$u new %2$s signups! Please check the details on %3$s.', 'football-club-manager'),
                 $count,
-                FCManager_SignupType::esc_html__($type),
+                strtolower(FCManager_SignupType::esc_html__($type)),
                 '<a href="' . admin_url('edit.php?post_type=fcmanager_signup') . '">' . esc_html__('the admin page', 'football-club-manager') . '</a>'
             ) . "</p>";
     }

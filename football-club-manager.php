@@ -342,7 +342,7 @@ add_filter('admin_title', function ($admin_title, $title) {
 add_filter('cron_schedules', function ($schedules) {
     $schedules['five_minutes'] = [
         'interval' => 5 * 60,
-        'display'  => __('Every 5 Minutes'),
+        'display'  => __('Every 5 Minutes', 'football-club-manager'),
     ];
     return $schedules;
 });
