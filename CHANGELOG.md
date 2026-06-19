@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.19.0] - 2026-06-19
+
+### 🚀 Features
+
+- User interface for Extra Fields configuration.
+- Send e-mail notifications on sign up. (#3)
+
+### 🐛 Bug Fixes
+
+- Plugin Check findings on print signup page.
+- Use enums to ensure translations.
+
+### 🎨 Styling
+
+- Print signup layout improved.
+
 ## [0.18.0] - 2026-05-25
 
 ### 🐛 Bug Fixes
