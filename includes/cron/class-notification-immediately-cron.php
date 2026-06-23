@@ -68,7 +68,7 @@ class FCManager_Notification_Immediately_Cron
                 'post_type' => 'fcmanager_signup',
                 'posts_per_page' => -1,
                 'date_query' => [
-                    'after' => gmdate('Y-m-d H:i:s', $timestamp)
+                    'after' => wp_date('Y-m-d H:i:s', $timestamp)
                 ]
             ])
         );
