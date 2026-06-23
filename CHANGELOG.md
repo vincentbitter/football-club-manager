@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.20.0] - 2026-06-23
+
+### 🐛 Bug Fixes
+
+- Duplicate notification sent when timezone is not UTC.
+- Store type and subtype in signup edit form.
+- Store extra fields in signup edit form.
+
 ## [0.19.0] - 2026-06-19
 
 ### 🚀 Features
