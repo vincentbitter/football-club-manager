@@ -474,8 +474,8 @@ function fcmanager_save_signup_additional_information_meta_box($post_id)
     // Edit meta values
     $signup = new FCManager_Signup($post_id);
     foreach ($extra_fields as $index => $field) {
-        if (array_key_exists('fcmanager_signup_additional_information', $_POST) && array_key_exists($field, $_POST['fcmanager_signup_additional_information'])) {
-            $signup->additional_information()[$field] = sanitize_text_field(wp_unslash($_POST['fcmanager_signup_additional_information'][$field]));
+        if (array_key_exists('fcmanager_signup_additional_information', $_POST) && array_key_exists($field['label'], $_POST['fcmanager_signup_additional_information'])) {
+            $signup->additional_information()->offsetSet($field['label'], sanitize_text_field(wp_unslash($_POST['fcmanager_signup_additional_information'][$field['label']])));
         }
     }
 
