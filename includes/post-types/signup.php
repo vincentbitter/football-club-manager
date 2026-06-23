@@ -210,6 +210,10 @@ function fcmanager_save_signup_personal_details_meta_box($post_id)
 
     // Edit meta values
     $signup = new FCManager_Signup($post_id);
+    if (array_key_exists('fcmanager_signup_personal_details_type', $_POST))
+        $signup->type(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_type'])));
+    if (array_key_exists('fcmanager_signup_personal_details_subtype', $_POST))
+        $signup->subtype(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_subtype'])));
     if (array_key_exists('fcmanager_signup_personal_details_first_name', $_POST))
         $signup->personal_details()->first_name(sanitize_text_field(wp_unslash($_POST['fcmanager_signup_personal_details_first_name'])));
     if (array_key_exists('fcmanager_signup_personal_details_initials', $_POST))
