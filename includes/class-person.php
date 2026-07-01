@@ -31,8 +31,10 @@ abstract class FCManager_Person
         if ($this->date_of_birth->format('Y') <= 1900) {
             return null; // Invalid date of birth
         }
-        $today = new DateTime();
-        $age = $today->diff($this->date_of_birth)->y;
+
+        $today = new DateTimeImmutable('today', wp_timezone());
+        $date_of_birth   = new DateTimeImmutable($this->date_of_birth->format('Y-m-d'), wp_timezone());
+        $age = $today->diff($date_of_birth)->y;
 
         return $age;
     }
