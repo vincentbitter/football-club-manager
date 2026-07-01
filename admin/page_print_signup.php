@@ -29,6 +29,12 @@ function fcmanager_page_print_signup()
 
     <body onload="window.print()">
         <?php echo wp_kses_post(fcmanager_page_print_get_body($signup)); ?>
+        <p class="fcmanager-print-footer">
+            <?php
+            /* translators: %s: Current date and time */
+            echo esc_html(sprintf(__('Printed on %s', 'football-club-manager'), wp_date('d-m-Y H:i')));
+            ?>
+        </p>
     </body>
 
     </html>
@@ -380,14 +386,7 @@ function fcmanager_page_print_get_body(FCManager_Signup $signup)
         </table>
     <?php
     }
-
     ?>
-    <p class="fcmanager-print-footer">
-        <?php
-        /* translators: %s: Current date and time */
-        echo esc_html(sprintf(__('Printed on %s', 'football-club-manager'), wp_date('d-m-Y H:i')));
-        ?>
-    </p>
 <?php
     $output = ob_get_clean();
     return $output;
