@@ -57,7 +57,7 @@ class FCManager_Notification_Daily_Cron
     {
         $receivers = get_users([
             'meta_key' => 'fcmanager_notification_signup_' . $type,
-            'meta_value' => 'immediately',
+            'meta_value' => 'daily',
         ]);
 
         foreach ($receivers as $user) {
