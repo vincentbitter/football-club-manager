@@ -691,7 +691,16 @@ class FCManager_Signup_Additional_Information implements ArrayAccess
     public function __construct($id = null)
     {
         $extra_fields_json = get_post_meta($id, '_fcmanager_signup_additional_information', true);
-        $this->data = $extra_fields_json ? json_decode($extra_fields_json, true) : [];
+        $this->data = $extra_fields_json ? json_decode($extra_fields_json, true) : $this->create_empty_set();
+    }
+
+    private function create_empty_set()
+    {
+        $empty_set = [];
+        foreach (FCManager_Settings::instance()->signup->extra_fields() as $field) {
+            $empty_set[$field['label']] = '';
+        }
+        return $empty_set;
     }
 
     public function save($signup_id)
