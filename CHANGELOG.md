@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.21.0] - 2026-07-01
+
+### 🐛 Bug Fixes
+
+- Do not send daily summary if notifications is set to immediately.
+- Do not show "printed on" line in notification email.
+- Use website timezone to calculate age.
+- Include also empty extra fields in notification email.
+
 ## [0.20.0] - 2026-06-23
 
 ### 🐛 Bug Fixes
