@@ -19,7 +19,7 @@ class FCManager_Team
         if ($id_or_post === null || ($id_or_post instanceof WP_Post && $id_or_post->post_status === 'auto-draft')) {
             $this->id = $id_or_post;
             $this->gender(FCManager_TeamGender::MALE);
-            $this->age_category(FCManager_AgeCategory::SENIOR);
+            $this->age_category(FCManager_AgeCategory::SENIORS);
             return;
         }
 

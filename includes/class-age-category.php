@@ -8,13 +8,13 @@ if (! defined('ABSPATH')) {
 class FCManager_AgeCategory
 {
     public const YOUTH = 'youth';
-    public const SENIOR = 'senior';
+    public const SENIORS = 'seniors';
 
     public static function values(): array
     {
         return [
             self::YOUTH,
-            self::SENIOR
+            self::SENIORS
         ];
     }
 
@@ -23,8 +23,8 @@ class FCManager_AgeCategory
         switch (strtolower($value)) {
             case self::YOUTH:
                 return __('Youth', 'football-club-manager');
-            case self::SENIOR:
-                return __('Senior', 'football-club-manager');
+            case self::SENIORS:
+                return __('Seniors', 'football-club-manager');
             default:
                 return $value;
         }
