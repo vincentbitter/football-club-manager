@@ -303,6 +303,40 @@ function fcmanager_save_block_toggle_meta($post_id)
 }
 add_action('save_post_fcmanager_team', 'fcmanager_save_block_toggle_meta');
 
+// Add the custom columns to the player post type:
+function fcmanager_set_custom_edit_team_columns($columns)
+{
+    $date = $columns['date'];
+    unset($columns['date']);
+
+    $columns['title'] = __('Name', 'football-club-manager');
+    $columns['gender'] = __('Gender', 'football-club-manager');
+    $columns['age_category'] = __('Age category', 'football-club-manager');
+    $columns['date'] = $date;
+
+    return $columns;
+}
+
+add_filter('manage_fcmanager_team_posts_columns', 'fcmanager_set_custom_edit_team_columns');
+
+
+// Add the data to the custom columns for the player post type:
+function fcmanager_custom_team_column($column, $post_id)
+{
+    $team = new FCManager_Team($post_id);
+    switch ($column) {
+        case 'gender':
+            FCManager_Gender::esc_html_e($team->gender());
+            break;
+
+        case 'age_category':
+            FCManager_AgeCategory::esc_html_e($team->age_category());
+            break;
+    }
+}
+
+add_action('manage_fcmanager_team_posts_custom_column', 'fcmanager_custom_team_column', 10, 2);
+
 function fcmanager_find_team_by_player($query)
 {
     if (! $query->is_search || is_admin()) {
