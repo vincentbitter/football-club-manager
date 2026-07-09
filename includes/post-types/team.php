@@ -170,7 +170,6 @@ add_action('add_meta_boxes', 'fcmanager_add_blocks_toggle_meta_box');
 function fcmanager_render_block_toggle_meta_box($post, $block, $label)
 {
     $value = get_post_meta($post->ID, 'fcmanager_show_' . $block . '_block', true) == '0' ? '0' : '1';
-    wp_nonce_field('fcmanager_' . $block . '_toggle_nonce', 'fcmanager_' . $block . '_toggle_nonce');
 ?>
     <div>
         <label>
@@ -183,37 +182,31 @@ function fcmanager_render_block_toggle_meta_box($post, $block, $label)
 
 function fcmanager_render_blocks_toggle_meta_box($post)
 {
+    wp_nonce_field('fcmanager_block_toggle_nonce', 'fcmanager_block_toggle_nonce');
+
     fcmanager_render_block_toggle_meta_box($post, 'players', __('Show players', 'football-club-manager'));
     fcmanager_render_block_toggle_meta_box($post, 'schedule', __('Show schedule', 'football-club-manager'));
     fcmanager_render_block_toggle_meta_box($post, 'results', __('Show results', 'football-club-manager'));
 }
 
-function fcmanager_save_block_toggle_meta($post_id, $block)
+function fcmanager_save_block_toggle_meta_field($post_id, $block)
 {
-    if (!array_key_exists('fcmanager_' . $block . '_toggle_nonce', $_POST) || !check_admin_referer('fcmanager_' . $block . '_toggle_nonce', 'fcmanager_' . $block . '_toggle_nonce'))
-        return;
-
     $value = isset($_POST['fcmanager_show_' . $block . '_block']) ? '1' : '0';
     update_post_meta($post_id, 'fcmanager_show_' . $block . '_block', $value);
 }
 
-function fcmanager_save_players_toggle_meta($post_id)
-{
-    fcmanager_save_block_toggle_meta($post_id, 'players');
-}
-add_action('save_post', 'fcmanager_save_players_toggle_meta');
 
-function fcmanager_save_schedule_toggle_meta($post_id)
+function fcmanager_save_block_toggle_meta($post_id)
 {
-    fcmanager_save_block_toggle_meta($post_id, 'schedule');
-}
-add_action('save_post', 'fcmanager_save_schedule_toggle_meta');
+    if (!array_key_exists('fcmanager_block_toggle_nonce', $_POST) || !check_admin_referer('fcmanager_block_toggle_nonce', 'fcmanager_block_toggle_nonce'))
+        return;
 
-function fcmanager_save_results_toggle_meta($post_id)
-{
-    fcmanager_save_block_toggle_meta($post_id, 'results');
+    remove_action('save_post_fcmanager_team', 'fcmanager_save_block_toggle_meta');
+    fcmanager_save_block_toggle_meta_field($post_id, 'players');
+    fcmanager_save_block_toggle_meta_field($post_id, 'schedule');
+    fcmanager_save_block_toggle_meta_field($post_id, 'results');
 }
-add_action('save_post', 'fcmanager_save_results_toggle_meta');
+add_action('save_post_fcmanager_team', 'fcmanager_save_block_toggle_meta');
 
 function fcmanager_find_team_by_player($query)
 {
