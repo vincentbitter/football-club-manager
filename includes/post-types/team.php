@@ -5,6 +5,8 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+require_once(dirname(__FILE__) . '/../class-team.php');
+
 // Get all teams
 function fcmanager_get_teams()
 {
@@ -55,6 +57,33 @@ function fcmanager_register_team_post_type()
         )
     );
 }
+
+// Add properties to API response
+add_action('rest_api_init', function () {
+    register_rest_field(
+        'fcmanager_team',
+        'meta',
+        array(
+            'get_callback' => function ($post) {
+                $team = new FCManager_Team($post['id']);
+                $meta = get_post_meta($post['id']);
+                $meta['_fcmanager_team_gender'] = array($team->gender());
+                $meta['_fcmanager_team_age_category'] = array($team->age_category());
+                return $meta;
+            },
+            'schema' => null,
+        )
+    );
+    register_rest_field('fcmanager_team', 'title', [
+        'get_callback' => function ($post) {
+            return get_the_title($post['id']);
+        },
+        'schema' => [
+            'type'    => 'string',
+            'context' => ['view', 'edit'],
+        ],
+    ]);
+});
 
 
 // Unregister Custom Post Type: Team
@@ -154,6 +183,72 @@ function fcmanager_customize_register_team_page($wp_customize)
     ]);
 }
 
+
+function fcmanager_add_team_details_meta_box()
+{
+    add_meta_box(
+        'fcmanager_team_details_toggle',
+        __('Team details', 'football-club-manager'),
+        'fcmanager_render_team_details_meta_box',
+        'fcmanager_team',
+        'side',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'fcmanager_add_team_details_meta_box');
+
+function fcmanager_render_team_details_meta_box($post)
+{
+    $team = new FCManager_Team($post);
+    wp_nonce_field('fcmanager_team_details_nonce', 'fcmanager_team_details_nonce');
+?>
+    <div>
+        <label for="fcmanager_team_age_category"><?php esc_html_e('Age category', 'football-club-manager'); ?></label>
+    </div>
+    <div style="margin-top: 5px;">
+        <select id="fcmanager_team_age_category" name="fcmanager_team_age_category">
+            <?php
+            $age_categories = FCManager_AgeCategory::values();
+            foreach ($age_categories as $age_category) {
+                echo '<option value="' . $age_category . '" ' . selected($team->age_category(), $age_category, false) . '>' . esc_html(FCManager_AgeCategory::__($age_category)) . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div style="margin-top: 10px;">
+        <label for="fcmanager_team_gender"><?php esc_html_e('Gender', 'football-club-manager'); ?></label>
+    </div>
+    <div style="margin-top: 5px;">
+        <select id="fcmanager_team_gender" name="fcmanager_team_gender">
+            <?php
+            $genders = FCManager_TeamGender::values();
+            foreach ($genders as $gender) {
+                echo '<option value="' . $gender . '" ' . selected($team->gender(), $gender, false) . '>' . esc_html(FCManager_TeamGender::__($gender)) . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+<?php
+}
+
+function fcmanager_save_team_details_meta($post_id)
+{
+    if (!array_key_exists('fcmanager_team_details_nonce', $_POST) || !check_admin_referer('fcmanager_team_details_nonce', 'fcmanager_team_details_nonce'))
+        return;
+
+    $team = new FCManager_Team($post_id);
+
+    if (array_key_exists('fcmanager_team_age_category', $_POST))
+        $team->age_category(sanitize_text_field(wp_unslash($_POST['fcmanager_team_age_category'])));
+    if (array_key_exists('fcmanager_team_gender', $_POST))
+        $team->gender(sanitize_text_field(wp_unslash($_POST['fcmanager_team_gender'])));
+
+    remove_action('save_post_fcmanager_team', 'fcmanager_save_team_details_meta');
+    $team->save();
+}
+add_action('save_post_fcmanager_team', 'fcmanager_save_team_details_meta');
+
+
 function fcmanager_add_blocks_toggle_meta_box()
 {
     add_meta_box(
@@ -170,7 +265,6 @@ add_action('add_meta_boxes', 'fcmanager_add_blocks_toggle_meta_box');
 function fcmanager_render_block_toggle_meta_box($post, $block, $label)
 {
     $value = get_post_meta($post->ID, 'fcmanager_show_' . $block . '_block', true) == '0' ? '0' : '1';
-    wp_nonce_field('fcmanager_' . $block . '_toggle_nonce', 'fcmanager_' . $block . '_toggle_nonce');
 ?>
     <div>
         <label>
@@ -183,37 +277,65 @@ function fcmanager_render_block_toggle_meta_box($post, $block, $label)
 
 function fcmanager_render_blocks_toggle_meta_box($post)
 {
+    wp_nonce_field('fcmanager_block_toggle_nonce', 'fcmanager_block_toggle_nonce');
+
     fcmanager_render_block_toggle_meta_box($post, 'players', __('Show players', 'football-club-manager'));
     fcmanager_render_block_toggle_meta_box($post, 'schedule', __('Show schedule', 'football-club-manager'));
     fcmanager_render_block_toggle_meta_box($post, 'results', __('Show results', 'football-club-manager'));
 }
 
-function fcmanager_save_block_toggle_meta($post_id, $block)
+function fcmanager_save_block_toggle_meta_field($post_id, $block)
 {
-    if (!array_key_exists('fcmanager_' . $block . '_toggle_nonce', $_POST) || !check_admin_referer('fcmanager_' . $block . '_toggle_nonce', 'fcmanager_' . $block . '_toggle_nonce'))
-        return;
-
     $value = isset($_POST['fcmanager_show_' . $block . '_block']) ? '1' : '0';
     update_post_meta($post_id, 'fcmanager_show_' . $block . '_block', $value);
 }
 
-function fcmanager_save_players_toggle_meta($post_id)
-{
-    fcmanager_save_block_toggle_meta($post_id, 'players');
-}
-add_action('save_post', 'fcmanager_save_players_toggle_meta');
 
-function fcmanager_save_schedule_toggle_meta($post_id)
+function fcmanager_save_block_toggle_meta($post_id)
 {
-    fcmanager_save_block_toggle_meta($post_id, 'schedule');
-}
-add_action('save_post', 'fcmanager_save_schedule_toggle_meta');
+    if (!array_key_exists('fcmanager_block_toggle_nonce', $_POST) || !check_admin_referer('fcmanager_block_toggle_nonce', 'fcmanager_block_toggle_nonce'))
+        return;
 
-function fcmanager_save_results_toggle_meta($post_id)
-{
-    fcmanager_save_block_toggle_meta($post_id, 'results');
+    remove_action('save_post_fcmanager_team', 'fcmanager_save_block_toggle_meta');
+    fcmanager_save_block_toggle_meta_field($post_id, 'players');
+    fcmanager_save_block_toggle_meta_field($post_id, 'schedule');
+    fcmanager_save_block_toggle_meta_field($post_id, 'results');
 }
-add_action('save_post', 'fcmanager_save_results_toggle_meta');
+add_action('save_post_fcmanager_team', 'fcmanager_save_block_toggle_meta');
+
+// Add the custom columns to the player post type:
+function fcmanager_set_custom_edit_team_columns($columns)
+{
+    $date = $columns['date'];
+    unset($columns['date']);
+
+    $columns['title'] = __('Name', 'football-club-manager');
+    $columns['gender'] = __('Gender', 'football-club-manager');
+    $columns['age_category'] = __('Age category', 'football-club-manager');
+    $columns['date'] = $date;
+
+    return $columns;
+}
+
+add_filter('manage_fcmanager_team_posts_columns', 'fcmanager_set_custom_edit_team_columns');
+
+
+// Add the data to the custom columns for the player post type:
+function fcmanager_custom_team_column($column, $post_id)
+{
+    $team = new FCManager_Team($post_id);
+    switch ($column) {
+        case 'gender':
+            FCManager_Gender::esc_html_e($team->gender());
+            break;
+
+        case 'age_category':
+            FCManager_AgeCategory::esc_html_e($team->age_category());
+            break;
+    }
+}
+
+add_action('manage_fcmanager_team_posts_custom_column', 'fcmanager_custom_team_column', 10, 2);
 
 function fcmanager_find_team_by_player($query)
 {
