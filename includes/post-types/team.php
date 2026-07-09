@@ -326,7 +326,7 @@ function fcmanager_custom_team_column($column, $post_id)
     $team = new FCManager_Team($post_id);
     switch ($column) {
         case 'gender':
-            FCManager_Gender::esc_html_e($team->gender());
+            FCManager_TeamGender::esc_html_e($team->gender());
             break;
 
         case 'age_category':
