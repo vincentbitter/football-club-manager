@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.22.0] - 2026-07-16
+
+### 🚀 Features
+
+- Age category and gender fields for teams. (#5)
+- Team block to show a list of teams, including filter options.
+
+### 🐛 Bug Fixes
+
+- Show correct value for 'mixed' teams in overview.
+
+### ⚙️  Miscellaneous Tasks
+
+- Use static version for git-cliff in to solve release issue.
+
 ## [0.21.0] - 2026-07-01
 
 ### 🐛 Bug Fixes

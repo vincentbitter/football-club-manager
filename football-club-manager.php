@@ -3,7 +3,7 @@
  * Plugin Name: Football Club Manager
  * Plugin URI: https://github.com/vincentbitter/football-club-manager
  * Description: Easily create a website for your football club to publish teams, players and fixtures.
- * Version: 0.21.0
+ * Version: 0.22.0
  * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: Vincent Bitter
@@ -18,7 +18,7 @@ if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-define('FCMANAGER_VERSION', '0.21.0');
+define('FCMANAGER_VERSION', '0.22.0');
 
 // Enums
 require_once('includes/class-gender.php');
