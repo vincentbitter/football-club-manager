@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-09T20:05:36+00:00\n"
+"POT-Creation-Date: 2026-07-16T22:42:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
@@ -200,8 +200,8 @@ msgstr ""
 #: blocks/signup-form-personal-details/render.php:64
 #: build/signup-form-personal-details/render.php:64
 #: includes/post-types/signup.php:138
-#: includes/post-types/team.php:219
-#: includes/post-types/team.php:313
+#: includes/post-types/team.php:239
+#: includes/post-types/team.php:333
 #: blocks/signup-form-personal-details/edit.js:82
 #: build/signup-form-personal-details/index.js:104
 #: build/signup-form-personal-details/index.js:82
@@ -658,23 +658,35 @@ msgid "Every 5 Minutes"
 msgstr ""
 
 #: includes/class-age-category.php:25
+#: blocks/teams/edit.js:19
+#: build/teams/index.js:65
+#: build/teams/index.js:19
 msgid "Youth"
 msgstr ""
 
 #: includes/class-age-category.php:27
+#: blocks/teams/edit.js:20
+#: build/teams/index.js:68
+#: build/teams/index.js:20
 msgid "Seniors"
 msgstr ""
 
 #: includes/class-gender.php:27
 #: includes/class-team-gender.php:27
 #: blocks/signup-form-personal-details/edit.js:87
+#: blocks/teams/edit.js:13
 #: build/signup-form-personal-details/index.js:108
+#: build/teams/index.js:55
 #: build/signup-form-personal-details/index.js:87
+#: build/teams/index.js:13
 msgid "Male"
 msgstr ""
 
 #: includes/class-gender.php:29
 #: includes/class-team-gender.php:29
+#: blocks/teams/edit.js:14
+#: build/teams/index.js:58
+#: build/teams/index.js:14
 msgid "Female"
 msgstr ""
 
@@ -723,6 +735,9 @@ msgid "Volunteer"
 msgstr ""
 
 #: includes/class-team-gender.php:31
+#: blocks/teams/edit.js:15
+#: build/teams/index.js:61
+#: build/teams/index.js:15
 msgid "Mixed"
 msgstr ""
 
@@ -1067,39 +1082,39 @@ msgstr ""
 msgid "Search team"
 msgstr ""
 
-#: includes/post-types/team.php:144
+#: includes/post-types/team.php:164
 msgid "Team Page Settings"
 msgstr ""
 
-#: includes/post-types/team.php:155
-#: includes/post-types/team.php:282
+#: includes/post-types/team.php:175
+#: includes/post-types/team.php:302
 msgid "Show players"
 msgstr ""
 
-#: includes/post-types/team.php:167
-#: includes/post-types/team.php:284
+#: includes/post-types/team.php:187
+#: includes/post-types/team.php:304
 msgid "Show results"
 msgstr ""
 
-#: includes/post-types/team.php:179
-#: includes/post-types/team.php:283
+#: includes/post-types/team.php:199
+#: includes/post-types/team.php:303
 msgid "Show schedule"
 msgstr ""
 
-#: includes/post-types/team.php:191
+#: includes/post-types/team.php:211
 msgid "Team details"
 msgstr ""
 
-#: includes/post-types/team.php:206
-#: includes/post-types/team.php:314
+#: includes/post-types/team.php:226
+#: includes/post-types/team.php:334
 msgid "Age category"
 msgstr ""
 
-#: includes/post-types/team.php:256
+#: includes/post-types/team.php:276
 msgid "Elements"
 msgstr ""
 
-#: includes/post-types/team.php:312
+#: includes/post-types/team.php:332
 msgid "Name"
 msgstr ""
 
@@ -1380,6 +1395,24 @@ msgstr ""
 msgid "If you add the component to a team page, you don't need to set this field. It will automatically show the matches of the current team."
 msgstr ""
 
+#: blocks/teams/edit.js:71
+#: build/teams/index.js:114
+#: build/teams/index.js:71
+msgid "Display"
+msgstr ""
+
+#: blocks/teams/edit.js:73
+#: build/teams/index.js:116
+#: build/teams/index.js:73
+msgid "Number of columns"
+msgstr ""
+
+#: blocks/teams/edit.js:83
+#: build/teams/index.js:125
+#: build/teams/index.js:83
+msgid "Show teams"
+msgstr ""
+
 #: public/js/import.js:51
 msgid "File type not supported"
 msgstr ""
@@ -1570,4 +1603,16 @@ msgstr ""
 #: build/team-schedule/block.json
 msgctxt "block description"
 msgid "Show an overview of the upcoming matches of a team."
+msgstr ""
+
+#: blocks/teams/block.json
+#: build/teams/block.json
+msgctxt "block title"
+msgid "Teams"
+msgstr ""
+
+#: blocks/teams/block.json
+#: build/teams/block.json
+msgctxt "block description"
+msgid "Show a list of teams."
 msgstr ""

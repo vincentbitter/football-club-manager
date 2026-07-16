@@ -1,0 +1,58 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "fcmanager/teams",
+    "version": "0.21.0",
+    "title": "Teams",
+    "category": "widgets",
+    "icon": "groups",
+    "description": "Show a list of teams.",
+    "example": {},
+    "supports": {
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        },
+        "border": {
+            "radius": true,
+            "color": true,
+            "width": true
+        },
+        "html": false
+    },
+    "textdomain": "football-club-manager",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "columns": {
+            "type": "number",
+            "default": 1
+        },
+        "genders": {
+            "type": "array",
+            "default": [
+                "male",
+                "female",
+                "mixed"
+            ],
+            "items": {
+                "type": "string"
+            }
+        },
+        "ageCategories": {
+            "type": "array",
+            "default": [
+                "youth",
+                "seniors"
+            ],
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

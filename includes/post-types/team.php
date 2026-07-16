@@ -85,6 +85,26 @@ add_action('rest_api_init', function () {
     ]);
 });
 
+// Order teams by name in REST API
+add_filter('rest_fcmanager_team_query', function ($args, $request) {
+    $args['orderby'] = 'title';
+    $args['order'] = 'ASC';
+
+    return $args;
+}, 10, 2);
+
+add_filter('rest_post_dispatch', function ($result, $server, $request) {
+    if ($request->get_route() !== '/wp/v2/teams') {
+        return $result;
+    }
+
+    $data = $result->get_data();
+    $data = fcmanager_sort_teams($data, fn($team) => $team['title']);
+    $result->set_data($data);
+
+    return $result;
+}, 10, 3);
+
 
 // Unregister Custom Post Type: Team
 function fcmanager_unregister_team_post_type()
@@ -376,3 +396,55 @@ function fcmanager_find_team_by_player($query)
     $query->set('post__in', $team_ids);
 }
 add_action('pre_get_posts', 'fcmanager_find_team_by_player');
+
+
+function fcmanager_sort_teams($teams, $fn_get_title)
+{
+    if (empty($teams))
+        return $teams;
+
+    // Find prefix all teams have in common
+    $max_name_size = max(array_map(fn($team) => strlen($fn_get_title($team)), $teams));
+    $prefix = substr($fn_get_title($teams[0]), 0, $max_name_size);
+    foreach ($teams as $team) {
+        $post_title = $fn_get_title($team);
+        for ($i = 0; $i < strlen($prefix); $i++) {
+            if ($post_title[$i] !== $prefix[$i]) {
+                $prefix = substr($prefix, 0, $i);
+                continue;
+            }
+        }
+    }
+    $prefix = preg_replace('/(\d+)$/', '', $prefix);
+
+    $sort_list = array_map(fn($team) => ['team' => $team], $teams);
+
+    for ($i = 0; $i < count($sort_list); $i++) {
+        $sort_list[$i]['title'] = $fn_get_title($sort_list[$i]['team']);
+        $sort_value = substr($sort_list[$i]['title'], strlen($prefix));
+
+        if (preg_match_all('/\d+/', $sort_value, $matches)) {
+            $sort_list[$i]['sort_values'] = array_map('intval', $matches[0]);
+            $sort_list[$i]['sort_start'] = substr($sort_value, 0, strpos($sort_value, $matches[0][0]));
+        } else {
+            $sort_list[$i]['sort_values'] = [];
+            $sort_list[$i]['sort_start'] = $sort_value;
+        }
+    }
+
+    usort($sort_list, function ($a, $b) {
+        if ($a['sort_start'] !== $b['sort_start'])
+            return strcmp($a['sort_start'], $b['sort_start']);
+
+        $values_length = min(count($a['sort_values']), count($b['sort_values']));
+
+        for ($i = 0; $i < $values_length; $i++) {
+            if ($a['sort_values'][$i] !== $b['sort_values'][$i])
+                return $a['sort_values'][$i] - $b['sort_values'][$i];
+        }
+
+        return strcmp($b['title'], $a['title']);
+    });
+
+    return array_map(fn($item) => $item['team'], $sort_list);
+}
