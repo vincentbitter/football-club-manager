@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.23.0] - 2026-07-17
+
+### 🐛 Bug Fixes
+
+- Make links in Teams block work.
+
 ## [0.22.0] - 2026-07-16
 
 ### 🚀 Features
