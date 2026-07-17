@@ -56,7 +56,7 @@ function fcmanager_render_teams_block($attributes, $content)
                     <ul>
                         <?php for ($j = (int)ceil($i * $items_per_column); $j < ceil(($i + 1) * $items_per_column) && $j < count($teams); $j++) : ?>
                             <li>
-                                <a href="#"><?php esc_html_e($teams[$j]->post_title); ?></a>
+                                <a href="<?php echo get_permalink($teams[$j]->ID); ?>"><?php esc_html_e($teams[$j]->post_title); ?></a>
                             </li>
                         <?php endfor; ?>
                     </ul>
