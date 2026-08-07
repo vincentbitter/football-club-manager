@@ -443,7 +443,7 @@ function fcmanager_sort_teams($teams, $fn_get_title)
                 return $a['sort_values'][$i] - $b['sort_values'][$i];
         }
 
-        return strcmp($b['title'], $a['title']);
+        return strcmp($a['title'], $b['title']);
     });
 
     return array_map(fn($item) => $item['team'], $sort_list);
