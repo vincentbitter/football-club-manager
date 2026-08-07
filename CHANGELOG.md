@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.24.0] - 2026-08-07
+
+### 🐛 Bug Fixes
+
+- Don't show match title as team name if no team is assigned.
+- Team sorting issue.
+
 ## [0.23.0] - 2026-07-17
 
 ### 🐛 Bug Fixes
