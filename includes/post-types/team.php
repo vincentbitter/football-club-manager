@@ -24,7 +24,7 @@ function fcmanager_get_teams()
 // Get team by ID
 function fcmanager_get_team($team_id)
 {
-    return get_post($team_id);
+    return $team_id ? get_post($team_id) : null;
 }
 
 
