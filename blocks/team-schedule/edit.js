@@ -66,7 +66,7 @@ export default function Edit({ attributes, setAttributes }) {
 		{ label: __("Select a team", "football-club-manager"), value: "" },
 	].concat(
 		teams?.map((team) => ({
-			label: team.title.rendered,
+			label: team.title,
 			value: team.id,
 		})) || [],
 	);

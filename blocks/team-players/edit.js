@@ -32,21 +32,21 @@ export default function Edit({ attributes, setAttributes }) {
 		(select) =>
 			preview_team_id
 				? select("core")
-						.getEntityRecords("postType", "fcmanager_player", {
-							per_page: -1,
-							meta_key: "_fcmanager_player_team",
-							meta_value: preview_team_id,
-						})
-						?.map((player) => ({
-							id: player.id,
-							name: player.title,
-							photo: player.photo,
-							all: player,
-						}))
+					.getEntityRecords("postType", "fcmanager_player", {
+						per_page: -1,
+						meta_key: "_fcmanager_player_team",
+						meta_value: preview_team_id,
+					})
+					?.map((player) => ({
+						id: player.id,
+						name: player.title,
+						photo: player.photo,
+						all: player,
+					}))
 				: Array.from({ length: 11 }, (_, i) => ({
-						id: i + 1,
-						name: __("Player Name", "football-club-manager"),
-				  })),
+					id: i + 1,
+					name: __("Player Name", "football-club-manager"),
+				})),
 		[preview_team_id],
 	);
 
@@ -54,7 +54,7 @@ export default function Edit({ attributes, setAttributes }) {
 		{ label: __("Select a team", "football-club-manager"), value: "" },
 	].concat(
 		teams?.map((team) => ({
-			label: team.title.rendered,
+			label: team.title,
 			value: team.id,
 		})) || [],
 	);
@@ -89,7 +89,7 @@ export default function Edit({ attributes, setAttributes }) {
 							__("Players of %s", "football-club-manager"),
 							preview_team_id
 								? teams?.find((team) => team.id === preview_team_id)?.title
-										.rendered
+									.rendered
 								: __("Team", "football-club-manager"),
 						)}
 					</h2>

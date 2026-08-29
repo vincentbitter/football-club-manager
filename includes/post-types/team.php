@@ -99,6 +99,9 @@ add_filter('rest_post_dispatch', function ($result, $server, $request) {
     }
 
     $data = $result->get_data();
+    if (!is_array($data) || empty($data) || !is_array($data[0]) || !array_key_exists('title', $data[0]))
+        return $result;
+
     $data = fcmanager_sort_teams($data, fn($team) => $team['title']);
     $result->set_data($data);
 
