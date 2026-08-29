@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.25.0] - 2026-08-29
+
+### 🚀 Features
+
+- ICal feeds for each team with upcoming matches.
+- Show calendar subscription buttons on team schedule.
+
+### 🐛 Bug Fixes
+
+- Editor for team-related blocks.
+
 ## [0.24.0] - 2026-08-07
 
 ### 🐛 Bug Fixes
