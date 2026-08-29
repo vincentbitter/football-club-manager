@@ -15,45 +15,7 @@ function fcmanager_render_team_schedule_block($attributes, $content)
     $team_post = get_post($team_id);
 
     if ($team_post && $team_post->post_type === 'fcmanager_team') {
-        $matches = get_posts([
-            'post_type' => 'fcmanager_match',
-            'meta_query' => [
-                'team' => [
-                    'key'     => '_fcmanager_match_team',
-                    'value'   => $team_id,
-                    'compare' => '=',
-                    'type'    => 'NUMERIC',
-                ],
-                'match_date' => [
-                    'key'     => '_fcmanager_match_date',
-                    'value'   => wp_date('Y-m-d'),
-                    'compare' => '>=',
-                    'type'    => 'DATE',
-                ],
-                'goals_for_missing' =>
-                [
-                    'relation' => 'OR',
-                    [
-                        'key'     => '_fcmanager_match_goals_for',
-                        'compare' => 'NOT EXISTS',
-                    ],
-                    [
-                        'key'     => '_fcmanager_match_goals_for',
-                        'value'   => '',
-                        'compare' => '=',
-                    ],
-                ],
-                'match_starttime' => [
-                    'key'  => '_fcmanager_match_starttime',
-                    'type' => 'TIME',
-                ],
-            ],
-            'orderby' => [
-                'match_date' => 'ASC',
-                'match_starttime' => 'ASC',
-            ],
-            'posts_per_page' => 20,
-        ]);
+        $matches = fcmanager_get_upcoming_matches($team_id, 20);
 
         ob_start();
 ?>

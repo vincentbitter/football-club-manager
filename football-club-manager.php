@@ -46,6 +46,7 @@ require_once('admin/page_settings.php');
 // Register endpoints
 require_once('endpoints/import/upload.php');
 require_once('endpoints/import/process.php');
+require_once('endpoints/ical/matches.php');
 
 // Register import parsers
 require_once('includes/import/parsers/class-csv-parser.php');
@@ -190,6 +191,8 @@ function fcmanager_init()
     fcmanager_register_birthday_post_type();
     fcmanager_register_signup_post_type();
     fcmanager_register_match_post_type();
+
+    fcmanager_register_matches_ical_endpoint();
 
     wp_register_block_types_from_metadata_collection(__DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php');
 }
