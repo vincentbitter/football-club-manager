@@ -68,6 +68,24 @@ function fcmanager_render_team_schedule_block($attributes, $content)
             <?php else: ?>
                 <p><?php esc_html_e('No matches found for this team.', 'football-club-manager'); ?></p>
             <?php endif; ?>
+
+            <?php if ($attributes['showSubscribeButtons'] !== false): ?>
+                <div class="fcmanager-calendar-buttons">
+                    <h3><?php esc_html_e("Add to your calendar", "football-club-manager") ?></h3>
+                    <a class="wp-block-button__link" href="<?php echo esc_url(home_url("teams/" . $team_post->post_name . "/matches.ics")); ?>">
+                        iPhone / iPad / Mac
+                    </a>
+                    <a class="wp-block-button__link" href="https://calendar.google.com/calendar/u/0/r?cid=<?php echo esc_url(home_url("teams/" . $team_post->post_name . "/matches.ics")); ?>">
+                        Google Calendar (Android)
+                    </a>
+                    <a class="wp-block-button__link" href="<?php echo esc_url(str_replace('https://', 'webcal://', home_url("teams/" . $team_post->post_name . "/matches.ics"))); ?>">
+                        Windows / Outlook Desktop
+                    </a>
+                    <a class="wp-block-button__link" href="https://outlook.live.com/calendar/0/addfromweb?url=<?php echo esc_url(home_url("teams/" . $team_post->post_name . "/matches.ics")); ?>">
+                        Outlook.com
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
 <?php
         return ob_get_clean();

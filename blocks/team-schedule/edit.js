@@ -1,10 +1,10 @@
 import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
-import { SelectControl, PanelBody } from "@wordpress/components";
+import { SelectControl, PanelBody, CheckboxControl } from "@wordpress/components";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { teamId } = attributes;
+	const { teamId, showSubscribeButtons } = attributes;
 
 	const teams = useSelect(
 		(select) =>
@@ -92,6 +92,11 @@ export default function Edit({ attributes, setAttributes }) {
 							)}
 						/>
 					)}
+					<CheckboxControl
+						label={__("Show subscribe buttons", "football-club-manager")}
+						checked={showSubscribeButtons}
+						onChange={(checked) => setAttributes({ showSubscribeButtons: checked })}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
@@ -137,8 +142,24 @@ export default function Edit({ attributes, setAttributes }) {
 							</tbody>
 						</table>
 					)}
-				</div>
-			</div>
+					{showSubscribeButtons &&
+						<div class="fcmanager-calendar-buttons">
+							<h3>{__("Add to your calendar", "football-club-manager")}</h3>
+							<a class="wp-block-button__link" href="#">
+								iPhone / iPad / Mac
+							</a>
+							<a class="wp-block-button__link" href="#">
+								Google Calendar (Android)
+							</a>
+							<a class="wp-block-button__link" href="#">
+								Windows / Outlook Desktop
+							</a>
+							<a class="wp-block-button__link" href="#">
+								Outlook.com
+							</a >
+						</div >}
+				</div >
+			</div >
 		</>
 	);
 }

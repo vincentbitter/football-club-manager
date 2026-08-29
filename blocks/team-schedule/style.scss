@@ -1,1 +1,15 @@
 @use '../css/match-results.scss';
+
+.fcmanager-calendar-buttons {
+    margin-top: 1em;
+    text-align: center;
+
+    h3 {
+        font-size: 1em;
+    }
+
+    a {
+        margin: 0.5em;
+        font-size: 0.6em;
+    }
+}

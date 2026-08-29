@@ -19,6 +19,10 @@
 		"teamId": {
 			"type": "number",
 			"default": 0
+		},
+		"showSubscribeButtons": {
+			"type": "boolean",
+			"default": true
 		}
 	}
 }
