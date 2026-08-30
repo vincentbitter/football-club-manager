@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.26.0] - 2026-08-30
+
+### 🐛 Bug Fixes
+
+- Calendar subscription buttons not working.
+
 ## [0.25.0] - 2026-08-29
 
 ### 🚀 Features
