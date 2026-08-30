@@ -32,7 +32,6 @@ add_action('template_redirect', function () {
     $ics = fcmanager_build_ics($team, $matches);
 
     header('Content-Type: text/calendar; charset=utf-8');
-    header('Content-Disposition: inline; filename="' .  esc_attr(sanitize_title($team->post_title)) . '.ics"');
 
     echo $ics;
     exit;

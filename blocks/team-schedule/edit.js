@@ -154,9 +154,6 @@ export default function Edit({ attributes, setAttributes }) {
 							<a class="wp-block-button__link" href="#">
 								Windows / Outlook Desktop
 							</a>
-							<a class="wp-block-button__link" href="#">
-								Outlook.com
-							</a >
 						</div >}
 				</div >
 			</div >
