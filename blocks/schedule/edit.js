@@ -2,20 +2,20 @@ import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 import { useDebounce } from "@wordpress/compose";
 import { useState, useEffect } from "@wordpress/element";
-import { PanelBody, RangeControl } from "@wordpress/components";
+import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { numberOfItems, numberOfDays } = attributes;
+	const { numberOfItems, numberOfDays, homeAwayMatches } = attributes;
 
-	const [params, setParams] = useState({ numberOfDays, numberOfItems });
-	const debouncedUpdate = useDebounce((days, items) => {
-		setParams({ numberOfDays: days, numberOfItems: items });
+	const [params, setParams] = useState({ numberOfDays, numberOfItems, homeAwayMatches });
+	const debouncedUpdate = useDebounce((days, items, homeAwayMatches) => {
+		setParams({ numberOfDays: days, numberOfItems: items, homeAwayMatches: homeAwayMatches });
 	}, 300);
 
 	useEffect(() => {
-		debouncedUpdate(numberOfDays, numberOfItems);
-	}, [numberOfDays, numberOfItems]);
+		debouncedUpdate(numberOfDays, numberOfItems, homeAwayMatches);
+	}, [numberOfDays, numberOfItems, homeAwayMatches]);
 
 	const teams = useSelect(
 		(select) =>
@@ -47,6 +47,8 @@ export default function Edit({ attributes, setAttributes }) {
 					meta_compare: "lt",
 					meta_type: "DATE",
 					upcoming: true,
+					homeOnly: params.homeAwayMatches == 'home',
+					awayOnly: params.homeAwayMatches == 'away',
 				})
 				?.map((match) => ({
 					id: match.id,
@@ -88,6 +90,27 @@ export default function Edit({ attributes, setAttributes }) {
 							"Select the number of days to search for matches.",
 							"football-club-manager",
 						)}
+					/>
+					<SelectControl
+						label={__("Home/Away matches", "football-club-manager")}
+						value={homeAwayMatches}
+						options={[
+							{
+								label: __("All matches", "football-club-manager"),
+								value: "",
+							},
+							{
+								label: __("Home matches", "football-club-manager"),
+								value: "home",
+							},
+							{
+								label: __("Away matches", "football-club-manager"),
+								value: "away",
+							},
+						]}
+						onChange={(newValue) =>
+							setAttributes({ homeAwayMatches: newValue })
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>

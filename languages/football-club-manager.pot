@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Football Club Manager 0.24.0\n"
+"Project-Id-Version: Football Club Manager 0.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/football-club-manager\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-29T16:05:20+00:00\n"
+"POT-Creation-Date: 2026-09-17T19:54:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: football-club-manager\n"
@@ -377,100 +377,100 @@ msgid "Results"
 msgstr ""
 
 #: blocks/results/render.php:65
-#: blocks/schedule/render.php:67
+#: blocks/schedule/render.php:80
 #: blocks/team-results/render.php:63
 #: blocks/team-schedule/render.php:28
 #: build/results/render.php:65
-#: build/schedule/render.php:67
+#: build/schedule/render.php:80
 #: build/team-results/render.php:63
 #: build/team-schedule/render.php:28
 #: includes/post-types/match.php:262
 #: blocks/results/edit.js:105
-#: blocks/schedule/edit.js:103
+#: blocks/schedule/edit.js:130
 #: blocks/team-results/edit.js:110
 #: blocks/team-schedule/edit.js:113
 #: build/results/index.js:126
-#: build/schedule/index.js:124
+#: build/schedule/index.js:148
 #: build/team-results/index.js:119
 #: build/team-schedule/index.js:124
 #: build/results/index.js:105
-#: build/schedule/index.js:103
+#: build/schedule/index.js:130
 #: build/team-results/index.js:110
 #: build/team-schedule/index.js:113
 msgid "Date/time"
 msgstr ""
 
 #: blocks/results/render.php:66
-#: blocks/schedule/render.php:68
+#: blocks/schedule/render.php:81
 #: blocks/team-results/render.php:64
 #: blocks/team-schedule/render.php:29
 #: build/results/render.php:66
-#: build/schedule/render.php:68
+#: build/schedule/render.php:81
 #: build/team-results/render.php:64
 #: build/team-schedule/render.php:29
 #: includes/post-types/match.php:16
 #: blocks/results/edit.js:106
-#: blocks/schedule/edit.js:104
+#: blocks/schedule/edit.js:131
 #: blocks/team-results/edit.js:111
 #: blocks/team-schedule/edit.js:114
 #: build/results/index.js:129
-#: build/schedule/index.js:127
+#: build/schedule/index.js:151
 #: build/team-results/index.js:122
 #: build/team-schedule/index.js:127
 #: build/results/index.js:106
-#: build/schedule/index.js:104
+#: build/schedule/index.js:131
 #: build/team-results/index.js:111
 #: build/team-schedule/index.js:114
 msgid "Match"
 msgstr ""
 
 #: blocks/results/render.php:67
-#: blocks/schedule/render.php:69
+#: blocks/schedule/render.php:82
 #: blocks/team-results/render.php:65
 #: blocks/team-schedule/render.php:30
 #: build/results/render.php:67
-#: build/schedule/render.php:69
+#: build/schedule/render.php:82
 #: build/team-results/render.php:65
 #: build/team-schedule/render.php:30
 #: includes/post-types/match.php:160
 #: includes/post-types/referee.php:31
 #: blocks/results/edit.js:107
-#: blocks/schedule/edit.js:105
+#: blocks/schedule/edit.js:132
 #: blocks/team-results/edit.js:112
 #: blocks/team-schedule/edit.js:115
 #: build/results/index.js:131
-#: build/schedule/index.js:129
+#: build/schedule/index.js:153
 #: build/team-results/index.js:124
 #: build/team-schedule/index.js:129
 #: build/results/index.js:107
-#: build/schedule/index.js:105
+#: build/schedule/index.js:132
 #: build/team-results/index.js:112
 #: build/team-schedule/index.js:115
 msgid "Referee"
 msgstr ""
 
 #: blocks/results/render.php:123
-#: blocks/schedule/render.php:114
+#: blocks/schedule/render.php:127
 #: build/results/render.php:123
-#: build/schedule/render.php:114
+#: build/schedule/render.php:127
 #: blocks/results/edit.js:100
-#: blocks/schedule/edit.js:98
+#: blocks/schedule/edit.js:125
 #: build/results/index.js:119
-#: build/schedule/index.js:117
+#: build/schedule/index.js:141
 #: build/results/index.js:100
-#: build/schedule/index.js:98
+#: build/schedule/index.js:125
 msgid "No matches found."
 msgstr ""
 
-#: blocks/schedule/render.php:62
+#: blocks/schedule/render.php:75
 #: blocks/team-schedule/render.php:23
-#: build/schedule/render.php:62
+#: build/schedule/render.php:75
 #: build/team-schedule/render.php:23
-#: blocks/schedule/edit.js:96
+#: blocks/schedule/edit.js:123
 #: blocks/team-schedule/edit.js:104
-#: build/schedule/index.js:115
+#: build/schedule/index.js:139
 #: build/team-schedule/index.js:115
-#: build/schedule/index.js:96
+#: build/schedule/index.js:123
 #: build/team-schedule/index.js:104
 msgid "Upcoming matches"
 msgstr ""
@@ -593,9 +593,9 @@ msgstr ""
 
 #: blocks/team-players/render.php:63
 #: build/team-players/render.php:63
-#: blocks/team-players/edit.js:98
+#: blocks/team-players/edit.js:97
 #: build/team-players/index.js:106
-#: build/team-players/index.js:98
+#: build/team-players/index.js:97
 msgid "No players found for this team."
 msgstr ""
 
@@ -614,9 +614,9 @@ msgstr ""
 
 #: blocks/team-schedule/render.php:74
 #: build/team-schedule/render.php:74
-#: blocks/team-schedule/edit.js:147
+#: blocks/team-schedule/edit.js:146
 #: build/team-schedule/index.js:158
-#: build/team-schedule/index.js:147
+#: build/team-schedule/index.js:146
 msgid "Add to your calendar"
 msgstr ""
 
@@ -868,9 +868,9 @@ msgstr ""
 #: includes/post-types/player.php:132
 #: includes/post-types/player.php:202
 #: includes/post-types/team.php:41
-#: blocks/team-players/edit.js:93
+#: blocks/team-players/edit.js:92
 #: build/team-players/index.js:104
-#: build/team-players/index.js:93
+#: build/team-players/index.js:92
 msgid "Team"
 msgstr ""
 
@@ -1224,20 +1224,20 @@ msgid "None"
 msgstr ""
 
 #: blocks/results/edit.js:69
-#: blocks/schedule/edit.js:67
+#: blocks/schedule/edit.js:73
 #: build/results/index.js:94
-#: build/schedule/index.js:92
+#: build/schedule/index.js:100
 #: build/results/index.js:69
-#: build/schedule/index.js:67
+#: build/schedule/index.js:73
 msgid "Query"
 msgstr ""
 
 #: blocks/results/edit.js:73
-#: blocks/schedule/edit.js:71
+#: blocks/schedule/edit.js:77
 #: build/results/index.js:97
-#: build/schedule/index.js:95
+#: build/schedule/index.js:103
 #: build/results/index.js:73
-#: build/schedule/index.js:71
+#: build/schedule/index.js:77
 msgid "Number of items"
 msgstr ""
 
@@ -1248,11 +1248,11 @@ msgid "Select the maximum number of results to show."
 msgstr ""
 
 #: blocks/results/edit.js:84
-#: blocks/schedule/edit.js:82
+#: blocks/schedule/edit.js:88
 #: build/results/index.js:104
-#: build/schedule/index.js:102
+#: build/schedule/index.js:110
 #: build/results/index.js:84
-#: build/schedule/index.js:82
+#: build/schedule/index.js:88
 msgid "Number of days"
 msgstr ""
 
@@ -1262,16 +1262,40 @@ msgstr ""
 msgid "Select the number of days to search back for results."
 msgstr ""
 
-#: blocks/schedule/edit.js:76
-#: build/schedule/index.js:100
-#: build/schedule/index.js:76
+#: blocks/schedule/edit.js:82
+#: build/schedule/index.js:108
+#: build/schedule/index.js:82
 msgid "Select the maximum number of matches to show."
 msgstr ""
 
-#: blocks/schedule/edit.js:87
-#: build/schedule/index.js:107
-#: build/schedule/index.js:87
+#: blocks/schedule/edit.js:93
+#: build/schedule/index.js:115
+#: build/schedule/index.js:93
 msgid "Select the number of days to search for matches."
+msgstr ""
+
+#: blocks/schedule/edit.js:99
+#: build/schedule/index.js:117
+#: build/schedule/index.js:99
+msgid "Home/Away matches"
+msgstr ""
+
+#: blocks/schedule/edit.js:103
+#: build/schedule/index.js:120
+#: build/schedule/index.js:103
+msgid "All matches"
+msgstr ""
+
+#: blocks/schedule/edit.js:107
+#: build/schedule/index.js:123
+#: build/schedule/index.js:107
+msgid "Home matches"
+msgstr ""
+
+#: blocks/schedule/edit.js:111
+#: build/schedule/index.js:126
+#: build/schedule/index.js:111
+msgid "Away matches"
 msgstr ""
 
 #: blocks/signup-form-additional-information/edit.js:15

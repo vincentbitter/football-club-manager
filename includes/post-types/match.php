@@ -369,6 +369,23 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
             'type' => 'NUMERIC',
         );
     }
+
+    if ($request->get_param('awayOnly') === 'true') {
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_away',
+            'value' => '1',
+            'compare' => '==',
+            'type' => 'NUMERIC',
+        );
+    } else if ($request->get_param('homeOnly') === 'true') {
+        $args['meta_query'][] = array(
+            'key' => '_fcmanager_match_away',
+            'value' => '0',
+            'compare' => '==',
+            'type' => 'NUMERIC',
+        );
+    }
+
     return $args;
 }, 10, 2);
 

@@ -17,9 +17,8 @@ function fcmanager_render_schedule_block($attributes, $content)
         ? intval($attributes['numberOfDays'])
         : 14;
 
-    $matches = get_posts([
-        'post_type' => 'fcmanager_match',
-        'meta_query' => [
+    $meta_query = [
+        [
             'date_min' => [
                 'key' => '_fcmanager_match_date',
                 'value' => wp_date('Y-m-d'),
@@ -48,7 +47,21 @@ function fcmanager_render_schedule_block($attributes, $content)
                 'key'  => '_fcmanager_match_starttime',
                 'type' => 'TIME',
             ],
-        ],
+        ]
+    ];
+
+    if (array_key_exists('homeAwayMatches', $attributes) && in_array($attributes['homeAwayMatches'], ['home', 'away'])) {
+        $meta_query[0]['away_game'] = [
+            'key' => '_fcmanager_match_away',
+            'value' => intval($attributes['homeAwayMatches'] == 'away'),
+            'compare' => '==',
+            'type' => 'NUMERIC',
+        ];
+    }
+
+    $matches = get_posts([
+        'post_type' => 'fcmanager_match',
+        'meta_query' => $meta_query,
         'orderby' => [
             'date_min'   => 'ASC',
             'match_starttime' => 'ASC',

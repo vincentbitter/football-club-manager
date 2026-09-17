@@ -23,6 +23,9 @@
 		"numberOfDays": {
 			"type": "number",
 			"default": 14
+		},
+		"homeAwayMatches": {
+			"type": "string"
 		}
 	}
 }
