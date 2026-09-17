@@ -89,7 +89,6 @@ export default function Edit({ attributes, setAttributes }) {
 							__("Players of %s", "football-club-manager"),
 							preview_team_id
 								? teams?.find((team) => team.id === preview_team_id)?.title
-									.rendered
 								: __("Team", "football-club-manager"),
 						)}
 					</h2>

@@ -120,8 +120,7 @@ export default function Edit({ attributes, setAttributes }) {
 										<td class="fcmanager-match-hometeam">
 											{match.away
 												? match.opponent
-												: teams?.find((t) => t.id == match.team)?.title
-													.rendered}
+												: teams?.find((t) => t.id == match.team)?.title}
 										</td>
 										<td class="fcmanager-match-homescore">
 											{match.away ? match.goals_against : match.goals_for}
@@ -132,7 +131,7 @@ export default function Edit({ attributes, setAttributes }) {
 										</td>
 										<td class="fcmanager-match-awayteam">
 											{match.away
-												? teams?.find((t) => t.id == match.team)?.title.rendered
+												? teams?.find((t) => t.id == match.team)?.title
 												: match.opponent}
 										</td>
 										<td class="fcmanager-match-referee">
