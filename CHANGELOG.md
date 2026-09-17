@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.27.0] - 2026-09-17
+
+### 🚀 Features
+
+- Filter home/away matches in schedule.
+
+### 🐛 Bug Fixes
+
+- Show team names in editor preview.
+
 ## [0.26.0] - 2026-08-30
 
 ### 🐛 Bug Fixes
