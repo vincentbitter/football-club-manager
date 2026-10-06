@@ -360,7 +360,7 @@ function fcmanager_custom_team_column($column, $post_id)
 
 add_action('manage_fcmanager_team_posts_custom_column', 'fcmanager_custom_team_column', 10, 2);
 
-function fcmanager_find_team_by_player($query)
+function fcmanager_find_team_by_player($search, $query)
 {
     if (! $query->is_search || is_admin()) {
         return;
@@ -391,14 +391,21 @@ function fcmanager_find_team_by_player($query)
         )
     ));
 
-
     if (empty($team_ids)) {
-        return;
+        return $search;
     }
-    $query->set('s', null);
-    $query->set('post__in', $team_ids);
+
+    $team_ids = array_map('intval', $team_ids);
+
+    $team_search = sprintf(
+        '%s.ID IN (%s)',
+        $wpdb->posts,
+        implode(',', $team_ids)
+    );
+
+    return 'AND (' . $team_search . ' OR (1=1 ' . $search . '))';
 }
-add_action('pre_get_posts', 'fcmanager_find_team_by_player');
+add_filter('posts_search', 'fcmanager_find_team_by_player', 10, 2);
 
 
 function fcmanager_sort_teams($teams, $fn_get_title)
