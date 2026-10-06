@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.28.0] - 2026-10-06
+
+### 🐛 Bug Fixes
+
+- Teams should not hide other search results.
+
+### 🧪 Testing
+
+- Tested with WordPress 7.1.
+
 ## [0.27.0] - 2026-09-17
 
 ### 🚀 Features
