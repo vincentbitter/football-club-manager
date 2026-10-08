@@ -11,7 +11,6 @@
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: football-club-manager
- * Domain Path: /languages
  */
 
 if (! defined('ABSPATH')) {
