@@ -61,7 +61,7 @@ function fcmanager_dashboard_right_now()
         <ul>
             <?php
             // Teams, players, referees, volunteers, signups and matches
-            foreach (array('fcmanager_team', 'fcmanager_player', 'fcmanager_referee', 'fcmanager_volunteer', 'fcmanager_signup', 'fcmanager_match') as $post_type) {
+            foreach (array('fcmanager_team', 'fcmanager_player', 'fcmanager_referee', 'fcmanager_volunteer', 'fcmanager_signup', 'fcmanager_comp', 'fcmanager_match') as $post_type) {
                 $num_posts = wp_count_posts($post_type);
 
                 if ($num_posts) {

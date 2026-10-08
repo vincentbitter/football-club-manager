@@ -31,6 +31,7 @@ require_once('includes/post-types/referee.php');
 require_once('includes/post-types/birthday.php');
 require_once('includes/post-types/signup.php');
 require_once('includes/post-types/match.php');
+require_once('includes/post-types/competition.php');
 
 // Register settings
 require_once('includes/class-settings.php');
@@ -124,6 +125,14 @@ function fcmanager_register_administration_menu()
     );
     add_submenu_page(
         'fcmanager',
+        __('Competitions', 'football-club-manager'),
+        __('Competitions', 'football-club-manager'),
+        'edit_posts',
+        'edit.php?post_type=fcmanager_comp',
+        false
+    );
+    add_submenu_page(
+        'fcmanager',
         __('Matches', 'football-club-manager'),
         __('Matches', 'football-club-manager'),
         'edit_posts',
@@ -190,6 +199,7 @@ function fcmanager_init()
     fcmanager_register_birthday_post_type();
     fcmanager_register_signup_post_type();
     fcmanager_register_match_post_type();
+    fcmanager_register_competition_post_type();
 
     fcmanager_register_matches_ical_endpoint();
 
@@ -285,6 +295,7 @@ function fcmanager_deactivated()
     fcmanager_unregister_birthday_post_type();
     fcmanager_unregister_signup_post_type();
     fcmanager_unregister_match_post_type();
+    fcmanager_unregister_competition_post_type();
 
     flush_rewrite_rules();
 }
