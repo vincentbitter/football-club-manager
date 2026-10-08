@@ -363,12 +363,12 @@ add_action('manage_fcmanager_team_posts_custom_column', 'fcmanager_custom_team_c
 function fcmanager_find_team_by_player($search, $query)
 {
     if (! $query->is_search || is_admin()) {
-        return;
+        return $search;
     }
 
     $search_term = trim($query->query_vars['s']);
     if (! $search_term) {
-        return;
+        return $search;
     }
 
     global $wpdb;
