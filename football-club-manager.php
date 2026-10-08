@@ -139,6 +139,9 @@ function fcmanager_register_administration_menu()
         'edit.php?post_type=fcmanager_match',
         false
     );
+
+    do_action('fcmanager_admin_menu_extra');
+
     add_submenu_page(
         'fcmanager',
         __('Settings', 'football-club-manager'),
