@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.29.0] - 2026-10-08
+
+### 🚀 Features
+
+- Use translations from GlotPress.
+- Add competitions management.
+- Hook for add-ons to add extra menu items.
+
+### 🐛 Bug Fixes
+
+- Broken image search.
+
 ## [0.28.0] - 2026-10-06
 
 ### 🐛 Bug Fixes
