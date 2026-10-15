@@ -86,7 +86,7 @@ class FCManager_Competition
     {
         if (!$this->id) {
             $this->id = wp_insert_post([
-                'post_type' => 'fcmanager_team',
+                'post_type' => 'fcmanager_competition',
                 'post_status' => 'publish',
             ]);
         }
