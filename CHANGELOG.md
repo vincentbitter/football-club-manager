@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.30.0] - 2026-10-15
+
+### 🐛 Bug Fixes
+
+- Show results if home team didn't score.
+
 ## [0.29.0] - 2026-10-08
 
 ### 🚀 Features
