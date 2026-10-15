@@ -365,8 +365,7 @@ add_filter('rest_fcmanager_match_query', function ($args, $request) {
         $args['meta_query'][] = array(
             'key' => '_fcmanager_match_goals_for',
             'compare' => '!=',
-            'value' => '',
-            'type' => 'NUMERIC',
+            'value' => ''
         );
     }
 
