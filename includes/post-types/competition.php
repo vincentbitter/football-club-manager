@@ -25,7 +25,7 @@ function fcmanager_register_competition_post_type()
             'show_ui'       => true,
             'show_in_menu' => false,
             'show_in_rest' => true,
-            'supports'      => array('title'),
+            'supports'      => array(''),
         )
     );
 }
@@ -62,6 +62,18 @@ function fcmanager_render_competition_meta_box($post)
     <table style="width: 464px;" role="presentation">
         <thead>
             <tr>
+                <th><label for="fcmanager_comp_name"><?php esc_attr_e('Name', 'football-club-manager'); ?></label></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input style="width: 100%;" type="text" id="fcmanager_comp_name" name="fcmanager_comp_name" value="<?php echo esc_attr($competition->name()); ?>"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="width: 464px;" role="presentation">
+        <thead>
+            <tr>
                 <th><label for="fcmanager_comp_start_date"><?php esc_attr_e('Start date', 'football-club-manager'); ?></label></th>
                 <th><label for="fcmanager_comp_end_date"><?php esc_attr_e('End date', 'football-club-manager'); ?></label></th>
             </tr>
@@ -94,6 +106,7 @@ function fcmanager_save_competition_meta_box($post_id)
     // Save changes
     $competition = new FCManager_Competition($post_id);
 
+    $competition->name(sanitize_text_field(wp_unslash($_POST['fcmanager_comp_name'])));
     $competition->start_date(isset($_POST['fcmanager_comp_start_date']) ? new DateTime(wp_unslash($_POST['fcmanager_comp_start_date'])) : null);
     $competition->end_date(isset($_POST['fcmanager_comp_end_date']) ? new DateTime(wp_unslash($_POST['fcmanager_comp_end_date'])) : null);
 
