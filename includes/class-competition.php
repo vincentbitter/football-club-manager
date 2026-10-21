@@ -39,12 +39,31 @@ class FCManager_Competition
         }
     }
 
+    public function id()
+    {
+        return $this->id;
+    }
+
     public function name($new_value = null)
     {
         if ($new_value !== null) {
             $this->name = $new_value;
         }
         return $this->name;
+    }
+
+    public function to_string()
+    {
+        $s = $this->name;
+        if ($this->start_date && $this->end_date) {
+            $s .= ' (' . $this->start_date->format('Y-m-d') . ' - ' . $this->end_date->format('Y-m-d') . ')';
+        } else if ($this->start_date) {
+            $s .= ' (' . $this->start_date->format('Y-m-d') . ')';
+        } else if ($this->end_date) {
+            $s .= ' (... - ' . $this->end_date->format('Y-m-d') . ')';
+        }
+
+        return $s;
     }
 
     public function start_date($new_value = null)

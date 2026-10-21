@@ -6,6 +6,37 @@ if (! defined('ABSPATH')) {
 }
 
 require_once(dirname(__FILE__) . '/../class-competition.php');
+require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+
+/*
+ * Get all competitions
+ * 
+ * @return array
+ */
+function fcmanager_get_competitions($include = [])
+{
+    $posts = get_posts(array(
+        'post_type' => 'fcmanager_comp',
+        'post_status' => array('draft', 'publish'),
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'suppress_filters' => false,
+        'posts_per_page' => -1,
+    ));
+
+    $competitions = array_map(fn($post) => new FCManager_Competition($post), $posts);
+
+    $competition_ids = array_map(fn($comp) => $comp->id(), $competitions);
+    $missing = array_diff($include, $competition_ids);
+
+    if (count($missing) > 0) {
+        $missing_competitions = array_map(fn($id) => new FCManager_Competition($id), $missing);
+        $competitions = array_merge($competitions, $missing_competitions);
+    }
+
+
+    return $competitions;
+}
 
 // Register Custom Post Type: Competition
 function fcmanager_register_competition_post_type()
@@ -37,8 +68,8 @@ function fcmanager_unregister_competition_post_type()
 }
 
 // Add custom meta boxes to competition
-function fcmanager_add_competition_meta_boxes()
-{
+function fcmanager_add_competition_meta_boxes($post_type, $post)
+{;
     add_meta_box(
         'fcmanager_comp_meta_box',
         __('Competition information', 'football-club-manager'),
@@ -47,8 +78,19 @@ function fcmanager_add_competition_meta_boxes()
         'normal',
         'high'
     );
+
+    if ($post->post_status !== 'auto-draft') {
+        add_meta_box(
+            'fcmanager_pools',
+            __('Pools', 'fcmanager'),
+            'fcmanager_render_pools_meta_box',
+            'fcmanager_comp',
+            'normal',
+            'default'
+        );
+    }
 }
-add_action('add_meta_boxes', 'fcmanager_add_competition_meta_boxes');
+add_action('add_meta_boxes', 'fcmanager_add_competition_meta_boxes', 10, 2);
 
 // Render competition meta box
 function fcmanager_render_competition_meta_box($post)
@@ -116,6 +158,93 @@ function fcmanager_save_competition_meta_box($post_id)
 
 add_action('save_post_fcmanager_comp', 'fcmanager_save_competition_meta_box');
 
+class FCManager_Pools_List_Table extends WP_List_Table
+{
+    private $post_id = null;
+    private $post_type = null;
+
+    public function __construct($post_id)
+    {
+        $this->post_type = get_post_type_object('fcmanager_pool');
+
+        parent::__construct(array(
+            'singular' => $this->post_type->labels->singular_name,
+            'plural'   => $this->post_type->labels->name,
+            'ajax'     => false,
+            'screen'   => 'fcmanager_pools',
+        ));
+        $this->post_id = $post_id;
+    }
+
+    public function get_columns()
+    {
+        return [
+            'title' => __('Name', 'football-club-manager'),
+        ];
+    }
+
+    public function column_default($item, $column_name)
+    {
+        switch ($column_name) {
+            case 'title':
+                return $item->post_title;
+        }
+
+        return '';
+    }
+
+    public function prepare_items()
+    {
+        $this->items = get_children([
+            'post_parent' => $this->post_id,
+            'post_type'   => 'fcmanager_pool',
+            'post_status' => 'any',
+            'numberposts' => -1,
+            'orderby'     => 'title',
+        ]);
+
+        $this->_column_headers = [
+            $this->get_columns(),
+            [],
+            [],
+        ];
+    }
+
+    function column_title($item)
+    {
+        $return_url = admin_url(
+            sprintf(
+                'post.php?post=%d&action=edit',
+                $this->post_id
+            )
+        );
+
+        $actions = array(
+            'edit'      => sprintf('<a href="%s">' . __('Edit') . '</a>', get_edit_post_link($item->ID)),
+            'delete'      => sprintf('<a href="%s">' . __('Delete') . '</a>', get_delete_post_link($item->ID) . '&redirect=' . urlencode($return_url)),
+        );
+
+        return sprintf('%1$s %2$s', $item->post_title, $this->row_actions($actions));
+    }
+
+    function display_tablenav($which)
+    {
+        if ($which == "top") {
+            echo '<div class="tablenav ' . esc_attr($which) . '">';
+            echo '<a href="' . esc_url(admin_url('post-new.php?post_type=fcmanager_pool&post_parent=' . $this->post_id)) . '" class="button">' .
+                $this->post_type->labels->add_new . '</a>';
+            echo '<br class="clear" /></div>';
+        }
+    }
+}
+
+function fcmanager_render_pools_meta_box($post)
+{
+    $table = new FCManager_Pools_List_Table($post->ID);
+
+    $table->prepare_items();
+    $table->display();
+}
 
 // Add the custom columns to the competition post type:
 function fcmanager_set_custom_edit_competition_columns($columns)
@@ -145,5 +274,20 @@ function fcmanager_custom_competition_column($column, $post_id)
             break;
     }
 }
-
 add_action('manage_fcmanager_comp_posts_custom_column', 'fcmanager_custom_competition_column', 10, 2);
+
+function fcmanager_delete_competition($post_id)
+{
+    $pools = get_children([
+        'post_parent' => $post_id,
+        'post_type'   => 'fcmanager_pool',
+        'post_status' => 'any',
+        'numberposts' => -1,
+        'orderby'     => 'title',
+    ]);
+
+    foreach ($pools as $pool) {
+        wp_delete_post($pool->ID, true);
+    }
+}
+add_action('delete_post', 'fcmanager_delete_competition', 10, 1);

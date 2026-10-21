@@ -32,6 +32,7 @@ require_once('includes/post-types/birthday.php');
 require_once('includes/post-types/signup.php');
 require_once('includes/post-types/match.php');
 require_once('includes/post-types/competition.php');
+require_once('includes/post-types/pool.php');
 
 // Register settings
 require_once('includes/class-settings.php');
@@ -203,6 +204,7 @@ function fcmanager_init()
     fcmanager_register_signup_post_type();
     fcmanager_register_match_post_type();
     fcmanager_register_competition_post_type();
+    fcmanager_register_pool_post_type();
 
     fcmanager_register_matches_ical_endpoint();
 
@@ -299,6 +301,7 @@ function fcmanager_deactivated()
     fcmanager_unregister_signup_post_type();
     fcmanager_unregister_match_post_type();
     fcmanager_unregister_competition_post_type();
+    fcmanager_unregister_pool_post_type();
 
     flush_rewrite_rules();
 }
@@ -382,3 +385,12 @@ function fcmanager_unregister_crons()
     wp_clear_scheduled_hook('fcmanager_cron_notification_immediately');
     wp_clear_scheduled_hook('fcmanager_cron_notification_daily');
 }
+
+function fcmanager_redirect_after_trash()
+{
+    if ($_GET['redirect']) {
+        wp_redirect(sanitize_url(wp_unslash($_GET['redirect'])));
+        exit;
+    }
+}
+add_action('trashed_post', 'fcmanager_redirect_after_trash', 10, 0);
