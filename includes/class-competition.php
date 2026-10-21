@@ -89,6 +89,11 @@ class FCManager_Competition
                 'post_type' => 'fcmanager_competition',
                 'post_status' => 'publish',
             ]);
+        } else {
+            wp_update_post([
+                'ID'          => $this->id,
+                'post_status' => 'publish',
+            ]);
         }
 
         update_post_meta($this->id, '_fcmanager_comp_start_date', $this->start_date() ? $this->start_date()->format('Y-m-d') : '');
