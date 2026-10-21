@@ -12,7 +12,7 @@ class FCManager_Birthday extends FCManager_Person
     {
 
         if ($id_or_post === null || ($id_or_post instanceof WP_Post && $id_or_post->post_status === 'auto-draft')) {
-            $this->id = $id_or_post;
+            $this->id = $id_or_post ? $id_or_post->ID : null;
             $this->publish_birthday = true;
             $this->publish_age = FCManager_Settings::instance()->birthday->publish_age_by_default();
             return;

@@ -14,7 +14,7 @@ class FCManager_Competition
     public function __construct($id_or_post = null)
     {
         if ($id_or_post === null || ($id_or_post instanceof WP_Post && $id_or_post->post_status === 'auto-draft')) {
-            $this->id = $id_or_post;
+            $this->id = $id_or_post ? $id_or_post->ID : null;
             return;
         }
 
