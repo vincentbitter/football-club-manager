@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.31.0] - 2026-10-23
+
+### 🚀 Features
+
+- Add pools to competitions.
+
+### 🐛 Bug Fixes
+
+- Move competition name to metabox.
+- Team was created instead of competition.
+- Set post ID in classes when auto-saving.
+- Do not allow changing competitions to draft status.
+
 ## [0.30.0] - 2026-10-15
 
 ### 🐛 Bug Fixes
