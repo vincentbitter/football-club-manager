@@ -76,16 +76,48 @@ function fcmanager_render_match_meta_box($post)
     $goals_for_final = get_post_meta($post->ID, '_fcmanager_match_goals_for_final', true);
     $goals_against_final = get_post_meta($post->ID, '_fcmanager_match_goals_against_final', true);
     $referee = get_post_meta($post->ID, '_fcmanager_match_referee', true);
+    $pool = (int) get_post_meta($post->ID, '_fcmanager_match_pool', true);
 
     if ($away !== 0 && $away !== 1)
         $away = 0;
 
     $team_options = fcmanager_get_teams();
     $referee_options = fcmanager_get_referees();
+    $pools = fcmanager_get_pools($pool ? [$pool] : []);
+    $competitions = fcmanager_get_competitions($pool ? [(new FCManager_Pool($pool))->competition_id()] : []);
+    $competitions = array_combine(
+        array_map(fn($comp) => $comp->id(), $competitions),
+        array_map(fn($comp) => $comp->to_string(), $competitions)
+    );
+    $pools = array_filter($pools, fn($pool) => array_key_exists($pool->competition_id(), $competitions));
+    usort($pools, fn($pool) => $competitions[$pool->competition_id()] . ' - ' . $pool->to_string());
+    $pool_options = array_combine(
+        array_map(fn($pool) => $pool->id(), $pools),
+        array_map(fn($pool) => $competitions[$pool->competition_id()] . ' - ' . $pool->to_string(), $pools)
+    );
 
     // Show form
     wp_nonce_field('fcmanager_save_match_meta_box', 'fcmanager_match_meta_box_nonce');
 ?>
+    <table style="width: 464px; margin: 20px 0;" role="presentation">
+        <thead>
+            <tr>
+                <th><label for="fcmanager_match_pool"><?php esc_attr_e('Pool', 'football-club-manager'); ?></label></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select style="width: 100%" id="fcmanager_match_pool" name="fcmanager_match_pool">
+                        <option value=""></option>
+                        <?php foreach ($pool_options as $id => $name) : ?>
+                            <option value="<?php echo esc_attr($id); ?>" <?php selected($pool, $id); ?>><?php esc_html_e($name); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table style="width: 464px;" role="presentation">
         <thead>
             <tr>
@@ -214,6 +246,8 @@ function fcmanager_save_match_meta_box($post_id)
         update_post_meta($post_id, '_fcmanager_match_goals_against_final', sanitize_text_field(wp_unslash($_POST['fcmanager_match_goals_against_final'])));
     if (array_key_exists('fcmanager_match_referee', $_POST))
         update_post_meta($post_id, '_fcmanager_match_referee', sanitize_text_field(wp_unslash($_POST['fcmanager_match_referee'])));
+    if (array_key_exists('fcmanager_match_pool', $_POST))
+        update_post_meta($post_id, '_fcmanager_match_pool', sanitize_text_field(wp_unslash($_POST['fcmanager_match_pool'])));
 
     // Update post with new title
     $home_team = fcmanager_get_home_team_name($post_id);

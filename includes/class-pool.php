@@ -6,9 +6,13 @@ if (! defined('ABSPATH')) {
 
 class FCManager_Pool
 {
+    /** @var int */
     protected $id;
+    /** @var int */
     protected $competition_id;
+    /** @var string */
     protected $division;
+    /** @var string */
     protected $name;
 
     public function __construct($id_or_post = null)
@@ -61,14 +65,19 @@ class FCManager_Pool
     public function competition_id($new_value = null)
     {
         if ($new_value !== null) {
-            $this->competition_id = $new_value;
+            $this->competition_id = (int) $new_value;
         }
         return $this->competition_id;
     }
 
+    public function to_string()
+    {
+        return $this->division() . ' ' . $this->name();
+    }
+
     private function save_title()
     {
-        $name = $this->division() . ' ' . $this->name();
+        $name = $this->to_string();
         wp_update_post([
             'ID' => $this->id,
             'post_title' => $name,

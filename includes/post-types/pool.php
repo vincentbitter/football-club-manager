@@ -7,6 +7,35 @@ if (! defined('ABSPATH')) {
 
 require_once(dirname(__FILE__) . '/../class-pool.php');
 
+/*
+ * Get all competitions
+ * 
+ * @return FCManager_Pool[]
+ */
+function fcmanager_get_pools($include = [])
+{
+    $posts = get_posts(array(
+        'post_type' => 'fcmanager_pool',
+        'post_status' => array('draft', 'publish'),
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'suppress_filters' => false,
+        'posts_per_page' => -1,
+    ));
+
+    $pools = array_map(fn($post) => new FCManager_Pool($post), $posts);
+
+    $pool_ids = array_map(fn($pool) => $pool->id(), $pools);
+    $missing = array_diff($include, $pool_ids);
+
+    if (count($missing) > 0) {
+        $missing_pools = array_map(fn($id) => new FCManager_Pool($id), $missing);
+        $pools = array_merge($pools, $missing_pools);
+    }
+
+    return $pools;
+}
+
 // Register Custom Post Type: Pool
 function fcmanager_register_pool_post_type()
 {

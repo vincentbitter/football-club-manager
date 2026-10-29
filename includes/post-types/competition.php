@@ -11,7 +11,7 @@ require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 /*
  * Get all competitions
  * 
- * @return array
+ * @return FCManager_Competition[]
  */
 function fcmanager_get_competitions($include = [])
 {
@@ -30,10 +30,16 @@ function fcmanager_get_competitions($include = [])
     $missing = array_diff($include, $competition_ids);
 
     if (count($missing) > 0) {
-        $missing_competitions = array_map(fn($id) => new FCManager_Competition($id), $missing);
+        $missing_competitions = [];
+        foreach ($missing as $id) {
+            try {
+                $missing_competitions[] = new FCManager_Competition($id);
+            } catch (Exception $e) {
+                continue;
+            }
+        }
         $competitions = array_merge($competitions, $missing_competitions);
     }
-
 
     return $competitions;
 }
