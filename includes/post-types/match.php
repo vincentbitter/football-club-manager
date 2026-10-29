@@ -90,11 +90,11 @@ function fcmanager_render_match_meta_box($post)
         array_map(fn($comp) => $comp->to_string(), $competitions)
     );
     $pools = array_filter($pools, fn($pool) => array_key_exists($pool->competition_id(), $competitions));
-    usort($pools, fn($pool) => $competitions[$pool->competition_id()] . ' - ' . $pool->to_string());
     $pool_options = array_combine(
         array_map(fn($pool) => $pool->id(), $pools),
         array_map(fn($pool) => $competitions[$pool->competition_id()] . ' - ' . $pool->to_string(), $pools)
     );
+    uasort($pool_options, fn($a, $b) => strtolower($a) > strtolower($b));
 
     // Show form
     wp_nonce_field('fcmanager_save_match_meta_box', 'fcmanager_match_meta_box_nonce');
