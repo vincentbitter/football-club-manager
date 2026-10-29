@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.32.0] - 2026-10-29
+
+### 🚀 Features
+
+- Add matches to pool.
+
+### 🐛 Bug Fixes
+
+- Use correct post type to create new competition.
+- Store pool as parent for match.
+- Plugin Check findings.
+- Sort pools in dropdown on match form.
+
 ## [0.31.0] - 2026-10-23
 
 ### 🚀 Features
