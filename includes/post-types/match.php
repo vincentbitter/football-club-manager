@@ -111,7 +111,7 @@ function fcmanager_render_match_meta_box($post)
                     <select style="width: 100%" id="fcmanager_match_pool" name="fcmanager_match_pool">
                         <option value=""></option>
                         <?php foreach ($pool_options as $id => $name) : ?>
-                            <option value="<?php echo esc_attr($id); ?>" <?php selected($pool, $id); ?>><?php esc_html_e($name); ?></option>
+                            <option value="<?php echo esc_attr($id); ?>" <?php selected($pool, $id); ?>><?php echo esc_html($name); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>

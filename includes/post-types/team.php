@@ -233,7 +233,7 @@ function fcmanager_render_team_details_meta_box($post)
             <?php
             $age_categories = FCManager_AgeCategory::values();
             foreach ($age_categories as $age_category) {
-                echo '<option value="' . $age_category . '" ' . selected($team->age_category(), $age_category, false) . '>' . esc_html(FCManager_AgeCategory::__($age_category)) . '</option>';
+                echo '<option value="' . esc_attr($age_category) . '" data-label="' . esc_attr($age_category) . '" ' . selected($team->age_category(), $age_category, false) . '>' . esc_html(FCManager_AgeCategory::__($age_category)) . '</option>';
             }
             ?>
         </select>
@@ -246,7 +246,7 @@ function fcmanager_render_team_details_meta_box($post)
             <?php
             $genders = FCManager_TeamGender::values();
             foreach ($genders as $gender) {
-                echo '<option value="' . $gender . '" ' . selected($team->gender(), $gender, false) . '>' . esc_html(FCManager_TeamGender::__($gender)) . '</option>';
+                echo '<option value="' . esc_attr($gender) . '" ' . selected($team->gender(), $gender, false) . '>' . esc_html(FCManager_TeamGender::__($gender)) . '</option>';
             }
             ?>
         </select>

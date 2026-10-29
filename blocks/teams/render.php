@@ -49,14 +49,14 @@ function fcmanager_render_teams_block($attributes, $content)
 
     ob_start();
 ?>
-    <div class="fcmanager-teams-block" <?php echo get_block_wrapper_attributes(); ?>>
+    <div class="fcmanager-teams-block" <?php echo wp_kses_data(get_block_wrapper_attributes()); ?>>
         <div class="wp-block-columns">
             <?php for ($i = 0; $i < $columns; $i++) : ?>
                 <div class="wp-block-column">
                     <ul>
                         <?php for ($j = (int)ceil($i * $items_per_column); $j < ceil(($i + 1) * $items_per_column) && $j < count($teams); $j++) : ?>
                             <li>
-                                <a href="<?php echo get_permalink($teams[$j]->ID); ?>"><?php esc_html_e($teams[$j]->post_title); ?></a>
+                                <a href="<?php echo esc_url(get_permalink($teams[$j]->ID)); ?>"><?php echo esc_html($teams[$j]->post_title); ?></a>
                             </li>
                         <?php endfor; ?>
                     </ul>

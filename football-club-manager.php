@@ -389,7 +389,7 @@ function fcmanager_unregister_crons()
 function fcmanager_redirect_after_trash()
 {
     if ($_GET['redirect']) {
-        wp_redirect(sanitize_url(wp_unslash($_GET['redirect'])));
+        wp_safe_redirect(sanitize_url(wp_unslash($_GET['redirect'])));
         exit;
     }
 }

@@ -88,7 +88,7 @@ function fcmanager_add_competition_meta_boxes($post_type, $post)
     if ($post->post_status !== 'auto-draft') {
         add_meta_box(
             'fcmanager_pools',
-            __('Pools', 'fcmanager'),
+            __('Pools', 'football-club-manager'),
             'fcmanager_render_pools_meta_box',
             'fcmanager_comp',
             'normal',
@@ -226,8 +226,8 @@ class FCManager_Pools_List_Table extends WP_List_Table
         );
 
         $actions = array(
-            'edit'      => sprintf('<a href="%s">' . __('Edit') . '</a>', get_edit_post_link($item->ID)),
-            'delete'      => sprintf('<a href="%s">' . __('Delete') . '</a>', get_delete_post_link($item->ID) . '&redirect=' . urlencode($return_url)),
+            'edit'      => sprintf('<a href="%s">' . __('Edit', 'football-club-manager') . '</a>', get_edit_post_link($item->ID)),
+            'delete'      => sprintf('<a href="%s">' . __('Delete', 'football-club-manager') . '</a>', get_delete_post_link($item->ID) . '&redirect=' . urlencode($return_url)),
         );
 
         return sprintf('%1$s %2$s', $item->post_title, $this->row_actions($actions));
@@ -238,7 +238,7 @@ class FCManager_Pools_List_Table extends WP_List_Table
         if ($which == "top") {
             echo '<div class="tablenav ' . esc_attr($which) . '">';
             echo '<a href="' . esc_url(admin_url('post-new.php?post_type=fcmanager_pool&post_parent=' . $this->post_id)) . '" class="button">' .
-                $this->post_type->labels->add_new . '</a>';
+                esc_html($this->post_type->labels->add_new) . '</a>';
             echo '<br class="clear" /></div>';
         }
     }

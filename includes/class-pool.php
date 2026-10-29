@@ -105,7 +105,7 @@ class FCManager_Pool
     public function save()
     {
         if (!$this->validate()) {
-            throw new InvalidArgumentException(__('Invalid pool details.', 'football-club-manager'));
+            throw new InvalidArgumentException(esc_html__('Invalid pool details.', 'football-club-manager'));
         }
 
         if (!$this->id) {
