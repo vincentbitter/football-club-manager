@@ -76,7 +76,7 @@ function fcmanager_render_match_meta_box($post)
     $goals_for_final = get_post_meta($post->ID, '_fcmanager_match_goals_for_final', true);
     $goals_against_final = get_post_meta($post->ID, '_fcmanager_match_goals_against_final', true);
     $referee = get_post_meta($post->ID, '_fcmanager_match_referee', true);
-    $pool = (int) get_post_meta($post->ID, '_fcmanager_match_pool', true);
+    $pool = $post->post_parent;
 
     if ($away !== 0 && $away !== 1)
         $away = 0;
@@ -246,8 +246,6 @@ function fcmanager_save_match_meta_box($post_id)
         update_post_meta($post_id, '_fcmanager_match_goals_against_final', sanitize_text_field(wp_unslash($_POST['fcmanager_match_goals_against_final'])));
     if (array_key_exists('fcmanager_match_referee', $_POST))
         update_post_meta($post_id, '_fcmanager_match_referee', sanitize_text_field(wp_unslash($_POST['fcmanager_match_referee'])));
-    if (array_key_exists('fcmanager_match_pool', $_POST))
-        update_post_meta($post_id, '_fcmanager_match_pool', sanitize_text_field(wp_unslash($_POST['fcmanager_match_pool'])));
 
     // Update post with new title
     $home_team = fcmanager_get_home_team_name($post_id);
@@ -259,7 +257,8 @@ function fcmanager_save_match_meta_box($post_id)
     $post_update = array(
         'ID'         => $post_id,
         'post_title' => $title,
-        'post_name' => $slug
+        'post_name' => $slug,
+        'post_parent' => array_key_exists('fcmanager_match_pool', $_POST) ? sanitize_text_field(wp_unslash($_POST['fcmanager_match_pool'])) : null
     );
     remove_action('save_post_fcmanager_match', 'fcmanager_save_match_meta_box');
     wp_update_post($post_update);
